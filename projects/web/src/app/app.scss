@@ -1,0 +1,42 @@
+@use 'scss/mixins/flexbox.scss' as *;
+
+.layout
+{
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .header {
+    @include flexbox-row();
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    color: var(--color-white);    
+    padding: 10px;
+    text-align: left;
+
+    h3, h4 { 
+      margin: 0;
+      color: var(--color-white);
+    }
+  }
+
+  .content {
+    padding: 20px;
+    overflow: auto;
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-700);
+  }
+
+  .footer {
+    @include flexbox-row();
+    background-color: var(--color-secondary);
+    color: var(--color-white);  
+    font-size: small;
+    padding: 10px;
+  }
+}
