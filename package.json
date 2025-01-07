@@ -12,12 +12,13 @@
     "build:service": "ng build @angularis/service",
     "build:directive": "ng build @angularis/directive",
     "build": "npm run clean && npm run build:core && npm run build:model && npm run build:pipe && npm run build:service && npm run build:directive",
-    "changeset": "changeset",
+    "build:prebuild": "sync-json -v --property version --source package.json --targets  ['dist/core/package.json', 'dist/model/package.json', 'dist/pipe/package.json', 'dist/service/package.json', 'dist/directive/package.json']",
+    "publish:prepare": "cp .npmrc ./projects/core && cp .npmrc ./projects/model && cp .npmrc ./projects/pipe && cp .npmrc ./projects/service && cp .npmrc ./projects/directive",
+    "changeset": "npx changeset add",
     "changeset:version": "changeset version",
     "changeset:version:minor": "changeset version --minor",
     "changeset:version:major": "changeset version --major",
-    "changeset:version:patch": "changeset version --patch",
-    "changeset:publish": "changeset publish"
+    "changeset:version:patch": "changeset version --patch"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.0.1",
+    "sync-json": "^1.0.2",
     "typescript": "~5.6.2"
   }
 }

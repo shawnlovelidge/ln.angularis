@@ -1,0 +1,77 @@
+name: Main (Production) Build
+
+on:
+  push:
+    branches:
+      - main'
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21.x'
+          cache: 'npm'
+          cache-dependency-path: './package-lock.json'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Prepare for publishing...
+        run: npm publish:prepare
+  
+      - name: Publish @angularis/core
+        run: npm publish
+        working-directory: ./dist/core        
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @angularis/model
+        run: npm publish
+        working-directory: ./dist/model
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+
+      - name: Publish @angularis/pipe
+        run: npm publish
+        working-directory: ./dist/pipe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+
+      - name: Publish @angularis/service
+        run: npm publish
+        working-directory: ./dist/service
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+
+      - name: Publish @angularis/directive
+        run: npm publish
+        working-directory: ./dist/directive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+         
+        
+
+
+ 
