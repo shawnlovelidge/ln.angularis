@@ -1,5 +1,5 @@
 
-name: 'Update Angular Action'
+name: 'Angular Action Update(s)'
 
 on:
   schedule:
