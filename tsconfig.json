@@ -20,7 +20,10 @@
       ],
       "@angularis/service": [
         "./dist/service"
-      ]
+      ],
+      "@angularis/storebook": [
+        "./dist/storebook"
+      ]      
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

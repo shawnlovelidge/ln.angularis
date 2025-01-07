@@ -25,8 +25,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
 // @lernender/core
 //
-import { Icon, Library, Response } from 'ln.core';
-import { LnIcon } from '@component/ln-icon/ln-icon';
+import { Icon, Library } from '@angularis/core';
+import { LnIcon } from '../ln-icon/ln-icon';
 
 @Component({
   standalone: true,

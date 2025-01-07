@@ -12,7 +12,7 @@ import {
 //
 // Lernender/Core
 //
-import { Library } from 'ln.core';
+import { Library } from '@angularis/core';
 
 //
 // DASH Team:

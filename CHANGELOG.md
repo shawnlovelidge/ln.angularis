@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.5
+
+### Patch Changes
+
+- Added Storybook into the Component Library
+
 ## 1.0.4
 
 ### Patch Changes

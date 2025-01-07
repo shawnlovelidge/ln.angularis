@@ -1,6 +1,6 @@
 {
   "name": "@angularis",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Angular Suite",
   "author": "Lovelidge, Shawn",
   "license": "MIT",
@@ -18,7 +18,9 @@
     "changeset:version": "npx changeset  version",
     "changeset:version:minor": "changeset version --minor",
     "changeset:version:major": "changeset version --major",
-    "changeset:version:patch": "changeset version --patch"
+    "changeset:version:patch": "changeset version --patch",
+    "storybook": "ng run @angularis/storybook:storybook",
+    "storybook:build": "ng run @angularis/storybook:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -38,7 +40,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "^1.10.3",    
+    "@analogjs/vite-plugin-angular": "^1.10.3",
     "@angular-devkit/build-angular": "^19.0.6",
     "@angular/cli": "^19.0.6",
     "@angular/compiler-cli": "^19.0.0",
@@ -47,7 +49,7 @@
     "@types/express": "^5.0.0",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^22.10.5",
-    "@types/sass": "^1.43.1",    
+    "@types/sass": "^1.43.1",
     "@chromatic-com/storybook": "^3.2.3",
     "@compodoc/compodoc": "^1.1.26",
     "@eslint/js": "^9.17.0",
@@ -68,7 +70,7 @@
     "@storybook/react-vite": "^8.4.7",
     "@storybook/test": "^8.4.7",
     "@storybook/test-runner": "^0.21.0",
-    "@storybook/theming": "^8.4.7",    
+    "@storybook/theming": "^8.4.7",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
