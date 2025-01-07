@@ -1,5 +1,6 @@
 import {
   AfterContentInit,
+  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -26,11 +27,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 // @lernender/core
 //
 import { Icon, Library } from '@angularis/core';
-import { LnIcon } from '../ln-icon/ln-icon';
+
 
 @Component({
   standalone: true,
-  imports: [CommonModule, LnIcon],
+  imports: [CommonModule],
   selector: 'ln-dropdown',
   templateUrl: './ln-dropdown.html',
   styleUrls: ['ln-dropdown.scss'],
@@ -43,10 +44,10 @@ import { LnIcon } from '../ln-icon/ln-icon';
   ],
 })
 export class LnDropDown
-  implements ControlValueAccessor, OnInit, AfterContentInit, OnDestroy
+  implements ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy
 {
   @Input() public label: string = '';
-  @Input() public type: string = 'dark';
+  @Input() public small: boolean = false;
   @Input() public textField: string = 'name';
   @Input() public valueField: string = 'id';
   @Input() public placeholder: string = 'Select...';
@@ -63,7 +64,7 @@ export class LnDropDown
       this.onChange(v);
     }
   }
-  @Input() public items!: Observable<any[]>;
+  @Input() public items: any[] = [];
   @Output() public onValueChange: EventEmitter<any> = new EventEmitter<any>();
   //
   // ViewChild()
@@ -110,7 +111,7 @@ export class LnDropDown
     // Unsubscribe from all subscriptions
     //
     if (Library.isArrayWithLength(this.subscriptions))
-      this.subscriptions.forEach((s) => s.unsubscribe());
+      this.subscriptions.forEach((s) => s?.unsubscribe());
     //
     // onCloseContextMenu
     //
@@ -133,6 +134,10 @@ export class LnDropDown
   public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
+
+  ngAfterViewInit(): void {
+
+  }
   //
   // ngAfterContentInit()
   //
@@ -153,32 +158,36 @@ export class LnDropDown
       name: 'angle-down',
       onClick: ($event: MouseEvent) => {
         $event.preventDefault();
-        $event.stopPropagation();
+        //$event.stopPropagation();
         this.toggle();
       },
     });
+  }
 
-    ///
-    // Listen in on changes to the items observable
     //
-    this.subscriptions.push(
-      this.items.subscribe((items: any[]) => {
-        if (Library.isArray(items)) {
-          if (items.length === 0)
+    // ngOnChanges()
+    //
+    public ngOnChanges(changes: SimpleChanges) {
+        if (changes['items']) {
+          if (changes['items'].currentValue) {
             this.displayItem = { id: 0, name: this.placeholder };
-          else {
-            this.displayItem = items[0];
-            if (Library.isNumber(this.value)) {
-              items.forEach((item: any) => {
-                item.active = item.id === this.value;
-                if (item.active) this.displayItem = item;
-              });
-            }
+
+            if (Library.isArray(changes['items'].currentValue)) {
+              this.items = changes['items'].currentValue;
+
+              if (this.items.length > 0) {
+                this.displayItem = this.items[0];
+                if (Library.isDefined(this.value)) {
+                  const index = this.items.findIndex((i) => i.id === this.value);
+                  if (index > -1) {
+                    this.displayItem = this.items[index];
+                  }
+                }
+              }
+            }            
           }
         }
-      }),
-    );
-  }
+    }  
   //
   // onOpen
   //
@@ -232,7 +241,6 @@ export class LnDropDown
   //
   public onClose(item: any = undefined) {
     if (item) {
-      item.active = true;
       this.displayItem = item;
       this.value = item[this.valueField];
       //

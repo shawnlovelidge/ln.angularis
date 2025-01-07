@@ -1,7 +1,7 @@
 @use 'scss/mixins/flexbox.scss' as *;
 @use 'scss/mixins/standard.scss' as *;
 
-$height: 34px;
+$height: 32px;
 $line-height: 28px;
 $font-size: 14px;
 
@@ -55,7 +55,7 @@ $font-size: 14px;
     outline-width: 0px;
   }
 
-  .label {
+  .ln-dropdown-label {
     @include label();
     @include flexbox-row();
     justify-content: flex-start;
@@ -74,7 +74,7 @@ $font-size: 14px;
     }
   }
 
-  .container {
+  .ln-dropdown-container {
     width: 100%;
 
     div.inner-container {
@@ -145,7 +145,7 @@ $font-size: 14px;
   }
 }
 
-ul.items {
+ul.ln-dropdown-items {
   -webkit-transition: 0.5s;
   border-radius: 0;
   margin: 0;
@@ -176,7 +176,7 @@ ul.items {
     }
   }
 
-  li.item {
+  li.ln-dropdown-item {
     cursor: pointer;
     display: block;
     height: $height;
@@ -223,7 +223,5 @@ ul.items {
         width: 100px;
       }
     }
-
-  
   }
 }

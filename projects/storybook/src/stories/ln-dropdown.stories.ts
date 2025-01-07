@@ -1,13 +1,17 @@
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { expect, fn, userEvent, within } from '@storybook/test';
-import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+//
+// Storybook Modules
+//
+import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+import { fn } from '@storybook/test';
+import { useArgs } from 'storybook/internal/preview-api';
+
 //
 // LnDropDown
 //
 import { LnDropDown } from '../app/component/ln-dropdown/ln-dropdown';
 import { LnIcon } from '../app/component/ln-icon/ln-icon';
-import { useArgs } from 'storybook/internal/preview-api';
+
 
 //
 // Meta
@@ -25,25 +29,21 @@ const meta: Meta<LnDropDown> = {
   },
   args: {
     label: 'Items',
-    darkTheme: false,
-    type: 'dark',
+    darkTheme: true,
+    small: true,
     textField: 'name',
     valueField: 'id',
     placeholder: 'Select...',
     hidden: false,
     disabled: false,
     value: 2,
-    items: new Observable<any[]>((observer: any) => {
-      const data: any[] = [
-        { id: 1, name: 'Item 1', active: false },
-        { id: 2, name: 'Item 2', active: false },
-        { id: 3, name: 'Item 3', active: false },
-      ];
-      observer.next(data);
-      observer.complete();
-    }),
-    onValueChange: fn((item) => {
-      debugger;
+    items: [
+      { id: 1, name: 'Item 1', active: false },
+      { id: 2, name: 'Item 2', active: false },
+      { id: 3, name: 'Item 3', active: false },
+    ],
+    onValueChange: fn((item: any) => {
+      console.log(item);
     }),
   },
   decorators: [
@@ -69,13 +69,13 @@ export const DefaultDropDown: Story = {
   render: (props: {
     label: string;
     darkTheme: boolean;
-    type: string;
+    small: boolean;
     textField: string;
     valueField: string;
     placeholder: string;
     hidden: boolean;
     disabled: boolean;
-    items: Observable<any[]>;
+    items: any[];
     onValueChange: any;
   }) => {
     const [updatedArgs, updateArgs] = useArgs();
@@ -83,25 +83,19 @@ export const DefaultDropDown: Story = {
     const handleValueChange = ($event: any) => {
       const { id } = $event;
 
-      let items = new Observable<any[]>((observer: any) => {
-        
-        const data: any[] = [
-          { id: 1, name: 'Item 1', active: false },
-          { id: 2, name: 'Item 2', active: false },
-          { id: 3, name: 'Item 3', active: false },
-        ];
+      const data: any[] = [
+        { id: 1, name: 'Item 1', active: false },
+        { id: 2, name: 'Item 2', active: false },
+        { id: 3, name: 'Item 3', active: false },
+      ];
 
-        data.forEach((item) => {
-            item.active = (item.id === id);
-        });
-
-        observer.next(data);
-        observer.complete();
+      data.forEach((item) => {
+        item.active = item.id === id;
       });
 
       updateArgs({
         value: $event['id'],
-        items,
+        data,
       });
     };
 
@@ -123,18 +117,18 @@ export const DefaultDropDown: Story = {
         ></ln-dropdown>`,
     };
   },
-  play: async ({ args, canvasElement, step }) => {
-    await step('Initial state', () => {
-      // Assert the initial state
-      console.log('Initial state');
-    });
+  // play: async ({ args, canvasElement, step }) => {
+  //   await step('Initial state', () => {
+  //     // Assert the initial state
+  //     console.log('Initial state');
+  //   });
 
-    await step('Update name', () => {
-      console.log('Update state');
-    });
+  //   await step('Update name', () => {
+  //     console.log('Update state');
+  //   });
 
-    await step('Check updated name', () => {
-      console.log('Check Update state');
-    });
-  },
+  //   await step('Check updated name', () => {
+  //     console.log('Check Update state');
+  //   });
+  // },
 };

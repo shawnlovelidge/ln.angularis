@@ -3,32 +3,32 @@
   'hidden': hidden,
   'disabled': disabled
 }">
-<label class="label" [class.hidden]="label?.length === 0">{{label}}</label>
-<div class="container">
+<label class="ln-dropdown-label" [class.hidden]="label?.length === 0">{{label}}</label>
+<div class="ln-dropdown-container">
   <div class="inner-container">
     <button #portalContainer class="button" [ngClass]="{
         'darkTheme' : darkTheme,
-        'small': type === 'small',
-        'readonly': (items | async)?.length === 0
+        'small': small,
+        'readonly': items?.length === 0
       }" (keydown)="onKeyDown($event)" [attr.aria-label]="ariaLabel || null"
             [attr.aria-labelledby]="ariaLabelledby || null" [attr.aria-multiselectable]="false"
             (click)="onOpen($event)">
       {{ displayItem?.[textField]}}
-      <ln-icon class="icon" [name]="icon.name" (onClick)="icon.onClick($event)"></ln-icon>
+      <ln-icon class="icon" [name]="icon.name" (onClick)="onOpen($event)"></ln-icon>
     </button>
   </div>
 </div>
 </div>
 <ng-template #portalView let-data>
-  <ul class="items" [ngClass]="{
+  <ul class="ln-dropdown-items" [ngClass]="{
     'darkTheme' : darkTheme,
-    'small': type === 'small'
+    'small': small
   }">
-    <li *ngFor="let item of items | async" 
-        class="item" 
+    <li *ngFor="let item of items" 
+        class="ln-dropdown-item" 
         [ngClass]="{
           'darkTheme' : darkTheme,
-          'small': type === 'small',
+          'small': small,
           'hidden': item?.hidden,
           'disabled': item?.disabled,
           'active': item?.active

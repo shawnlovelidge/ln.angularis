@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.6
+
+### Patch Changes
+
+- Upgraded Storybook
+
 ## 1.0.5
 
 ### Patch Changes
