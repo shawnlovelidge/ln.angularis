@@ -1,8 +1,8 @@
 {
   "name": "@angularis/directive",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Angular Directive Library",
-  "author": "Lovelidge, Shawn",  
+  "author": "Lovelidge, Shawn",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^19.0.0",

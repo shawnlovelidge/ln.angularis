@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.3
+
+### Patch Changes
+
+- Changed Package.json
+
 ## 1.0.2
 
 ### Patch Changes
