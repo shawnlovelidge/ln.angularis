@@ -1,13 +1,13 @@
 {
   "name": "@angularis/model",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Angular Model Library",
-  "author": "Lovelidge, Shawn",  
+  "author": "Lovelidge, Shawn",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",
-    "@angularis/core": "^0.0.1"    
+    "@angularis/core": "^0.0.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"

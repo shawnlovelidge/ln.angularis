@@ -1,6 +1,6 @@
 {
   "name": "@angularis",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Angular Suite",
   "author": "Lovelidge, Shawn",
   "license": "MIT",
@@ -11,13 +11,14 @@
     "build:pipe": "ng build @angularis/pipe",
     "build:service": "ng build @angularis/service",
     "build:directive": "ng build @angularis/directive",
-    "build": "npm run clean && npm run build:core && npm run build:model && npm run build:pipe && npm run build:service && npm run build:directive",
-    "changeset": "changeset",
-    "changeset:version": "changeset version",
+    "build:prebuild": "sync-json -v --property version --source package.json --targets  ./projects/core/package.json ./projects/model/package.json ./projects/pipe/package.json ./projects/service/package.json ./projects/directive/package.json",
+    "build": "npm run clean && npm run build:prebuild && npm run build:core && npm run build:model && npm run build:pipe && npm run build:service && npm run build:directive",
+    "publish:prepare": "cp .npmrc ./dist/core && cp .npmrc ./dist/model && cp .npmrc ./dist/pipe && cp .npmrc ./dist/service && cp .npmrc ./dist/directive",
+    "changeset": "npx changeset add",
+    "changeset:version": "npx changeset  version",
     "changeset:version:minor": "changeset version --minor",
     "changeset:version:major": "changeset version --major",
-    "changeset:version:patch": "changeset version --patch",
-    "changeset:publish": "changeset publish"
+    "changeset:version:patch": "changeset version --patch"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +53,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.0.1",
+    "sync-json": "^1.0.2",
     "typescript": "~5.6.2"
   }
 }

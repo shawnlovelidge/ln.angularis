@@ -1,5 +1,17 @@
 # @angularis
 
+## 1.0.3
+
+### Patch Changes
+
+- Changed Package.json
+
+## 1.0.2
+
+### Patch Changes
+
+- Added new GitHub Action Scripts
+
 ## 1.0.1
 
 ### Patch Changes
