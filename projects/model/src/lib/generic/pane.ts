@@ -1,8 +1,6 @@
 import { Library, Action } from '@angularis/core';
 
 export class Pane extends Action {
-  public type: string = '';
-
   public get width() {
     return this._width;
   }
@@ -34,20 +32,14 @@ export class Pane extends Action {
     }
   }
 
-  private _width: number;
-  private _offsetWidth: number;
+  private _width: number = 0;
+  private _offsetWidth: number = 0;
   private _open: boolean = false;
   private _cb: (o: Pane) => void;
 
-  constructor();
-  constructor(options: object);
-  constructor(options?: any) {
+  constructor(options?: Partial<Pane>) {
     super(options);
-    this.style = Library.init(options, 'style', {});
     this._cb = Library.init(options, 'cb');
-    this._width = 0;
-    this._offsetWidth = 0;
-    this.open = Library.init(options, 'open', false);
   }
 
   public getBoundingClientRect() {

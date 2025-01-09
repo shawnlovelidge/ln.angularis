@@ -1,50 +1,39 @@
 import { Library, Base } from '@angularis/core';
 
 export interface IAuthentication extends Base {
-  authority: string;
-  authorizationUrl: string;
-  baseUrl: string;
-  clientId: string;
-  issuer: string;
-  jwks: string;
-  logoutRedirectUrl: string;
-  redirectUrl: string;
+  authority?: string | undefined;
+  authorizationUrl?: string | undefined;
+  baseUrl?: string | undefined;
+  clientId?: string | undefined;
+  hostname: string;
+  issuer?: string | undefined;
+  jwks?: string | undefined;
+  logoutRedirectUrl?: string | undefined;
+  redirectUrl?: string;
 }
 
 export class Authentication extends Base implements IAuthentication {
-  public jwks: string;
-  public authority: string;
-  public authorizationUrl: string;
-  public baseUrl: string;
-  public clientId: string;
-  public issuer: string;
-  public logoutRedirectUrl: string;
-  public redirectUrl: string;
+  public authority?: string | undefined = '';
+  public authorizationUrl?: string | undefined = '';
+  public baseUrl?: string | undefined = '';
+  public clientId?: string | undefined = '';
+  public hostname: string = '';
+  public issuer?: string | undefined = '';
+  public jwks?: string | undefined = '';
+  public logoutRedirectUrl?: string | undefined = '';
+  public redirectUrl?: string = '';
   //
   // Constructor
   //
-  constructor();
-  constructor(options: object);
-  constructor(options?: any) {
+  constructor(options: Partial<Authentication>) {
     super(options);
-    this.jwks = Library.init(options, 'jwks');
-    this.authority = Library.init(options, 'authority');
-    this.authorizationUrl = Library.init(options, 'authorizationUrl');
-    this.baseUrl = Library.init(options, 'baseUrl');
-    this.clientId = Library.init(options, 'clientId');
-    this.issuer = Library.init(options, 'issuer');
-    this.logoutRedirectUrl = Library.init(options, 'logoutRedirectUrl');
-    this.redirectUrl = Library.init(options, 'redirectUrl');
-    if (
-      Library.hasOwnProperty(options, 'hostname') &&
-      Library.isStringWithLength(options.hostname)
-    ) {
-      if (Library.isStringWithLength(this.redirectUrl)) {
-        this.redirectUrl = this.redirectUrl.replace(
-          '{hostname}',
-          options.hostname
-        );
-      }
+    Object.assign(this, options);
+
+    if (Library.isStringWithLength(this.redirectUrl)) {
+      this.redirectUrl = this.redirectUrl?.replace(
+        '{hostname}',
+        Library.init(options, 'hostname', '')
+      );
     }
   }
 }

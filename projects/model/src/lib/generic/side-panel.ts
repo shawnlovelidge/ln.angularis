@@ -14,9 +14,9 @@ export interface ISlidePanel {
 }
 
 export class SlidePanel implements ISlidePanel {
-  public left: Panel;
-  public center: Pane;
-  public right: Panel;
+  public left: Panel = new Panel();
+  public center: Pane = new Pane();
+  public right: Panel = new Panel();
   public onWidthChanged: EventEmitter<void> = new EventEmitter<void>();
 
   constructor();
