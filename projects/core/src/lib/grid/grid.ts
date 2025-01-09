@@ -1,7 +1,6 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
+import { Library } from '../library';
+import { Base } from '../common';
 import { GridColumn } from './grid-column';
-import { GridField } from './grid-field';
 
 /**
  * Class: Grid
@@ -38,7 +37,7 @@ export class Grid extends Base {
   /**
    * constructor()
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Grid>) {
     super(options);
     this.columns = [];
     this.title = Library.init(options, 'title', '');

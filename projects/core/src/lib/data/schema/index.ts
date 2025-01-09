@@ -1,4 +1,4 @@
-import * as Library from '../../library/index';
+import { Library } from '../../library';
 /**
  * @name Schema
  * @description Abtract Generic Schema Definition
@@ -23,7 +23,7 @@ export class Schema {
   public options: Object;
   public totalRecords: number;
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Schema>) {
     this.items = Library.init(options, 'items', []);
     this.onActivated = Library.init(options, 'onActivated');
     this.onActive = Library.init(options, 'onActive');

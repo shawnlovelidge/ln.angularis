@@ -1,10 +1,8 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 
 export class GridSummary {
   private _total: number;
   private _selected: number;
-  private _selectedLabel: string;
-  private _checkedLabel: string;
   private _visible: number;
   private _label: string;
   private _hidden: number;
@@ -87,14 +85,12 @@ export class GridSummary {
     return this;
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridSummary>) {
     this._format = Library.init(options, 'format', 'X SUBJECT');
     this._hidden = Library.init(options, 'hidden', 0);
     this._checked = Library.init(options, 'checked', 0);
     this._label = '';
     this._selected = Library.init(options, 'selected', 0);
-    this._selectedLabel = Library.init(options, 'selectedLabel', 'Selected');
-    this._checkedLabel = Library.init(options, 'checkedLabel', 'checked');
     this._subject = Library.init(options, 'subject', 'objects');
     this._total = Library.init(options, 'total', 0);
     this._visible = Library.init(options, 'visible', 0);

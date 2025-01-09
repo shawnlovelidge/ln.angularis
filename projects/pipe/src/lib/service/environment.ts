@@ -110,7 +110,7 @@ export class Environment extends Base implements IEnvironment {
     // Convert endpoints to Endpoint objects.
     //
     // const endpoints: { [index: string]: Endpoint } = {};
-    Object.keys(options.endpoints).forEach((key) => {
+    Object.keys(options.endpoints).forEach(key => {
       //endpoints[key] = new Endpoint(options.endpoints[key]);
       options.endpoints[key] = new Endpoint(options.endpoints[key]);
     });

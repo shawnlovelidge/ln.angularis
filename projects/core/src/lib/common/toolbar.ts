@@ -1,12 +1,12 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Item } from './item';
 
 export class Toolbar extends Item {
-  public items: Item[];
+  public items: Item[] = [];
 
-  constructor(options: Object | undefined) {
+  constructor(options?: Partial<Toolbar>) {
     super(options);
-    this.items = [];
+    Object.assign(this, options);
     if (options != undefined) {
       if (Library.hasOwnProperty(options, 'items')) {
         // @ts-ignore
@@ -20,3 +20,8 @@ export class Toolbar extends Item {
     }
   }
 }
+
+//
+// Export default class
+//
+export default Toolbar;

@@ -1,6 +1,6 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { GridView } from '../constant';
-import { Base } from '../common/base';
+import { Base } from '../common';
 
 /**
  * Class: GridOption
@@ -16,7 +16,7 @@ export class GridOption extends Base {
   /**
    * Constructor()
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridOption>) {
     super(options);
     this.view = Library.init(options, 'view', GridView.Grid);
     this.noDataAvailable = Library.init(

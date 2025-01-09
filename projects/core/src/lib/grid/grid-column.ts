@@ -1,5 +1,5 @@
-import * as Library from '../library/index';
-import { Action } from '../common/action';
+import { Library } from '../library';
+import { Action } from '../common';
 import { GridField } from './grid-field';
 import { GridSort } from './grid-sort';
 import { GridFilter } from './grid-filter';
@@ -7,14 +7,12 @@ import { GridHeader } from './grid-header';
 import { FilterComponent } from './filter-component';
 import { TooltipComponent } from './tooltip-component';
 import { CellComponent } from './cell-component';
-//import { GridToken } from './grid-token';
 
 /**
  * Class: GridColumn
  */
 export class GridColumn extends Action {
   public align: string;
-  public type: string;
   public cellComponent: any;
   public defaultDisplay: string;
   public field: GridField;
@@ -44,7 +42,7 @@ export class GridColumn extends Action {
   public minWidth: string | number | undefined;
   public flex: string | undefined;
 
-  fieldName() {
+  public fieldName() {
     let field: string = '';
 
     if (Library.isObject(this.field)) {
@@ -63,72 +61,72 @@ export class GridColumn extends Action {
     return field;
   }
 
-  canFilter() {
+  public canFilter() {
     return this.filter.enabled;
   }
 
-  canResize() {
+  public canResize() {
     return this.resizeable;
   }
 
-  hasLink() {
+  public hasLink() {
     return Library.isStringWithLength(this.link);
   }
 
-  hasDefaultDisplay() {
+  public hasDefaultDisplay() {
     return Library.isStringWithLength(this.defaultDisplay);
   }
 
-  hasFilter() {
+  public hasFilter() {
     return this.filter.enabled && this.filter.hasTokens();
   }
 
-  hasPattern() {
+  public hasPattern() {
     return Library.isStringWithLength(this.pattern);
   }
 
-  hasField() {
+  public hasField() {
     return Library.isStringWithLength(this.field.name);
   }
 
-  hasFieldObjectReference() {
+  public hasFieldObjectReference() {
     return this.hasField() && this.field.name.indexOf('.') > -1;
   }
 
-  hasCellComponent() {
+  public hasCellComponent() {
     return Library.isObject(this.cellComponent);
   }
 
-  hasCustomFilter() {
+  public hasCustomFilter() {
     return !Library.isNullOrUndefined(this.onCustomFilter);
   }
 
-  hasDelimeter() {
+  public hasDelimeter() {
     return !Library.isNullOrUndefined(this.filterDelimeter);
   }
 
-  hasFilterOperator() {
+  public hasFilterOperator() {
     return !Library.isNullOrUndefined(this.filterOperator);
   }
 
-  hasFilterCriteria() {
+  public hasFilterCriteria() {
     return !Library.isNullOrUndefined(this.filterCriteria);
   }
 
-  hasStartsWithFilterCriteria() {
+  public hasStartsWithFilterCriteria() {
     return this.hasFilterCriteria() && this.filterCriteria === 'startsWith';
   }
 
-  hasQuickFilter() {
+  public hasQuickFilter() {
     return this.hasFilter();
   }
 
-  setQuickFilter(type: number, data: any[]) {
-    this.filter.setTokens(type, data || []);
-    return true;
-  }
+  // setQuickFilter(type: number, data: any[]) {
+  //   //this.filter.setTokens(type, data || []);
+  //   return true;
+  // }
 
-  hasCellRender() {
+  public hasCellRender() {
     return Library.isFunction(this.onCellRender);
   }
 
@@ -138,7 +136,6 @@ export class GridColumn extends Action {
    */
   constructor(options: any) {
     super(options);
-    this.type = '';
     this.link = '';
     this.width = undefined;
     this.maxWidth = '';
@@ -169,16 +166,8 @@ export class GridColumn extends Action {
     this.flexBase = Library.init(options, 'flexBase', 'auto');
     this.onCellRender = Library.init(options, 'onCellRender');
     this.onCustomFilter = Library.init(options, 'onCustomFilter');
-    this.onFilter = Library.init(
-      options,
-      'onFilter',
-      (data: any[], column: any) => {}
-    );
-    this.onQuickFilter = Library.init(
-      options,
-      'onQuickFilter',
-      (row: any, column: any) => {}
-    );
+    this.onFilter = Library.init(options, 'onFilter', () => {});
+    this.onQuickFilter = Library.init(options, 'onQuickFilter', () => {});
     this.onRule = Library.init(options, 'onRule');
     this.order = Library.init(options, 'order', 1);
     this.pattern = Library.init(options, 'pattern');

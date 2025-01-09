@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Error } from './error';
 
 /**
@@ -6,8 +6,8 @@ import { Error } from './error';
  */
 export class Response<T> {
   public data: T[];
-  public errors: Error[];
-  public total: number;
+  public errors: Error[] = [];
+  public total: number = 0;
   public pagination: Object;
 
   hasErrors() {

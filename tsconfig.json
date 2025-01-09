@@ -3,27 +3,13 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@angularis/component": [
-        "./dist/component"
-      ],
-      "@angularis/core": [
-        "./dist/core"
-      ],
-      "@angularis/directive": [
-        "./dist/directive"
-      ],
-      "@angularis/model": [
-        "./dist/model"
-      ],
-      "@angularis/pipe": [
-        "./dist/pipe"
-      ],
-      "@angularis/service": [
-        "./dist/service"
-      ],
-      "@angularis/storebook": [
-        "./dist/storebook"
-      ]      
+      "@angularis/component": ["./dist/component"],
+      "@angularis/core": ["./dist/core"],
+      "@angularis/directive": ["./dist/directive"],
+      "@angularis/model": ["./dist/model"],
+      "@angularis/pipe": ["./dist/pipe"],
+      "@angularis/service": ["./dist/service"],
+      "@angularis/storebook": ["./dist/storebook"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -43,10 +29,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

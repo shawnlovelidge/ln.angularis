@@ -16,7 +16,6 @@ import {
   AuthenticationServiceFactory,
 } from '../ln-authentication/ln-authentication.provider';
 
-
 @NgModule({
   imports: [RouterModule],
   providers: [LnInterceptorService],

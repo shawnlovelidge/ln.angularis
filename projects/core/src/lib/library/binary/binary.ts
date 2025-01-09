@@ -1,4 +1,4 @@
-import { isNumber } from '../index';
+import * as Library from '../functions';
 
 //
 // isOn()
@@ -6,7 +6,7 @@ import { isNumber } from '../index';
 export function isOn(n: number, mask: number = 0): boolean | undefined {
   if (mask === 0) return undefined;
 
-  if (isNumber(n) && isNumber(mask)) {
+  if (Library.isNumber(n) && Library.isNumber(mask)) {
     return (n & mask) !== 0;
   }
 
@@ -19,7 +19,7 @@ export function isOn(n: number, mask: number = 0): boolean | undefined {
 export function isOff(n: number, mask: number = 0): boolean | undefined {
   if (mask === 0) return undefined;
 
-  if (isNumber(n) && isNumber(mask)) {
+  if (Library.isNumber(n) && Library.isNumber(mask)) {
     return (n & mask) === 0;
   }
 
@@ -30,7 +30,7 @@ export function isOff(n: number, mask: number = 0): boolean | undefined {
 // setOn()
 //
 export function setOn(n: number, mask: number = 0) {
-  if (isNumber(n) && isNumber(mask)) {
+  if (Library.isNumber(n) && Library.isNumber(mask)) {
     return n ^ mask;
   }
   return n;
@@ -39,7 +39,7 @@ export function setOn(n: number, mask: number = 0) {
 // toggle()
 //
 export function toggle(n: number, mask: number = 0) {
-  if (isNumber(n) && isNumber(mask)) {
+  if (Library.isNumber(n) && Library.isNumber(mask)) {
     return n ^ mask;
   }
   return n;

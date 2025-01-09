@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 
 @Directive({
-  
   selector: '[lnReady]',
 })
 export class LnReadyDirective implements AfterViewInit, OnDestroy {

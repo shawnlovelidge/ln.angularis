@@ -1,6 +1,6 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { SelectionType } from '../constant';
-import { Base } from '../common/base';
+import { Base } from '../common';
 import { DataSource } from './datasource';
 
 /**
@@ -102,7 +102,6 @@ export class Container extends Base {
         let index = 0;
         let found = false;
 
-        type SourceKey = keyof typeof o;
         const SourceUIDProp = 'uid';
 
         this.dataSource.forEach((r: any) => {
@@ -135,7 +134,7 @@ export class Container extends Base {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Container>) {
     super(options);
     this.dataSource = new DataSource(Library.init(options, 'dataSource', {}));
     this.selectionType = Library.init(

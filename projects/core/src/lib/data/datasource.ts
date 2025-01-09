@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 /**
  * Class: DataSource
  */
@@ -21,7 +21,7 @@ export class DataSource {
    */
   public findItem(predicate?: Function) {
     if (predicate) {
-      const list = this._data.filter((x) => predicate(x));
+      const list = this._data.filter(x => predicate(x));
       return list.length === 0 ? undefined : list[0];
     }
   }
@@ -47,7 +47,7 @@ export class DataSource {
    */
   public filterItems(predicate?: Function) {
     if (predicate) {
-      return this._data.filter((x) => predicate(x));
+      return this._data.filter(x => predicate(x));
     }
 
     return [];
@@ -59,7 +59,7 @@ export class DataSource {
    */
   public forEach(predicate?: Function) {
     if (predicate) {
-      return this._data.forEach((x) => predicate(x));
+      return this._data.forEach(x => predicate(x));
     }
 
     return [];

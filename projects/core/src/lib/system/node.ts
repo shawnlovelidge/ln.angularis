@@ -1,6 +1,6 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Element } from '../common/element';
-import { Guid } from '../common/guid';
+import { Guid } from '../common';
 
 /**
  * Print()
@@ -18,9 +18,9 @@ export function Print(root: Node) {
  * @description Defines a atag object.
  */
 export class Node extends Element {
-  public expanded: boolean;
+  public expanded: boolean = false;
   public parentId: number | Guid;
-  public children: Array<Node>;
+  public children: Array<Node> = [];
 
   /**
    * find()
@@ -28,7 +28,7 @@ export class Node extends Element {
    * @param expression
    */
   public find(expression: Function, root: Node = this): Node | undefined {
-    let n = undefined;
+    let n: Node | undefined = undefined;
     if (Library.isArrayWithLength(root.children)) {
       if (expression(root)) {
         return root;
@@ -214,7 +214,7 @@ export class Node extends Element {
   /**
    * constructor()
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Node>) {
     super(options);
     this.expanded = Library.init(options, 'expanded', false);
     this.parentId = Library.init(options, 'parentId');

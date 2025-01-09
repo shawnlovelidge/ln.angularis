@@ -1,6 +1,5 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { GridSchemaSelection } from '../constant';
-//import { GridUser } from './grid-user';
 import { GridColumn } from './grid-column';
 
 /**
@@ -49,7 +48,7 @@ export class GridSchema {
     return this.isMultiCheckBoxSelection() || this.isSingleCheckBoxSelection();
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridSchema>) {
     //
     // Initialize columns
     //

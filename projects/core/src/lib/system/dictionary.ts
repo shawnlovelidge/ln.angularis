@@ -1,5 +1,5 @@
-import * as Library from '../library/index';
-import { Guid } from '../common/guid';
+import { Library } from '../library';
+import { Guid } from '../common';
 
 export interface IDictionary<T> {
   [Key: string]: T;
@@ -11,6 +11,12 @@ export class Dictionary<T> {
   private _uid: Guid;
   private _items: IDictionary<T> = {};
 
+  //
+  // Comment: uid
+  //
+  public get uid(): Guid {
+    return this._uid;
+  }
   /**
    * keys
    * @returns {Array}

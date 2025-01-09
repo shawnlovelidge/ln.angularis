@@ -8,18 +8,18 @@ export class LnModalService {
 
   public remove(id: string) {
     // remove modal from array of active modals
-    this.modals = this.modals.filter((x) => x.id !== id);
+    this.modals = this.modals.filter(x => x.id !== id);
   }
 
   public open(id: string) {
     // open modal specified by id
-    const modal: any = this.modals.filter((x) => x.id === id)[0];
+    const modal: any = this.modals.filter(x => x.id === id)[0];
     modal.open();
   }
 
   public close(id: string) {
     // close modal specified by id
-    const modal: any = this.modals.filter((x) => x.id === id)[0];
+    const modal: any = this.modals.filter(x => x.id === id)[0];
     modal.close();
   }
 }

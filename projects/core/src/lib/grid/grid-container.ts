@@ -1,5 +1,5 @@
-import { default as Library } from '../library/index';
-import { Guid } from '../common/guid';
+import { Library } from '../library';
+import { Guid } from '../common';
 import { GridGeneric } from './grid-generic';
 import { PageSet } from '../data/pageset';
 import { GridSummary } from './grid-summary';
@@ -81,7 +81,7 @@ export class GridContainer<T extends GridGeneric> {
   //
   // setActive()
   //
-  public setActive(obj: T, dataValueField: string = 'uid') {
+  public setActive(obj: T) {
     //
     // If we have a valid object
     //
@@ -136,15 +136,6 @@ export class GridContainer<T extends GridGeneric> {
   }
 
   /**
-   * setChecked()
-   */
-  public setChecked(
-    o: T,
-    context: string = 'row',
-    dataValueField: string = 'uid',
-    onlyVisibleRows: boolean = false
-  ) {}
-  /**
    * getChecked()
    */
   public getChecked() {
@@ -156,14 +147,6 @@ export class GridContainer<T extends GridGeneric> {
     });
   }
 
-  /**
-   * setSelected()
-   */
-  public setSelected(
-    o: T | boolean | T[],
-    context: string = 'row',
-    dataValueField: string = 'uid'
-  ) {}
   /**
    * getSelected()
    */
@@ -186,7 +169,7 @@ export class GridContainer<T extends GridGeneric> {
   /**
    * isChecked()
    */
-  public isChecked(obj: T, dataValueField: string = 'uid') {
+  public isChecked(obj: T) {
     //
     // If we have a valid object
     //
@@ -200,27 +183,4 @@ export class GridContainer<T extends GridGeneric> {
 
     return false;
   }
-
-  /**
-   * find()
-   */
-  public find(
-    token: string,
-    context: string = 'row',
-    dataValueField: string = 'uid'
-  ) {
-    return;
-  }
-
-  public remove(
-    obj: T | T[],
-    context: string = 'row',
-    dataValueField: string = 'uid'
-  ) {}
-
-  public indexOf(
-    obj: T,
-    context: string = 'row',
-    dataValueField: string = 'uid'
-  ) {}
 }

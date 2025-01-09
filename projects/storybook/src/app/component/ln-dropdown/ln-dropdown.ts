@@ -28,7 +28,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
 import { Icon, Library } from '@angularis/core';
 
-
 @Component({
   standalone: true,
   imports: [CommonModule],
@@ -44,7 +43,12 @@ import { Icon, Library } from '@angularis/core';
   ],
 })
 export class LnDropDown
-  implements ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnDestroy
+  implements
+    ControlValueAccessor,
+    OnInit,
+    AfterViewInit,
+    AfterContentInit,
+    OnDestroy
 {
   @Input() public label: string = '';
   @Input() public small: boolean = false;
@@ -135,9 +139,7 @@ export class LnDropDown
     this.onTouched = fn;
   }
 
-  ngAfterViewInit(): void {
-
-  }
+  ngAfterViewInit(): void {}
   //
   // ngAfterContentInit()
   //
@@ -164,30 +166,30 @@ export class LnDropDown
     });
   }
 
-    //
-    // ngOnChanges()
-    //
-    public ngOnChanges(changes: SimpleChanges) {
-        if (changes['items']) {
-          if (changes['items'].currentValue) {
-            this.displayItem = { id: 0, name: this.placeholder };
+  //
+  // ngOnChanges()
+  //
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes['items']) {
+      if (changes['items'].currentValue) {
+        this.displayItem = { id: 0, name: this.placeholder };
 
-            if (Library.isArray(changes['items'].currentValue)) {
-              this.items = changes['items'].currentValue;
+        if (Library.isArray(changes['items'].currentValue)) {
+          this.items = changes['items'].currentValue;
 
-              if (this.items.length > 0) {
-                this.displayItem = this.items[0];
-                if (Library.isDefined(this.value)) {
-                  const index = this.items.findIndex((i) => i.id === this.value);
-                  if (index > -1) {
-                    this.displayItem = this.items[index];
-                  }
-                }
+          if (this.items.length > 0) {
+            this.displayItem = this.items[0];
+            if (Library.isDefined(this.value)) {
+              const index = this.items.findIndex((i) => i.id === this.value);
+              if (index > -1) {
+                this.displayItem = this.items[index];
               }
-            }            
+            }
           }
         }
-    }  
+      }
+    }
+  }
   //
   // onOpen
   //

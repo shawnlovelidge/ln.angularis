@@ -1,15 +1,15 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 /**
  * Class: Endpoint
  */
 export class Endpoint {
-  public secure: boolean;
-  public requireToken: boolean;
-  public url: string;
-  public port: number;
-  public suffix: string;
-  public type: string;
-  private _headers: object[];
+  public secure: boolean = true;
+  public requireToken: boolean = true;
+  public url: string = '';
+  public port: string = '';
+  public suffix: string = '';
+  public type: string = '';
+  private _headers: object[] = [];
   /**
    * Get the headers assigned for this endpoint
    * @returns {Array}
@@ -90,13 +90,12 @@ export class Endpoint {
   /**
    * Constructor()
    */
-  constructor(options?: Object | undefined | null) {
-    this.port = Library.init(options, 'port');
-    this.secure = Library.init(options, 'secure', true);
-    this.suffix = Library.init(options, 'suffix');
-    this.type = Library.init(options, 'type');
-    this.url = Library.init(options, 'url', 'localhost');
-    this.requireToken = Library.init(options, 'requireToken', true);
-    this._headers = Library.init(options, 'headers', []);
+  constructor(options?: Partial<Endpoint>) {
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Endpoint;

@@ -1,4 +1,4 @@
-@use "sass:string";
+@use 'sass:string';
 @use 'scss/mixins/standard.scss' as *;
 
 .ln-icon {
@@ -21,11 +21,11 @@
     display: inline-block;
     cursor: pointer;
 
-  &.disabled {
-    @include disabled();
-    pointer-events: none;
-    opacity: .4;
-  }
+    &.disabled {
+      @include disabled();
+      pointer-events: none;
+      opacity: 0.4;
+    }
 
     &:hover {
       color: var(--color-primary-accent-hover);
@@ -59,6 +59,7 @@
       padding-right: 8px;
     }
 
+    /*
     &.angle-up:before {
       content: string.unquote("\"\\#{'f106'}\"");
     }
@@ -128,5 +129,6 @@
     &.chevron-down:before {
       content: string.unquote("\"\\#{'f13a'}\"");
     }
+    */
   }
 }

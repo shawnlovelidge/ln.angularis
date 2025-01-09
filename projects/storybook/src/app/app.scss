@@ -1,7 +1,6 @@
 @use 'scss/mixins/flexbox.scss' as *;
 
-.layout
-{
+.layout {
   display: grid;
   grid-template-rows: 50px 1fr 50px;
   width: 100vw;
@@ -15,11 +14,12 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     background-color: var(--color-primary);
-    color: var(--color-white);    
+    color: var(--color-white);
     padding: 10px;
     text-align: left;
 
-    h3, h4 { 
+    h3,
+    h4 {
       margin: 0;
       color: var(--color-white);
     }
@@ -35,7 +35,7 @@
   .footer {
     @include flexbox-row();
     background-color: var(--color-secondary);
-    color: var(--color-white);  
+    color: var(--color-white);
     font-size: small;
     padding: 10px;
   }

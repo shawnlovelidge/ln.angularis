@@ -6,7 +6,7 @@ on:
       - master
 
     tags:
-      - "v*.*.*"
+      - 'v*.*.*'
 
 permissions:
   contents: write
@@ -36,10 +36,10 @@ jobs:
 
       - name: Prepare for publishing...
         run: npm run publish:prepare
-  
+
       - name: Publish @angularis/core
         run: npm publish
-        working-directory: ./dist/core        
+        working-directory: ./dist/core
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -49,30 +49,25 @@ jobs:
         working-directory: ./dist/model
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/pipe
         run: npm publish
         working-directory: ./dist/pipe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/service
         run: npm publish
         working-directory: ./dist/service
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/directive
         run: npm publish
         working-directory: ./dist/directive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}        
-         
-        
-
-
- 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

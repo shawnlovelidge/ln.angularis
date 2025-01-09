@@ -1,0 +1,33 @@
+// .eslintrc.json
+{
+  "env": {
+    "browser": true,
+    "es2020": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "eslint.lintTask.options": "-c .eslintrc.json --ignore-path .eslintignore .",
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 80,
+        "semi": false,
+        "singleQuote": true,
+        "trailingComma": "none",
+        "useTabs": true
+      }
+    ]
+  },
+  "settings": {
+    "angular": {
+      "version": "detect"
+    }
+  }
+}

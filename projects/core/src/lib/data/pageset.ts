@@ -1,14 +1,14 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
+import { Range } from '../common';
 import { Page } from './page';
-import { Range } from '../common/range';
 /**
  * Class: PageSet
  */
 export class PageSet {
-  private _pageSize: number;
-  private _length: number;
-  private _indexId: number;
-  private _pages: Page[];
+  private _pageSize: number = 10;
+  private _length: number = 0;
+  private _indexId: number = 1;
+  private _pages: Page[] = [];
   //
   // pageSize()
   //
@@ -41,7 +41,9 @@ export class PageSet {
   //
   // getSets
   //
-  get sets() { return Math.ceil(this._length / this._pageSize); }
+  get sets() {
+    return Math.ceil(this._length / this._pageSize);
+  }
   //
   // pages()
   //
@@ -51,16 +53,13 @@ export class PageSet {
   //
   // constructor()
   //
-  constructor(options?: Object | undefined | null) {
-    this._pages = [];
-    this._pageSize = Library.init(options, 'pageSize', 10);
-    this._length = Library.init(options, 'length', 0);
-    this._indexId = Library.init(options, 'indexId', 1);
+  constructor(options?: Partial<PageSet>) {
+    Object.assign(this, options);
     //
     // Create Pages
     //
     this.create();
-  }  
+  }
   //
   // clear()
   //
@@ -75,7 +74,7 @@ export class PageSet {
   //
   // hasPages()
   //
-  public hasPages = () => Library.isArrayWithLength(this._pages); 
+  public hasPages = () => Library.isArrayWithLength(this._pages);
   //
   // setStart()
   //
@@ -83,7 +82,7 @@ export class PageSet {
     //
     // Reset the Start Index Relative 1
     //
-    this.indexId = 1
+    this.indexId = 1;
     return this.indexId;
   }
   //
@@ -108,7 +107,7 @@ export class PageSet {
     this.indexId -= 1;
     return this.indexId;
   }
-  
+
   //
   // getActivePage()
   //
@@ -123,7 +122,7 @@ export class PageSet {
   //
   public toArray(): Array<any> {
     if (this.hasPages()) {
-      return Array.from(new Array(this.sets), (x, i) => i + 1);
+      return Array.from(new Array(this.sets), (_, i) => i + 1);
     }
     return [];
   }

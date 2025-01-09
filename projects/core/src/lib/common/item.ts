@@ -7,7 +7,12 @@ export class Item extends Base {
   /**
    * Constructor()
    */
-  constructor(options: Object | undefined) {
+  constructor(options?: Partial<Item>) {
     super(options);
   }
 }
+
+//
+// Export default class
+//
+export default Item;

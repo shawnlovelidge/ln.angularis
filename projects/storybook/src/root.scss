@@ -16,7 +16,7 @@
   --color-green: #1aa82e;
   --color-success: #1aa82e;
   --color-info: #21759b;
-  --color-warning: #E1E6AC;
+  --color-warning: #e1e6ac;
   --color-danger: #e15151;
   --color-read-only: #212a43;
 
@@ -51,22 +51,21 @@
   --scrollbar-background: #0d1427;
   --color-primary-background-lighter: #242a3b;
 
-
   --padding: 5px 42px;
   --radius: 6px;
   //
   // Font Awesome Free Fonts
   //
-  --fa-font-solid: "Font Awesome 6 Free";
-  --fa-font-brands: "Font Awesome 6 Brands";
+  --fa-font-solid: 'Font Awesome 6 Free';
+  --fa-font-brands: 'Font Awesome 6 Brands';
   //
   // Not Supported with free version
   //
-  --fa-font-regular: "";
-  --fa-font-light: "";
-  --fa-font-thin: "";
-  --fa-font-sharp-solid: "";
-  --fa-font-sharp-regular: "";
+  --fa-font-regular: '';
+  --fa-font-light: '';
+  --fa-font-thin: '';
+  --fa-font-sharp-solid: '';
+  --fa-font-sharp-regular: '';
 }
 
 * {
@@ -79,7 +78,8 @@ html {
   min-width: inherit !important;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
   padding-left: 0;
   margin-bottom: 0;
@@ -89,17 +89,17 @@ img {
   max-width: 100%;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
-input[type="text"] {
+input[type='text'] {
   outline: none !important;
   outline-offset: inherit !important;
   &:focus {

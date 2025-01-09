@@ -1,7 +1,5 @@
 import * as Constant from '../constant';
-import * as Library from '../library/index';
-import * as Validate from '../library/validate';
-//import { GridToken } from './grid-token';
+import { Library, ValidateLibrary } from '../library';
 
 /**
  * Class: GridFilter
@@ -20,13 +18,11 @@ export class GridFilter {
   private _disabled: boolean;
   private _pending: boolean;
 
-  private _status: any;
-
   get tokens() {
     return this._tokens;
   }
 
-  setTokens(type: number, tokens: any[]) {
+  public setTokens(type: number, tokens: any[]) {
     //
     // Clear Tokens
     //
@@ -38,8 +34,8 @@ export class GridFilter {
       let size = 1;
       for (let i = 0; i < tokens.length; i += size) {
         size =
-          Validate.hasComparisonOperator(tokens[i].value) ||
-          Validate.hasInverseOperator(tokens[i].value)
+          ValidateLibrary.hasComparisonOperator(tokens[i].value) ||
+          ValidateLibrary.hasInverseOperator(tokens[i].value)
             ? 2
             : 1;
         this._tokens.push({
@@ -54,32 +50,32 @@ export class GridFilter {
   //
   // type()
   //
-  get type() {
+  public get type() {
     return this._type;
   }
   //
   // type()
   //
-  set type(type) {
+  public set type(type) {
     this._type = type;
   }
 
-  get focus() {
+  public get focus() {
     return this._focus;
   }
 
-  set focus(focus) {
+  public set focus(focus) {
     this._focus = focus;
   }
-  get dataType() {
+  public get dataType() {
     return this._dataType;
   }
 
-  hasTokens() {
+  public hasTokens() {
     return Library.isArrayWithLength(this.tokens);
   }
 
-  hasFocus() {
+  public hasFocus() {
     return this.focus;
   }
 
@@ -87,35 +83,35 @@ export class GridFilter {
   // pristine()
   // Definition: A control is pristine if the user has not yet changed the data in the UI.
   //
-  get pristine() {
+  public get pristine() {
     return this._pristine;
   }
   //
   // dirty()
   // Definition: A control is dirty if the user has changed the data in the UI.
   //
-  get dirty() {
+  public get dirty() {
     return !this._pristine;
   }
   //
   // touched()
   // Definition: A control is marked touched once the user has triggered a blur event on it.
   //
-  get touched() {
+  public get touched() {
     return this._touched;
   }
   //
   // touched()
   // Definition: A control is marked touched once the user has triggered a blur event on it.
   //
-  set touched(data) {
+  public set touched(data) {
     this._touched = data;
   }
   //
   // untouched()
   // Definition: A control is untouched if the user has not yet triggered a blur event on it.
   //
-  get untouched() {
+  public get untouched() {
     return !this._touched;
   }
 
@@ -123,39 +119,39 @@ export class GridFilter {
   // valid()
   // Definition: This control has passed all validation checks.
   //
-  get valid() {
+  public get valid() {
     return this._valid;
   }
   //
   // invalid()
   // Definition: This control has failed at least one validation check.
   //
-  get invalid() {
+  public get invalid() {
     return !this._valid;
   }
   //
   // pending()
   // Definition: This control is in the midst of conducting a validation check.
   //
-  get pending() {
+  public get pending() {
     return this._pending;
   }
   //
   // hidden()
   // Definition: This control has hidden style.
   //
-  get hidden() {
+  public get hidden() {
     return this._hidden;
   }
   //
   // disabled()
   // Definition: This control is exempt from validation checks.
   //
-  get disabled() {
+  public get disabled() {
     return this._disabled;
   }
 
-  clear(type = 0, tokens: any[]) {
+  public clear(type = 0, tokens: any[]) {
     debugger;
     //
     // Switch on type
@@ -176,7 +172,6 @@ export class GridFilter {
         }
         break;
       default:
-        this._status = undefined;
         this._disabled = false;
         this._pending = false;
         this._pristine = true;
@@ -192,7 +187,7 @@ export class GridFilter {
     }
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridFilter>) {
     this._type = undefined;
     this._tokens = [];
     this._focus = false;

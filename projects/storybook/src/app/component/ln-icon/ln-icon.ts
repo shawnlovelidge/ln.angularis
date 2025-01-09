@@ -24,7 +24,7 @@ import { Library } from '@angularis/core';
 //
 @Component({
   standalone: true,
-  imports: [CommonModule],  
+  imports: [CommonModule],
   selector: 'ln-icon',
   templateUrl: 'ln-icon.html',
   styleUrls: ['ln-icon.scss'],

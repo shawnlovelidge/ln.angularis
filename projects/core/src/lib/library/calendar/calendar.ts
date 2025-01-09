@@ -1,4 +1,4 @@
-import { pad } from '../index';
+import * as Library from '../functions';
 import {
   daysInMonth,
   firstDayOfMonth,
@@ -68,21 +68,21 @@ export function buildCalendar(
   //
   const prevMonthDates = [...new Array(daysFromPrevMonth)].map((_, index) => {
     const day = index + 1 + (prevMonthDays - daysFromPrevMonth);
-    return [prevMonthYear, pad(prevMonth, 2), pad(day, 2)];
+    return [prevMonthYear, Library.pad(prevMonth, 2), Library.pad(day, 2)];
   });
   //
   // Build current month dates
   //
   const thisMonthDates = [...new Array(monthDays)].map((_, index) => {
     const day = index + 1;
-    return [year, pad(month, 2), pad(day, 2)];
+    return [year, Library.pad(month, 2), Library.pad(day, 2)];
   });
   //
   // Build next month dates
   //
   const nextMonthDates = [...new Array(daysFromNextMonth)].map((_, index) => {
     const day = index + 1;
-    return [nextMonthYear, pad(nxtMonth, 2), pad(day, 2)];
+    return [nextMonthYear, Library.pad(nxtMonth, 2), Library.pad(day, 2)];
   });
   //
   // join dates

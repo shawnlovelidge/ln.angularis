@@ -1,10 +1,10 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 /**
  * Class: Point
  */
 export class Point {
-  public _x: number;
-  public _y: number;
+  public _x: number = 0;
+  public _y: number = 0;
 
   get x() {
     return this._x;
@@ -30,8 +30,12 @@ export class Point {
    * constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
-    this._x = Library.init(options, 'x', 0);
-    this._y = Library.init(options, 'y', 0);
+  constructor(options?: Partial<Point>) {
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Point;

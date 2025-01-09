@@ -11,7 +11,6 @@ import {
 //
 declare var window: Window;
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -159,7 +158,7 @@ export class LnAuthenticationService {
         // Ask Parent for the current user
         //
         this.getUser()
-          .then((user) => {
+          .then(user => {
             if (!Library.isUndefined(user)) {
               this._loggedIn = false;
               this._silentLogin();
@@ -218,7 +217,7 @@ export class LnAuthenticationService {
             //
             // Ask Parent for the current user
             //
-            this.getUser().then((user) => {
+            this.getUser().then(user => {
               //
               // Update Logged In Status
               //

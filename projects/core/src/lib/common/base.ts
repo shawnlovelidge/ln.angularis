@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Guid } from './guid';
 
 export interface IBase {
@@ -16,20 +16,28 @@ export interface IBase {
   hasDescription(): boolean;
   hasName(): boolean;
   hasLabel(): boolean;
-};
+}
 
 /**
  * Class: Simple
  */
 export class Base implements IBase {
   public uid: Guid;
-  public id: number;
-  public active: boolean;
-  public disabled: boolean;
-  public hidden: boolean;
-  public name: string;
-  public description: string;
-  public label: string;
+  public id: number = 0;
+  public active: boolean = false;
+  public disabled: boolean = false;
+  public hidden: boolean = false;
+  public name: string = '';
+  public description: string = '';
+  public label: string = '';
+  public type?: string = undefined;
+  /**
+   * hasUid()
+   * @returns {*}
+   */
+  hasUid() {
+    return Library.isDefined(this.uid);
+  }
   /**
    * hasId()
    * @returns {*}
@@ -79,16 +87,19 @@ export class Base implements IBase {
   }
 
   /**
+   * hasType()
+   * @returns {boolean}
+   */
+  hasType() {
+    return Library.isStringWithLength(this.type);
+  }
+  /**
    * Constructor()
    */
-  constructor(options?: Object | undefined | null) {
-    this.active = Library.init(options, 'active', false);
-    this.description = Library.init(options, 'description');
-    this.disabled = Library.init(options, 'disabled', false);
-    this.hidden = Library.init(options, 'hidden', false);
-    this.id = Library.init(options, 'id');
-    this.name = Library.init(options, 'name');
-    this.label = Library.init(options, 'label');
+  constructor(options?: Partial<Base>) {
+    Object.assign(this, options);
     this.uid = Guid.create();
   }
 }
+
+

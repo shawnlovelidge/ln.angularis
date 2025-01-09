@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 
 @Directive({
-  
   selector: '[lnDocumentClick]',
 })
 export class LnDocumentClickDirective {

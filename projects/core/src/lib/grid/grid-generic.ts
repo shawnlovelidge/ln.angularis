@@ -1,6 +1,5 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
-import { CheckBox } from '../common/checkbox';
+import { Library } from '../library';
+import { Base, CheckBox } from '../common';
 
 /**
  * @class GridGeneric
@@ -24,39 +23,38 @@ export class GridGeneric extends Base {
   public expanded: boolean;
   public style: Object;
   public template: string;
-  public type: string;
   public checkbox: CheckBox;
   public _deleted: boolean;
 
-  isChecked() {
+  public isChecked() {
     return this.checkbox.checked;
   }
 
-  isCheckboxHidden() {
+  public isCheckboxHidden() {
     return this.checkbox.hidden;
   }
 
-  isDeleted() {
+  public isDeleted() {
     return this.deleted;
   }
 
-  isActivate() {
+  public isActivate() {
     return this.active;
   }
 
-  hasTemplate() {
+  public hasTemplate() {
     return Library.isStringWithLength(this.template);
   }
 
-  isExpanded() {
+  public isExpanded() {
     return this.expanded;
   }
 
-  hasFormat() {
+  public hasFormat() {
     return Library.isStringWithLength(this.format);
   }
 
-  hasContent() {
+  public hasContent() {
     if (Library.isDefined(this.data)) {
       if (Library.hasOwnProperty(this.data, this.contentField)) {
         return Library.isArrayWithLength(this.data[this.contentField]);
@@ -66,7 +64,7 @@ export class GridGeneric extends Base {
     return false;
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridGeneric>) {
     super(options);
     this._deleted = false;
     this.active = Library.init(options, 'active', false);
@@ -88,7 +86,6 @@ export class GridGeneric extends Base {
     this.selected = Library.init(options, 'selected', false);
     this.style = Library.init(options, 'style', {});
     this.template = Library.init(options, 'template');
-    this.type = Library.init(options, 'type');
     this.checkbox = Library.init(options, 'checkbox', {
       checked: false,
       hidden: true,

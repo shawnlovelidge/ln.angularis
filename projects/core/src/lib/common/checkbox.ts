@@ -6,10 +6,14 @@ export interface ICheckBox {
  * Class: CheckBox
  */
 export class CheckBox implements ICheckBox {
-  public checked: boolean;
-  public hidden: boolean;
-  constructor(options?: ICheckBox) {
-    this.checked = options?.checked ?? false;
-    this.hidden = options?.hidden ?? false;
+  public checked: boolean = false;
+  public hidden: boolean = false;
+  constructor(options?: Partial<CheckBox>) {
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default CheckBox;

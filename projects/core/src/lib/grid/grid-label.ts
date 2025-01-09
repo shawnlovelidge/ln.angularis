@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 
 /**
  * Class: GridLabel
@@ -47,7 +47,7 @@ export class GridLabel {
     }
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridLabel>) {
     this._label = undefined;
     this._format = Library.init(options, 'format', 'X SUBJECT');
     this._selected = Library.init(options, 'selected', 0);

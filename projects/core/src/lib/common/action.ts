@@ -1,6 +1,6 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Base } from './base';
-import { Style } from './style';
+
 /**
  * Class: Action
  */
@@ -14,6 +14,8 @@ export class Action extends Base {
     if (Library.isDefined(this.routerLink)) {
       if (Library.isArray(this.routerLink)) {
         return Library.isArrayWithLength(this.routerLink);
+      } else if (Library.isString(this.routerLink)) {
+        return Library.isStringWithLength(this.routerLink);
       }
     }
 
@@ -38,7 +40,7 @@ export class Action extends Base {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Action>) {
     super(options);
     this.onClick = Library.init(options, 'onClick', () => {});
     this.checked = Library.init(options, 'checked', false);

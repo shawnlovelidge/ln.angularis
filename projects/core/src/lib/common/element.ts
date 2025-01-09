@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Action } from './action';
 import { Icon } from './icon';
 import { Tooltip } from './tooltip';
@@ -6,12 +6,12 @@ import { Tooltip } from './tooltip';
  * Class: Element
  */
 export class Element extends Action {
-  public ref: string;
-  public html: string;
-  public placeholder: string;
-  public tooltip: Tooltip;
-  public icon: Icon;
-  public classList: string[];
+  public ref: string | undefined = undefined;
+  public html: string | undefined = undefined;
+  public placeholder: string | undefined = undefined;
+  public tooltip: Tooltip = new Tooltip();
+  public icon: Icon = new Icon();
+  public classList: string[] = [];
 
   /**
    * hasTooltip()
@@ -37,17 +37,15 @@ export class Element extends Action {
     return Library.isDefined(this.ref);
   }
 
-  /**
-   * Constructor()
-   * @param options
-   */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Element>) {
     super(options);
+    Object.assign(this, options);
     this.tooltip = new Tooltip(Library.init(options, 'tooltip', {}));
     this.icon = new Icon(Library.init(options, 'icon', {}));
-    this.ref = Library.init(options, 'ref');
-    this.html = Library.init(options, 'html', '');
-    this.classList = Library.init(options, 'classList', []);
-    this.placeholder = Library.init(options, 'placeholder', '');
   }
 }
+
+//
+// Export default class
+//
+export default Element;

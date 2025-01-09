@@ -16,14 +16,13 @@ import { Subscription } from 'rxjs';
 import { LnMessageBusService } from '@angularis/service';
 
 @Directive({
-  
   selector: '[onActionClick]',
 })
 export class LnActionClickDirective implements OnDestroy, OnChanges, OnInit {
   @Input()
   public set onActionClick(elements: any[]) {
     if (Library.isArrayWithLength(elements)) {
-      elements.forEach((el) => {
+      elements.forEach(el => {
         if (Library.isDefined(el)) {
           if (Library.isDefined(el.onClick)) {
             this.subscriptions.push(
@@ -52,7 +51,7 @@ export class LnActionClickDirective implements OnDestroy, OnChanges, OnInit {
   }
 
   ngOnInit() {
-    this.messageService.message().subscribe((message) => {
+    this.messageService.message().subscribe(message => {
       if (Library.isObject(message)) {
         switch (message.action) {
           case 'open':
@@ -69,7 +68,7 @@ export class LnActionClickDirective implements OnDestroy, OnChanges, OnInit {
 
   ngOnDestroy() {
     if (Library.isArrayWithLength(this.subscriptions)) {
-      this.subscriptions.forEach((s) => s.unsubscribe());
+      this.subscriptions.forEach(s => s.unsubscribe());
     }
   }
 

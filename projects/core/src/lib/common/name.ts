@@ -1,13 +1,13 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Base } from './base';
 /**
  * Class: Name
  */
 export class Name extends Base {
-  public title: string;
-  public first: string;
-  public _middle: string;
-  public last: string;
+  public title: string = '';
+  public first: string = '';
+  public _middle: string = '';
+  public last: string = '';
   /**
    * middle
    * @returns {*|string}
@@ -30,11 +30,13 @@ export class Name extends Base {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Name>) {
     super(options);
-    this.title = Library.init(options, 'title');
-    this.first = Library.init(options, 'first');
-    this._middle = Library.init(options, 'middle');
-    this.last = Library.init(options, 'last');
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Name;

@@ -1,7 +1,6 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  
   selector: '[lnAnchor]',
 })
 export class LnAnchorDirective {
