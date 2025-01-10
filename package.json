@@ -75,7 +75,7 @@
     "@types/express": "^5.0.0",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^22.10.5",
-    "@types/sass": "^1.43.1",
+    "@types/sass": "^1.45.0",
     "angular-eslint": "19.0.2",
     "eslint": "^9.16.0",
     "eslint-plugin-storybook": "^0.11.1",
