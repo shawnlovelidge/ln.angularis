@@ -1,6 +1,6 @@
 {
   "name": "@angularis",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Angular Suite",
   "author": "Lovelidge, Shawn",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "build:component": "ng build @angularis/component",
     "build:web": "ng build @angularis/web",
     "build:web:ssr": "node dist/web/server/server.mjs",
-    "build:storybook": "ng run @angularis/storybook:build-storybook",    
+    "build:storybook": "ng run @angularis/storybook:build-storybook",
     "build:prebuild": "sync-json -v --property version --source package.json --targets  ./projects/core/package.json ./projects/model/package.json ./projects/pipe/package.json ./projects/service/package.json ./projects/directive/package.json ./projects/component/package.json",
     "build": "npm run clean && npm run build:prebuild && npm run build:core && npm run build:model && npm run build:pipe && npm run build:service && npm run build:directive && npm run build:component",
     "publish:prepare": "cp .npmrc ./dist/core && cp .npmrc ./dist/model && cp .npmrc ./dist/pipe && cp .npmrc ./dist/service && cp .npmrc ./dist/directive && cp .npmrc ./dist/component",

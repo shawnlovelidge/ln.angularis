@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.7
+
+### Patch Changes
+
+- added storybook, fixed storybook errors, added web application and changes all component to use new Signal() and signal functions
+
 ## 1.0.6
 
 ### Patch Changes
