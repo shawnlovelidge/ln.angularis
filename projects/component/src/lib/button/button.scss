@@ -1,0 +1,101 @@
+@use 'scss/mixins/standard' as *;
+
+
+$circle-size: 40px;
+$circle-size-sm: 25px;
+
+.tm-button {
+  margin: 0;
+  padding: 0;
+
+  button {
+    @include font-size(12px);
+    @include user-select();
+    @include border-radius(20px);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    height: 32px;
+    line-height: 16px;
+    overflow: hidden;
+    padding: 8px 20px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+    outline: none;
+    border: 0;
+
+    &.hidden {
+      display: none;
+    }
+
+    &:hover {
+      box-shadow: 0 2px 4px 0 rgba(204, 0, 0, 0.12),
+        0 4px 8px 0 rgba(124, 132, 138, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.btn-primary,
+    &.btn-primary-sm {
+      &:active {
+        color: var(--color-white);
+        background-color: var(--color-primary-accent);
+      }
+    }
+
+    &.btn-primary-sm {
+      height: 24px;
+      padding: 4px 20px;
+    }
+
+    &.btn-secondary,
+    &.btn-secondary-sm {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+
+      &:active {
+        background-color: var(--color-gray-600);
+      }
+    }
+
+    &.btn-circle {
+      @include border-radius(50%);
+      width: $circle-size;
+      height: $circle-size;
+      min-width: $circle-size;
+      min-height: $circle-size;
+      max-width: $circle-size;
+      max-height: $circle-size;
+      padding: 0;
+      font-size: 20px;
+    }
+
+    &.btn-circle-sm {
+      @include border-radius(50%);
+      width: $circle-size-sm;
+      height: $circle-size-sm;
+      min-width: $circle-size-sm;
+      min-height: $circle-size-sm;
+      max-width: $circle-size-sm;
+      max-height: $circle-size-sm;
+      padding: 0;
+    }
+
+    &.btn-circle,
+    &.btn-circle-sm {
+      &:active {
+        color: var(--color-white);
+        background-color: var(--color-primary-accent);
+      }
+    }
+
+    &.disabled {
+      @include disabled();
+      color: var(--color-gray-600);
+      background-color: var(--color-disabled);
+    }
+  }
+}

@@ -65,7 +65,7 @@ export class LnHttpEnvironmentService
         }
       );
       //
-      // Find Enviroment based on Hostname
+      // Find Environment based on Hostname
       //
       let name = environmentList.find(env => {
         if (environments[env] && environments[env]['hostname']) {

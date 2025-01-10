@@ -1,0 +1,9 @@
+<div class="ang-button label" [class.disabled]="disabled()" [class.hidden]="hidden()">
+  <button
+    [attr.class]="classes()"
+    [class.disabled]="disabled()"
+    (click)="handleClick($event)"
+  >
+    <ng-content></ng-content>
+  </button>
+</div>

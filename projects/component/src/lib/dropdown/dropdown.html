@@ -1,0 +1,62 @@
+<div
+  class="ang-dropdown"
+  tabindex="1"
+  [ngClass]="{
+  'darkTheme': darkTheme(),
+  'hidden': hidden(),
+  'disabled': disabled()
+}"
+>
+  <label class="ang-dropdown-label" [class.hidden]="label().length === 0"
+    >{{label()}}</label
+  >
+  <div class="ang-dropdown-container">
+    <div class="inner-container">
+      <button
+        #portalContainer
+        class="button"
+        [ngClass]="{
+        'darkTheme' : darkTheme(),
+        'small': small(),
+        'readonly': items().length === 0
+      }"
+        (keydown)="onKeyDown($event)"
+        [attr.aria-label]="ariaLabel || null"
+        [attr.aria-labelledby]="ariaLabelledBy || null"
+        [attr.aria-multiselectable]="false"
+        (click)="onOpen($event)"
+      >
+        {{ displayItem?.[textField()]}}
+        <ang-icon
+          [class]="icon.name"
+          (onClick)="onOpen($event)"
+        ></ang-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<ng-template #portalView let-data>
+  <ul
+    class="ang-dropdown-items"
+    [ngClass]="{
+    'darkTheme' : darkTheme(),
+    'small': small()
+  }"
+  >
+    <li
+      *ngFor="let item of items()"
+      class="ang-dropdown-item"
+      [ngClass]="{
+          'darkTheme' : darkTheme(),
+          'small': small(),
+          'hidden': item?.hidden,
+          'disabled': item?.disabled,
+          'active': item?.active
+        }"
+      (click)="onClose(item)"
+      [title]="item[textField()]"
+    >
+      {{ item[textField()] }}
+    </li>
+  </ul>
+</ng-template>

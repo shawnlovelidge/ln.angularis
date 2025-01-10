@@ -5,7 +5,6 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Guid } from '@angularis/core';
 import { Observable } from 'rxjs';
 
 import { LnAuthenticationService } from '../ln-authentication/ln-authentication.service';
