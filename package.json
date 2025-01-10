@@ -96,7 +96,7 @@
     "style-loader": "^4.0.0",
     "sync-json": "^1.0.2",
     "typescript": "~5.6.2",
-    "typescript-eslint": "8.18.0",
+    "typescript-eslint": "8.19.1",
     "vite": "^5.4.11",
     "vite-plugin-sass-glob-import": "^5.0.0",
     "vite-tsconfig-paths": "^5.1.4",
