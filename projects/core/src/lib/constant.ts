@@ -8,23 +8,23 @@ export enum HelpType {
   Default = 1,
   Information = 2,
   Warning = 3,
-  Error = 4
-};
+  Error = 4,
+}
 
 export enum ColumnCategory {
   Undefined = 0,
   Specific = 2,
   Interline = 4,
   Reference = 8,
-  SupportInformation = 16
-};
+  SupportInformation = 16,
+}
 
 export enum DropdownType {
   Undefined = 0,
   Standard = 1,
   Transparent = 2,
-  Chip = 3
-};
+  Chip = 3,
+}
 
 export enum ListboxType {
   Undefined = 0,
@@ -32,13 +32,13 @@ export enum ListboxType {
   Checkbox = 2,
   MultiSelect = 3,
   Folder = 4,
-};
+}
 
 export enum ChipType {
   Undefined = 0,
   Standard = 1,
-  Flag = 2
-};
+  Flag = 2,
+}
 
 export enum EventType {
   Undefined = 0,
@@ -53,7 +53,7 @@ export enum EventType {
   Notification = 9,
   Informational = 10,
   Warning = 11,
-};
+}
 
 export enum ContextType {
   Undefined = 0,
@@ -65,36 +65,36 @@ export enum ContextType {
   SecurityContext = 6,
   UserProfile = 7,
   ClearNotification = 8,
-  Notification = 9
-};
+  Notification = 9,
+}
 
 export enum MessageStatus {
   Undefined = 0,
   Error = 1,
   Flag = 2,
-};
+}
 
 export enum Connection {
   Connecting = 0,
   Open = 1,
   Closing = 2,
   Closed = 3,
-  Aborted = 4
-};
+  Aborted = 4,
+}
 
 export enum AddressType {
   Business = 0,
   Home = 1,
   Other = 2,
-  Work = 3
-};
+  Work = 3,
+}
 
 export enum EmailType {
   Business = 0,
   Home = 1,
   Other = 2,
   Work = 3,
-};
+}
 
 export enum PhoneType {
   Business = 0,
@@ -102,57 +102,57 @@ export enum PhoneType {
   Home = 2,
   Other = 3,
   Work = 4,
-};
+}
 
 export enum FileType {
   MicrosoftWord = 0,
   MicrosoftExcel = 1,
-  Text = 2
-};
+  Text = 2,
+}
 
 export enum StatusType {
   Undefined = 0,
   Active = 1,
   InActive = 2,
-};
+}
 
 export enum Direction {
   Undefined = 0,
   Ascending = 1,
   Descending = 2,
-};
+}
 
 export enum SelectionType {
   None = 0,
   Single = 1,
   MultiSelect = 2,
   MultiChecked = 3,
-};
+}
 
 export enum Case {
   None = 0,
   Upper = 1,
   Lower = 2,
   Camel = 3,
-};
+}
 
 export enum Layout {
   None = 0,
   Horizontal = 1,
-  Vertical = 2
-};
+  Vertical = 2,
+}
 
 export enum GridView {
   None = 0,
   Grid = 1,
   Vertical = 2,
-};
+}
 
 export enum TableView {
   None = 0,
   Card = 1,
   Table = 2,
-};
+}
 
 export enum WindowState {
   None = 0,
@@ -160,16 +160,16 @@ export enum WindowState {
   Open = 2,
   Closed = 3,
   Minimized = 4,
-  Maximized = 5
-};
+  Maximized = 5,
+}
 
 export enum Dock {
   None = 0,
   Top = 1,
   Bottom = 2,
   Left = 3,
-  Right = 4
-};
+  Right = 4,
+}
 
 export enum Command {
   Undefined = 0,
@@ -185,7 +185,7 @@ export enum Command {
   View = 10,
   OK = 11,
   Cancel = 12,
-};
+}
 
 export enum ComponentType {
   Undefined = 0,
@@ -236,19 +236,19 @@ export enum ComponentType {
   ToolTip = 45,
   Toolbar = 46,
   TypeAhead = 47,
-};
+}
 
-export enum SetTimoutDelay {
+export enum SetTimeOutDelay {
   Short = 10,
   Medium = 100,
   Long = 250,
-};
+}
 
 export enum GridSchemaSelection {
   None = 0,
   Single = 1,
   Multi = 2,
-};
+}
 
 export enum Equality {
   None = 0,
@@ -258,14 +258,14 @@ export enum Equality {
   GreaterThan = 4,
   GreaterThanOrEqual = 5,
   LessThan = 6,
-  LessthanOrEqual = 7
-};
+  LessthanOrEqual = 7,
+}
 
 export enum Checkbox {
   Checked = 1,
   Unchecked = 2,
   Deselect = 3,
-};
+}
 
 export enum ReduxActionType {
   Add = 0,
@@ -292,3 +292,40 @@ export enum HttpActionType {
   Response = 8,
 }
 
+export default {
+  FILTER_TYPE_NONE,
+  FILTER_TYPE_INTERNAL,
+  FILTER_TYPE_EXTERNAL,
+  FILTER_TYPE_INTERNAL_EXTERNAL,
+
+  HelpType,
+  ColumnCategory,
+  DropdownType,
+  ListboxType,
+  ChipType,
+  EventType,
+  ContextType,
+  MessageStatus,
+  Connection,
+  AddressType,
+  EmailType,
+  PhoneType,
+  FileType,
+  StatusType,
+  Direction,
+  SelectionType,
+  Case,
+  GridView,
+  TableView,
+  WindowState,
+  Dock,
+  Command,
+  ComponentType,
+  SetTimeOutDelay,
+  GridSchemaSelection,
+  Equality,
+  Checkbox,
+  ReduxActionType,
+  StackActionType,
+  HttpActionType,
+};

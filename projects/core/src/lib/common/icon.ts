@@ -1,13 +1,14 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Action } from './action';
 import { Tooltip } from './tooltip';
 /**
  * Class: Icon
  */
 export class Icon extends Action {
-  public url: string;
-  public exists: boolean;
-  public tooltip: Object;
+  public url: string = '';
+  public exists: boolean = false;
+  public tooltip: Object = {};
+  public component?: any = undefined;
   /**
    * hasUrl()
    * @returns {*}
@@ -15,15 +16,24 @@ export class Icon extends Action {
   hasUrl() {
     return Library.isStringWithLength(this.url);
   }
+  /**
+   * hasComponent()
+   * @returns {*}
+   */
+  hasComponent() {
+    return Library.isObject(this.component);
+  }
 
   /**
    * Constructor()
-   * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Icon>) {
     super(options);
-    this.url = Library.init(options, 'url');
-    this.exists = Library.init(options, 'exists', true);
-    this.tooltip = new Tooltip(Library.init(options, 'tooltip', {}));
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Icon;

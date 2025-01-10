@@ -1,9 +1,9 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
+import { Library } from '../library';
+import { Base } from '../common';
 
 export class Token extends Base {
   private _token: string;
-  private _expiresAt: Date | undefined;
+  private _expiresAt: number;
   //
   // set token
   //
@@ -26,15 +26,16 @@ export class Token extends Base {
    * hasTokenExpired()
    */
   hasTokenExpired() {
-    // return new Date().getTime() < this._expiresAt;
+    return new Date().getTime() < this._expiresAt;
     return false;
   }
   /**
    * Constructor()
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Token>) {
     super(options);
+    Object.assign(this, options);
     this._token = Library.init(options, 'token');
-    this._expiresAt = Library.init(options, 'expiresAt', undefined);
+    this._expiresAt = Library.init(options, 'expiresAt', new Date().getTime());
   }
 }

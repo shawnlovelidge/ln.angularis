@@ -1,10 +1,10 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Action } from './action';
 /**
  * Class: Url
  */
 export class Url extends Action {
-  public url: string;
+  public url: string = '';
   /**
    * hasUrl()
    * @returns {*}
@@ -16,8 +16,13 @@ export class Url extends Action {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Url>) {
     super(options);
-    this.url = Library.init(options, 'url');
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Url;

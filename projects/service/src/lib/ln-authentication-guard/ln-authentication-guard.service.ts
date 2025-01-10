@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, CanLoad } from '@angular/router';
+import { CanActivate, CanActivateChild } from '@angular/router';
 
 /**
  * Services
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class LnAuthenticationGuardService
-  implements CanActivate, CanActivateChild, CanLoad
+  implements CanActivate, CanActivateChild
 {
   /**
    * canActivate()

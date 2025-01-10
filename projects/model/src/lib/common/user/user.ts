@@ -2,16 +2,12 @@ import { Library, Base, Token } from '@angularis/core';
 
 export class User extends Base {
   public group: Base = new Base();
-  public token: Token;
+  public token: Token = new Token();
 
   /**
    * constructor()
    */
-  constructor();
-
-  constructor(options: object);
-  constructor(options?: any) {
+  constructor(options?: Partial<User>) {
     super(options);
-    this.token = new Token(Library.init(options, 'token'));
   }
 }

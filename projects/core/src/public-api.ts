@@ -3,9 +3,15 @@ import * as Constant from './lib/constant';
  * Public API Surface of core
  */
 export { default as CHAR } from './lib/char';
-export { default as Library } from './lib/library/index';
-export { default as Validate } from './lib/library/validate';
-export { default as SortBy } from './lib/library/sort-by';
+export {
+  Library,
+  BinaryLibrary,
+  DatetimeLibrary,
+  CalendarLibrary,
+  SortBy,
+  ValidateLibrary,
+} from './lib/library';
+
 export { Constant };
 
 /**
@@ -52,7 +58,7 @@ export { Base64 } from './lib/data/base64';
 export { DataSource } from './lib/data/datasource';
 export { PageSet } from './lib/data/pageset';
 export { Page } from './lib/data/page';
-export { Schema } from './lib/data/schema/schema';
+export { Schema } from './lib/data/schema';
 /**
  * Http
  */

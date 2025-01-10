@@ -18,7 +18,7 @@ export class Base64 {
       i,
       b10,
       imax = s.length,
-      x = [];
+      x: string[] = [];
 
     s = String(s);
 
@@ -67,7 +67,7 @@ export class Base64 {
 
     let i,
       b10,
-      x = [],
+      x: string[] = [],
       imax = s.length - (s.length % 3);
 
     if (s.length === 0) {

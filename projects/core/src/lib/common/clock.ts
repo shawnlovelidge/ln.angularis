@@ -1,19 +1,21 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Base } from './base';
 import { Interval } from './interval';
 /**
  * Class: Clock
  */
 export class Clock extends Base {
-  public time: Date;
+  public time: Date = new Date();
   public interval: Interval;
-  /**
-   * Constructor()
-   * @param options
-   */
-  constructor(options?: Object | undefined | null) {
+
+  constructor(options?: Partial<Clock>) {
     super(options);
-    this.time = Library.init(options, 'time', new Date());
+    Object.assign(this, options);
     this.interval = new Interval(Library.init(options, 'interval'));
   }
 }
+
+//
+// Export default class
+//
+export default Clock;

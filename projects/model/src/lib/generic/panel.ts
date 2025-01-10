@@ -1,15 +1,12 @@
-import { Library } from '@angularis/core';
 import { Pane } from './pane';
 
 export class Panel {
-  public bar: Pane;
-  public panel: Pane;
+  public bar: Pane = new Pane();
+  public panel: Pane = new Pane();
 
-  constructor();
-  constructor(options: object);
-  constructor(options?: any) {
-    this.bar = new Pane(Library.init(options, 'bar', {}));
-    this.panel = new Pane(Library.init(options, 'panel', {}));
+
+  constructor(options?: Partial<Panel>) {
+    Object.assign(this, options);
   }
 
   public getBoundingClientRect() {

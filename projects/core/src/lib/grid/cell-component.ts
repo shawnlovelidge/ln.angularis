@@ -1,5 +1,5 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
+import { Library } from '../library';
+import { Base } from '../common';
 
 export class CellComponent extends Base {
   public align: string;
@@ -11,8 +11,8 @@ export class CellComponent extends Base {
   public indeterminate: boolean;
   public indicatorIcon: string;
   public items: any[];
-  public maxlength: number;
-  public minlength: number;
+  public maxLength: number;
+  public minLength: number;
   public multiple: boolean;
   public pattern: string;
   public placeholder: string;
@@ -20,20 +20,19 @@ export class CellComponent extends Base {
   public cols: number;
   public style: Object;
   public tooltip: number;
-  public type: string;
   public value: string | number;
   public visibility: boolean;
 
   public onValueChange: any;
 
-  hasItems() {
+  public hasItems() {
     return Library.isArrayWithLength(this.items);
   }
   /**
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<CellComponent>) {
     super(options);
     this.align = Library.init(options, 'align', 'left');
     this.checkAllFieldValue = Library.init(
@@ -52,8 +51,8 @@ export class CellComponent extends Base {
     this.indicatorIcon = Library.init(options, 'indicatorIcon', 'checkmark');
     this.items = Library.init(options, 'items', []);
     this.label = Library.init(options, 'label', '');
-    this.maxlength = Library.init(options, 'maxlength', 255);
-    this.minlength = Library.init(options, 'minlength', 10);
+    this.maxLength = Library.init(options, 'maxLength', 255);
+    this.minLength = Library.init(options, 'minLength', 10);
     this.multiple = Library.init(options, 'multiple', false);
     this.onValueChange = Library.init(options, 'onValueChange');
     this.pattern = Library.init(options, 'pattern', '');
@@ -61,7 +60,6 @@ export class CellComponent extends Base {
     this.rows = Library.init(options, 'rows', 1);
     this.style = Library.init(options, 'style', {});
     this.tooltip = Library.init(options, 'tooltip', false);
-    this.type = Library.init(options, 'type', '');
     this.value = Library.init(options, 'value');
     this.visibility = Library.init(options, 'visibility', true);
   }

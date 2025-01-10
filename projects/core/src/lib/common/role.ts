@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Base } from './base';
 
 /**
@@ -9,7 +9,12 @@ export class Role extends Base {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Role>) {
     super(options);
   }
 }
+
+//
+// Export default class
+//
+export default Role;

@@ -5,7 +5,7 @@ export class FilterComponent extends CellComponent {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<FilterComponent>) {
     super(options);
   }
 }

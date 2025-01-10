@@ -13,7 +13,7 @@ import { LnClipboardService } from '@angularis/service';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
-  
+
   selector: '[LnClipboard]',
 })
 export class LnClipboardDirective implements OnInit, OnDestroy {
@@ -43,10 +43,7 @@ export class LnClipboardDirective implements OnInit, OnDestroy {
   public onClick(event: Event) {
     if (!this.service.isSupported) {
       this.handleResult(false, undefined, event);
-    } else if (
-      this.targetElm &&
-      this.service.isTargetValid(this.targetElm)
-    ) {
+    } else if (this.targetElm && this.service.isTargetValid(this.targetElm)) {
       this.handleResult(
         this.service.copyFromInputElement(this.targetElm),
         this.targetElm.value,

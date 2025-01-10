@@ -4,7 +4,7 @@ export const RIGHT_ARROW = 39;
 export const BACKSPACE = 8;
 export const DELETE = 46;
 
-export const MASK_CHARACTERS = [" ", "/", "(", ")", "+", "\/", "-"];
+export const MASK_CHARACTERS = [' ', '/', '(', ')', '+', '/', '-'];
 
 export default {
   TAB,
@@ -12,5 +12,5 @@ export default {
   RIGHT_ARROW,
   BACKSPACE,
   DELETE,
-  MASK_CHARACTERS
-}
+  MASK_CHARACTERS,
+};

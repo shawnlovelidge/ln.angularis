@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Equality } from '../constant';
 
 function _number(value: any, token: any) {

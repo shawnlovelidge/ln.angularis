@@ -1,4 +1,4 @@
-import { hasOwnProperty, isDefined, isObject, pad } from '../index';
+import * as Library from '../functions';
 
 //
 // currentYear()
@@ -28,7 +28,7 @@ export function isDate(o: any): boolean {
 // localeTime()
 //
 export function localeTime(o: any, local = 'en-US') {
-  if (isDate(o)) {
+  if (Library.isDate(o)) {
     return o.toLocaleTimeString(local);
   }
 }
@@ -37,14 +37,14 @@ export function localeTime(o: any, local = 'en-US') {
 // isDateObject()
 //
 export function isDateObject(o: any) {
-  if (isObject(o)) {
+  if (Library.isObject(o)) {
     return (
-      hasOwnProperty(o, 'year') &&
-      hasOwnProperty(o, 'month') &&
-      hasOwnProperty(o, 'dayOfMonth') &&
-      hasOwnProperty(o, 'hourOfDay') &&
-      hasOwnProperty(o, 'minute') &&
-      hasOwnProperty(o, 'second')
+      Library.hasOwnProperty(o, 'year') &&
+      Library.hasOwnProperty(o, 'month') &&
+      Library.hasOwnProperty(o, 'dayOfMonth') &&
+      Library.hasOwnProperty(o, 'hourOfDay') &&
+      Library.hasOwnProperty(o, 'minute') &&
+      Library.hasOwnProperty(o, 'second')
     );
   }
 
@@ -86,7 +86,7 @@ export function toDate(o: any) {
 // parseDate()
 //
 export function parseDate(o: any) {
-  if (isDefined(o) && isDate(o)) {
+  if (Library.isDefined(o) && isDate(o)) {
     return new Date(o);
   }
   return null;
@@ -117,7 +117,7 @@ export function firstDayOfMonth(
   month = +new Date().getMonth() + 1,
   year = +new Date().getFullYear()
 ) {
-  return +new Date(`${year}-${pad(month, 2)}-01`).getDay() + 1;
+  return +new Date(`${year}-${Library.pad(month, 2)}-01`).getDay() + 1;
 }
 
 //
@@ -159,8 +159,8 @@ export const isoDate = (date = new Date()) => {
   if (!isDate(date)) return null;
   return [
     date.getFullYear(),
-    pad(+date.getMonth() + 1, 2),
-    pad(+date.getDate(), 2),
+    Library.pad(+date.getMonth() + 1, 2),
+    Library.pad(+date.getDate(), 2),
   ].join('-');
 };
 

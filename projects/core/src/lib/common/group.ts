@@ -1,10 +1,10 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Action } from './action';
 /**
  * Class: Group
  */
 export class Group extends Action {
-  public children: any[];
+  public children: any[] = [];
   /**
    * hasChildren()
    * @returns {*}
@@ -14,10 +14,14 @@ export class Group extends Action {
   }
   /**
    * Constructor()
-   * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Group>) {
     super(options);
-    this.children = Library.init(options, 'children', []);
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Group;

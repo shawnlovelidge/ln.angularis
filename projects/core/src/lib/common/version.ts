@@ -1,21 +1,23 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Base } from './base';
 /**
  * Class: Version
  */
 export class Version {
-  public expires: Date;
-  public major: number;
-  public minor: number;
-  public patch: number;
+  public expires: Date = new Date();
+  public major: number = 1;
+  public minor: number = 0;
+  public patch: number = 0;
   /**
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
-    this.expires = Library.init(options, 'expires', new Date());
-    this.major = Library.init(options, 'major', 1);
-    this.minor = Library.init(options, 'minor', 0);
-    this.patch = Library.init(options, 'patch', 0);
+  constructor(options?: Partial<Version>) {
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Version;

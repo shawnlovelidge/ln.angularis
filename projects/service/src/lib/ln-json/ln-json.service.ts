@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class LnJsonService {
   /**
    * Function: get()
-   * @funciton
+   * @function
    */
   public get(file: string): Observable<any> {
     return this.httpClient.get(file);

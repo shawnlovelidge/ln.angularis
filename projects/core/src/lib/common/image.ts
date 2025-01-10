@@ -1,9 +1,9 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Action } from './action';
 import { Guid } from './guid';
 
 export class Image extends Action {
-  public href: string;
+  public href: string = '';
   /**
    * hasHRef()
    * @returns {*}
@@ -12,9 +12,13 @@ export class Image extends Action {
     return Library.isStringWithLength(this.href);
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Image>) {
     super(options);
-    this.uid = Guid.create();
-    this.href = Library.init(options, 'href', '');
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Image;

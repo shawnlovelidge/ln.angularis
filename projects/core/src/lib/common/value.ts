@@ -1,10 +1,10 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Action } from './action';
 /**
  * Class: Item
  */
 export class Value extends Action {
-  public value: string;
+  public value?: string = undefined;
   /**
    * hasValue()
    * @returns {*}
@@ -16,8 +16,13 @@ export class Value extends Action {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Value>) {
     super(options);
-    this.value = Library.init(options, 'value');
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Value;

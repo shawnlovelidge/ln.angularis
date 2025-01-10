@@ -1,18 +1,17 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
-import { Range } from '../common/range';
+import { Library } from '../library';
+import { Base, Range } from '../common';
 
 /**
  * Page
  */
 export class Page extends Base {
-  public range: Range;
+  public range: Range = new Range();
   /**
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Page>) {
     super(options);
-    this.range = new Range(Library.init(options, 'range'));
+    Object.assign(this, options);
   }
 }

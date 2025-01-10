@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Base, IBase } from './base';
 
 export interface IRange extends IBase {
@@ -15,10 +15,10 @@ export interface IRange extends IBase {
  * Class: Range
  */
 export class Range extends Base implements IRange {
-  public pristine: boolean;
-  public start: number;
-  public end: number;
-  public increment: number;
+  public pristine: boolean = true;
+  public start: number = 0;
+  public end: number = 4;
+  public increment: number = 1;
 
   //
   // hasStart()
@@ -45,9 +45,9 @@ export class Range extends Base implements IRange {
    * toArray()
    * @returns {Array}
    */
-  toArray() {
-    let list = [];
-    for (let i = this.start; i < this.end; ) {
+  toArray(): number[] {
+    let list: Array<number> = new Array();
+    for (let i = this.start; i < this.end; i++) {
       list.push(i);
     }
     return list;
@@ -68,11 +68,13 @@ export class Range extends Base implements IRange {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Range>) {
     super(options);
-    this.pristine = Library.init(options, 'pristine', true);
-    this.start = Library.init(options, 'start', 0);
-    this.end = Library.init(options, 'end', 4);
-    this.increment = Library.init(options, 'increment', 1);
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Range;

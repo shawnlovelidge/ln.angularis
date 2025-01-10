@@ -1,5 +1,5 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
+import { Library } from '../library';
+import { Base } from '../common';
 
 export class GridField extends Base {
   public server: string;

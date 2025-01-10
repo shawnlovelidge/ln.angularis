@@ -77,7 +77,7 @@ export class LnHttpService implements ILnHttpService {
   ): Observable<Response<T>> {
     return this.httpClient
       .get(endpoint, params)
-      .pipe(map((resp) => new Response(resp, cb)));
+      .pipe(map(resp => new Response(resp, cb)));
   }
 
   public put<T>(
@@ -88,7 +88,7 @@ export class LnHttpService implements ILnHttpService {
   ): Observable<Response<T>> {
     return this.httpClient
       .put(endpoint, model, params)
-      .pipe(map((resp) => new Response(resp, cb)));
+      .pipe(map(resp => new Response(resp, cb)));
   }
 
   public post<T>(
@@ -98,7 +98,7 @@ export class LnHttpService implements ILnHttpService {
   ): Observable<Response<T>> {
     return this.httpClient
       .post(endpoint, model)
-      .pipe(map((resp) => new Response(resp, cb)));
+      .pipe(map(resp => new Response(resp, cb)));
   }
 
   public patch<T>(
@@ -108,7 +108,7 @@ export class LnHttpService implements ILnHttpService {
   ): Observable<Response<T>> {
     return this.httpClient
       .patch(endpoint, model)
-      .pipe(map((resp) => new Response(resp, cb)));
+      .pipe(map(resp => new Response(resp, cb)));
   }
 
   public delete<T>(
@@ -118,7 +118,7 @@ export class LnHttpService implements ILnHttpService {
   ): Observable<Response<T>> {
     return this.httpClient
       .delete(endpoint, params)
-      .pipe(map((resp) => new Response(resp, cb)));
+      .pipe(map(resp => new Response(resp, cb)));
   }
 
   constructor(private httpClient: LnHttpClientService) {}

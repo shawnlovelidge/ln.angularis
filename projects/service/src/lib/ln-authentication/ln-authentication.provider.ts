@@ -1,5 +1,5 @@
-import { InjectionToken } from "@angular/core";
-import { AuthenticationConfig } from "@angularis/model";
+import { InjectionToken } from '@angular/core';
+import { AuthenticationConfig } from '@angularis/model';
 
 export const AUTH_CONFIG = new InjectionToken<AuthenticationConfig>(
   'auth_config'

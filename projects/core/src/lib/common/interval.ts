@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 
 export interface IInterval {
   hour: number;
@@ -9,16 +9,16 @@ export interface IInterval {
  * Class: Interval
  */
 export class Interval implements IInterval {
-  public hour: number;
-  public minute: number;
-  public second: number;
-  /**
-   * Constructor()
-   * @param options
-   */
-  constructor(options: IInterval | {}) {
-    this.hour = Library.init(options, 'hour', 12);
-    this.minute = Library.init(options, 'minute', 0);
-    this.second = Library.init(options, 'second', 0);
+  public hour: number = 12;
+  public minute: number = 0;
+  public second: number = 0;
+
+  constructor(options?: Partial<Interval>) {
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Interval;

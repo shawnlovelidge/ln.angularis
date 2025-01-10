@@ -1,20 +1,18 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
+import { Library } from '../library';
+import { Base } from '../common';
 /**
  * Class: AuthConfig
  */
 export class AuthConfig extends Base {
-  public clientId: string;
-  public domain: string;
-  public callbackURL: string;
+  public clientId: string | undefined = undefined;
+  public domain: string | undefined = undefined;
+  public callbackURL: string | undefined = undefined;
   /**
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<AuthConfig>) {
     super(options);
-    this.clientId = Library.init(options, 'clientId');
-    this.domain = Library.init(options, 'domain');
-    this.callbackURL = Library.init(options, 'callbackURL');
+    Object.assign(this, options);
   }
 }

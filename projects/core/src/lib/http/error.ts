@@ -1,9 +1,9 @@
-import * as Library from '../library/index';
-import { Guid } from '../common/guid';
+import { Library } from '../library';
+import { Guid } from '../common';
 
 export class Error {
-  public message: string;
-  public code: number;
+  public message: string = '';
+  public code: number = 0;
   public id: Guid;
   /**
    * hasError()
@@ -15,9 +15,8 @@ export class Error {
   /**
    * Constructor()
    */
-  constructor(options?: Object | undefined | null) {
-    this.code = Library.init(options, 'code', 0);
-    this.id = Library.init(options, 'id', Guid.create());
-    this.message = Library.init(options, 'message', '');
+  constructor(options?: Partial<Error>) {
+    Object.assign(this, options);
+    this.id = Guid.create();
   }
 }

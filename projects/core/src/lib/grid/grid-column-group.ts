@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 
 /**
  * Class: GridColumnGroup
@@ -11,7 +11,7 @@ export class GridColumnGroup {
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridColumnGroup>) {
     this.groupId = Library.init(options, 'groupId');
     this.open = Library.init(options, 'open', false);
   }

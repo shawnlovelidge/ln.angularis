@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { Direction } from '../constant';
 
 export class GridSort {
@@ -26,7 +26,7 @@ export class GridSort {
     return this.direction === Direction.Undefined;
   }
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridSort>) {
     this.direction = Library.init(options, 'direction', Direction.Ascending);
     this.active = Library.init(options, 'active', false);
     this.disabled = Library.init(options, 'disabled', false);

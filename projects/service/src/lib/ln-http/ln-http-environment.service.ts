@@ -60,14 +60,14 @@ export class LnHttpEnvironmentService
       // Get all environment names
       //
       const environmentList: string[] = Object.keys(environments).filter(
-        (item) => {
+        item => {
           return item !== 'default';
         }
       );
       //
-      // Find Enviroment based on Hostname
+      // Find Environment based on Hostname
       //
-      let name = environmentList.find((env) => {
+      let name = environmentList.find(env => {
         if (environments[env] && environments[env]['hostname']) {
           return environments[env]['hostname'].toLowerCase() === hostname;
         } else {

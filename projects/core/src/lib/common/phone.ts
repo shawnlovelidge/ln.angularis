@@ -1,19 +1,22 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { PhoneType } from '../constant';
 import { Base } from './base';
 /**
  * Class: Phone
  */
 export class Phone extends Base {
-  public number: number;
-  public type: PhoneType;
+  public number?: number = undefined;
   /**
    * Constructor()
    * @param options
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Phone>) {
     super(options);
-    this.type = Library.init(options, 'type', PhoneType.Cell);
-    this.number = Library.init(options, 'number');
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Phone;

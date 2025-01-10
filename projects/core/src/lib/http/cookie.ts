@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import { CookieOption } from './cookieOption';
 
 export class Cookie {
@@ -85,8 +85,7 @@ export class Cookie {
   _buildCookieString(name: any, value: any, options: any) {
     const cookiePath = '/';
     const defaultOpts = new CookieOption({ path: cookiePath });
-    //const opts = assignWith(defaultOpts, options);
-    const opts: any = {};
+    const opts = Object.assign(defaultOpts, options);
     let expires;
 
     expires = opts.expires;

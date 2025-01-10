@@ -1,4 +1,4 @@
-import * as Library from '../library/index';
+import { Library } from '../library';
 import * as Validator from '../library/validate';
 import { EmailType } from '../constant';
 import { Base } from './base';
@@ -7,36 +7,29 @@ import { Base } from './base';
  * Class: Email
  */
 export class Email extends Base {
-  public type: EmailType;
-  public address: string;
-  /**
-   * hasType()
-   * @returns {*}
-   */
-  hasType() {
-    return Library.isDefined(this.type);
-  }
+  public address: string = '';
   /**
    * isValid()
    * @returns {*}
    */
-  isValid() {
+  public isValid() {
     return this.hasAddress() && Validator.isEmail(this.address);
   }
   /**
    * hasAddress()
    * @returns {*}
    */
-  hasAddress() {
+  public hasAddress() {
     return Library.isStringWithLength(this.address);
   }
-  /**
-   * Constructor()
-   * @param options
-   */
-  constructor(options?: Object | undefined | null) {
+
+  constructor(options?: Partial<Email>) {
     super(options);
-    this.type = Library.init(options, 'type', EmailType.Work);
-    this.address = Library.init(options, 'address', undefined);
+    Object.assign(this, options);
   }
 }
+
+//
+// Export default class
+//
+export default Email;

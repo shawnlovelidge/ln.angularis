@@ -2,7 +2,7 @@
 //  interface: IDictionary
 //
 export interface IDictionary<T> {
-  add(key: string, value: T) : void;
+  add(key: string, value: T): void;
   containsKey(key: string): boolean;
   count(): number;
   item(key: string): T;
@@ -79,7 +79,7 @@ export class Dictionary<T> implements IDictionary<T> {
   constructor(options: object);
   constructor(options: any = {}) {
     this._items = {};
-    Object.keys(options).forEach((key) => {
+    Object.keys(options).forEach(key => {
       this.add(key, options[key]);
     });
   }

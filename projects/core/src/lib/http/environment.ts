@@ -1,29 +1,22 @@
-import * as Library from '../library/index';
-import { Guid } from '../common/guid';
+import { Library } from '../library';
+import { Guid } from '../common';
 
 export class Environment {
   public uid: Guid;
-  public apiUrl: string;
-  public authUrl: string;
-  public version: string;
-  public security: boolean;
-  public production: boolean;
-  public hmr: boolean;
-  public pkg: any;
-  public buildDate: Date;
+  public apiUrl: string = '';
+  public authUrl: string = '';
+  public version: string = '';
+  public security: boolean = false;
+  public production: boolean = false;
+  public hmr: boolean = false;
+  public pkg: any = {};
+  public buildDate: Date = new Date();
 
   /**
    * Constructor()
    */
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<Environment>) {
+    Object.assign(this, options);
     this.uid = Guid.create();
-    this.apiUrl = Library.init(options, 'apiUrl');
-    this.authUrl = Library.init(options, 'authUrl');
-    this.version = Library.init(options, 'version');
-    this.security = Library.init(options, 'security', false);
-    this.production = Library.init(options, 'production', false);
-    this.hmr = Library.init(options, 'hmr', false);
-    this.pkg = Library.init(options, 'pkg', {});
-    this.buildDate = Library.init(options, 'buildDate', new Date());
   }
 }

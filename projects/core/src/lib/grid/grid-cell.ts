@@ -1,5 +1,5 @@
-import * as Library from '../library/index';
-import { Element } from '../common/element';
+import { Library } from '../library';
+import { Element } from '../common';
 
 /**
  * @name GridCell
@@ -9,7 +9,7 @@ export class GridCell extends Element {
   public pattern: string;
   public value: string | number | boolean;
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<GridCell>){
     super(options);
     this.align = Library.init(options, 'align', 'left');
     this.pattern = Library.init(options, 'pattern');

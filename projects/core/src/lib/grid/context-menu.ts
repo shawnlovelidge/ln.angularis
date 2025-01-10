@@ -1,5 +1,5 @@
-import * as Library from '../library/index';
-import { Base } from '../common/base';
+import { Library } from '../library';
+import { Base } from '../common';
 
 /**
  * @ContextMenu
@@ -14,7 +14,7 @@ export class ContextMenu extends Base {
   public tooltip: string;
   public context: string;
 
-  constructor(options?: Object | undefined | null) {
+  constructor(options?: Partial<ContextMenu>) {
     super(options);
     this.shortcut = Library.init(options, 'shortcut');
     this.action = Library.init(options, 'action');

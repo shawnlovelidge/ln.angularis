@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
