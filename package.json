@@ -53,7 +53,7 @@
     "@changesets/cli": "^2.27.11",
     "@chromatic-com/storybook": "^3.2.3",
     "@compodoc/compodoc": "^1.1.26",
-    "@eslint/js": "^9.17.0",
+    "@eslint/js": "^9.18.0",
     "@nrwl/devkit": "^19.8.4",
     "@storybook/addon-docs": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
