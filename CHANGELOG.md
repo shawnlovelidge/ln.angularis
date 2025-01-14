@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.11
+
+### Patch Changes
+
+- Fixed bugs...
+
 ## 1.0.10
 
 ### Patch Changes
