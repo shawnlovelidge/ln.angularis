@@ -5,7 +5,7 @@ import { AuthenticationConfig } from '@angularis/model';
 import {
   AUTH_CONFIG,
   DefaultAuthenticationConfig,
-} from './ln-authentication.provider';
+} from './ag-authentication.provider';
 //
 // Window Reference
 //
@@ -14,7 +14,7 @@ declare var window: Window;
 @Injectable({
   providedIn: 'root',
 })
-export class LnAuthenticationService {
+export class AgAuthenticationService {
   //
   // Callback Function
   //
@@ -113,7 +113,7 @@ export class LnAuthenticationService {
     // restore the token from the session storage
     if (!this.hasToken()) {
       let t = window.sessionStorage.getItem(
-        LnAuthenticationService.ID_TOKEN_HTTP_CLIENT
+        AgAuthenticationService.ID_TOKEN_HTTP_CLIENT
       );
       if (!Library.isNullOrUndefined(t)) {
         this.updateRenewedToken(t);

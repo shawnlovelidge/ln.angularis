@@ -4,11 +4,11 @@ import { CanActivate, CanActivateChild } from '@angular/router';
 /**
  * Services
  */
-import { LnAuthenticationService } from '../ln-authentication/ln-authentication.service';
+import { AgAuthenticationService } from '../ag-authentication/ag-authentication.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class LnAuthenticationGuardService
+export class AgAuthenticationGuardService
   implements CanActivate, CanActivateChild
 {
   /**
@@ -35,5 +35,5 @@ export class LnAuthenticationGuardService
   /**
    * constructor()
    */
-  constructor(private authenticationService: LnAuthenticationService) {}
+  constructor(private authenticationService: AgAuthenticationService) {}
 }

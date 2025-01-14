@@ -1,3 +1,3 @@
-export * from './lib/button/button';
-export * from './lib/dropdown/dropdown';
-export * from './lib/icon/icon';
+export * from './lib/ag-button/ag-button';
+export * from './lib/ag-dropdown/ag-dropdown';
+export * from './lib/ag-icon/ag-icon';

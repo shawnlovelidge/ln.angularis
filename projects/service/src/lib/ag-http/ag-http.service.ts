@@ -5,15 +5,15 @@ import { Response } from '@angularis/core';
 //
 // Services
 //
-import { LnHttpClientService } from './ln-http-client.service';
+import { AgHttpClientService } from './ag-http-client.service';
 //
 // Defining a Map Type
 //
 export type IMap<T> = (item: any) => T;
 //
-// Describe the LnHttpService Interface
+// Describe the AgHttpService Interface
 //
-export interface ILnHttpService {
+export interface IHttpService {
   get<T>(
     endpoint: string,
     cb?: IMap<T>,
@@ -34,10 +34,10 @@ export interface ILnHttpService {
   ): Observable<Response<T>>;
 }
 //
-// LnHttpService
+// AgHttpService
 //
 @Injectable()
-export class LnHttpService implements ILnHttpService {
+export class AgHttpService implements IHttpService {
   public get port() {
     return this.httpClient.port;
   }
@@ -121,5 +121,5 @@ export class LnHttpService implements ILnHttpService {
       .pipe(map(resp => new Response(resp, cb)));
   }
 
-  constructor(private httpClient: LnHttpClientService) {}
+  constructor(private httpClient: AgHttpClientService) {}
 }

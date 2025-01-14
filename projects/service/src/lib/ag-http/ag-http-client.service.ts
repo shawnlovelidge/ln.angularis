@@ -4,7 +4,7 @@ import { Library } from '@angularis/core';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class LnHttpClientService {
+export class AgHttpClientService {
   public port: string;
   public secure: boolean;
   public server: string;

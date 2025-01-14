@@ -103,7 +103,7 @@ export const Simple: Story = {
     return {
       props: { ...props, handleValueChange, ...updatedArgs },
       template: `
-        <ang-dropdown
+        < ag-dropdown
           [darkTheme]="darkTheme"
           [label]="label"
           [textField]="textField"
@@ -114,7 +114,7 @@ export const Simple: Story = {
           [value]="value"
           [items]="items"
           (onValueChange)="handleValueChange($event)"
-        ></ang-dropdown>`,
+        ></ ag-dropdown>`,
     };
   },
   // play: async ({ args, canvasElement, step }) => {

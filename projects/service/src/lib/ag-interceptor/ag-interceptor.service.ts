@@ -7,10 +7,10 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { LnAuthenticationService } from '../ln-authentication/ln-authentication.service';
+import { AgAuthenticationService } from '../ag-authentication/ag-authentication.service';
 
 @Injectable()
-export class LnInterceptorService implements HttpInterceptor {
+export class AgInterceptorService implements HttpInterceptor {
   //
   // intercept
   //
@@ -38,5 +38,5 @@ export class LnInterceptorService implements HttpInterceptor {
   /**
    * constructor()
    */
-  constructor(private authenticationService: LnAuthenticationService) {}
+  constructor(private authenticationService: AgAuthenticationService) {}
 }

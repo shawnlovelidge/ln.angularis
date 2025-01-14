@@ -6,7 +6,7 @@ export interface INodeService {
 }
 
 @Injectable()
-export class LnNodeService implements INodeService {
+export class AgNodeService implements INodeService {
   /**
    * Traverse
    */

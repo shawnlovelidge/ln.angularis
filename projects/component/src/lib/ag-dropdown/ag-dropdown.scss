@@ -34,7 +34,7 @@ $font-size: 14px;
   }
 }
 
-.ang-dropdown {
+.ag-dropdown {
   cursor: default;
   transition: all 0.5s ease;
   outline-color: transparent;
@@ -55,7 +55,7 @@ $font-size: 14px;
     outline-width: 0px;
   }
 
-  .ang-dropdown-label {
+  .ag-dropdown-label {
     @include label();
     @include flexbox-row();
     justify-content: flex-start;
@@ -74,7 +74,7 @@ $font-size: 14px;
     }
   }
 
-  .ang-dropdown-container {
+  .ag-dropdown-container {
     width: 100%;
 
     div.inner-container {
@@ -145,7 +145,7 @@ $font-size: 14px;
   }
 }
 
-ul.ang-dropdown-items {
+ul.ag-dropdown-items {
   -webkit-transition: 0.5s;
   border-radius: 0;
   margin: 0;
@@ -175,7 +175,7 @@ ul.ang-dropdown-items {
     }
   }
 
-  li.ang-dropdown-item {
+  li.ag-dropdown-item {
     cursor: pointer;
     display: block;
     height: $height;

@@ -1,13 +1,12 @@
 {
   "name": "@angularis/component",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Angular Component Library",
   "author": "Lovelidge, Shawn",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angularis/core": "^0.0.7"
+    "@angular/core": "^19.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

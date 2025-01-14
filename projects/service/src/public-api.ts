@@ -1,15 +1,15 @@
 /*
  * Public API Surface of service
  */
-export * from './lib/common/ln-clipboard.service';
-export * from './lib/common/ln-message-bus.service';
-export * from './lib/common/ln-node.service';
-export * from './lib/ln-authentication-guard/ln-authentication-guard.service';
-export * from './lib/ln-authentication/ln-authentication.provider';
-export * from './lib/ln-authentication/ln-authentication.service';
-export * from './lib/ln-http/ln-http-client.service';
-export * from './lib/ln-http/ln-http-environment.provider';
-export * from './lib/ln-http/ln-http-environment.service';
-export * from './lib/ln-http/ln-http.service';
-export * from './lib/ln-interceptor/ln-interceptor.service';
-export * from './lib/ln-json/ln-json.service';
+export * from './lib/common/ag-clipboard.service';
+export * from './lib/common/ag-message-bus.service';
+export * from './lib/common/ag-node.service';
+export * from './lib/ag-authentication-guard/ag-authentication-guard.service';
+export * from './lib/ag-authentication/ag-authentication.provider';
+export * from './lib/ag-authentication/ag-authentication.service';
+export * from './lib/ag-http/ag-http-client.service';
+export * from './lib/ag-http/ag-http-environment.provider';
+export * from './lib/ag-http/ag-http-environment.service';
+export * from './lib/ag-http/ag-http.service';
+export * from './lib/ag-interceptor/ag-interceptor.service';
+export * from './lib/ag-json/ag-json.service';

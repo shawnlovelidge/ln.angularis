@@ -1,10 +1,10 @@
 import { Injectable, Inject, OnDestroy } from '@angular/core';
 import { Library } from '@angularis/core';
 import {
-  LnHttpEnvironmentConfig,
-  ILnHttpEnvironmentSettings,
+  AgHttpEnvironmentConfig,
+  IAgHttpEnvironmentSettings,
   HTTP_ENVIRONMENT_CONFIGURATION,
-} from './ln-http-environment.provider';
+} from './ag-http-environment.provider';
 //
 // Window Reference
 //
@@ -13,8 +13,8 @@ declare var window: any;
 @Injectable({
   providedIn: 'root',
 })
-export class LnHttpEnvironmentService
-  implements ILnHttpEnvironmentSettings, OnDestroy
+export class AgHttpEnvironmentService
+  implements IAgHttpEnvironmentSettings, OnDestroy
 {
   //
   // KeyValue Pair
@@ -31,7 +31,7 @@ export class LnHttpEnvironmentService
   //
   constructor(
     @Inject(HTTP_ENVIRONMENT_CONFIGURATION)
-    environments: LnHttpEnvironmentConfig
+    environments: AgHttpEnvironmentConfig
   ) {
     //
     // Init hostname

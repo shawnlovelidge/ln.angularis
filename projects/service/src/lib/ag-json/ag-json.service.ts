@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class LnJsonService {
+export class AgJsonService {
   /**
    * Function: get()
    * @function
