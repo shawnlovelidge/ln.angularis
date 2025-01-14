@@ -1,27 +1,47 @@
-# LnLernenderui
+# @angularis suite of libraries
+## Overview
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+The `@angularis` Angular library is a comprehensive suite of modules designed to enhance and streamline Angular development. The library consists of the following packages:
 
-## Development server
+- `@angularis/core`: Core functionalities and utilities.
+- `@angularis/pipe`: Custom pipes for data transformation.
+- `@angularis/directive`: Custom directives to extend HTML capabilities.
+- `@angularis/model`: Data models and interfaces.
+- `@angularis/service`: Services for business logic and data management.
+- `@angularis/component`: Standalone components for building UI elements.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+All libraries are fully compatible with Angular 19. The `@angularis/component` package provides standalone components by default, making it easier to integrate and use them in your Angular applications.
 
 ## Build
+To build the entire `@angularis` suite, you can use npm scripts defined in the `package.json` file. Here is an example of how you can set up the build process:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Install Dependencies**: Ensure all dependencies are installed by running:
+  ```sh
+  npm install
+  ```
 
-## Running unit tests
+2. **Build Scripts**: Add the following scripts to your `package.json` file:
+  ```json
+  "scripts": {
+    "build:core": "ng build @angularis/core",
+    "build:pipe": "ng build @angularis/pipe",
+    "build:directive": "ng build @angularis/directive",
+    "build:model": "ng build @angularis/model",
+    "build:service": "ng build @angularis/service",
+    "build:component": "ng build @angularis/component",
+    "build": "npm run build:core && npm run build:pipe && npm run build:directive && npm run build:model && npm run build:service && npm run build:component"
+  }
+  ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Run Build**: Execute the build process for all packages by running:
+  ```sh
+  npm run build
+  ```
 
-## Running end-to-end tests
+This setup ensures that each package in the `@angularis` suite is built in sequence, allowing you to manage and compile your Angular libraries efficiently.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Changesets
 
-## Further help
+To keep track of versioning for each library within the `@angularis` suite, we adhere to changesets. This approach ensures that version numbers convey meaning about the underlying changes, making it easier to manage dependencies and maintain compatibility. Each release is versioned in the format `MAJOR.MINOR.PATCH`, where increments in the major version indicate breaking changes, minor version increments signify new features that are backward-compatible, and patch version increments represent backward-compatible bug fixes.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Changeset Usage
