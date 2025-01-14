@@ -45,3 +45,26 @@ This setup ensures that each package in the `@angularis` suite is built in seque
 To keep track of versioning for each library within the `@angularis` suite, we adhere to changesets. This approach ensures that version numbers convey meaning about the underlying changes, making it easier to manage dependencies and maintain compatibility. Each release is versioned in the format `MAJOR.MINOR.PATCH`, where increments in the major version indicate breaking changes, minor version increments signify new features that are backward-compatible, and patch version increments represent backward-compatible bug fixes.
 
 ### Changeset Usage
+Its important to follow these steps when releasing a new version to npm.
+
+1. Make the necessary changes to the code base.
+2. Commit changes:
+  ```bash
+  git add -A .
+  git commit -m"" <-- description of what changed.
+  ```
+3. Run changeset
+  ```bash
+  npm run changeset
+  ```
+4. Run changeset:version
+  ```bash
+  npm run changeset:version <-- this will bump the next version of the code inside the package.json file.
+  ```
+5. Update all @angularis/* libraries' respective package.json file with the new version number defined in the project's package.json file.
+
+6. Push changes to GitHub.
+
+    Once the changes are pushed to GitHub, the build process will be automatically triggered via GitHub Actions scripts. These scripts are configured to compile the entire `@angularis` suite and run any necessary tests. Upon successful completion of the build process, a new version of the `@angularis` suite will be automatically published to the npm private repository, ensuring that the latest updates are readily available for use in your projects.
+
+
