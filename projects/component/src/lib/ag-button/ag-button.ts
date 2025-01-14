@@ -12,9 +12,9 @@ import { Library } from '@angularis/core';
 
 @Component({
   imports: [CommonModule],
-  selector: 'ang-button',
-  templateUrl: 'button.html',
-  styleUrls: ['button.scss'],
+  selector: 'ag-button',
+  templateUrl: 'ag-button.html',
+  styleUrls: ['ag-button.scss'],
 })
 export class AngButton implements OnInit {
   public readonly disabled = input<boolean>(false);

@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.9
+
+### Patch Changes
+
+- Updated naming conventions for modules; also fixed some bugs with services and components
+
 ## 1.0.8
 
 ### Patch Changes

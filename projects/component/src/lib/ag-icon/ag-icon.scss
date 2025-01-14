@@ -1,7 +1,7 @@
 @use 'sass:string';
 @use 'scss/mixins/standard' as *;
 
-.ln-icon {
+.ag-icon {
   opacity: 1;
 
   .hidden {
@@ -59,7 +59,6 @@
       padding-right: 8px;
     }
 
-    /*
     &.angle-up:before {
       content: string.unquote("\"\\#{'f106'}\"");
     }
@@ -129,6 +128,5 @@
     &.chevron-down:before {
       content: string.unquote("\"\\#{'f13a'}\"");
     }
-    */
   }
 }

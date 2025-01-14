@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root',
 })
-export class LnClipboardService {
+export class AgClipboardService {
   private tempTextArea: HTMLTextAreaElement | undefined;
   constructor(
     @Inject(DOCUMENT) public document: any,

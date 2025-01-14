@@ -14,14 +14,14 @@ import {
 //
 import { Library } from '@angularis/core';
 //
-// ln-icon
+// ag-icon
 //
 @Component({
   standalone: true,
   imports: [CommonModule],
-  selector: 'ang-icon',
-  templateUrl: 'icon.html',
-  styleUrls: ['icon.scss'],
+  selector: 'ag-icon',
+  templateUrl: 'ag-icon.html',
+  styleUrls: ['ag-icon.scss'],
 })
 export class AngIcon implements OnChanges {
   public readonly disabled = input<boolean>();

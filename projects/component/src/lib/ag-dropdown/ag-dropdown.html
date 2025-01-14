@@ -1,5 +1,5 @@
 <div
-  class="ang-dropdown"
+  class=" ag-dropdown"
   tabindex="1"
   [ngClass]="{
   'darkTheme': darkTheme(),
@@ -7,10 +7,10 @@
   'disabled': disabled()
 }"
 >
-  <label class="ang-dropdown-label" [class.hidden]="label().length === 0"
+  <label class=" ag-dropdown-label" [class.hidden]="label().length === 0"
     >{{label()}}</label
   >
-  <div class="ang-dropdown-container">
+  <div class=" ag-dropdown-container">
     <div class="inner-container">
       <button
         #portalContainer
@@ -27,17 +27,17 @@
         (click)="onOpen($event)"
       >
         {{ displayItem?.[textField()]}}
-        <ang-icon
+        <ag-icon
           [class]="icon.name"
           (onClick)="onOpen($event)"
-        ></ang-icon>
+        ></ag-icon>
       </button>
     </div>
   </div>
 </div>
 <ng-template #portalView let-data>
   <ul
-    class="ang-dropdown-items"
+    class=" ag-dropdown-items"
     [ngClass]="{
     'darkTheme' : darkTheme(),
     'small': small()
@@ -45,7 +45,7 @@
   >
     <li
       *ngFor="let item of items()"
-      class="ang-dropdown-item"
+      class=" ag-dropdown-item"
       [ngClass]="{
           'darkTheme' : darkTheme(),
           'small': small(),

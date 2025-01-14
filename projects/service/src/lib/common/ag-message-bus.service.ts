@@ -5,7 +5,7 @@ import { Library } from '@angularis/core';
 @Injectable({
   providedIn: 'root',
 })
-export class LnMessageBusService {
+export class AgMessageBusService {
   /**
    * Properties
    */

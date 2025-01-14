@@ -9,15 +9,15 @@ import {
   Output,
 } from '@angular/core';
 
-import { LnClipboardService } from '@angularis/service';
+import { AgClipboardService } from '@angularis/service';
 
 @Directive({
   // tslint:disable-next-line:directive-selector
 
-  selector: '[LnClipboard]',
+  selector: '[Clipboard]',
 })
-export class LnClipboardDirective implements OnInit, OnDestroy {
-  @Input('LnClipboard')
+export class AgClipboardDirective implements OnInit, OnDestroy {
+  @Input('Clipboard')
   public targetElm: HTMLInputElement;
   @Input()
   public container: HTMLInputElement;
@@ -30,7 +30,7 @@ export class LnClipboardDirective implements OnInit, OnDestroy {
 
   @Output()
   public cbOnError: EventEmitter<any> = new EventEmitter<any>();
-  constructor(private service: LnClipboardService) {}
+  constructor(private service: AgClipboardService) {}
 
   // tslint:disable-next-line:no-empty
   public ngOnInit() {}
