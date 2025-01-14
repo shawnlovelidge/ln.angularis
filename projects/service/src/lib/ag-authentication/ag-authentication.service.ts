@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Inject, Injectable } from '@core';
+import { Inject, Injectable } from '@angularis/core';
 import { Token, Library } from '@angularis/core';
 import { AuthenticationConfig } from '@angularis/model';
 import {
