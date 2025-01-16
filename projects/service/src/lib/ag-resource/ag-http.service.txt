@@ -1,0 +1,119 @@
+import { inject, Injectable, ResourceRef } from '@angular/core';
+//
+// Services
+//
+import { AgResourceService } from './ag-resource.service';
+
+//
+// Defining a Map Type
+//
+export type IMap<T> = (item: any) => T;
+//
+// Describe the AgHttpService Interface
+//
+export interface IHttpService {
+  get<T>(url: string, cb?: IMap<T>, param?: object): ResourceRef<T[]>;
+  put<T>(
+    url: string,
+    model: any,
+    cb?: IMap<T>,
+    param?: object
+  ): ResourceRef<T[]>;
+  post<T>(url: string, model: any, cb?: IMap<T>): ResourceRef<T[]>;
+  patch<T>(url: string, model: any, cb?: IMap<T>): ResourceRef<T[]>;
+  delete<T>(url: string, param?: object, cb?: IMap<T>): ResourceRef<T[]>;
+}
+//
+// AgHttpService
+//
+@Injectable()
+export class AgHttpService implements IHttpService {
+  //
+  // Injected Services
+  //
+  private resource = inject(AgResourceService);
+  //
+  // Constructor
+  //
+  constructor() {}
+  //
+  // [port] Getters and Setters
+  //
+  public get port() {
+    return this.resource.port;
+  }
+  public set port(value: string) {
+    this.resource.port = value;
+  }
+  //
+  // [server] Getters and Setters
+  //
+  public get server() {
+    return this.resource.server;
+  }
+  public set server(value: string) {
+    this.resource.server = value;
+  }
+  //
+  // [secure] Getters and Setters
+  //
+  public get secure() {
+    return this.resource.secure;
+  }
+  public set secure(value: boolean) {
+    this.resource.secure = value;
+  }
+  //
+  // [prefix] Getters and Setters
+  //
+  public get prefix() {
+    return this.resource.prefix;
+  }
+  public set prefix(value: string) {
+    this.resource.prefix = value;
+  }
+
+  //
+  // get<T>()
+  //
+  public get<T>(url: string, cb?: IMap<T>, params?: object): ResourceRef<T[]> {
+    return this.resource.get<T>(url, params);
+  }
+
+  //
+  // put<T>()
+  //
+  public put<T>(
+    url: string,
+    model: any,
+    cb?: IMap<T>,
+    params?: object
+  ): ResourceRef<T[]> {
+    return this.resource.put<T>(url, model, params);
+  }
+
+  //
+  // post<T>()
+  //
+  public post<T>(url: string, model: any, cb?: IMap<T>): ResourceRef<T[]> {
+    return this.resource.post<T>(url, model);
+  }
+
+  //
+  // patch<T>()
+  //
+  public patch<T>(url: string, model: any, cb?: IMap<T>): ResourceRef<T[]> {
+    return this.resource.patch<T>(url, model);
+  }
+
+  //
+  // delete<T>()
+  //
+  public delete<T>(
+    url: string,
+    params?: object,
+    cb?: IMap<T>
+  ): ResourceRef<T[]> {
+    return this.resource.delete<T>(url, params);
+  }
+}

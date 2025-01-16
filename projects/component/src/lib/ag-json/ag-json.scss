@@ -1,0 +1,18 @@
+@use 'scss/mixins/standard' as *;
+//@use 'root';
+
+.ln-json {
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: default;
+  margin: 0;
+  padding: 0;
+
+  &.disabled {
+    @include disabled();
+  }
+
+  &.hidden {
+    display: none;
+  }
+}

@@ -9,6 +9,7 @@ export interface IBase {
   hidden: boolean;
   name: string;
   description: string;
+  type?: string;
   label: string;
   hasId(): boolean;
   isActive(): boolean;

@@ -30,10 +30,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
 import { Icon, Library } from '@angularis/core';
 
-import { AngIcon } from '../ag-icon/ag-icon';
+import { AgIcon } from '../ag-icon/ag-icon';
 
 @Component({
-  imports: [CommonModule, AngIcon],
+  imports: [CommonModule, AgIcon],
   selector: 'ag-dropdown',
   templateUrl: 'ag-dropdown.html',
   styleUrls: ['ag-dropdown.scss'],

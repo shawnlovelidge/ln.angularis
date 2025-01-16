@@ -1,0 +1,102 @@
+[
+  {
+    "name": "localhost",
+    "hostname": {
+      "url": "localhost",
+      "secure": false
+    },
+    "authentication": {
+      "authority": "https://login.microsoftonline.com/tmnab2cqa.onmicrosoft.com/v2.0/",
+      "authorizationUrl": "https://login.microsoftonline.com/tmnab2cqa.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_RT_Toyota_QA_SignInPolicy",
+      "baseUrl": "http://{hostname}:3004",
+      "clientId": "65a2f736-7554-4ddf-854c-44fd0dd543f5",
+      "issuer": "https://login.microsoftonline.com/f855c7e1-6646-4300-8de1-10c7d3001287/v2.0/",
+      "jwks": "https://login.microsoftonline.com/tmnab2cqa.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_RT_Toyota_QA_SignInPolicy",
+      "logoutRedirectUrl": "https://cpssologin-dc2.stg.toyota.com/tesslogin/logout.jsp?end_url=https://dealerdailyfr.qa.toyota.com",
+      "redirectUrl": "http://{hostname}:3004",
+      "disable": false
+    },
+    "endpoints": [
+      {
+        "name": "api",
+        "url": "http://localhost:3004"
+      },
+      {
+        "name": "efc-micro",
+        "url": "http://localhost:3004/vehiclecontent/v1"
+      },
+      {
+        "name": "dis",
+        "url": "http://localhost:3004/disrest",
+        "requireToken": false,
+        "headers": [
+          {
+            "key": "x-api-key",
+            "value": "arWxuE2IUp3tMlsphQmHr5vE1rh8UFSc54z879eh"
+          }
+        ]
+      },
+      {
+        "name": "efc",
+        "url": "http://localhost:3004/config/services/fm/seriesData"
+      }
+    ],
+    "tags": {
+      "app-dynamics": false,
+      "dis-api": "eb072ef59f034a2a94c690fbe5d93274",
+      "dynamic": "",
+      "efc-micro": "UmV0YWlsIFRyYW5zZm9ybWF0aW9u",
+      "google-api": "AIzaSyBGa6kYwmGQb-6EgipezyXQG2YGE6D3scw"
+    }
+  },
+  {
+    "name": "Development",
+    "hostname": {
+      "url": "dev.lernender",
+      "secure": false
+    },
+    "authentication": {
+      "authority": "https://login.microsoftonline.com/tmnab2cqa.onmicrosoft.com/v2.0/",
+      "authorizationUrl": "https://login.microsoftonline.com/tmnab2cqa.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_RT_Toyota_QA_SignInPolicy",
+      "baseUrl": "http://{hostname}:3004",
+      "clientId": "65a2f736-7554-4ddf-854c-44fd0dd543f5",
+      "issuer": "https://login.microsoftonline.com/f855c7e1-6646-4300-8de1-10c7d3001287/v2.0/",
+      "jwks": "https://login.microsoftonline.com/tmnab2cqa.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1A_RT_Toyota_QA_SignInPolicy",
+      "logoutRedirectUrl": "https://cpssologin-dc2.stg.toyota.com/tesslogin/logout.jsp?end_url=https://dealerdailyfr.qa.toyota.com",
+      "redirectUrl": "http://{hostname}:3004",
+      "disable": false
+    },
+    "endpoints": [
+      {
+        "name": "api",
+        "url": "http://localhost:3004"
+      },
+      {
+        "name": "efc-micro",
+        "url": "http://localhost:3004/vehiclecontent/v1"
+      },
+      {
+        "name": "dis",
+        "url": "http://localhost:3004/disrest",
+        "requireToken": false,
+        "headers": [
+          {
+            "key": "x-api-key",
+            "value": "arWxuE2IUp3tMlsphQmHr5vE1rh8UFSc54z879eh"
+          }
+        ]
+      },
+      {
+        "name": "efc",
+        "url": "http://localhost:3004/config/services/fm/seriesData"
+      }
+    ],
+    "tags": {
+      "app-dynamics": false,
+      "dis-api": "eb072ef59f034a2a94c690fbe5d93274",
+      "dynamic": "",
+      "efc-micro": "UmV0YWlsIFRyYW5zZm9ybWF0aW9u",
+      "google-api": "AIzaSyBGa6kYwmGQb-6EgipezyXQG2YGE6D3scw"
+    }
+  }
+]

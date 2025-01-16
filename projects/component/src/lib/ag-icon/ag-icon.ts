@@ -17,13 +17,12 @@ import { Library } from '@angularis/core';
 // ag-icon
 //
 @Component({
-  standalone: true,
   imports: [CommonModule],
   selector: 'ag-icon',
   templateUrl: 'ag-icon.html',
   styleUrls: ['ag-icon.scss'],
 })
-export class AngIcon implements OnChanges {
+export class AgIcon implements OnChanges {
   public readonly disabled = input<boolean>();
   public readonly hidden = input<boolean>();
   public readonly active = input<boolean>();

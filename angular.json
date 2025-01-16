@@ -292,7 +292,7 @@
         }
       }
     },
-    "@angularis/web": {
+    "web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -301,7 +301,7 @@
       },
       "root": "projects/web",
       "sourceRoot": "projects/web/src",
-      "prefix": "app",
+      "prefix": "ag",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -315,25 +315,16 @@
             "tsConfig": "projects/web/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "projects/web/src/json",
               {
                 "glob": "**/*",
                 "input": "projects/web/public"
               }
             ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "assets"
-              ]
-            },
             "styles": [
               "projects/web/src/styles.scss"
             ],
-            "scripts": [],
-            "server": "projects/web/src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "projects/web/src/server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {

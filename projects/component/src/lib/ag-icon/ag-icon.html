@@ -3,7 +3,11 @@
     [attr.class]="classes()"
     [attr.title]="title()"
     [ngStyle]="style()"
-    [ngClass]="{'hidden': hidden(), 'disabled': disabled(), 'active': active()}"
+    [ngClass]="{
+      'hidden': hidden(), 
+      'disabled': disabled(), 
+      'active': active()
+      }"
     (click)="handleOnClick($event)"
   >
   </i>
