@@ -1,0 +1,12 @@
+<div class="ag-hyperlink" 
+	[ngClass]="{ 'hidden': model().hidden }">
+    <a
+        class="ag-hyperlink-atag"
+        [class.style]="model().style"
+        [class.active]="model().active"
+        [class.disabled]="model().disabled"
+        (click)="handleClick($event)"
+    >
+        <ng-content></ng-content>
+    </a>
+</div>

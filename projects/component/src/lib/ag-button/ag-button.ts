@@ -6,7 +6,7 @@ import {
   EventEmitter,
   ElementRef,
   input,
-  linkedSignal
+  linkedSignal,
 } from '@angular/core';
 import { Library } from '@angularis/core';
 
@@ -16,7 +16,7 @@ import { Library } from '@angularis/core';
   templateUrl: 'ag-button.html',
   styleUrls: ['ag-button.scss'],
 })
-export class AngButton implements OnInit {
+export class AgButton implements OnInit {
   public readonly disabled = input<boolean>(false);
   public readonly hidden = input<boolean>(false);
   public readonly style = input<object>({});

@@ -12,14 +12,14 @@ import { toArgs } from './storybook.helper';
 //
 // @angularis/component
 //
-import { AngDropDown, AngIcon } from '@angularis/component';
+import { AgDropDown, AngIcon } from '@angularis/component';
 
 //
 // Meta
 //
-const meta: Meta<AngDropDown> = {
-  title: 'AngDropDown',
-  component: AngDropDown,
+const meta: Meta<AgDropDown> = {
+  title: 'AgDropDown',
+  component: AgDropDown,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -49,7 +49,7 @@ const meta: Meta<AngDropDown> = {
   },
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, AngIcon], 
+      imports: [CommonModule, AngIcon],
       declarations: [],
     }),
   ],
@@ -60,7 +60,7 @@ export default meta;
 //
 // Story Type
 //
-type Story = StoryObj<AngDropDown>;
+type Story = StoryObj<AgDropDown>;
 
 //
 // Stories

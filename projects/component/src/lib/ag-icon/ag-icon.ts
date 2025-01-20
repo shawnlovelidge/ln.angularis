@@ -22,7 +22,7 @@ import { Library } from '@angularis/core';
   templateUrl: 'ag-icon.html',
   styleUrls: ['ag-icon.scss'],
 })
-export class AgIcon implements OnChanges {
+export class AgIcon  {
   public readonly disabled = input<boolean>();
   public readonly hidden = input<boolean>();
   public readonly active = input<boolean>();
@@ -36,12 +36,6 @@ export class AgIcon implements OnChanges {
     return [];
   });  
   @Output() public onClick: EventEmitter<any> = new EventEmitter();
-
-  //
-  // Public Variables
-  //
-
-
   //
   // Constructor
   //
@@ -53,15 +47,8 @@ export class AgIcon implements OnChanges {
   //
   public handleOnClick(event: MouseEvent) {
     event.stopPropagation();
-    //event.preventDefault();
     if (Library.isDefined(this.onClick)) {
       this.onClick.emit(event);
     }
-  }
-
-  //
-  // ngOnChange
-  //
-  public ngOnChanges(changes: SimpleChanges): void {
   }
 }

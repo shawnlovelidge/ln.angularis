@@ -40,12 +40,12 @@ import { AgIcon } from '../ag-icon/ag-icon';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: AngDropDown,
+      useExisting: AgDropDown,
       multi: true,
     },
   ],
 })
-export class AngDropDown
+export class AgDropDown
   implements
     ControlValueAccessor,
     OnInit,
@@ -350,5 +350,3 @@ export class AngDropDown
     }
   }
 }
-
-

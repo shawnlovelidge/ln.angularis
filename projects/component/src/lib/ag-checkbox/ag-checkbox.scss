@@ -1,0 +1,30 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-checkbox {
+  padding: 0;
+  margin: 0;
+  width: auto;
+
+  &.disabled {
+    @include disabled();
+  }
+
+  &.visibility {
+    visibility: hidden;
+  }
+
+  ul.ag-checkbox-items {
+    padding: 0;
+    margin: 0;
+
+    li.ag-checkbox-item {
+      @include flex(0 0 auto);
+      padding: 0;
+
+      &.label {
+        @include flex(1 1 100%);
+      }
+    }
+  }
+}

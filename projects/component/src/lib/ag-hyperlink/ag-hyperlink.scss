@@ -1,0 +1,51 @@
+
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-hyperlink {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  width: auto;
+  cursor: default;
+
+  &.disabled {
+    @include disabled();
+  }
+
+  a.ag-hyperlink-atag {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.1s ease;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      color: var(--color-primary);
+    }
+
+    &:visited {
+      color: var(--color-black);
+    }
+
+    &.active {
+     color: var(--color-black);
+    }
+    &.disabled {
+      @include disabled();
+    }
+  }
+
+  .ag-hyperlink-icon {
+    position: relative;
+    color: var(--color-primary);
+    top: 3px;
+    width: auto;
+
+    &.disabled {
+      @include disabled();
+    }
+  }
+}
