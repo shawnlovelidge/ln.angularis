@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, input, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  input,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 //
 // Components
 //
@@ -17,8 +24,8 @@ import { Icon, Library } from '@angularis/core';
 })
 export class AgToolBar {
   public readonly model = input<Icon[]>([]);
-  public readonly hidden = input<boolean>(false);
-  public readonly disabled = input<boolean>(false);  
+  public hidden = input<boolean>(false);
+  public disabled = input<boolean>(false);
   //
   // OnClick
   //

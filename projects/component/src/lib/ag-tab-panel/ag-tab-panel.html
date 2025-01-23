@@ -1,0 +1,18 @@
+<ng-template #defaultTabs>
+    <ul class="ag-tab-panel-tabs">
+        @for (tab of tabs(); track $index) {
+        <li class="ag-tab-panel-tab" (click)="handleTab(tab)"
+            [ngClass]="{ 'active': tab.active(), 'disabled': tab.disabled() }">
+            {{ tab.label }}
+        </li>
+        }
+    </ul>
+</ng-template>
+<div class="ag-tab-panel" [ngClass]="{ 'hidden': hidden(), 'disabled': disabled() }">
+    <div class="ag-tab-panel-container">
+        <ng-container *ngIf="template else defaultTabs"></ng-container>
+        <div class="ag-tab-panel-content" [ngStyle]="style()">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

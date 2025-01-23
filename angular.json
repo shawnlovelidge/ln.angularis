@@ -275,7 +275,7 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "@angularis/storybook:build",
-            "compodoc": true,
+            "compodoc": false,
             "compodocArgs": ["-e", "json", "-d", "."],
             "port": 2400
           }
@@ -285,7 +285,7 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "@angularis/storybook:build",
-            "compodoc": true,
+            "compodoc": false,
             "compodocArgs": ["-e", "json", "-d", "."],
             "outputDir": "dist/storybook"
           }
@@ -324,6 +324,11 @@
             "styles": [
               "projects/web/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "assets"
+              ]
+            },            
             "scripts": []
           },
           "configurations": {

@@ -13,22 +13,8 @@ import { Guid, Library } from '@angularis/core';
   templateUrl: 'ag-hero.html',
   styleUrls: ['ag-hero.scss'],
 })
-export class AgHero implements OnInit {
-  public readonly label = input<string>('');
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-
-  //
-  // Public Variables
-  //
-
-  //
-  // Constructor
-  //
-  constructor() {}
-
-  //
-  // ngOnInit
-  //
-  public ngOnInit(): void {}
+export class AgHero {
+  public label = input<string>('');
+  public disabled = input<boolean>(false);
+  public hidden = input<boolean>(false);
 }

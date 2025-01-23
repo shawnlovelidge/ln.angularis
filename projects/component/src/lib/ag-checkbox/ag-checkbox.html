@@ -1,18 +1,8 @@
-<div
-  class="ag-checkbox"
-  [ngClass]="{ 'disabled': disabled() }"
-  [ngStyle]="style()"
-  [class.visibility]="!visibility"
->
-  <ul class="ag-checkbox-items">
-    <li class="ag-checkbox-item">
-      <ag-icon
-        (onClick)="handleClick($event)"
-        [style]="iconStyle()"
-      ></ag-icon>
-    </li>
-    <li class="ag-checkbox-item label" [hidden]="label().length === 0">
-      {{ label() }}
-    </li>
-  </ul>
+<div class="ag-checkbox" [ngClass]="{ 
+    'disabled': disabled(), 
+    'hidden': hidden() 
+  }">
+  <ag-icon [name]="classes()" [ngStyle]="style()" (onClick)="handleOnClick($event)">
+  </ag-icon>
+  <span (click)="handleOnClick($event)">{{label}}</span>
 </div>

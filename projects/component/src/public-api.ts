@@ -9,3 +9,7 @@ export * from './lib/ag-json/ag-json';
 export * from './lib/ag-svg/ag-svg';
 export * from './lib/ag-table/ag-table';
 export * from './lib/ag-toolbar/ag-toolbar';
+export * from './lib/ag-tab/ag-tab';
+export * from './lib/ag-tab-panel/ag-tab-panel';
+
+

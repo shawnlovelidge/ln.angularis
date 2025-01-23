@@ -53,7 +53,7 @@ export class AgResourceService {
   //
   // get()
   //
-  public get<T>(url: string, params?: any): ResourceRef<T[]> {
+  public get<T>(url: string, params?: any): ResourceRef<T[] | undefined> {
     return resource<T[], any>({
       loader: async () => {
         try {
@@ -68,7 +68,11 @@ export class AgResourceService {
   //
   // put()
   //
-  public put<T>(url: string, model: any = {}, params?: any): ResourceRef<T[]> {
+  public put<T>(
+    url: string,
+    model: any = {},
+    params?: any
+  ): ResourceRef<T[] | undefined> {
     return resource<T[], any>({
       loader: async () => {
         try {
@@ -90,7 +94,7 @@ export class AgResourceService {
   //
   // post()
   //
-  public post<T>(url: string, model: any = {}): ResourceRef<T[]> {
+  public post<T>(url: string, model: any = {}): ResourceRef<T[] | undefined> {
     return resource<T[], any>({
       loader: async () => {
         try {
@@ -112,7 +116,7 @@ export class AgResourceService {
   //
   // patch()
   //
-  public patch<T>(url: string, model: any = {}): ResourceRef<T[]> {
+  public patch<T>(url: string, model: any = {}): ResourceRef<T[] | undefined> {
     return resource<T[], any>({
       loader: async () => {
         try {
@@ -133,7 +137,10 @@ export class AgResourceService {
   //
   // delete()
   //
-  public delete<T>(url: string, params: any = {}): ResourceRef<T[]> {
+  public delete<T>(
+    url: string,
+    params: any = {}
+  ): ResourceRef<T[] | undefined> {
     return resource<T[], any>({
       loader: async () => {
         try {

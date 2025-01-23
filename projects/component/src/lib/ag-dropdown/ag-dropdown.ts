@@ -10,10 +10,10 @@ import {
   Output,
   SimpleChanges,
   TemplateRef,
-  ViewChild,
   ViewContainerRef,
   input,
   signal,
+  viewChild
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
@@ -59,8 +59,9 @@ export class AgDropDown
   public readonly valueField = input<string>('id');
   public readonly placeholder = input<string>('Select...');
   public readonly darkTheme = input<boolean>(false);
-  public readonly hidden = input(false);
-  public readonly disabled = input(false);
+  public hidden = input(false);
+  public disabled = input(false);
+
   @Input()
   get value(): any | any[] {
     return this._value;
@@ -72,12 +73,15 @@ export class AgDropDown
     }
   }
   public items = input<any[]>([]);
+  //
+  // Output
+  //
   @Output() public onValueChange: EventEmitter<any> = new EventEmitter<any>();
   //
   // ViewChild()
   //
-  @ViewChild('portalContainer') portalContainer!: ElementRef;
-  @ViewChild('portalView') portalView!: TemplateRef<any>;
+  readonly portalContainer = viewChild.required<ElementRef>('portalContainer');
+  readonly portalView = viewChild.required<TemplateRef<any>>('portalView');
 
   //
   // Public variables
@@ -209,8 +213,8 @@ export class AgDropDown
     const config = new OverlayConfig({
       positionStrategy: this.overlay
         .position()
-        .flexibleConnectedTo(this.portalContainer)
-        .setOrigin(this.portalContainer)
+        .flexibleConnectedTo(this.portalContainer())
+        .setOrigin(this.portalContainer())
         .withPositions([
           {
             originX: 'start',
@@ -219,7 +223,7 @@ export class AgDropDown
             overlayY: 'top',
           },
         ]),
-      width: `${this.portalContainer.nativeElement.getBoundingClientRect().width}px`,
+      width: `${this.portalContainer().nativeElement.getBoundingClientRect().width}px`,
       hasBackdrop: true,
       scrollStrategy: this.overlay.scrollStrategies.reposition(),
     });
@@ -240,7 +244,7 @@ export class AgDropDown
       }
     */
     this.overlayRef.attach(
-      new TemplatePortal(this.portalView, this.viewContainerRef)
+      new TemplatePortal(this.portalView(), this.viewContainerRef)
     );
   };
   //

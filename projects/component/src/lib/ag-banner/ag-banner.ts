@@ -1,28 +1,30 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   input,
   linkedSignal,
   OnInit,
   Output,
-} from "@angular/core";
-import { Library } from "@angularis/core";
+  signal,
+  Signal,
+} from '@angular/core';
+import { Library } from '@angularis/core';
 
 @Component({
-  selector: "ag-banner",
+  selector: 'ag-banner',
   imports: [CommonModule],
-  templateUrl: "ag-banner.html",
-  styleUrls: ["ag-banner.scss"],
+  templateUrl: 'ag-banner.html',
+  styleUrls: ['ag-banner.scss'],
 })
 export class AgBanner implements OnInit {
-  public readonly label = input<string>('');
-  public readonly name = input<string>('');
-  public readonly style = input<object>({});
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>(false);
+  @Input() label = signal('');
+  public style = input<object>({});
+  public disabled = input<boolean>(false);
+  public hidden = input<boolean>(false);
+  public active = input<boolean>(false);
   public readonly classes = linkedSignal(() => {
     const list: string[] = Array.from(this.element.nativeElement.classList);
     if (Library.isArrayWithLength(list)) {
@@ -38,12 +40,11 @@ export class AgBanner implements OnInit {
   //
   // constructor()
   //
-  constructor(private element: ElementRef) {
-  }
+  constructor(private element: ElementRef) {}
   //
   // ngOnInit()
   //
-  public ngOnInit() { }
+  public ngOnInit() {}
   //
   // OnClick
   //

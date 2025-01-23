@@ -8,9 +8,8 @@ import {
   SimpleChange,
   TemplateRef,
   Type,
-  input
+  input,
 } from '@angular/core';
-
 
 //
 // lernender/Core
@@ -40,14 +39,14 @@ export class AgTable implements OnInit, OnDestroy, OnChanges {
   public get table() {
     return this._table;
   }
-  public readonly hidden = input<boolean>();
-  public readonly disabled = input<boolean>();
+  public hidden = input<boolean>(false);
+  public disabled = input<boolean>(false);
   public readonly contentType = input<any>();
   public readonly hideHeader = input<boolean>(false);
   public readonly border = input<boolean>(false);
   public readonly label = input<string>('');
   public readonly schema = input<TableSchema>(new TableSchema());
-  public readonly actions = input<Action[]>();
+  public readonly actions = input<Action[]>([]);
   public readonly template = input<Content<any>>();
   public readonly style = input<object>();
 

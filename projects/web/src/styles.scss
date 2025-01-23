@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'index';
+@use 'scss/font-awesome.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 20px;
+  text-align: center;
+
+  &:first-child {
+    text-align: left;
+    max-width: 50%;
+    width: 30%;
+  }
+}
+
+hr {
+  margin: 21px 0;
+}
+
+.component-header {
+  height: 50px;
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-300);
+  display:flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  h2.component-title {
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+
+p {
+  display: block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  unicode-bidi: isolate;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}

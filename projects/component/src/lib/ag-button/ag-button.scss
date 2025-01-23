@@ -39,7 +39,7 @@ $circle-size-sm: 25px;
     }
 
     &.btn-primary,
-    &.btn-primary-sm {
+    &.btn-primary-sm {      
       &:active {
         color: var(--color-white);
         background-color: var(--color-primary-accent);

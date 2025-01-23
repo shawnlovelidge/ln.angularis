@@ -12,7 +12,7 @@ import { toArgs } from './storybook.helper';
 //
 // @angularis/component
 //
-import { AgDropDown, AngIcon } from '@angularis/component';
+import { AgDropDown, AgIcon } from '@angularis/component';
 
 //
 // Meta
@@ -49,7 +49,7 @@ const meta: Meta<AgDropDown> = {
   },
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, AngIcon],
+      imports: [CommonModule, AgIcon],
       declarations: [],
     }),
   ],
@@ -103,7 +103,7 @@ export const Simple: Story = {
     return {
       props: { ...props, handleValueChange, ...updatedArgs },
       template: `
-        < ag-dropdown
+        <ag-dropdown
           [darkTheme]="darkTheme"
           [label]="label"
           [textField]="textField"
@@ -114,7 +114,7 @@ export const Simple: Story = {
           [value]="value"
           [items]="items"
           (onValueChange)="handleValueChange($event)"
-        ></ ag-dropdown>`,
+        ></ag-dropdown>`,
     };
   },
   // play: async ({ args, canvasElement, step }) => {

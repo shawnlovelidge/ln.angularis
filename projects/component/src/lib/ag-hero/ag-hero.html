@@ -1,5 +1,5 @@
-<div class="ag-hero">
-  <div class="ag-hero-headline">
+<div class="ag-hero" [class.hidden]="hidden()" [class.disabled]="disabled()">
+  <div class="ag-hero-label">
     {{label()}}
   </div>
   <div class="ag-hero-content">

@@ -1,0 +1,18 @@
+<div class="ln-icon">
+  <div class="component-header">
+    <h2 class="component-title">Component: &lt;ag-icon/&gt;</h2>
+  </div>
+  <hr />
+  <div class="ln-icon-container">
+    @for(icon of icons(); track icon) {
+    <div class="ln-icon__item__wrapper">
+      <div class="ln-icon__item">
+        <div class="ln-icon__item__icon">
+          <ag-icon [name]="icon()"></ag-icon>
+        </div>
+        <div class="ln-icon__item__name">{{ icon() }}</div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

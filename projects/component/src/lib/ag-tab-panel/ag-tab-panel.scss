@@ -1,0 +1,109 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.host {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ag-tab-panel {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  .ag-tab-panel-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    ul.ag-tab-panel-tabs {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-start;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      color: var(--color-text);
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 4px;
+
+      &::before {
+        content: '';
+        display: table;
+      }
+
+      &::after {
+        clear: both;
+      }
+
+      li.ag-tab-panel-tab {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+        min-width: 100px;
+        width: auto;
+        padding: 0 8px 0 8px;
+        cursor: default;
+        background-color: var(--color-gray-100);
+        border: 1px solid transparent;
+        border-radius: 4px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        font-weight: normal;
+        color: var(--color-text);
+
+        &:hover {
+          cursor: pointer;
+          font-weight: 700;
+          border: 1px solid var(--color-gray-400);                  
+          color: var(--color-primary);          
+          transition-property: border, color, font-weight;
+          transition-duration: 0.4s;
+          transition-timing-function: ease-out;
+        }
+
+        &.active {
+          border-bottom: 0;
+          font-weight: 700;
+          border: 1px solid var(--color-gray-400);
+          color: var(--color-primary);
+
+          &:hover {
+            cursor: default;
+            text-decoration: none;
+            font-weight: 700px;
+            
+
+            &.active {
+              text-decoration: none;
+            }
+          }
+        }
+
+        &.disabled {
+          @include disabled();
+        }
+      }
+    }
+
+    .ag-tab-panel-content {
+      border: 1px solid var(--color-gray-400);
+      padding: 20px;
+      width: inherit;
+      -webkit-box-shadow: 4px 4px 14px 1px rgba(240,240,240,0.62);
+      -moz-box-shadow: 4px 4px 14px 1px rgba(240,240,240,0.62);
+      box-shadow: 4px 4px 14px 1px rgba(240,240,240,0.62);      
+    }
+  }
+}

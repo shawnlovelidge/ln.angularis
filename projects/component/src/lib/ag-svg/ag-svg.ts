@@ -23,8 +23,8 @@ import { Guid, Library } from '@angularis/core';
   styleUrls: ['ag-svg.scss'],
 })
 export class AgSvg implements OnChanges {
-  public readonly hidden = input<boolean>(false);
-  public readonly disabled = input<boolean>(false);
+  public hidden = input<boolean>(false);
+  public disabled = input<boolean>(false);
   public readonly color = input<string>('');
   public readonly name = input<string>('Amplify');
   public readonly title = input<string>('');

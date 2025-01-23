@@ -1,14 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Output,
-  EventEmitter,
-  OnChanges,
-  SimpleChanges,
-  input,
-  linkedSignal,
-  ElementRef
-} from '@angular/core';
+import { Component, Output, EventEmitter, input, effect } from '@angular/core';
 //
 // Lernender/Core
 //
@@ -22,26 +13,40 @@ import { Library } from '@angularis/core';
   templateUrl: 'ag-icon.html',
   styleUrls: ['ag-icon.scss'],
 })
-export class AgIcon  {
-  public readonly disabled = input<boolean>();
-  public readonly hidden = input<boolean>();
+export class AgIcon {
+  public name = input.required<string>();
+  public disabled = input<boolean>();
+  public hidden = input<boolean>();
   public readonly active = input<boolean>();
   public readonly style = input<object>();
   public readonly title = input<string>();
-  public readonly classes = linkedSignal(() => {
-    const list: string[] = Array.from(this.element.nativeElement.classList);
-    if (Library.isArrayWithLength(list)) {
-      return list.unshift('fa-solid');
-    }
-    return [];
-  });  
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
+  //     console.log(
+  //       `AgIcon Classes: %c ${list.join(' ')}`,
+  //       `color:rgb(16, 231, 88); font-weight: bold`
+  //     );
+  @Output()
+  public onClick: EventEmitter<any> = new EventEmitter();
+  //
+  // ClassList
+  //
+  public classes: string[] = [];
   //
   // Constructor
   //
-  constructor(private element: ElementRef) {   
+  constructor() {
+    effect(() => {
+      this.classes = this.name().split(' ');
+      this.classes.unshift('fa-solid');
+      // console.log(
+      //   `AgIcon Classes: %c ${this.classes.join(' ')}`,
+      //   `color:rgb(16, 231, 88); font-weight: bold`
+      // );
+    });
   }
-
+  //
+  // OnInit
+  //
+  public ngOnInit() {}
   //
   // OnClick
   //
@@ -51,4 +56,8 @@ export class AgIcon  {
       this.onClick.emit(event);
     }
   }
+  //
+  // OnDestroy
+  //
+  public ngOnDestroy(): void {}
 }

@@ -28,7 +28,7 @@
     }
 
     &:hover {
-      color: var(--color-primary-accent-hover);
+      color: var(--color-primary);
     }
 
     &.active {
@@ -88,7 +88,7 @@
     }
     &.square:before {
       content: string.unquote("\"\\#{'f0c8'}\"");
-    }
+    }   
     &.success:before {
       content: string.unquote("\"\\#{'f164'}\"");
     }

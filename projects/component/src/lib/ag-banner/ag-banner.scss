@@ -4,14 +4,15 @@
 .ag-banner {
   height: auto;
 
-  h3.ag-banner-label {
-    font-size: 1em;
+  .ag-banner-label {
+    font-size: 2em;
     margin-block-start: 0px;
     margin-block-end: 0px;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
-    unicode-bidi: isolate;    
+    unicode-bidi: isolate;   
+    padding: 20px 8px; 
     border-bottom: 0.06em solid var(--color-gray-500);
-    padding-bottom: 8px;
+    margin: 20px 0px;
   }
 }

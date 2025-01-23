@@ -1,4 +1,6 @@
-<div class="ag-banner">
-  <h3 class="ag-banner-label">{{label()}}</h3>
+<div class="ag-banner" [class.hidden]="hidden()" [class.disabled]="disabled()">
+  <h2 class="ag-banner-label" [ngClass]="{ 'active': active()}">
+    {{label()}}
+  </h2>
   <ng-content></ng-content>
 </div>

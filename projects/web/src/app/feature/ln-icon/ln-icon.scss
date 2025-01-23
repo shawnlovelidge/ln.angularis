@@ -1,0 +1,38 @@
+$ln-icon-size: 120px;
+
+.ln-icon {
+  .ln-icon-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 4px;
+
+    .ln-icon__item__wrapper {
+      height: $ln-icon-size;
+      width: $ln-icon-size;
+      border: 1px solid var(--color-gray-400);
+
+      .ln-icon__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        
+        .ln-icon__item__icon {
+          font-size: 24px;
+          height: 40px
+        }
+
+        .ln-icon__item__name {
+          height: auto;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

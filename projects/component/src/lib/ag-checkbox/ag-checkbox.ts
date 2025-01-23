@@ -7,6 +7,8 @@ import {
   Output,
   input,
   signal,
+  computed,
+  effect,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
@@ -21,118 +23,36 @@ import { AgIcon } from '../ag-icon/ag-icon';
 @Component({
   selector: 'ag-checkbox',
   imports: [CommonModule, AgIcon],
-  templateUrl: 'ag-checkbox.html',
-  styleUrls: ['ag-checkbox.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AgCheckBox),
-      multi: true,
-    },
-  ],
+  templateUrl: './ag-checkbox.html',
+  styleUrls: ['./ag-checkbox.scss'],
 })
-export class AgCheckBox implements ControlValueAccessor {
-  @Input()
-  get value(): boolean {
-    return this._value();
-  }
-  set value(v: boolean) {
-    this.setIconType();
-    // if (v !== this._value) {
-    this._value.set(v);
-    this.onChange(v);
-    //}
-  }
-
-  //
-  // Public properties
-  //
-  public readonly label = input.required<string>();
-  public readonly indeterminate = input.required<boolean>();
-  public readonly disabled = input.required<boolean>();
-  public readonly hidden = input.required<boolean>();
-  public readonly visibility = input.required<boolean>();
-  public readonly style = input.required<object>();
+export class AgCheckBox {
+  @Input() label: string = '';
+  @Input() value = signal(false);
+  public disabled = input<boolean>(false);
+  public hidden = input<boolean>(false);
+  public classes = signal('');
+  public style = computed(() => {
+    return { fontSize: '24px' };
+  });
   //
   // Output Variables
   //
   @Output() public onClick: EventEmitter<boolean> = new EventEmitter();
   //
-  // Signals
-  //
-  public type = signal('');
-  public name = signal('');
-  public iconStyle = signal({});
-  //
-  // _value
-  //
-  private _value = signal(false);
-  //
   // constructor()
   //
   constructor() {
-    this.value = false;
-  }
-
-  //
-  // ngOnInit()
-  //
-  ngOnInit() {
-    this.setIconType();
-  }
-
-  //
-  // writeValue()
-  //
-  public writeValue(value: boolean) {
-    this._value.set(value);
-    this.onChange(this._value);
-  }
-
-  public onChange = (_: any) => {};
-  public onTouched = () => {};
-  public registerOnChange(fn: (_: any) => void): void {
-    this.onChange = fn;
-  }
-  public registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+    effect(() => {
+      this.classes.set(this.value() ? 'square-check' : 'square');
+    });
   }
   //
-  // handleClick()
+  // handleOnClick()
   //
-  public handleClick($event: MouseEvent) {
+  public handleOnClick($event: MouseEvent) {
     $event.preventDefault();
-    $event.stopPropagation();
-    this.value = !this.value;
-    if (Library.isDefined(this.onClick)) {
-      this.onClick.emit(this.value);
-    }
-  }
-
-  /**
-   * isEmpty()
-   * Determines if the value property is deemed as empty.
-   */
-  public isEmpty(): boolean {
-    return !this.value;
-  }
-  /**
-   * empty()
-   * Set the value property to an empty state.
-   */
-  public empty(): void {
-    this.writeValue(false);
-  }
-
-  //
-  // setIconType()
-  //
-  private setIconType() {
-    if (this._value()) {
-      this.type.set('square-check'); //('fa-solid');
-    } else {
-      this.type.set('fa-regular');
-      this.name.set('square');
-    }
+    this.value.set(!this.value());
+    this.onClick.emit(this.value());
   }
 }

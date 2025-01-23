@@ -7,6 +7,7 @@ import {
   ElementRef,
   input,
   linkedSignal,
+  computed,
 } from '@angular/core';
 import { Library } from '@angularis/core';
 
@@ -17,10 +18,10 @@ import { Library } from '@angularis/core';
   styleUrls: ['ag-button.scss'],
 })
 export class AgButton implements OnInit {
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
+  public disabled = input<boolean>(false);
+  public hidden = input<boolean>(false);
   public readonly style = input<object>({});
-  public readonly classes = linkedSignal(() => {
+  public readonly classes = computed(() => {
     const list: string[] = Array.from(this.element.nativeElement.classList);
     if (Library.isArrayWithLength(list)) {
       return list;
