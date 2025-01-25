@@ -9,20 +9,10 @@ import { AgTab } from '../../../../../component/src/lib/ag-tab/ag-tab';
 import { AgBanner } from '../../../../../component/src/lib/ag-banner/ag-banner';
 
 @Component({
-  imports: [CommonModule, AgTabPanel, AgTab],
+  imports: [CommonModule, AgTabPanel, AgTab, AgBanner],
   selector: 'AgTabPanel',
-  template: `
-    <div class="component-header">
-      <h2 class="component-title">Component: &lt;ag-tab-panel/&gt;</h2>
-    </div>
-    <hr />
-    <ag-tab-panel [hidden]="hidden" [disabled]="disabled" [style]="style">
-      <ag-tab id="1" label="Code" [active]="active">
-        <div innerHTML="innerHTML"></div>
-      </ag-tab>
-      <ag-tab id="2" label="Example"> </ag-tab>
-    </ag-tab-panel>
-  `,
+  templateUrl: 'ln-tab-panel.html',
+  styleUrls: ['ln-tab-panel.scss'],
 })
 export class LnTabPanel {
   public banner = signal('Sample Banner');

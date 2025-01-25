@@ -39,6 +39,5 @@ export class LnCheckBox {
   public label = 'Submit';
   public checked = signal(true);
   public onClick = ($event: boolean) => {
-    console.log('onClick()::', $event);
   };
 }

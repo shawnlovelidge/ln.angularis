@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { AgHyperLink } from '../../../../../component/src/lib/ag-hyperlink/ag-hyperlink'; 
+import { AgHyperLink } from '../../../../../component/src/lib/ag-hyperlink/ag-hyperlink';
+import { Action } from '@angularis/core';
 
 @Component({
   imports: [CommonModule, AgHyperLink],
@@ -14,15 +15,36 @@ import { AgHyperLink } from '../../../../../component/src/lib/ag-hyperlink/ag-hy
       <table>
         <thead>
           <tr>
-            <th>Type</th>
+            <th>class</th>
             <th>Control</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Basic</td>
+            <td>(default)</td>
             <td>
-              <ag-hyperlink>{{ label() }}</ag-hyperlink>
+              <ag-hyperlink [model]="model()" (onClick)="handleOnClick($event)">
+                @if (model().hasName()) {
+                  {{ model().name }}
+                } @else {
+                  label()
+                }
+              </ag-hyperlink>
+            </td>
+          </tr>
+          <tr>
+            <td>class='button'</td>
+            <td>
+              <ag-hyperlink
+                class="button"
+                [model]="model()"
+                (onClick)="handleOnClick($event)">
+                @if (model().hasName()) {
+                  {{ model().name }}
+                } @else {
+                  label()
+                }
+              </ag-hyperlink>
             </td>
           </tr>
         </tbody>
@@ -31,5 +53,9 @@ import { AgHyperLink } from '../../../../../component/src/lib/ag-hyperlink/ag-hy
   `,
 })
 export class LnHyperLink {
+  public model = signal(new Action({ name: 'click here' }));
   public label = signal('Click Me');
+
+  public handleOnClick(item: Action) {
+  }
 }

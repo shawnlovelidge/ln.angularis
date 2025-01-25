@@ -1,0 +1,11 @@
+<div class="ag-radio-button" [class.hidden]="hidden()" [class.disabled]="disabled()">
+  <div class="ag-radio-button-label" [class.hidden]="label.length === 0">{{label}}</div>
+  <div class="ag-radio-button-items">
+    @for (item of model(); track item.id; let i = $index) {
+    <div class="ag-radio-button-item ">
+      <ag-button [attr.class]="classAttr(i, model().length, item)" (onClick)="handleOnClick($event, item)">
+        {{item.name}}</ag-button>
+    </div>
+    }
+  </div>
+</div>

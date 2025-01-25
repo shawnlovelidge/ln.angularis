@@ -6,9 +6,13 @@ import {
   EventEmitter,
   ElementRef,
   input,
-  linkedSignal,
-  computed,
+  AfterViewInit,
+  OnDestroy,
+  signal,
 } from '@angular/core';
+//
+// @angularis/core Library
+//
 import { Library } from '@angularis/core';
 
 @Component({
@@ -17,18 +21,24 @@ import { Library } from '@angularis/core';
   templateUrl: 'ag-button.html',
   styleUrls: ['ag-button.scss'],
 })
-export class AgButton implements OnInit {
-  public disabled = input<boolean>(false);
-  public hidden = input<boolean>(false);
-  public readonly style = input<object>({});
-  public readonly classes = computed(() => {
-    const list: string[] = Array.from(this.element.nativeElement.classList);
-    if (Library.isArrayWithLength(list)) {
-      return list;
-    }
-    return [];
-  });
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
+export class AgButton implements OnInit, AfterViewInit, OnDestroy {
+  public style = input<object>({});
+  public readonly disabled = input<boolean>(false);
+  public readonly hidden = input<boolean>(false);
+  public readonly active = input<boolean>(false);
+  //
+  // setup a singnal for the classes
+  //
+  public classes = signal<string>('');
+  //
+  // @Output EventEmitters
+  //
+  @Output()
+  public onClick: EventEmitter<any> = new EventEmitter();
+  //
+  // Private Variables
+  //
+  private observer!: MutationObserver;
   //
   // Constructor
   //
@@ -38,6 +48,46 @@ export class AgButton implements OnInit {
   //
   public ngOnInit() {}
   //
+  // ngAfterViewInit
+  //
+  public ngAfterViewInit() {
+    //
+    //  mutationCallback
+    //
+    const mutationCallback = (mutationsList: any, observer: any) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'attributes') {
+          if (mutation.target) {
+            if (mutation.target.classList) {
+              let classNames: string[] = [];
+              mutation.target.classList.forEach((className: string) => {
+                classNames.push(className);
+              });
+
+              if (Library.isArrayWithLength(classNames)) {
+                //
+                // Set the classes
+                //
+                this.classes.set(classNames.join(' '));
+              }
+            }
+          }
+        }
+      }
+    };
+
+    this.classes.set(this.parseClassList());
+    //
+    // Setup Listener for when the classList changes
+    //
+    this.observer = new MutationObserver(mutationCallback);
+    //
+    // Get it the target element
+    //
+    this.observer.observe(this.element.nativeElement, { attributes: true });
+  }
+
+  //
   // handleClick
   //
   public handleClick($event: MouseEvent) {
@@ -45,4 +95,21 @@ export class AgButton implements OnInit {
       this.onClick.emit($event);
     }
   }
+  //
+  // ngOnDestroy
+  //
+  public ngOnDestroy() {
+    if (this.observer) this.observer.disconnect();
+  }
+
+  //
+  // parseClassList
+  //
+  private parseClassList = (): string => {
+    const list: string[] = Array.from(this.element.nativeElement.classList);
+    if (Library.isArrayWithLength(list)) {
+      return list.join(' ');
+    }
+    return '';
+  };
 }

@@ -19,11 +19,11 @@
     @include disabled();
   }
 
+  &:hover {
+    color: var(--color-primary);
+  }
+  
   span {
     cursor: pointer;
-
-    &:hover {
-      color: var(--color-primary);
-    }
   }
 }

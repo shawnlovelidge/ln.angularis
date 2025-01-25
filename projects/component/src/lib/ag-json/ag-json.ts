@@ -14,8 +14,8 @@ import { Library } from '@angularis/core';
 })
 export class AgJson implements OnInit {
   public readonly data = input<object>();
-  public disabled = input<boolean>();
-  public hidden = input<boolean>();
+  public readonly disabled = input<boolean>(false);
+  public readonly hidden = input<boolean>(false);
   public sorted = computed(() => {
     const obj = this.data();
     if (obj) {
@@ -26,7 +26,5 @@ export class AgJson implements OnInit {
   //
   // ngOnInit
   //
-  public ngOnInit() {
-    console.log(`AgJson ngOnInit ${JSON.stringify(this.data())}`);
-  }
+  public ngOnInit() {}
 }

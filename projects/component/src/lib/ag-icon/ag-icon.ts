@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter, input, effect } from '@angular/core';
+import { Component, Output, EventEmitter, input, effect, computed, signal } from '@angular/core';
 //
 // Lernender/Core
 //
@@ -15,15 +15,16 @@ import { Library } from '@angularis/core';
 })
 export class AgIcon {
   public name = input.required<string>();
-  public disabled = input<boolean>();
-  public hidden = input<boolean>();
+  public readonly title = signal('');
+  public readonly size = input<number>(24);
+  public readonly color = input<string>('');
+  public readonly disabled = input<boolean>(false);
+  public readonly hidden = input<boolean>(false);
   public readonly active = input<boolean>();
-  public readonly style = input<object>();
-  public readonly title = input<string>();
-  //     console.log(
-  //       `AgIcon Classes: %c ${list.join(' ')}`,
-  //       `color:rgb(16, 231, 88); font-weight: bold`
-  //     );
+  public readonly style = computed(() => ({
+    color: `${this.color()}`,
+    fontSize: `${this.size()}px`,
+  }));
   @Output()
   public onClick: EventEmitter<any> = new EventEmitter();
   //
@@ -37,10 +38,6 @@ export class AgIcon {
     effect(() => {
       this.classes = this.name().split(' ');
       this.classes.unshift('fa-solid');
-      // console.log(
-      //   `AgIcon Classes: %c ${this.classes.join(' ')}`,
-      //   `color:rgb(16, 231, 88); font-weight: bold`
-      // );
     });
   }
   //

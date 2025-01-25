@@ -13,15 +13,16 @@
     @include disabled();
   }
 
-  a.ag-hyperlink-atag {
+  a.atag {
     cursor: pointer;
     text-decoration: none;
     transition: color 0.1s ease;
+    color: var(--color-primary);
+    font-weight: normal;
 
     &:hover,
     &:focus {
-      cursor: pointer;
-      color: var(--color-primary);
+      font-weight: 700;
     }
 
     &:visited {
@@ -36,7 +37,49 @@
     }
   }
 
-  .ag-hyperlink-icon {
+  a.button {
+    @include user-select();
+    @include border-radius(20px);
+    background-color: var(--color-primary);
+    color: var(--color-white);    
+    height: 32px;
+    line-height: 16px;
+    overflow: hidden;
+    padding: 8px 20px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.1s ease;    
+
+    &:hover,
+    &:focus {
+      font-weight: 700;
+      box-shadow: 0 2px 4px 0 rgba(204, 0, 0, 0.12),
+        0 4px 8px 0 rgba(124, 132, 138, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:visited {
+      color: var(--color-black);
+    }
+
+    &.active {
+     color: var(--color-black);
+    }
+    &.disabled {
+      @include disabled();
+    }
+  }  
+
+  .icon {
     position: relative;
     color: var(--color-primary);
     top: 3px;

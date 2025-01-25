@@ -1,8 +1,14 @@
 <div class="ag-toolbar">
   <ul class="ag-toolbar-items">
     @for (item of model(); track $index) {
-    <li class="ag-toolbar-item" (click)="handleOnClick(item)">
-      <ag-icon [style]="item.style" [hidden]="item.hidden" [disabled]="item.disabled"></ag-icon>
+    <li class="ag-toolbar-item">
+      <ag-icon 
+        [name]="item.name" 
+        [color]="color()" 
+        [size]="size()" 
+        (onClick)="handleOnClick($event, item)"
+        [hidden]="item.hidden"
+        [disabled]="item.disabled"></ag-icon>
     </li>
     }
   </ul>

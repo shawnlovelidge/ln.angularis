@@ -14,7 +14,7 @@ import { Guid, Library } from '@angularis/core';
   styleUrls: ['ag-hero.scss'],
 })
 export class AgHero {
-  public label = input<string>('');
-  public disabled = input<boolean>(false);
-  public hidden = input<boolean>(false);
+  @Input() public label: string = '';
+  public readonly disabled = input<boolean>(false);
+  public readonly hidden = input<boolean>(false);
 }

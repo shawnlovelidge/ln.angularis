@@ -1,21 +1,25 @@
 @use 'scss/mixins/standard' as *;
-//@use 'root';
 
 $circle-size: 40px;
 $circle-size-sm: 25px;
 
+$border-size: 2px;
+
+$size: 40px;
+$size-sm: 25px;
+
+$brand-color: var(--color-primary);
+$red: var(--color-red);
+$white: var(--color-white);
+$border-color: var(--color-gray-900);
+$disabled: var(--color-disabled);
+
 .ag-button {
-  margin: 0;
-  padding: 0;
 
   button {
-    @include font-size(12px);
-    @include user-select();
-    @include border-radius(20px);
     background-color: var(--color-primary);
     color: var(--color-white);
-    height: 32px;
-    line-height: 16px;
+    border-radius: $border-size;
     overflow: hidden;
     padding: 8px 20px;
     text-align: center;
@@ -23,46 +27,48 @@ $circle-size-sm: 25px;
     white-space: nowrap;
     width: auto;
     outline: none;
-    border: 0;
-
-    &.hidden {
-      display: none;
-    }
+    border: 1px solid transparent;
+    user-select: none;
+    min-width: 100px;
 
     &:hover {
-      box-shadow: 0 2px 4px 0 rgba(204, 0, 0, 0.12),
-        0 4px 8px 0 rgba(124, 132, 138, 0.2);
+      box-shadow: 0 4px 8px 0 rgba(204, 0, 0, 0.12),
+        0 8px 16px 0 rgba(124, 132, 138, 0.2);
+    }
+        
+    &.hidden {
+      display: none;
     }
 
     &:focus {
       outline: none;
     }
 
-    &.btn-primary,
-    &.btn-primary-sm {      
-      &:active {
-        color: var(--color-white);
-        background-color: var(--color-primary-accent);
-      }
+    &.disabled {
+      background-color: var(--color-disabled);
+      color: var(--color-gray-500);
+      border: $border-size solid var(--color-gray-400);
+      opacity: 0.75;
+      pointer-events: none;
     }
 
-    &.btn-primary-sm {
-      height: 24px;
-      padding: 4px 20px;
+    &.small {
+      height: 20px;
+      width: auto;
+      min-width: 40px;
+      line-height: 8px;
+      padding: 2px 8px;
+      font-size: 11px;
+      max-width: 100px;
     }
 
-    &.btn-secondary,
-    &.btn-secondary-sm {
-      background-color: var(--color-white);
-      color: var(--color-primary);
-
-      &:active {
-        background-color: var(--color-gray-600);
-      }
+    &.secondary {
+      background-color: var(--color-secondary);
+      color: var(--color-white);
     }
 
-    &.btn-circle {
-      @include border-radius(50%);
+    &.circle {
+      border-radius: 50%;
       width: $circle-size;
       height: $circle-size;
       min-width: $circle-size;
@@ -70,32 +76,113 @@ $circle-size-sm: 25px;
       max-width: $circle-size;
       max-height: $circle-size;
       padding: 0;
-      font-size: 20px;
-    }
+      text-align: center;
 
-    &.btn-circle-sm {
-      @include border-radius(50%);
-      width: $circle-size-sm;
-      height: $circle-size-sm;
-      min-width: $circle-size-sm;
-      min-height: $circle-size-sm;
-      max-width: $circle-size-sm;
-      max-height: $circle-size-sm;
-      padding: 0;
-    }
+      &.small {
+        border-radius: 50%;
+        width: $circle-size-sm;
+        height: $circle-size-sm;
+        min-width: $circle-size-sm;
+        min-height: $circle-size-sm;
+        max-width: $circle-size-sm;
+        max-height: $circle-size-sm;
+        padding: 0;
+      }
 
-    &.btn-circle,
-    &.btn-circle-sm {
-      &:active {
-        color: var(--color-white);
-        background-color: var(--color-primary-accent);
+      &.active {
+        border: $border-size solid var(--color-black);
       }
     }
 
-    &.disabled {
-      @include disabled();
-      color: var(--color-gray-600);
-      background-color: var(--color-disabled);
+    &.radio-button {
+      border: 0;
+      border-radius: 0;
+      border-top: $border-size solid var(--color-gray-400);
+      border-bottom: $border-size solid var(--color-gray-400);
+
+      &.active {
+        background-color: var(--color-primary-accent);
+      }
+
+      &:hover {
+        background-color: var(--color-primary-accent);
+      }
+
+      &.icon {
+        display: inline-flex;
+        align-items: center;
+        font-size: 22px;
+        padding: 8px;
+        min-width: 40px;
+        vertical-align: middle;
+        color: var(--color-black);
+        background-color: var(--color-gray-100);
+
+        &.active {
+          background-color: var(--color-gray-200);
+        }
+
+        &:hover {
+          background-color: var(--color-gray-200);
+        }
+      }
+
+      &.secondary {
+        background-color: var(--color-secondary);
+
+        &.active {
+          background-color: var(--color-secondary-accent);
+        }
+
+        &:hover {
+          background-color: var(--color-secondary-accent);
+        }
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &.disabled {
+        background-color: var(--color-disabled);
+        color: var(--color-gray-500);
+        opacity: 0.75;
+        pointer-events: none;
+      }
+
+      &.left {
+        border-left: $border-size solid var(--color-gray-400);
+        border-right: 0px;
+        border-top-left-radius: $border-size;
+        border-bottom-left-radius: $border-size;
+        border-top-right-radius: 0px;
+      }
+
+      &.right {
+        border-right: $border-size solid var(--color-gray-400);
+        border-left: 0px;
+        border-top-right-radius: $border-size;
+        border-bottom-right-radius: $border-size;
+        border-top-left-radius: 0px;
+      }
+    }
+
+    &.radio-button-icon {
+      background-color: transparent;
+
+      &.active {
+        background-color: var(--color-primary-accent);
+      }
+
+      &.left {
+      }
+
+      &.right {
+      }
     }
   }
 }

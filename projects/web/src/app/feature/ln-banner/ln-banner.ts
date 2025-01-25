@@ -11,7 +11,7 @@ import { AgBanner } from '../../../../../component/src/lib/ag-banner/ag-banner';
         <h2 class="component-title">Component: &lt;ag-banner/&gt;</h2>
       </div>
       <hr />
-      <ag-banner [label]="label">
+      <ag-banner label="label()">
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

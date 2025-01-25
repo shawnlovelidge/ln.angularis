@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output, input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, computed, input } from '@angular/core';
 //
 // Action
 //
-import { Action } from '@angularis/core';
+import { Action, Library } from '@angularis/core';
 
 @Component({
   imports: [CommonModule],
@@ -13,6 +13,15 @@ import { Action } from '@angularis/core';
 })
 export class AgHyperLink implements OnInit {
   public readonly model = input<Action>(new Action());
+  public readonly disabled = input<boolean>(false);
+  public readonly hidden = input<boolean>(false);
+  public readonly classes = computed(() => {
+    const list: string[] = Array.from(this.element.nativeElement.classList);
+    if (Library.isArrayWithLength(list)) {
+      return list;
+    }
+    return ['atag'];
+  });
   //
   // onClick()
   //
@@ -20,8 +29,7 @@ export class AgHyperLink implements OnInit {
   //
   // constructor
   //
-  constructor() {
-  }
+  constructor(private element: ElementRef) {}
   //
   // ngOnInit
   //

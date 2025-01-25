@@ -20,21 +20,57 @@ import { AgButton } from '../../../../../component/src/lib/ag-button/ag-button';
         </thead>
         <tbody>
           <tr>
-            <td>&nbsp;</td>
+            <td>(default)</td>
             <td>
-              <ag-button>{{ label() }}</ag-button>
+              <ag-button (onClick)="handleOnClick($event)">{{
+                label()
+              }}</ag-button>
             </td>
           </tr>
           <tr>
-            <td>class='btn-circle'</td>
+            <td>class='circle'</td>
             <td>
-              <ag-button class="btn-circle">{{ smLabel() }}</ag-button>
+              <ag-button class="circle" (onClick)="handleOnClick($event)">{{
+                charLabel()
+              }}</ag-button>
             </td>
           </tr>
           <tr>
-            <td>class='btn-circle-sm'</td>
+            <td>class='circle small'</td>
             <td>
-              <ag-button class="btn-circle-sm">{{ smLabel() }}</ag-button>
+              <ag-button
+                class="circle small"
+                (onClick)="handleOnClick($event)"
+                >{{ charLabel() }}</ag-button
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>class='secondary'</td>
+            <td>
+              <ag-button class="secondary" (onClick)="handleOnClick($event)">{{
+                label()
+              }}</ag-button>
+            </td>
+          </tr>
+          <tr>
+            <td>class='secondary circle'</td>
+            <td>
+              <ag-button
+                class="secondary circle"
+                (onClick)="handleOnClick($event)"
+                >{{ charLabel() }}</ag-button
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>class='secondary circle small'</td>
+            <td>
+              <ag-button
+                class="secondary circle small"
+                (onClick)="handleOnClick($event)"
+                >{{ charLabel() }}</ag-button
+              >
             </td>
           </tr>
         </tbody>
@@ -44,8 +80,23 @@ import { AgButton } from '../../../../../component/src/lib/ag-button/ag-button';
 })
 export class LnButton {
   public label = signal('Submit');
-  public smLabel = computed(() => {
+  public charLabel = computed(() => {
     var str = this.label();
     return str[0];
   });
+
+  //
+  // handleOnClick
+  //
+  public handleOnClick($event: MouseEvent) {
+    const { target } = $event;
+    const { innerText } = target as HTMLElement;
+    //
+    // Console Debug Statement
+    //
+    console.debug(
+      `%c ${innerText} button clicked`,
+      `color:rgb(210, 243, 26); font-size: 12px; font-weight: bold`
+    );
+  }
 }

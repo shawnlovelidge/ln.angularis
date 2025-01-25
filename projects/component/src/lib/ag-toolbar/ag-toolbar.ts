@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
+  computed,
   EventEmitter,
   input,
   Input,
@@ -23,9 +24,15 @@ import { Icon, Library } from '@angularis/core';
   styleUrls: ['ag-toolbar.scss'],
 })
 export class AgToolBar {
-  public readonly model = input<Icon[]>([]);
+  public readonly model = input.required<Icon[]>();
   public hidden = input<boolean>(false);
   public disabled = input<boolean>(false);
+  public readonly size = input<number>(24);
+  public readonly color = input<string>('');
+  public readonly style = computed(() => ({
+    color: `${this.color()}`,
+    fontSize: `calc(${this.size()}px + 8px)`,
+  }));  
   //
   // OnClick
   //
@@ -33,7 +40,7 @@ export class AgToolBar {
   //
   // OnClick
   //
-  public handleOnClick(item: Icon) {
+  public handleOnClick($event: any, item: Icon) {
     if (Library.isDefined(this.onClick)) {
       this.onClick.emit(item);
     }

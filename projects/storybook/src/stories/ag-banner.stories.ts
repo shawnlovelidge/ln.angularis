@@ -42,13 +42,13 @@ export const Basic: Story = {
     const [updatedArgs, updateArgs] = useArgs();
     return {
       props: {
-        label: signal(args.label),
+        label: args.label,
         hidden: signal(args.hidden),
         disabled: signal(args.disabled),
       },
       template: `
         <ag-banner 
-        [label]="label" 
+        label="label" 
         [hidden]="hidden" 
         [disabled]="disabled">
         <h1>Overview</h1>

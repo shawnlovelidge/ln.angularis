@@ -10,7 +10,6 @@ import {
   computed,
   effect,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
 // @angularis/core
 //
@@ -29,12 +28,24 @@ import { AgIcon } from '../ag-icon/ag-icon';
 export class AgCheckBox {
   @Input() label: string = '';
   @Input() value = signal(false);
-  public disabled = input<boolean>(false);
-  public hidden = input<boolean>(false);
-  public classes = signal('');
-  public style = computed(() => {
-    return { fontSize: '24px' };
-  });
+  public readonly disabled = input<boolean>(false);
+  public readonly hidden = input<boolean>(false);
+  public readonly active = input<boolean>(false);
+  public readonly name = signal('');
+  public readonly size = signal(24);
+  public readonly color = signal('');
+  //
+  // Computed Variables
+  //
+  public readonly labelStyle = computed(() => ({
+    color: `${this.color()}`,
+    fontSize: `calc(${this.size()}px - 6px)`,
+  }));
+  public readonly style = computed(() => ({
+    color: `${this.color()}`,
+    fontSize: `${this.size()}px`,
+  }));
+
   //
   // Output Variables
   //
@@ -44,7 +55,7 @@ export class AgCheckBox {
   //
   constructor() {
     effect(() => {
-      this.classes.set(this.value() ? 'square-check' : 'square');
+      this.name.set(this.value() ? 'square-check' : 'square');
     });
   }
   //
@@ -52,6 +63,7 @@ export class AgCheckBox {
   //
   public handleOnClick($event: MouseEvent) {
     $event.preventDefault();
+    $event.stopPropagation();
     this.value.set(!this.value());
     this.onClick.emit(this.value());
   }

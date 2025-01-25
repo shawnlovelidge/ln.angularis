@@ -152,7 +152,6 @@ export class GridFilter {
   }
 
   public clear(type = 0, tokens: any[]) {
-    debugger;
     //
     // Switch on type
     //
