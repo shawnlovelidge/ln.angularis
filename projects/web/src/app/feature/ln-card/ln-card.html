@@ -1,0 +1,33 @@
+<div class="component-header">
+  <h2 class="component-title">Component: &lt;ag-card/&gt;</h2>
+</div>
+<hr />
+<div class="ln-card">
+  <ag-card [model]="stacked()" 
+    [hidden]="hidden()" 
+    [disabled]="disabled()" 
+    [active]="active()"
+    [style]="stackedStyle()"
+    [contentStyle]="stackedContentStyle()"
+    >
+    <section>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </section>
+  </ag-card>
+  <br />
+  <ag-card [model]="side()" 
+    [hidden]="hidden()" 
+    [disabled]="disabled()" 
+    [active]="active()"
+    [style]="sideStyle()"
+    [contentStyle]="sideContentStyle()"
+    >
+    <section>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </section>
+  </ag-card>  
+</div>

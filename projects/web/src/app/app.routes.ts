@@ -7,6 +7,8 @@ import { LnIcon } from './feature/ln-icon/ln-icon';
 import { LnCheckBox } from './feature/ln-checkbox/ln-checkbox';
 import { LnToolBar } from './feature/ln-toolbar/ln-toolbar';
 import { LnRadioButton } from './feature/ln-radio-button/ln-radio-button';
+import { LnAccordion } from './feature/ln-accordion/ln-accordion';
+import { LnCard } from './feature/ln-card/ln-card';
 
 export const routes: Routes = [
   {
@@ -58,6 +60,16 @@ export const routes: Routes = [
     path: 'ln-radio-button',
     canActivate: [],
     component: LnRadioButton,
+  },
+  {
+    path: 'ln-accordion',
+    canActivate: [],
+    component: LnAccordion,
+  },
+  {
+    path: 'ln-card',
+    canActivate: [],
+    component: LnCard,
   },
 ];
 

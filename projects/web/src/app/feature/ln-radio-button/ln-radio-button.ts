@@ -10,7 +10,7 @@ import { Action } from '@angularis/core';
   styleUrls: ['ln-radio-button.scss'],
 })
 export class LnRadioButton {
-  public label = signal('Tempature');
+  public label = 'Tempature';
   public model = signal(
     [
       new Action({
@@ -35,12 +35,5 @@ export class LnRadioButton {
   // handleOnClick
   //
   public handleOnClick(item: Action) {
-    //
-    // Console Debug Statement
-    //
-    console.debug(
-      `%c ${item.name} radio-button clicked`,
-      `color:rgb(235, 246, 34); font-size: 12px; font-weight: bold`
-    );
   }
 }

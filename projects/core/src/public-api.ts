@@ -26,6 +26,7 @@ export { Action } from './lib/common/action';
 export { Base } from './lib/common/base';
 export { Category } from './lib/common/category';
 export { Clock } from './lib/common/clock';
+export { Style } from './lib/common/style';
 export { Element } from './lib/common/element';
 export { Email } from './lib/common/email';
 export { Endpoint } from './lib/common/endpoint';

@@ -1,0 +1,108 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-accordion {
+  border-radius: 1px;
+  height: auto;
+  //width: 100%;
+  border: 1px solid var(--color-gray-400);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 6px 10px 0px;
+
+  &.hidden {
+    display: none;
+  }
+
+  header.ag-accordion-header {
+    cursor: default;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0;
+    font-weight: 700;
+    font-size: 14px;
+    height: 50px;
+    height: inherit;
+    line-height: 20px;
+    padding: 10px;
+    
+
+    &.disabled {
+      background-color: var(--color-disabled);
+      color: var(--color-gray-500);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    &.open {
+      border-bottom: 0.05em solid var(--color-gray-400);
+    }
+
+    .ag-accordion-header-left {
+      cursor: default;
+      user-select: none;
+
+      &.active {
+        text-align: center;
+      }
+    }
+
+    .ag-accordion-header-right {
+      padding-left: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    &.ag-accordion-header-icon-right {
+      color: var(--color-gray-900);
+      position: absolute;
+      right: 12px;
+    }
+
+    .ag-accordion-header-icon-left {
+      width: 40px;
+      text-align: center;
+
+      &:hover {
+        visibility: visible;
+      }
+
+      &.showCarat {
+        visibility: visible;
+      }
+
+      &.hideCarat {
+        visibility: hidden;
+      }
+    }
+
+    .ag-accordion-header-icon-left-checked {
+      &:hover {
+        display: block;
+      }
+
+      &.showCarat {
+        display: block;
+      }
+
+      &.hideCarat {
+        display: none;
+      }
+    }
+  }
+
+  section.ag-accordion-section {
+    height: auto;
+    width: auto;
+    margin: 0;
+    padding: 10px;
+
+    &.disabled {
+      background-color: var(--color-disabled);
+      color: var(--color-gray-500);
+      border: 1px solid var(--color-gray-400);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+  }
+}
