@@ -31,13 +31,13 @@ import { AgTab } from '../ag-tab/ag-tab';
 // AgTabPanel
 //
 export class AgTabPanel implements AfterContentInit {
-  @Input() title = signal('Tab Panel');
-  @Input() hidden = signal(false);
-  @Input() disabled = signal(false);
-  @Input() style = signal({
+  @Input() public title: string = '';
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public style = {
     height: 'auto',
     width: '100%',
-  });
+  };
 
   @Input() template: TemplateRef<any> | undefined;
   @Input() actionTemplate: TemplateRef<any> | undefined;
@@ -53,7 +53,7 @@ export class AgTabPanel implements AfterContentInit {
     // Set the first tab that's labeled as active to active
     //
     const tab = this.tabs()?.forEach((t: AgTab) => {
-      t.active.set(t.active() ? true : false);
+      t.active = (t.active ? true : false);
     });
   }
   //
@@ -62,8 +62,8 @@ export class AgTabPanel implements AfterContentInit {
   public handleTab = (tab: AgTab) => {
     if (Library.isDefined(tab)) {
       this.tabs()?.forEach((t: AgTab) => {
-        t.active.set(t.id == tab.id);
-        t.hidden.set(!t.active());
+        t.active = (t.id == tab.id);
+        t.hidden = (!t.active);
       });
       this.onTabChange.emit({
         id: tab.id,

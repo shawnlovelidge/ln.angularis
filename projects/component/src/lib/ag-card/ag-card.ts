@@ -12,11 +12,10 @@ import {
 // Library
 //
 import { Card, Library } from '@angularis/core';
-
 //
 // Components
 //
-//import { AgIcon } from '../ag-icon/ag-icon';
+
 
 @Component({
   selector: 'ag-card',
@@ -26,11 +25,11 @@ import { Card, Library } from '@angularis/core';
 })
 export class AgCard implements OnInit {
   public readonly model = input.required<Card>();
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>(false);
-  public readonly style = input<object>({});
-  public readonly contentStyle = input<object>({});
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public active: boolean = false;
+  @Input() public style: object = {};
+  @Input() public contentStyle: object = {};
   //
   // Events
   //
@@ -40,7 +39,7 @@ export class AgCard implements OnInit {
   //
   public cardType = () => {
     return `ag-card-container ${this.model().name}`;
-  }
+  };
   //
   // constructor()
   //

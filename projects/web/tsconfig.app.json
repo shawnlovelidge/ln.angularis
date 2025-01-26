@@ -10,6 +10,14 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "bundler",
+    "paths": {
+      "@angularis/component": ["../../dist/component"],
+      "@angularis/core": ["../../dist/core"],
+      "@angularis/directive": ["../../dist/directive"],
+      "@angularis/model": ["../../dist/model"],
+      "@angularis/pipe": ["../../dist/pipe"],
+      "@angularis/service": ["../../dist/service"],
+    },    
   },
   "files": ["./src/main.ts"],
   "include": ["./src/**/*.d.ts"]

@@ -17,13 +17,13 @@ import { AgBanner } from '../../../../../component/src/lib/ag-banner/ag-banner';
 export class LnTabPanel {
   public banner = signal('Sample Banner');
   public label = signal('LnTabPanel');
-  public active = signal(true);
-  public hidden = signal(false);
-  public disabled = signal(false);
-  public style = signal({
+  public active = true;
+  public hidden = false;
+  public disabled = false;
+  public style = {
     height: 'auto',
     width: '100%',
-  });
+  };
 
   public innerHTML: string = `
       <ag-tab-panel [hidden]="hidden" [disabled]="disabled">

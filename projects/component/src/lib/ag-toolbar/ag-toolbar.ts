@@ -5,17 +5,18 @@ import {
   EventEmitter,
   input,
   Input,
+  linkedSignal,
   OnInit,
   Output,
 } from '@angular/core';
 //
-// Components
-//
-import { AgIcon } from '../ag-icon/ag-icon';
-//
 // Library
 //
 import { Icon, Library } from '@angularis/core';
+//
+// Components
+//
+import { AgIcon } from '../ag-icon/ag-icon';
 
 @Component({
   selector: 'ag-toolbar',
@@ -24,15 +25,18 @@ import { Icon, Library } from '@angularis/core';
   styleUrls: ['ag-toolbar.scss'],
 })
 export class AgToolBar {
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  //
+  // Signals
+  //
   public readonly model = input.required<Icon[]>();
-  public hidden = input<boolean>(false);
-  public disabled = input<boolean>(false);
   public readonly size = input<number>(24);
   public readonly color = input<string>('');
-  public readonly style = computed(() => ({
+  public readonly style = linkedSignal(() => ({
     color: `${this.color()}`,
     fontSize: `calc(${this.size()}px + 8px)`,
-  }));  
+  }));
   //
   // OnClick
   //

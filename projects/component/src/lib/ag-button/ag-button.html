@@ -1,5 +1,5 @@
-<div class="ag-button" [class.disabled]="disabled()" [class.hidden]="hidden()">
-  <button [attr.class]="classes()" [class.disabled]="disabled()" (click)="handleClick($event)">
+<div class="ag-button" [class.disabled]="disabled" [class.hidden]="hidden" [ngStyle]="style">
+  <button [attr.class]="classes()" [class.disabled]="disabled" (click)="handleClick($event)">
     <ng-content></ng-content>
   </button>
 </div>

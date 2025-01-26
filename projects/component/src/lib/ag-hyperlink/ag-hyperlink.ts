@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, OnInit, Output, computed, input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, computed, input } from '@angular/core';
 //
 // Action
 //
@@ -12,9 +12,13 @@ import { Action, Library } from '@angularis/core';
   styleUrls: ['ag-hyperlink.scss'],
 })
 export class AgHyperLink implements OnInit {
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public style: object = {};
+  //
+  // Signals
+  //
   public readonly model = input<Action>(new Action());
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
   public readonly classes = computed(() => {
     const list: string[] = Array.from(this.element.nativeElement.classList);
     if (Library.isArrayWithLength(list)) {

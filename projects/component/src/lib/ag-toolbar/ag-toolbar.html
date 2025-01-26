@@ -1,4 +1,4 @@
-<div class="ag-toolbar">
+<div class="ag-toolbar" [ngClass]="{ 'hidden': hidden, 'disabled': disabled }">
   <ul class="ag-toolbar-items">
     @for (item of model(); track $index) {
     <li class="ag-toolbar-item">

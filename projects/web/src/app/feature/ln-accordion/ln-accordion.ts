@@ -9,5 +9,5 @@ import { AgAccordion } from '../../../../../component/src/lib/ag-accordion/ag-ac
 })
 export class LnAccordion {
   public label = 'Accordion A';
-  public open = [signal(true), signal(false)];
+  public open = [true, false];
 }

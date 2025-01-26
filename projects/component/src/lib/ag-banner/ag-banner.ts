@@ -12,6 +12,9 @@ import {
   signal,
   Signal,
 } from '@angular/core';
+//
+// Library
+//
 import { Library } from '@angularis/core';
 
 @Component({
@@ -22,10 +25,10 @@ import { Library } from '@angularis/core';
 })
 export class AgBanner implements OnInit {
   @Input() label: string = '';
-  public style = input<object>({});
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>(false);
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public active: boolean = false;
+  @Input() public style: object = {};
 
   @Output() public onClick: EventEmitter<any> = new EventEmitter();
   //

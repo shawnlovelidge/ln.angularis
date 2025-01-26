@@ -12,7 +12,6 @@ import {
 // Library
 //
 import { Library } from '@angularis/core';
-
 //
 // Components
 //
@@ -26,11 +25,11 @@ import { AgIcon } from '../ag-icon/ag-icon';
 })
 export class AgAccordion implements OnInit {
   @Input() public label: string = '';
-  @Input() public open = signal(false);
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>(false);
-  public readonly style = input<object>({});
+  @Input() public open: boolean = false;
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public active: boolean = false;
+  @Input() public style: object = {};
   //
   // Events
   //

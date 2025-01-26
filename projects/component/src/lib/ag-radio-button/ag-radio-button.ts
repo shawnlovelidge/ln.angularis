@@ -25,11 +25,14 @@ import { AgButton } from '../ag-button/ag-button';
   styleUrls: ['ag-radio-button.scss'],
 })
 export class AgRadioButton {
-  @Input() label: string = '';
-  @Input() model = signal(new Array<Action>());
-  public readonly readonly = input<boolean>(false);
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
+  @Input() public label: string = '';
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public readonly: boolean = false;
+  //
+  // Signals
+  //
+  @Input() public model = signal(new Array<Action>());
   //
   // @Output() onClick
   //

@@ -1,7 +1,7 @@
 <div class="ag-checkbox" [ngClass]="{ 
-    'disabled': disabled(), 
-    'hidden': hidden() 
-  }" (click)="handleOnClick($event)">
+    'disabled': disabled, 
+    'hidden': hidden 
+  }" (click)="handleOnClick($event)" [ngStyle]="style()">
   <ag-icon [name]="name()" [color]="color()" [size]="size()">
   </ag-icon>
   <span (click)="handleOnClick($event)" [ngStyle]="labelStyle()">{{label}}</span>

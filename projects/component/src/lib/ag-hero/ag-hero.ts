@@ -1,11 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, Input, OnInit } from '@angular/core';
 //
-// Lernender/Core
-//
-import { Guid, Library } from '@angularis/core';
-//
-// ln-svg
+// ag-hero
 //
 @Component({
   imports: [CommonModule],
@@ -15,6 +11,7 @@ import { Guid, Library } from '@angularis/core';
 })
 export class AgHero {
   @Input() public label: string = '';
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public style: object = {};
 }

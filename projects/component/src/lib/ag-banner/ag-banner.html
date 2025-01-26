@@ -1,5 +1,5 @@
-<div class="ag-banner" [class.hidden]="hidden()" [class.disabled]="disabled()">
-  <h2 class="ag-banner-label" [ngClass]="{ 'active': active()}">
+<div class="ag-banner" [class.hidden]="hidden" [class.disabled]="disabled" [ngStyle]="style">
+  <h2 class="ag-banner-label" [ngClass]="{ 'active': active}">
     {{label}}
   </h2>
   <ng-content></ng-content>

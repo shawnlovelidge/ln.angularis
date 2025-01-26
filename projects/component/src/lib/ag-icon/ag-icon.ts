@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter, input, effect, computed, signal } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  input,
+  effect,
+  Input,
+  linkedSignal,
+} from '@angular/core';
 //
 // Lernender/Core
 //
@@ -14,14 +22,17 @@ import { Library } from '@angularis/core';
   styleUrls: ['ag-icon.scss'],
 })
 export class AgIcon {
+  @Input() public title: string = '';
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public active: boolean = false;
+  //
+  // Signals
+  //
   public name = input.required<string>();
-  public readonly title = signal('');
   public readonly size = input<number>(24);
   public readonly color = input<string>('');
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>();
-  public readonly style = computed(() => ({
+  public readonly style = linkedSignal(() => ({
     color: `${this.color()}`,
     fontSize: `${this.size()}px`,
   }));

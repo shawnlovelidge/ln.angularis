@@ -9,6 +9,7 @@ import {
   AfterViewInit,
   OnDestroy,
   signal,
+  Input,
 } from '@angular/core';
 //
 // @angularis/core Library
@@ -22,10 +23,10 @@ import { Library } from '@angularis/core';
   styleUrls: ['ag-button.scss'],
 })
 export class AgButton implements OnInit, AfterViewInit, OnDestroy {
-  public style = input<object>({});
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>(false);
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public active: boolean = false;
+  @Input() public style: object = {};
   //
   // setup a singnal for the classes
   //

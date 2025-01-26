@@ -7,10 +7,6 @@ import {
   signal,
 } from '@angular/core';
 //
-// Libraries
-//
-import { Library } from '@angularis/core';
-//
 // Components
 //
 
@@ -27,36 +23,20 @@ import { Library } from '@angularis/core';
 // AgTab
 //
 export class AgTab {
-  @Input() id: string = '';
-  @Input() label: string = '';
-  @Input() active = signal(false);
-  @Input() hidden = signal(false);
-  @Input() disabled = signal(false);
-  //
-  //
-  //
-  public style = input<object>({});
+  @Input() public id: string = '';
+  @Input() public label: string = '';
+  @Input() public active: boolean = false;
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public style: object = {};
   //
   // Private
   //
-  // private _active: boolean = false;
-  //
-  // @Input() set active(value: boolean) {
-  //   this._active = value;
-  //   if (Library.isDefined(this.viewRef)) {
-  //     this.viewRef.element.nativeElement.style.display = this._active
-  //       ? 'flex'
-  //       : 'none';
-  //   }
-  // }
-  //
-  // get active() {
-  //   return this._active;
-  // }
+
   //
   // Constructor
   //
-  constructor(private readonly viewRef: ViewContainerRef) {}
+  constructor() {}
   //
   // ngInit()
   //

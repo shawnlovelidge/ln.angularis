@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
-import { AgIcon } from '../../../../../component/src/lib/ag-icon/ag-icon';
+
+import { AgIcon } from '@angularis/component';
 
 @Component({
   imports: [CommonModule, AgIcon],

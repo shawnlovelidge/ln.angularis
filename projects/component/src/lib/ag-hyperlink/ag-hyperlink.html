@@ -1,11 +1,7 @@
-<div class="ag-hyperlink"
-    [ngClass]="{ 'hidden': model().hidden || hidden(), 'disabled':  model().disabled || disabled() }">
-    <a class="ag-hyperlink" 
-        [attr.class]="classes()" 
-        [class.style]="model().style" 
-        [class.active]="model().active"
-        [class.disabled]="model().disabled" 
-        (click)="handleClick($event)">
+<div class="ag-hyperlink" [ngClass]="{ 'hidden': model().hidden || hidden, 'disabled':  model().disabled || disabled }"
+    [ngStyle]="style">
+    <a class="ag-hyperlink" [attr.class]="classes()" [class.style]="model().style" [class.active]="model().active"
+        [class.disabled]="model().disabled" (click)="handleClick($event)">
         <ng-content></ng-content>
     </a>
 </div>

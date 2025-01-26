@@ -9,11 +9,8 @@ import {
   signal,
   computed,
   effect,
+  linkedSignal,
 } from '@angular/core';
-//
-// @angularis/core
-//
-import { Library } from '@angularis/core';
 //
 // @angularis/component
 //
@@ -26,22 +23,22 @@ import { AgIcon } from '../ag-icon/ag-icon';
   styleUrls: ['./ag-checkbox.scss'],
 })
 export class AgCheckBox {
-  @Input() label: string = '';
-  @Input() value = signal(false);
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly active = input<boolean>(false);
+  @Input() public label: string = '';
+  @Input() public disabled: boolean = false;
+  @Input() public hidden: boolean = false;
+  @Input() public active: boolean = false;
+  @Input() public value = signal(false);
   public readonly name = signal('');
   public readonly size = signal(24);
   public readonly color = signal('');
   //
   // Computed Variables
   //
-  public readonly labelStyle = computed(() => ({
+  public readonly labelStyle = linkedSignal(() => ({
     color: `${this.color()}`,
     fontSize: `calc(${this.size()}px - 6px)`,
   }));
-  public readonly style = computed(() => ({
+  public readonly style = linkedSignal(() => ({
     color: `${this.color()}`,
     fontSize: `${this.size()}px`,
   }));
