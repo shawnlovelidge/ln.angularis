@@ -1,8 +1,4 @@
-<div class="component-header">
-  <h2 class="component-title">Component: &lt;ag-hyperlink/&gt;</h2>
-</div>
-<hr />
-<div class="ln-hyperlink">
+<ln-canvas>
   <table>
     <thead>
       <tr>
@@ -16,9 +12,9 @@
         <td>
           <ag-hyperlink [model]="model()" (onClick)="handleOnClick($event)">
             @if (model().hasName()) {
-              {{ model().name }}
+            {{ model().name }}
             } @else {
-              label()
+            label()
             }
           </ag-hyperlink>
         </td>
@@ -26,18 +22,15 @@
       <tr>
         <td>class='button'</td>
         <td>
-          <ag-hyperlink
-            class="button"
-            [model]="model()"
-            (onClick)="handleOnClick($event)">
+          <ag-hyperlink class="button" [model]="model()" (onClick)="handleOnClick($event)">
             @if (model().hasName()) {
-              {{ model().name }}
+            {{ model().name }}
             } @else {
-              label()
+            label()
             }
           </ag-hyperlink>
         </td>
       </tr>
     </tbody>
   </table>
-</div>
+</ln-canvas>

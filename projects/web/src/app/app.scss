@@ -74,6 +74,7 @@
             text-decoration: none;
             font-family: 'Courier New', Courier, monospace;
             color: var(--color-primary-tertiary);
+            padding: 0 10px;
           }
         }
       }
@@ -81,7 +82,7 @@
 
     .app-sidebar-content
     {
-      padding: 30px;
+      padding: 10px;
     }
   }
 

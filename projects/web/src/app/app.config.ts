@@ -1,16 +1,9 @@
 import {
   ApplicationConfig,
-  inject,
-  Injector,
-  Optional,
-  provideAppInitializer,
-  provideEnvironmentInitializer,
-  Provider,
   provideZoneChangeDetection,
-  SkipSelf,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { Environment } from '@angularis/core';
+import { provideHttpClient } from '@angular/common/http';
 
 //
 // Routes
@@ -25,7 +18,8 @@ import { default as environments_default } from '../json/environments.json';
 //
 import {
   HTTP_ENVIRONMENT_CONFIGURATION,
-  AgEnvironmentService
+  AgEnvironmentService,
+  AgJsonService
 } from '@angularis/service';
 //
 // Application Configuration
@@ -42,6 +36,8 @@ export const appConfig: ApplicationConfig = {
       deps: [HTTP_ENVIRONMENT_CONFIGURATION],
       multi: false,
     },
+    provideHttpClient(),
+    AgJsonService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
   ],

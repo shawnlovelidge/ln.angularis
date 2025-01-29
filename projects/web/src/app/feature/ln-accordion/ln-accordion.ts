@@ -1,13 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, signal } from '@angular/core';
-import { AgAccordion } from '../../../../../component/src/lib/ag-accordion/ag-accordion';
+import { Component, input, OnInit, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+//
+// @angularis/component
+//
+import { AgAccordion } from '@angularis/component';
+//
+// @Components
+//
+import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, AgAccordion],
+  imports: [CommonModule, LnCanvas, AgAccordion],
   selector: 'AgAccordion',
   templateUrl: './ln-accordion.html',
 })
-export class LnAccordion {
+export class LnAccordion implements OnInit {
   public label = 'Accordion A';
   public open = [true, false];
+  //
+  // Constructor
+  //
+  constructor() {}
+  //
+  // ngOnInit
+  //
+  public ngOnInit() {}
 }

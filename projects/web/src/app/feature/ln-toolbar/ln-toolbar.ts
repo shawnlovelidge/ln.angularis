@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 //
 // Icon
 //
@@ -9,18 +10,23 @@ import { Icon } from '@angularis/core';
 //
 import { AgToolBar } from '@angularis/component';
 //
-// Font Awesome Library Container
-//
-//
 // Font Awesome Libraries
 //
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFacebook, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebook,
+  faGithub,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+//
+// @Components
+//
+import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, FontAwesomeModule, AgToolBar],
+  imports: [CommonModule, FontAwesomeModule, LnCanvas, AgToolBar],
   selector: 'ln-toolbar',
   templateUrl: './ln-toolbar.html',
   styleUrls: ['./ln-toolbar.scss'],
@@ -40,11 +46,19 @@ export class LnToolBar {
       //style: { color: 'purple' },
     }),
   ]);
-
-  constructor(library: FaIconLibrary) {
-    library.addIcons(faTwitter, faFacebook);
+  //
+  // Constructor
+  //
+  constructor(private library: FaIconLibrary) {
+    this.library.addIcons(faTwitter, faFacebook);
   }
-
+  //
+  // ngOnInit
+  //
+  public ngOnInit() {}
+  //
+  // handleOnClick
+  //
   public handleOnClick(item: Icon<IconProp>) {
     console.log(`${item.name} clicked`);
   }

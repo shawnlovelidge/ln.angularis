@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "name": "Basic",
+    "menu": [
+      {
+        "id": 1,
+        "component": "&lt;ag-button/&gt;",
+        "name": "Button",
+        "routerLink": "/ln-button",
+        "description": "Button component is used to trigger an action or event."
+      },
+      {
+        "id": 2,
+        "component": "&lt;ag-hero/&gt;",
+        "name": "Hero",
+        "routerLink": "/ln-hero",
+        "description": "Hero component is used to display a hero image with a title and description."
+      },
+      {
+        "id": 3,
+        "component": "&lt;ag-hyperlink/&gt;",
+        "name": "Hyperlink",
+        "routerLink": "/ln-hyperlink",
+        "description": "Hyperlink component is used to navigate to a different page or section."
+      },
+      {
+        "id": 4,
+        "component": "&lt;ag-json/&gt;",
+        "json": "json",
+        "routerLink": "/ln-json",
+        "description": "JSON component is used to display JSON data in a formatted way."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Form",
+    "menu": [
+      {
+        "id": 1,
+        "component": "&lt;ag-card/&gt;",
+        "name": "Card",
+        "routerLink": "/ln-card",
+        "description": "Card component is used to display content in a card layout."
+      },
+      {
+        "id": 2,
+        "component": "&lt;ag-checkbox/&gt;",
+        "name": "Checkbox",
+        "routerLink": "/ln-checkbox",
+        "description": "Checkbox component is used to select one or more options."
+      },
+      {
+        "id": 3,
+        "component": "&lt;ag-radio-button/&gt;",
+        "name": "Radio Button",
+        "routerLink": "/ln-radio-button",
+        "description": "Radio Button component is used to select one option from a list."
+      },
+      {
+        "id": 4,
+        "component": "&lt;ag-tab-panel/&gt;",
+        "name": "Tab Panel",
+        "routerLink": "/ln-tab-panel",
+        "description": "Tab Panel component is used to display content in a tab layout."
+      },
+      {
+        "id": 5,
+        "component": "&lt;ag-accordion/&gt;",
+        "name": "Accordion",
+        "routerLink": "/ln-accordion",
+        "description": "Accordion component is used to display content in an accordion layout."
+      },
+      {
+        "id": 6,
+        "component": "&lt;ag-toolbar/&gt;",
+        "name": "Toolbar",
+        "routerLink": "/ln-toolbar",
+        "description": "Toolbar component is used to display a toolbar with buttons and actions."
+      }
+    ]
+  }
+]

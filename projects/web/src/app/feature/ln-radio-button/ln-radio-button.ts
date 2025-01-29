@@ -1,10 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, signal } from '@angular/core';
-import { AgRadioButton } from '../../../../../component/src/lib/ag-radio-button/ag-radio-button';
+import { ActivatedRoute } from '@angular/router';
+//
+// @angularis/component
+//
+import { AgRadioButton } from '@angularis/component';
+//
+// @angularis/core
+//
 import { Action } from '@angularis/core';
+//
+// @Components
+//
+import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, AgRadioButton],
+  imports: [CommonModule, LnCanvas, AgRadioButton],
   selector: 'AgRadioButton',
   templateUrl: './ln-radio-button.html',
   styleUrls: ['ln-radio-button.scss'],
@@ -32,8 +43,16 @@ export class LnRadioButton {
   );
 
   //
+  // Constructor
+  //
+  constructor() {}
+  //
+  // ngOnInit
+  //
+  public ngOnInit() {}
+
+  //
   // handleOnClick
   //
-  public handleOnClick(item: Action) {
-  }
+  public handleOnClick(item: Action) {}
 }

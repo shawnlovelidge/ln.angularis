@@ -1,15 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, signal } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 //
 // Angularis Componants
 //
 import { AgTabPanel } from '../../../../../component/src/lib/ag-tab-panel/ag-tab-panel';
 import { AgTab } from '../../../../../component/src/lib/ag-tab/ag-tab';
 import { AgBanner } from '../../../../../component/src/lib/ag-banner/ag-banner';
+//
+// @Components
+//
+import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, AgTabPanel, AgTab, AgBanner],
+  imports: [CommonModule, LnCanvas, AgTabPanel, AgTab, AgBanner],
   selector: 'AgTabPanel',
   templateUrl: 'ln-tab-panel.html',
   styleUrls: ['ln-tab-panel.scss'],
@@ -24,13 +28,12 @@ export class LnTabPanel {
     height: 'auto',
     width: '100%',
   };
-
-  public innerHTML: string = `
-      <ag-tab-panel [hidden]="hidden" [disabled]="disabled">
-        <ag-tab id="1" label="Example" [active]="active"> </ag-tab>
-        <ag-tab id="2" label="Code">
-          <div [innerHTML]=code/>
-        </ag-tab>
-      </ag-tab-panel>
-    `;
+  //
+  // Constructor
+  //
+  constructor() {}
+  //
+  // ngOnInit
+  //
+  public ngOnInit() {}
 }

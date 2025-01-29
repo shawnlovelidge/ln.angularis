@@ -1,13 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, input, signal } from '@angular/core';
-import { AgCard } from '../../../../../component/src/lib/ag-card/ag-card';
+import { Component, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+//
+// @angularis/component
+//
+import { AgCard } from '@angularis/component';
 //
 // Import Card Model
 //
-import { Card, Guid, Style, Image } from '@angularis/core';
+import { Card, Style, Image } from '@angularis/core';
+//
+// @Components
+//
+import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, AgCard],
+  imports: [CommonModule, LnCanvas, AgCard],
   selector: 'AgButton',
   templateUrl: './ln-card.html',
 })
@@ -72,6 +80,14 @@ export class LnCard {
     height: 'auto',
     width: 'auto',
   });
+  //
+  // Constructor
+  //
+  constructor() {}
+  //
+  // ngOnInit
+  //
+  public ngOnInit() {}
   //
   // handleOnClick
   //

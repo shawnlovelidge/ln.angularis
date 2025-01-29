@@ -1,61 +1,27 @@
 <main class="app">
     <div class="app-container">
         <div class="app-header">
-            <strong>&#64;angularis/components</strong>&nbsp;&nbsp; Component Library
+            <strong>&#64;angularis</strong>&nbsp;&nbsp;Component Library
             <!-- <fa-icon [icon]="faAppleAlt" [style]="{fontSize: '48px'}"></fa-icon> -->
         </div>
         <div class="app-content">
             <div class="app-sidebar">
                 <ul class="app-sidebar-menu-items">
-                    <li class="app-sidebar-menu-item">
-                        <strong>Basic</strong>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-banner" routerLinkActive="active">&lt;ag-banner/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-button">&lt;ag-button/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-hero">&lt;ag-hero/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-hyperlink">&lt;ag-hyperlink/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-json">&lt;ag-json/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-icon">&lt;ag-icon/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-toolbar">&lt;ag-toolbar/&gt;</a>
-                    </li>      
-                    <br />              
-                    <li class="app-sidebar-menu-item">
-                        <strong>Form</strong>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-card">&lt;ag-card/&gt;</a>
-                    </li>                    
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-checkbox">&lt;ag-checkbox/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-radio-button">&lt;ag-radio-button/&gt;</a>
-                    </li>                    
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-tab-panel">&lt;ag-tab-panel/&gt;</a>
-                    </li>
-                    <li class="app-sidebar-menu-item">
-                        <a routerLink="/ln-accordion">&lt;ag-accordion/&gt;</a>
-                    </li>    
-                    
-                    <br />
-
-                    <li class="app-sidebar-menu-item">
-                        <strong>Grid</strong>
-                    </li>
+                    @for (item of menu(); track item.name)
+                    {
+                        <li class="app-sidebar-menu-item">
+                            <strong>{{item.name}}</strong>
+                        </li>
+                        @for (route of item.menu; track route.name)
+                        {
+                        <li class="app-sidebar-menu-item">
+                            <a [routerLink]="route.routerLink" [queryParams]="{ route: route | json }">
+                                {{route.name}}
+                            </a>
+                        </li>
+                        }
+                        <br />
+                    }
                 </ul>
             </div>
             <div class="app-sidebar-content">

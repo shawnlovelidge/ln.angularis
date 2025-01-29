@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 //
 // @angularis/core
 //
@@ -14,10 +15,13 @@ import { AgBanner } from '@angularis/component';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
+//
+// @Components
+//
+import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, AgBanner],
+  imports: [CommonModule, LnCanvas, AgBanner],
   selector: 'AgBanner',
   templateUrl: 'ln-banner.html',
 })
@@ -36,7 +40,16 @@ export class LnBanner {
       onClick: this.handleOnClick,
     }),
   ];
-
+  //
+  // Constructor
+  //
+  constructor(private library: FaIconLibrary) {
+    this.library.addIcons(faGithub, faFacebook);
+  }
+  //
+  // ngOnInit
+  //
+  public ngOnInit() {}
   //
   // handleOnClick
   //
@@ -48,10 +61,5 @@ export class LnBanner {
       `%c ${action.label.toLocaleUpperCase()} clicked`,
       `color:rgb(210, 243, 26); font-size: 12px; font-weight: bold`
     );
-  }
-
-  constructor(library: FaIconLibrary) {
-    library.addIcons(faGithub, faFacebook);
-    debugger;
   }
 }

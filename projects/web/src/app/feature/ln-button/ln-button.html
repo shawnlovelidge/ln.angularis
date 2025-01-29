@@ -1,96 +1,94 @@
-<div class="component-header">
-  <h2 class="component-title">Component: &lt;ag-button/&gt;</h2>
-</div>
-<hr />
-<div class="ln-button">
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Control</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>(default)</td>
-        <td>
-          <ag-button (onClick)="handleOnClick($event)">
-            <fa-icon [icon]="icon"></fa-icon>
-            {{
-            label()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='bordered'</td>
-        <td>
-          <ag-button class="bordered" (onClick)="handleOnClick($event)">
-            <fa-icon [icon]="icon"></fa-icon>
-            {{
-            label()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='text'</td>
-        <td>
-          <ag-button class="text" (onClick)="handleOnClick($event)">{{
-            label()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='circle'</td>
-        <td>
-          <ag-button class="circle" (onClick)="handleOnClick($event)">{{
-            charLabel()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='text circle'</td>
-        <td>
-          <ag-button class="text circle" (onClick)="handleOnClick($event)">{{
-            charLabel()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='bordered circle'</td>
-        <td>
-          <ag-button class="bordered circle" (onClick)="handleOnClick($event)">{{
-            charLabel()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='circle small'</td>
-        <td>
-          <ag-button class="circle small" (onClick)="handleOnClick($event)">{{ charLabel() }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='secondary'</td>
-        <td>
-          <ag-button class="secondary" (onClick)="handleOnClick($event)">
-            <fa-icon [icon]="icon"></fa-icon>
-            {{
-            label()
-            }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='secondary circle'</td>
-        <td>
-          <ag-button class="secondary circle" (onClick)="handleOnClick($event)">{{ charLabel() }}</ag-button>
-        </td>
-      </tr>
-      <tr>
-        <td>class='secondary circle small'</td>
-        <td>
-          <ag-button class="secondary circle small" (onClick)="handleOnClick($event)">{{ charLabel() }}</ag-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<ln-canvas>
+  <div class="ln-button">
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>(default)</td>
+          <td>
+            <ag-button (onClick)="handleOnClick($event)">
+              <fa-icon [icon]="icon"></fa-icon>
+              {{
+              label()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='bordered'</td>
+          <td>
+            <ag-button class="bordered" (onClick)="handleOnClick($event)">
+              <fa-icon [icon]="icon"></fa-icon>
+              {{
+              label()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='text'</td>
+          <td>
+            <ag-button class="text" (onClick)="handleOnClick($event)">{{
+              label()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='circle'</td>
+          <td>
+            <ag-button class="circle" (onClick)="handleOnClick($event)">{{
+              charLabel()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='text circle'</td>
+          <td>
+            <ag-button class="text circle" (onClick)="handleOnClick($event)">{{
+              charLabel()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='bordered circle'</td>
+          <td>
+            <ag-button class="bordered circle" (onClick)="handleOnClick($event)">{{
+              charLabel()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='circle small'</td>
+          <td>
+            <ag-button class="circle small" (onClick)="handleOnClick($event)">{{ charLabel() }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='secondary'</td>
+          <td>
+            <ag-button class="secondary" (onClick)="handleOnClick($event)">
+              <fa-icon [icon]="icon"></fa-icon>
+              {{
+              label()
+              }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='secondary circle'</td>
+          <td>
+            <ag-button class="secondary circle" (onClick)="handleOnClick($event)">{{ charLabel() }}</ag-button>
+          </td>
+        </tr>
+        <tr>
+          <td>class='secondary circle small'</td>
+          <td>
+            <ag-button class="secondary circle small" (onClick)="handleOnClick($event)">{{ charLabel() }}</ag-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ln-canvas>
