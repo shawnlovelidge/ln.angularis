@@ -1,19 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 //
 // Angularis Componants
 //
-import { AgTabPanel } from '../../../../../component/src/lib/ag-tab-panel/ag-tab-panel';
-import { AgTab } from '../../../../../component/src/lib/ag-tab/ag-tab';
-import { AgBanner } from '../../../../../component/src/lib/ag-banner/ag-banner';
+import { AgTabPanel, AgTab, AgBanner } from '@angularis/component';
 //
 // @Components
 //
 import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, LnCanvas, AgTabPanel, AgTab, AgBanner],
+  imports: [CommonModule, LnCanvas],
   selector: 'AgTabPanel',
   templateUrl: 'ln-tab-panel.html',
   styleUrls: ['ln-tab-panel.scss'],

@@ -3,6 +3,7 @@
 body {
   padding: 0;
   margin: 0;
+  color: var(--color-black);
 }
 
 p {
@@ -16,34 +17,60 @@ p {
   height: auto;
   padding: 0;
   width: 100%;
-}
 
-table,
-td,
-th {
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  padding: 20px;
-  text-align: center;
-
-  &:first-child {
-    text-align: left;
-    max-width: 50%;
-    width: 30%;
+  &:hover {
+    color: var(--color-black);
   }
 }
 
-hr {
-  margin: 21px 0;
+.table-standard {
+  overflow: auto;
+  width: 100%;
 }
 
+.table-standard table {
+  border: 1px solid var(--color-gray-200);
+  height: 100%;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  text-align: left;
+}
 
+.table-standard caption {
+  caption-side: top;
+  text-align: left;
+}
+
+.table-standard th {
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-100);
+  color: var(--color-black);
+  padding: 10px;
+  height: 60px;
+  &:first-child {
+    width: 50%;
+  }
+  &:last-child {
+    width: 50%;
+  }
+}
+
+.table-standard td {
+  border: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  padding: 10px;
+  height: 60px;
+  &:first-child {
+    width: 45%;
+  }  
+  &:last-child {
+    //width: 55%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }  
+}

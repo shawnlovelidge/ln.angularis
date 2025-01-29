@@ -63,15 +63,15 @@
         font-weight: normal;
         color: var(--color-text);
 
-        &:hover {
-          cursor: pointer;
-          font-weight: 700;
-          border: 1px solid var(--color-gray-400);                  
-          color: var(--color-primary);          
-          transition-property: border, color, font-weight;
-          transition-duration: 0.4s;
-          transition-timing-function: ease-out;
-        }
+        // &:hover {
+        //   cursor: pointer;
+        //   font-weight: 700;
+        //   border: 1px solid var(--color-gray-400);                  
+        //   color: var(--color-primary);          
+        //   transition-property: border, color, font-weight;
+        //   transition-duration: 0.4s;
+        //   transition-timing-function: ease-out;
+        // }
 
         &.active {
           border-bottom: 0;

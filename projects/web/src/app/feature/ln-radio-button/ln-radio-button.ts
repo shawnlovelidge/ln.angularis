@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 //
 // @angularis/component
 //

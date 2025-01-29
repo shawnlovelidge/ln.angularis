@@ -5,8 +5,9 @@
   "author": "Lovelidge, Shawn",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0"
+    "@angular/common": "^19.1.0",
+    "@angular/core": "^19.1.0",
+    "zone.js": "~0.15.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"

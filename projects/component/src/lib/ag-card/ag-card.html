@@ -3,19 +3,11 @@
   hidden: hidden || model().hidden || false,
   active: active || model().active || false,
 }" [ngStyle]="style">
-  <div [class]="cardType()" [ngClass]="{
-    disabled: disabled || model().disabled || false,
-    hidden: hidden || model().hidden || false,
-    active: active || model().active || false,
-  }">
+  <div [class]="cardType()">
     @if (model().image.href.length > 0) {
-    <img [attr.src]="model().image.href" [attr.style]="model().image.style" [attr.alt]="model().image.label" />
+    <img [attr.src]="model().image.href" />
     }
-    <div class="ag-card-content" [ngClass]="{
-      disabled: disabled || model().disabled || false,
-      hidden: hidden || model().hidden || false,
-      active: active || model().active || false,
-    }" [ngStyle]="contentStyle">
+    <div class="ag-card-content" [ngStyle]="contentStyle">
       <ng-content></ng-content>
     </div>
   </div>

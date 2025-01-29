@@ -13,16 +13,20 @@ import { RouteMenu } from '../../../model/route.menu';
 //
 // @components
 //
-import { AgBanner } from '@angularis/component';
+import { AgBanner, AgTab, AgTabPanel } from '@angularis/component';
 
 @Component({
-  imports: [CommonModule, AgBanner],
+  imports: [CommonModule, AgBanner, AgTabPanel, AgTab],
   selector: 'ln-canvas',
   templateUrl: 'ln-canvas.html',
   styleUrls: ['ln-canvas.scss'],
 })
 export class LnCanvas implements OnInit {
   @Input() public route: RouteMenu = new RouteMenu();
+  //
+  //
+  //
+  public active = true;
   //
   // Constructor
   //

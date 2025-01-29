@@ -1,5 +1,5 @@
 <ln-canvas>
-  <table>
+  <table class="table-standard">
     <thead>
       <tr>
         <th>Type</th>
@@ -10,7 +10,7 @@
       <tr>
         <td>(defaut)</td>
         <td>
-          <ag-radio-button [model]="model" [label]="label" (onClick)="handleOnClick($event)"></ag-radio-button>
+          <ag-radio-button [model]="model" (onClick)="handleOnClick($event)"></ag-radio-button>
         </td>
       </tr>
     </tbody>
