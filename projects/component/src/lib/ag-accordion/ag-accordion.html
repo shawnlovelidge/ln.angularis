@@ -1,14 +1,12 @@
-<div class="ag-accordion" [ngClass]="{ hidden: hidden }" >
-  <header class="ag-accordion-header" [ngClass]="{ disabled: disabled, open: open }" 
-    (click)="open = !open">
+<div class="ag-accordion" [ngClass]="{ hidden: hidden }">
+  <header class="ag-accordion-header" [ngClass]="{ disabled: disabled, open: open }" (click)="open = !open">
     <div className="ag-accordion-header-left">{{label}}</div>
     <div className="ag-accordion-header-right">
       @if (open)
       {
-      <ag-icon name="angle-up"></ag-icon>
-      }
-      @else {
-      <ag-icon name="angle-down"></ag-icon>
+      <fa-icon [icon]="['fas','caret-up']"></fa-icon>
+      } @else {
+      <fa-icon [icon]="['fas','caret-down']"></fa-icon>
       }
     </div>
   </header>
@@ -19,6 +17,6 @@
       height: open ? 'auto' : 0,
       transition: 'opacity 0.9s ease-in-out' 
     }">
-  <ng-content></ng-content>
+    <ng-content></ng-content>
   </section>
 </div>

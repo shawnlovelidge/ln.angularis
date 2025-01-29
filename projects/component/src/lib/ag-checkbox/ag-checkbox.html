@@ -2,7 +2,11 @@
     'disabled': disabled, 
     'hidden': hidden 
   }" (click)="handleOnClick($event)" [ngStyle]="style()">
-  <ag-icon [name]="name()" [color]="color()" [size]="size()">
-  </ag-icon>
+  @if (value())
+  {
+  <fa-icon [icon]="faCheckSquare"></fa-icon>
+  } @else {
+  <fa-icon [icon]="faSquare"></fa-icon>
+  }
   <span (click)="handleOnClick($event)" [ngStyle]="labelStyle()">{{label}}</span>
 </div>

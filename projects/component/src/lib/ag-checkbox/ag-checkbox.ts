@@ -2,23 +2,21 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
-  forwardRef,
   Input,
   Output,
-  input,
   signal,
-  computed,
   effect,
   linkedSignal,
 } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //
-// @angularis/component
+// Icons
 //
-import { AgIcon } from '../ag-icon/ag-icon';
+import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'ag-checkbox',
-  imports: [CommonModule, AgIcon],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './ag-checkbox.html',
   styleUrls: ['./ag-checkbox.scss'],
 })
@@ -42,6 +40,12 @@ export class AgCheckBox {
     color: `${this.color()}`,
     fontSize: `${this.size()}px`,
   }));
+
+  //
+  // Icons
+  //
+  faCheckSquare = faCheckSquare;
+  faSquare = faSquare;
 
   //
   // Output Variables

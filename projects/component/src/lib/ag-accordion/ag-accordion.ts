@@ -11,15 +11,18 @@ import {
 //
 // Library
 //
-import { Library } from '@angularis/core';
+import { Icon, Library } from '@angularis/core';
 //
-// Components
+// Font Awesome Library Container
 //
-import { AgIcon } from '../ag-icon/ag-icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ag-accordion',
-  imports: [CommonModule, AgIcon],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: 'ag-accordion.html',
   styleUrls: ['ag-accordion.scss'],
 })
@@ -37,11 +40,16 @@ export class AgAccordion implements OnInit {
   //
   // Public Variables
   //
-
+  public icon!: Icon<IconProp>;
   //
   // constructor()
   //
-  constructor() {}
+  constructor(library: FaIconLibrary) {
+    //
+    // FaIconLibrary
+    //
+    library.addIcons(faCaretUp, faCaretDown);
+  }
   //
   // ngOnInit()
   //

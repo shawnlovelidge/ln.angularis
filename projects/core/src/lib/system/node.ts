@@ -148,7 +148,6 @@ export class Node extends Element {
     if (item) {
       root.active = item.active;
       root.expanded = item.expanded;
-      root.icon = item.icon;
       root.name = item.name;
       root.onClick = item.onClick;
       root.parentId = item.parentId;

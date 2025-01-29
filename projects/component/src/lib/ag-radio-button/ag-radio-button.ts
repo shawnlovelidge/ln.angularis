@@ -36,7 +36,7 @@ export class AgRadioButton {
   //
   // @Output() onClick
   //
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
+  @Output() public onClick: EventEmitter<Action> = new EventEmitter();
   //
   // Constructor
   //

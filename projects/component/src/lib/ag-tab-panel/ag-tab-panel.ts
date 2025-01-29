@@ -5,15 +5,13 @@ import {
   EventEmitter,
   Output,
   AfterContentInit,
-  input,
   contentChildren,
-  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //
 // Library
 //
-import { Base, Library } from '@angularis/core';
+import { Library } from '@angularis/core';
 //
 // Import LnComponent
 //
@@ -38,12 +36,13 @@ export class AgTabPanel implements AfterContentInit {
     height: 'auto',
     width: '100%',
   };
-
   @Input() template: TemplateRef<any> | undefined;
   @Input() actionTemplate: TemplateRef<any> | undefined;
   @Output() public onTabChange: EventEmitter<any> = new EventEmitter();
-
-  readonly tabs = contentChildren(AgTab);
+  //
+  // Public Variables
+  //
+  public readonly tabs = contentChildren(AgTab);
 
   //
   // ngAfterContentInit()
@@ -53,7 +52,7 @@ export class AgTabPanel implements AfterContentInit {
     // Set the first tab that's labeled as active to active
     //
     const tab = this.tabs()?.forEach((t: AgTab) => {
-      t.active = (t.active ? true : false);
+      t.active = t.active ? true : false;
     });
   }
   //
@@ -62,8 +61,8 @@ export class AgTabPanel implements AfterContentInit {
   public handleTab = (tab: AgTab) => {
     if (Library.isDefined(tab)) {
       this.tabs()?.forEach((t: AgTab) => {
-        t.active = (t.id == tab.id);
-        t.hidden = (!t.active);
+        t.active = t.id == tab.id;
+        t.hidden = !t.active;
       });
       this.onTabChange.emit({
         id: tab.id,

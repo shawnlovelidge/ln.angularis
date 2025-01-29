@@ -1,34 +1,51 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed } from '@angular/core';
-
+import { Component, signal } from '@angular/core';
 //
-//
+// Icon
 //
 import { Icon } from '@angularis/core';
 //
+// Container
+//
+import { AgToolBar } from '@angularis/component';
+//
+// Font Awesome Library Container
 //
 //
-import { AgToolBar } from '../../../../../component/src/lib/ag-toolbar/ag-toolbar';
+// Font Awesome Libraries
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faFacebook, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  imports: [CommonModule, AgToolBar],
+  imports: [CommonModule, FontAwesomeModule, AgToolBar],
   selector: 'ln-toolbar',
   templateUrl: './ln-toolbar.html',
   styleUrls: ['./ln-toolbar.scss'],
 })
 export class LnToolBar {
-  private readonly list = [
-    'xmark',
-    'trashcan',
-    'info',
-    'circle-info',
-    'zoom-in',
-    'zoom-out',
-    'lock',
-    'tools',
-    'stethoscope',
-  ].sort();
-  public icons = computed(() => this.list.map(name => new Icon({ name })));
+  public icons = signal([
+    new Icon<IconProp>({
+      id: 1,
+      name: 'facebook',
+      component: ['fab', 'facebook'],
+      //style: { color: 'blue', fontSize: '36px' },
+    }),
+    new Icon<IconProp>({
+      id: 2,
+      name: 'twitter',
+      component: ['fab', 'twitter'],
+      //style: { color: 'purple' },
+    }),
+  ]);
 
-  public handleOnClick(item: Icon) {}
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faTwitter, faFacebook);
+  }
+
+  public handleOnClick(item: Icon<IconProp>) {
+    console.log(`${item.name} clicked`);
+  }
 }

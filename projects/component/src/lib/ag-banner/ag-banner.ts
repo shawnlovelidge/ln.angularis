@@ -1,54 +1,71 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
-  computed,
   ElementRef,
   EventEmitter,
   Input,
-  input,
-  linkedSignal,
   OnInit,
   Output,
-  signal,
-  Signal,
+  ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
+//
+// Font Awesome Library Container
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 //
 // Library
 //
-import { Library } from '@angularis/core';
+import { Action, Library } from '@angularis/core';
+//
+// Component Library
+//
+import { AgButton } from '../ag-button/ag-button';
 
 @Component({
   selector: 'ag-banner',
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule, AgButton],
   templateUrl: 'ag-banner.html',
   styleUrls: ['ag-banner.scss'],
 })
 export class AgBanner implements OnInit {
-  @Input() label: string = '';
+  @Input() public label: string = '';
+  @Input() public description: string = '';
   @Input() public disabled: boolean = false;
   @Input() public hidden: boolean = false;
   @Input() public active: boolean = false;
   @Input() public style: object = {};
-
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
+  @Input() public actions: Array<Action> = [];
+  @Input() public icon!: IconProp;
+  //
+  // Outputs
+  //
+  @Output() public onClick: EventEmitter<Action> = new EventEmitter();
   //
   // Public Variables
   //
-
+  public hasIcon(): boolean {
+    return this.icon !== undefined && (this.icon as Array<string>).length === 2;
+  }
   //
   // constructor()
   //
-  constructor(private element: ElementRef) {}
+  constructor() {
+  }
   //
   // ngOnInit()
   //
-  public ngOnInit() {}
+  public ngOnInit() {
+  }
   //
   // OnClick
   //
-  public handleOnClick($event: Event) {
+  public handleOnClick($event: Event, action: Action) {
+    $event.preventDefault();
     if (Library.isDefined(this.onClick)) {
-      this.onClick.emit($event);
+      this.onClick.emit(action);
     }
   }
 }

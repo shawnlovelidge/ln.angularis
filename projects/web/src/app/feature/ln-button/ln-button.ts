@@ -1,9 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, input, signal } from '@angular/core';
-import { AgButton } from '../../../../../component/src/lib/ag-button/ag-button';
+//
+// @angularis/component
+//
+import { AgButton } from '@angularis/component';
+//
+// Font Awesome Libraries
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  imports: [CommonModule, AgButton],
+  imports: [CommonModule, FontAwesomeModule, AgButton],
   selector: 'AgButton',
   templateUrl: './ln-button.html',
 })
@@ -13,7 +23,11 @@ export class LnButton {
     var str = this.label();
     return str[0];
   });
+  public icon: IconProp = ['fab', 'facebook'];
 
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faGithub, faFacebook);
+  }
   //
   // handleOnClick
   //

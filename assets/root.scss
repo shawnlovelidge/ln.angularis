@@ -1,5 +1,6 @@
 :root {
   --color-primary: #5559FA;
+  --color-prinmary-rgba:rgba(85, 89, 250, .15);
   --color-primary-accent: #6D9EFC;
 
   --color-secondary: #BC55FA;
@@ -57,8 +58,9 @@
   //
   // Font Awesome Free Fonts
   //
+  --fa-font-brands: 'Font Awesome Brands';
+  --fa-font-regular: 'Font Awesome 6 Free';
   --fa-font-solid: 'Font Awesome 6 Free';
-  --fa-font-brands: 'Font Awesome 6 Brands';
   //
   // Not Supported with free version
   //

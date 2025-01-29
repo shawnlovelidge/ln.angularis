@@ -3,7 +3,8 @@
     <h2 class="component-title">Component: &lt;ag-banner/&gt;</h2>
   </div>
   <hr />
-  <ag-banner [label]="label">
+  <ag-banner [label]="label" [description]="description" [icon]="icon" [actions]="actions"
+    (onClick)="handleOnClick($event)">
     <p>
       Lorem Ipsum is simply dummy text of the printing and typesetting
       industry. Lorem Ipsum has been the industry's standard dummy text ever

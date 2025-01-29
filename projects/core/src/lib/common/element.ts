@@ -10,7 +10,6 @@ export class Element extends Action {
   public html: string | undefined = undefined;
   public placeholder: string | undefined = undefined;
   public tooltip: Tooltip = new Tooltip();
-  public icon: Icon = new Icon();
   public classList: string[] = [];
 
   /**
@@ -19,15 +18,6 @@ export class Element extends Action {
    */
   hasTooltip() {
     return Library.isStringWithLength(this.tooltip);
-  }
-  /**
-   * hasIcon()
-   * @returns {*}
-   */
-  hasIcon() {
-    return (
-      Library.isObject(this.icon) && Library.isStringWithLength(this.icon.name)
-    );
   }
   /**
    * hasRef()
@@ -41,7 +31,6 @@ export class Element extends Action {
     super(options);
     Object.assign(this, options);
     this.tooltip = new Tooltip(Library.init(options, 'tooltip', {}));
-    this.icon = new Icon(Library.init(options, 'icon', {}));
   }
 }
 

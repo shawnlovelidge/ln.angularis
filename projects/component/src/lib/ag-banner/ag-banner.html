@@ -1,6 +1,31 @@
 <div class="ag-banner" [class.hidden]="hidden" [class.disabled]="disabled" [ngStyle]="style">
-  <h2 class="ag-banner-label" [ngClass]="{ 'active': active}">
-    {{label}}
-  </h2>
-  <ng-content></ng-content>
+  <section class="ag-banner-header-section">
+    <div class="ag-banner-header">
+      <div class="ag-banner-header-label-wrapper">
+        @if (this.hasIcon()) {
+        <div class="ag-banner-header-icon">
+          <fa-icon [icon]="icon"></fa-icon>
+        </div>
+        }
+        <h2 class="ag-banner-header-label" [ngClass]="{ 'active': active}">
+          {{label}}
+        </h2>
+      </div>
+      <div class="ag-banner-header-wapper">
+        <p class="ag-banner-header-description">{{description}}</p>
+        @if (actions.length > 0)
+        {
+        <div class="ag-banner-header-action">
+          @for (action of actions; track $index)
+          {
+          <ag-button (onClick)="handleOnClick($event, action)">{{action.label}}</ag-button>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+  <section class="ag-banner-content">
+    <ng-content></ng-content>
+  </section>
 </div>

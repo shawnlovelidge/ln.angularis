@@ -6,7 +6,6 @@ import {
   input,
   Input,
   linkedSignal,
-  OnInit,
   Output,
 } from '@angular/core';
 //
@@ -14,13 +13,18 @@ import {
 //
 import { Icon, Library } from '@angularis/core';
 //
+// Font Awesome Library Container
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+//
 // Components
 //
-import { AgIcon } from '../ag-icon/ag-icon';
+
 
 @Component({
   selector: 'ag-toolbar',
-  imports: [CommonModule, AgIcon],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: 'ag-toolbar.html',
   styleUrls: ['ag-toolbar.scss'],
 })
@@ -30,7 +34,7 @@ export class AgToolBar {
   //
   // Signals
   //
-  public readonly model = input.required<Icon[]>();
+  public readonly model = input.required<Icon<IconProp>[]>();
   public readonly size = input<number>(24);
   public readonly color = input<string>('');
   public readonly style = linkedSignal(() => ({
@@ -40,11 +44,12 @@ export class AgToolBar {
   //
   // OnClick
   //
-  @Output() public onClick: EventEmitter<Icon> = new EventEmitter();
+  @Output() public onClick: EventEmitter<Icon<IconProp>> = new EventEmitter();
   //
   // OnClick
   //
-  public handleOnClick($event: any, item: Icon) {
+  public handleOnClick($event: any, item: Icon<IconProp>) {
+    $event.preventDefault();
     if (Library.isDefined(this.onClick)) {
       this.onClick.emit(item);
     }

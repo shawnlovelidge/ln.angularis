@@ -17,6 +17,13 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+//
+// Font Awesome Library Container
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 //
 // @angular/cdk
@@ -30,10 +37,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
 import { Icon, Library } from '@angularis/core';
 
-import { AgIcon } from '../ag-icon/ag-icon';
-
 @Component({
-  imports: [CommonModule, AgIcon],
+  imports: [CommonModule, FontAwesomeModule],
   selector: 'ag-dropdown',
   templateUrl: 'ag-dropdown.html',
   styleUrls: ['ag-dropdown.scss'],
@@ -92,9 +97,9 @@ export class AgDropDown
   public overlaySubscription: Subscription | undefined = undefined;
   public ariaLabel: string = '';
   public ariaLabelledBy: string = '';
-  public icon!: Icon;
+  public icon!: Icon<IconProp>;
   public displayItem!: any;
-  public selectedIndicatorIcon: Icon = new Icon();
+  public selectedIndicatorIcon: Icon<IconProp> = new Icon<IconProp>();
   //
   // Private Variables
   //
@@ -106,13 +111,18 @@ export class AgDropDown
   //
   constructor(
     private overlay: Overlay,
-    private viewContainerRef: ViewContainerRef
+    private viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
   ) {
     this.subscriptions = [];
     this.selectedIndicatorIcon = new Icon({
       name: 'check',
     });
     this.displayItem = {};
+    //
+    // FaIconLibrary
+    //
+    library.addIcons(faCaretUp, faCaretDown);
   }
   //
   // ngOnDestroy()
