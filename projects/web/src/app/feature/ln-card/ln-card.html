@@ -1,6 +1,11 @@
 <ln-canvas>
-  <ag-card [model]="stacked()" [hidden]="hidden()" [disabled]="disabled()" [active]="active()" [style]="stackedStyle()"
-    [contentStyle]="stackedContentStyle()">
+  <ag-card 
+    class="ag-card-elevated"
+    [model]="model" 
+    [hidden]="hidden" 
+    [disabled]="disabled"
+    (onClick)="handleOnClick($event)"
+    >
     <section>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

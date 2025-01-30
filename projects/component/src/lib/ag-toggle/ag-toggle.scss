@@ -33,7 +33,7 @@ $height: 22px;
       }
       
       &:focus + .slider {
-        box-shadow: 0 0 1px var(--color-primary);
+        @include box-shadow();
       }
       
       &:checked + .slider:before {

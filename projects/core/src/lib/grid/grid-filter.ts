@@ -6,7 +6,7 @@ import { Library, ValidateLibrary } from '../library';
  */
 export class GridFilter {
   public enabled: boolean;
-  public style: Object;
+  public style: Partial<CSSStyleDeclaration> = {};
   private _type: string | undefined;
   private _dataType: string;
   private _tokens: any[];
@@ -166,7 +166,9 @@ export class GridFilter {
           //  tokes assocaited with the type
           //
           if (Library.isArrayWithLength(this._tokens)) {
-            this._tokens = this._tokens.filter((t) => (t.type & type) !== type);
+            this._tokens = this._tokens.filter(
+              t => (t.type & type) !== type
+            );
           }
         }
         break;
@@ -196,10 +198,18 @@ export class GridFilter {
     this._disabled = false;
     this._pending = false;
     //this.clear(Constant.FILTER_TYPE_NONE);
-    this._dataType = Library.init(options, 'dataType', 'string').toLowerCase();
+    this._dataType = Library.init(
+      options,
+      'dataType',
+      'string'
+    ).toLowerCase();
     this._hidden = Library.init(options, 'hidden', false);
     this.enabled = Library.init(options, 'enabled', false);
     this.style = Library.init(options, 'style', {});
-    this.type = Library.init(options, 'type', Constant.FILTER_TYPE_NONE);
+    this.type = Library.init(
+      options,
+      'type',
+      Constant.FILTER_TYPE_NONE
+    );
   }
 }

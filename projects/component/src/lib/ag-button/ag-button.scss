@@ -32,8 +32,7 @@ $disabled: var(--color-disabled);
     min-width: 64dp;
 
     &:hover {
-      box-shadow: 0 4px 8px 0 rgba(204, 0, 0, 0.12),
-        0 8px 16px 0 rgba(124, 132, 138, 0.2);
+      @include box-shadow();
     }
         
     &.hidden {

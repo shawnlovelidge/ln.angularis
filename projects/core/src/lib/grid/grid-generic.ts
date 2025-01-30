@@ -21,7 +21,7 @@ export class GridGeneric extends Base {
   public required: boolean;
   public selected: boolean;
   public expanded: boolean;
-  public style: Object;
+  public style: Partial<CSSStyleDeclaration> = {};
   public template: string;
   public checkbox: CheckBox;
   public _deleted: boolean;
@@ -57,7 +57,9 @@ export class GridGeneric extends Base {
   public hasContent() {
     if (Library.isDefined(this.data)) {
       if (Library.hasOwnProperty(this.data, this.contentField)) {
-        return Library.isArrayWithLength(this.data[this.contentField]);
+        return Library.isArrayWithLength(
+          this.data[this.contentField]
+        );
       }
     }
 
@@ -76,10 +78,17 @@ export class GridGeneric extends Base {
     this.deleted = Library.init(options, 'deleted', false);
     this.expanded = Library.init(options, 'expanded', false);
     this.element = Library.init(options, 'element');
-    this.contentField = Library.init(options, 'contentField', 'children');
+    this.contentField = Library.init(
+      options,
+      'contentField',
+      'children'
+    );
     this.format = Library.init(options, 'format');
     this.label = Library.init(options, 'label');
-    this.options = Object.assign({}, Library.init(options, 'options', {}));
+    this.options = Object.assign(
+      {},
+      Library.init(options, 'options', {})
+    );
     this.pattern = Library.init(options, 'pattern');
     this.placeholder = Library.init(options, 'placeholder');
     this.required = Library.init(options, 'required', false);

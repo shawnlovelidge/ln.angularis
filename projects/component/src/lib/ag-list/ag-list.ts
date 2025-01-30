@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   computed,
   ElementRef,
   EventEmitter,
   Input,
   input,
+  OnDestroy,
   OnInit,
   Output,
   signal,
@@ -32,7 +34,7 @@ import { AgCheckBox } from '../ag-checkbox/ag-checkbox';
   templateUrl: 'ag-list.html',
   styleUrls: ['ag-list.scss'],
 })
-export class AgList implements OnInit {
+export class AgList implements OnInit, AfterViewInit, OnDestroy {
   @Input() public label: string = '';
   @Input() public hidden: boolean = false;
   @Input() public disabled: boolean = false;

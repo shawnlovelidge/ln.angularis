@@ -23,18 +23,38 @@ export class LnList {
   public hidden: boolean = false;
   public disabled: boolean = false;
   public multiselect: boolean = false;
-  public style: object = {
+  public style: Partial<CSSStyleDeclaration> = {
     fontSize: '12px',
     height: '300px',
     overflowY: 'auto',
   };
   public label = signal('Items');
   public items = signal([
-    new Action({ id: 1, name: 'Shawn Lovelidge', description: 'Engineer' }),
-    new Action({ id: 2, name: 'Lisa Weaver', description: 'Housewife' }),
-    new Action({ id: 3, name: 'Mark Meadows', description: 'Dancer' }),
-    new Action({ id: 4, name: 'Donald Trump', description: 'US President' }),
-    new Action({ id: 5, name: 'Celina Gomez', description: 'Stupid Singer' }),
+    new Action({
+      id: 1,
+      name: 'Shawn Lovelidge',
+      description: 'Engineer',
+    }),
+    new Action({
+      id: 2,
+      name: 'Lisa Weaver',
+      description: 'Housewife',
+    }),
+    new Action({
+      id: 3,
+      name: 'Mark Meadows',
+      description: 'Dancer',
+    }),
+    new Action({
+      id: 4,
+      name: 'Donald Trump',
+      description: 'US President',
+    }),
+    new Action({
+      id: 5,
+      name: 'Celina Gomez',
+      description: 'Stupid Singer',
+    }),
   ]);
   //
   // Constructor

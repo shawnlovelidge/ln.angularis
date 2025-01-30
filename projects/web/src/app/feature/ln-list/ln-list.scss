@@ -1,3 +1,6 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
 .ag-list-item-template {
   cursor: default;
   background-color: var(--color-white);
@@ -14,7 +17,7 @@
     width: 100%;
 
     &:hover {
-      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+      @include box-shadow();
       border: 1px solid var(--color-gray-300);
     }
 

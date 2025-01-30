@@ -7,7 +7,7 @@ import { Base } from './base';
 export class Action extends Base {
   public onClick: Function;
   public routerLink: string[] = [];
-  public style: Object;
+  public style: Partial<CSSStyleDeclaration> = {};
   public checked: boolean;
 
   hasRouterLink() {

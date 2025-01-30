@@ -80,7 +80,7 @@
               margin: 0;
 
               &.border-bottom {
-                  box-shadow: 0 0.03em 0 0 var(--white);
+                @include box-shadow();
               }
 
               &.has-content {

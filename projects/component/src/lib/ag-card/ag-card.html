@@ -1,14 +1,25 @@
-<div class="ag-card" [ngClass]="{
-  disabled: disabled || model().disabled || false,
-  hidden: hidden || model().hidden || false,
-  active: active || model().active || false,
-}" [ngStyle]="style">
-  <div [class]="cardType()">
-    @if (model().image.href.length > 0) {
-    <img [attr.src]="model().image.href" />
-    }
-    <div class="ag-card-content" [ngStyle]="contentStyle">
+<div [attr.class]="classes()" [ngClass]="{
+  disabled: disabled,
+  hidden: hidden ,
+  active: active,
+}">
+  <div class="ag-card-container">
+    <div class="ag-card-container-context" [ngStyle]="style">
+      @if (!hasCustomTemplate())
+      {
       <ng-content></ng-content>
+      }
+      @else
+      {
+      <ng-container [ngTemplateOutlet]="customTemplate" [ngTemplateOutletContext]="{model: model}" />
+      }
+    </div>
+    <div class="ag-card-container-side-bar">
+      <ag-checkbox [value]="model.active" [disabled]="model.disabled" (onClick)="handleOnClick($event)"></ag-checkbox>
     </div>
   </div>
+
 </div>
+<ng-template #defaultTemplate let-model="model">
+  <ng-content></ng-content>
+</ng-template>

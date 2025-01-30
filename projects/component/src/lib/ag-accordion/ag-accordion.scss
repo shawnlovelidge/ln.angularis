@@ -2,11 +2,11 @@
 @use 'scss/mixins/standard.scss' as *;
 
 .ag-accordion {
+  @include box-shadow();
   border-radius: 1px;
   height: auto;
-  //width: 100%;
   border: 1px solid var(--color-gray-400);
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 6px 10px 0px;
+
 
   &.hidden {
     display: none;

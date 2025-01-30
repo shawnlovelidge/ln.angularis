@@ -75,7 +75,7 @@ export class SlidePanel implements ISlidePanel {
         case 'leftPanel':
           this.center.style = {
             ...this.center.style,
-            marginLeft: o?.width,
+            marginLeft: o?.width.toString(),
             width: `${width}px`,
           };
           break;
@@ -83,7 +83,7 @@ export class SlidePanel implements ISlidePanel {
         case 'rightPanel':
           this.center.style = {
             ...this.center.style,
-            marginRight: o?.width,
+            marginRight: o?.width.toString(),
             width: `${width}px`,
           };
           break;

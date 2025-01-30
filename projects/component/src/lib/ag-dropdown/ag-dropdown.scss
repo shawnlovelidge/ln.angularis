@@ -85,6 +85,7 @@ $font-size: 14px;
 
       button.button {
         @include user-select();
+        @include box-shadow();
         position: relative;
         border: none;
         cursor: pointer;
@@ -105,8 +106,6 @@ $font-size: 14px;
         vertical-align: middle;
         white-space: nowrap;
         width: inherit;
-        box-shadow: 0 0 2px 0 var(--color-box-shadow);
-        -webkit-box-shadow: 0 0 2px 0 var(--color-box-shadow);
         background-color: transparent;
         border: 1px solid var(--color-border);
         width: inherit;
@@ -147,6 +146,7 @@ $font-size: 14px;
 }
 
 ul.ag-dropdown-items {
+  @include box-shadow();
   -webkit-transition: 0.5s;
   border-radius: 0;
   margin: 0;
@@ -158,8 +158,6 @@ ul.ag-dropdown-items {
   transition: 0.5s;
   overflow: hidden;
   overflow-y: auto;
-  box-shadow: 0 0 2px 0 var(--color-box-shadow);
-  -webkit-box-shadow: 0 0 2px 0 var(--color-box-shadow);
   background-color: transparent;
   color: var(--color-black);
 

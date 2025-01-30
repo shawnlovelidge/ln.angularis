@@ -21,7 +21,7 @@ export class LnTabPanel {
   public active = true;
   public hidden = false;
   public disabled = false;
-  public style = {
+  public style: Partial<CSSStyleDeclaration> = {
     height: 'auto',
     width: '100%',
   };
