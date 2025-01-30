@@ -9,6 +9,9 @@ import {
   OnInit,
   Output,
   signal,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 //
 // Library
@@ -36,10 +39,14 @@ export class AgList implements OnInit {
   @Input() public multiselect: boolean = false;
   @Input() public style: object = {};
   @Input() public items = signal<Action[]>([]);
+  @Input() public customTemplate!: TemplateRef<any>;
   //
   // setup a singnal for the classes
   //
   public classes = signal<string>('');
+  //
+  // @computed
+  //
   public readonly useCheckBoxList = computed(() =>
     this.classes().includes('ag-checkbox-list')
   );
@@ -51,6 +58,7 @@ export class AgList implements OnInit {
   // Computed
   //
   public hasList = computed(() => this.items().length > 0);
+  public hasCustomTemplate = () => Library.isDefined(this.customTemplate);
   //
   // Private Variables
   //
@@ -58,7 +66,17 @@ export class AgList implements OnInit {
   //
   // Constructor
   //
-  constructor(private element: ElementRef) {}
+  constructor(
+    private element: ElementRef,
+    private container: ViewContainerRef
+  ) {
+    //
+    // Set the classes
+    //
+    this.classes.set(
+      parseHTMLElementClassList(this.element.nativeElement, 'ag-list-items')
+    );
+  }
   //
   // ngOnInit
   //
@@ -66,7 +84,7 @@ export class AgList implements OnInit {
     //
     // Set the default style
     //
-    this.style = { ...{ height: '164px', overflowY: 'auto' }, ...this.style  };
+    this.style = { ...{ height: 'auto', overflowY: 'auto' }, ...this.style };
   }
   //
   // ngAfterViewInit
@@ -103,12 +121,7 @@ export class AgList implements OnInit {
         }
       }
     };
-    //
-    // Set the classes
-    //
-    this.classes.set(
-      parseHTMLElementClassList(this.element.nativeElement, 'ag-list-items')
-    );
+
     //
     // Setup Listener for when the classList changes
     //
@@ -117,6 +130,13 @@ export class AgList implements OnInit {
     // Get it the target element
     //
     this.observer.observe(this.element.nativeElement, { attributes: true });
+    //
+    // Template
+    //
+    if (this.hasCustomTemplate()) {
+      this.container.clear();
+      this.container.createEmbeddedView(this.customTemplate);
+    } 
   }
   //
   // handleOnClick

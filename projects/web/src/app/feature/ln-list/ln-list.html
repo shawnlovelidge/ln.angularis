@@ -10,30 +10,37 @@
       <tr>
         <td>(default)</td>
         <td>
-          <ag-list    
-          [label]="label()" 
-          [items]="items" 
-          [multiselect]="multiselect" 
-          [style]="style"
-          [hidden]="hidden" 
-          [disabled]="disabled"
-          (onClick)="handleOnClick($event)"></ag-list>          
+          <ag-list [label]="label()" [items]="items" [multiselect]="multiselect" [style]="style" [hidden]="hidden"
+            [disabled]="disabled" (onClick)="handleOnClick($event)"></ag-list>
         </td>
       </tr>
       <tr>
         <td>class='ag-checkbox-list'</td>
         <td>
-          <ag-list  
-          class="ag-checkbox-list"
-            [label]="label()" 
-            [items]="items" 
-            [multiselect]="multiselect" 
-            [style]="style"
-            [hidden]="hidden" 
-            [disabled]="disabled"
-            (onClick)="handleOnClick($event)"></ag-list>  
+          <ag-list class="ag-checkbox-list" [label]="label()" [items]="items" [multiselect]="multiselect"
+            [style]="style" [hidden]="hidden" [disabled]="disabled" (onClick)="handleOnClick($event)"></ag-list>
+        </td>
+      </tr>
+      <tr>
+        <td>use: customTemplate</td>
+        <td>
+          <ag-list [label]="label()" [items]="items" [customTemplate]="customTemplate" [multiselect]="multiselect"
+            [style]="style" [hidden]="hidden" [disabled]="disabled" (onClick)="handleOnClick($event)"></ag-list>
         </td>
       </tr>
     </tbody>
   </table>
 </ln-canvas>
+<ng-template #customTemplate let-item="item">
+  @if(item) {
+  <div class="ag-list-item-template">
+    <div class="ag-list-item-template-container" [ngClass]="{ 'active': item.active }">
+      <div class="label"><strong>Person</strong>&nbsp;<span>{{item.name}}</span></div>
+      <div class="description">
+        <p><strong>Job Title</strong>&nbsp;{{item.description}}</p>
+      </div>
+    </div>
+
+  </div>
+  }
+</ng-template>
