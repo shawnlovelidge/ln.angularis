@@ -1,0 +1,25 @@
+<div class="ag-list" [class.hidden]="hidden" [class.disabled]="disabled">
+  <div class="ag-list-label">
+    {{ label }}
+  </div>
+  <ul [attr.class]="classes()" [ngStyle]="style">
+    @for (item of items(); track item)
+    {
+    <li class="ag-list-item" [ngClass]="{ 
+      'active': !useCheckBoxList() && item.active, 
+      'disabled': item.disabled, 
+      'hidden': item.hidden 
+      }" (click)="!useCheckBoxList() && handleOnClick(item)">
+
+      @if (useCheckBoxList())
+      {
+      <ag-checkbox [value]="item.active" [disabled]="item.disabled" (onClick)="handleOnClick(item)">
+        {{ item.name }}
+      </ag-checkbox>
+      } @else {
+      {{ item.name }}
+      }
+    </li>
+    }
+  </ul>
+</div>

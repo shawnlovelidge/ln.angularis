@@ -1,0 +1,78 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+$height: 22px;
+
+.ag-toggle 
+{
+
+  &.hidden {
+    display: none;
+  }
+
+  &.disabled {
+    @include disabled();
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  label.switch {
+    position: relative;
+    display: inline-block;
+    width: calc($height + 30px);
+    height: calc($height + 8px);
+
+    input[type="checkbox"] {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      display: none;
+
+      &:checked + .slider {
+        background-color: var(--color-primary);
+      }
+      
+      &:focus + .slider {
+        box-shadow: 0 0 1px var(--color-primary);
+      }
+      
+      &:checked + .slider:before {
+        -webkit-transform: translateX($height);
+        -ms-transform: translateX($height);
+        transform: translateX($height);
+      }      
+    }
+
+    span.slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-gray-200);
+      -webkit-transition: .3s;
+      transition: .3s;
+
+      &:before {
+        position: absolute;
+        content: "";
+        height: $height;
+        width: $height;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+      }
+
+      &.round {
+        border-radius: calc($height + 8px);
+
+        &:before {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

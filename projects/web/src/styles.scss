@@ -23,6 +23,10 @@ p {
   }
 }
 
+pre {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+}
 .table-standard {
   overflow: auto;
   width: 100%;
@@ -49,6 +53,7 @@ p {
   color: var(--color-black);
   padding: 10px;
   height: 60px;
+  line-height: 36px;
   &:first-child {
     width: 50%;
   }
@@ -61,16 +66,13 @@ p {
   border: 1px solid var(--color-gray-200);
   background-color: var(--color-white);
   color: var(--color-black);
-  padding: 10px;
-  height: 60px;
-  &:first-child {
-    width: 45%;
-  }  
+  margin: 0;
+  padding: 12px;
+  height: auto;
   &:last-child {
-    //width: 55%;
+    width: 100%;
     text-align: center;
     display: flex;
-    justify-content: center;
     align-items: center;
   }  
 }

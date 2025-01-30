@@ -1,45 +1,56 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Output,
-  OnInit,
-  EventEmitter,
+  computed,
   ElementRef,
-  input,
-  AfterViewInit,
-  OnDestroy,
-  signal,
+  EventEmitter,
   Input,
+  input,
+  OnInit,
+  Output,
+  signal,
 } from '@angular/core';
 //
-// @angularis/core Library
+// Library
 //
-import { Library } from '@angularis/core';
+import { Action, Library } from '@angularis/core';
 //
 // Utility Functions
 //
 import { parseHTMLElementClassList } from '../util/functions';
+//
+// Components
+//
+import { AgCheckBox } from '../ag-checkbox/ag-checkbox';
 
 @Component({
-  imports: [CommonModule],
-  selector: 'ag-button',
-  templateUrl: 'ag-button.html',
-  styleUrls: ['ag-button.scss'],
+  imports: [CommonModule, AgCheckBox],
+  selector: 'ag-list',
+  templateUrl: 'ag-list.html',
+  styleUrls: ['ag-list.scss'],
 })
-export class AgButton implements OnInit, AfterViewInit, OnDestroy {
-  @Input() public disabled: boolean = false;
+export class AgList implements OnInit {
+  @Input() public label: string = '';
   @Input() public hidden: boolean = false;
-  @Input() public active: boolean = false;
+  @Input() public disabled: boolean = false;
+  @Input() public multiselect: boolean = false;
   @Input() public style: object = {};
+  @Input() public items = signal<Action[]>([]);
   //
   // setup a singnal for the classes
   //
   public classes = signal<string>('');
+  public readonly useCheckBoxList = computed(() =>
+    this.classes().includes('ag-checkbox-list')
+  );
   //
-  // @Output EventEmitters
+  // @Output
   //
-  @Output()
-  public onClick: EventEmitter<any> = new EventEmitter();
+  @Output() public readonly onClick = new EventEmitter<Action[]>();
+  //
+  // Computed
+  //
+  public hasList = computed(() => this.items().length > 0);
   //
   // Private Variables
   //
@@ -51,7 +62,12 @@ export class AgButton implements OnInit, AfterViewInit, OnDestroy {
   //
   // ngOnInit
   //
-  public ngOnInit() {}
+  public ngOnInit() {
+    //
+    // Set the default style
+    //
+    this.style = { ...{ height: '164px', overflowY: 'auto' }, ...this.style  };
+  }
   //
   // ngAfterViewInit
   //
@@ -90,7 +106,9 @@ export class AgButton implements OnInit, AfterViewInit, OnDestroy {
     //
     // Set the classes
     //
-    this.classes.set(parseHTMLElementClassList(this.element.nativeElement));
+    this.classes.set(
+      parseHTMLElementClassList(this.element.nativeElement, 'ag-list-items')
+    );
     //
     // Setup Listener for when the classList changes
     //
@@ -100,14 +118,20 @@ export class AgButton implements OnInit, AfterViewInit, OnDestroy {
     //
     this.observer.observe(this.element.nativeElement, { attributes: true });
   }
-
   //
-  // handleClick
+  // handleOnClick
   //
-  public handleClick($event: MouseEvent) {
-    if (this.onClick) {
-      this.onClick.emit($event);
+  public handleOnClick(item: Action) {
+    for (const i of this.items()) {
+      if (this.multiselect)
+        i.active = i.id === item.id ? !item.active : i.active;
+      else i.active = item.id === i.id;
     }
+
+    if (this.onClick)
+      if (this.multiselect)
+        this.onClick.emit(this.items().filter(i => i.active));
+      else this.onClick.emit([item]);
   }
   //
   // ngOnDestroy

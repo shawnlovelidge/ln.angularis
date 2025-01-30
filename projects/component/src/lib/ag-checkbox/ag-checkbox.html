@@ -2,7 +2,7 @@
     'disabled': disabled, 
     'hidden': hidden 
   }" (click)="handleOnClick($event)" [ngStyle]="style()">
-  @if (value())
+  @if (value)
   {
   <fa-icon [icon]="faCheckSquare"></fa-icon>
   } @else {

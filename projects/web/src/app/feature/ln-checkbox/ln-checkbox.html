@@ -1,3 +1,8 @@
 <ln-canvas>
-  <ag-checkbox [value]="value">Submit Item</ag-checkbox>
+  <ag-checkbox [value]="value" (onClick)="handleClick($event)">Incude Business Address </ag-checkbox>
+  <br />
+  <pre>value: {{value}}</pre>
+  <pre code>
+    &lt;ag-checkbox [value]=&quot;value&quot;&gt;Incude Business Address&lt;/ag-checkbox&gt;
+  </pre>
 </ln-canvas>

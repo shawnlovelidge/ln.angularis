@@ -3,21 +3,21 @@ import { Component, computed, input, signal } from '@angular/core';
 //
 // @angularis/component
 //
-import { AgCheckBox } from '@angularis/component';
+import { AgToggle } from '@angularis/component';
 //
 // @Components
 //
 import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
+
 @Component({
-  imports: [CommonModule, LnCanvas, AgCheckBox],
-  selector: 'AgCheckBox',
-  templateUrl: 'ln-checkbox.html',
-  styleUrls: ['ln-checkbox.scss'],
+  imports: [CommonModule, LnCanvas, AgToggle],
+  selector: 'AgToggle',
+  styleUrls: ['ln-toggle.scss'],
+  templateUrl: 'ln-toggle.html',
 })
-export class LnCheckBox {
-  public label = 'Submit';
-  public value = false;
+export class LnToggle {
+  public value:boolean = false;
   //
   // Constructor
   //
@@ -27,9 +27,9 @@ export class LnCheckBox {
   //
   public ngOnInit() {}
   //
-  // handleClick
+  // handleOnClick
   //
-  public handleClick = (value: boolean) => {
+  public handleOnClick(value: boolean) {
     this.value = value;
-  };
+  }
 }

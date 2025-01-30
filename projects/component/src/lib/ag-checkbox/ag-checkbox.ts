@@ -25,7 +25,7 @@ export class AgCheckBox {
   @Input() public disabled: boolean = false;
   @Input() public hidden: boolean = false;
   @Input() public active: boolean = false;
-  @Input() public value = signal(false);
+  @Input() public value: boolean = false;
   public readonly name = signal('');
   public readonly size = signal(24);
   public readonly color = signal('');
@@ -56,7 +56,7 @@ export class AgCheckBox {
   //
   constructor() {
     effect(() => {
-      this.name.set(this.value() ? 'square-check' : 'square');
+      this.name.set(this.value ? 'square-check' : 'square');
     });
   }
   //
@@ -65,7 +65,7 @@ export class AgCheckBox {
   public handleOnClick($event: MouseEvent) {
     $event.preventDefault();
     $event.stopPropagation();
-    this.value.set(!this.value());
-    this.onClick.emit(this.value());
+    this.value = !this.value;
+    this.onClick.emit(this.value);
   }
 }

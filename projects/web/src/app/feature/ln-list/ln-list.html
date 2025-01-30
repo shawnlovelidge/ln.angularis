@@ -1,0 +1,39 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>
+          <ag-list    
+          [label]="label()" 
+          [items]="items" 
+          [multiselect]="multiselect" 
+          [style]="style"
+          [hidden]="hidden" 
+          [disabled]="disabled"
+          (onClick)="handleOnClick($event)"></ag-list>          
+        </td>
+      </tr>
+      <tr>
+        <td>class='ag-checkbox-list'</td>
+        <td>
+          <ag-list  
+          class="ag-checkbox-list"
+            [label]="label()" 
+            [items]="items" 
+            [multiselect]="multiselect" 
+            [style]="style"
+            [hidden]="hidden" 
+            [disabled]="disabled"
+            (onClick)="handleOnClick($event)"></ag-list>  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ln-canvas>
