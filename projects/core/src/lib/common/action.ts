@@ -5,10 +5,10 @@ import { Base } from './base';
  * Class: Action
  */
 export class Action extends Base {
-  public onClick: Function;
+  public onClick: Function = () => {};
   public routerLink: string[] = [];
   public style: Partial<CSSStyleDeclaration> = {};
-  public checked: boolean;
+  public checked: boolean = false;
 
   hasRouterLink() {
     if (Library.isDefined(this.routerLink)) {
@@ -42,9 +42,6 @@ export class Action extends Base {
    */
   constructor(options?: Partial<Action>) {
     super(options);
-    this.onClick = Library.init(options, 'onClick', () => {});
-    this.checked = Library.init(options, 'checked', false);
-    this.style = Library.init(options, 'style', {});
-    this.routerLink = Library.init(options, 'routerLink', []);
+    Object.assign(this, options);
   }
 }

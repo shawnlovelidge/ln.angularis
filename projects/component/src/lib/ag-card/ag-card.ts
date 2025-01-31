@@ -16,7 +16,7 @@ import {
 //
 // Library
 //
-import { Card, Library } from '@angularis/core';
+import { Action, Card, Library } from '@angularis/core';
 //
 // Utility Functions
 //
@@ -25,9 +25,10 @@ import { parseHTMLElementClassList } from '../util/functions';
 // Components
 //
 import { AgCheckBox } from '../ag-checkbox/ag-checkbox';
+import { AgButton } from '../ag-button/ag-button';
 
 @Component({
-  imports: [CommonModule, AgCheckBox],
+  imports: [CommonModule, AgCheckBox, AgButton],
   selector: 'ag-card',
   templateUrl: 'ag-card.html',
   styleUrls: ['ag-card.scss'],
@@ -38,6 +39,7 @@ export class AgCard implements OnInit, AfterViewInit, OnDestroy {
   @Input() public hidden: boolean = false;
   @Input() public active: boolean = false;
   @Input() public style: Partial<CSSStyleDeclaration> = {};
+  @Input() public actions: Array<Action> = [];
   @Input() public customTemplate!: TemplateRef<any>;
   //
   // setup a singnal for the classes
@@ -47,8 +49,9 @@ export class AgCard implements OnInit, AfterViewInit, OnDestroy {
   // @Output
   //
   @Output() public onClick: EventEmitter<Card> = new EventEmitter();
+  @Output() public onAction: EventEmitter<Action> = new EventEmitter();
   //
-  // Computed
+  // hasFunction(s)
   //
   public hasList = computed(() => Library.isDefined(this.model));
   public hasCustomTemplate = () =>
@@ -79,7 +82,12 @@ export class AgCard implements OnInit, AfterViewInit, OnDestroy {
     // Set the default style
     //
     this.style = {
-      ...{ height: '100px', minWidth: '100px', width: '100%' },
+      ...{
+        height: 'auto',
+        minHeight: '100px',
+        minWidth: '100px',
+        width: '100%',
+      },
       ...this.model.style,
     };
   }
@@ -120,7 +128,6 @@ export class AgCard implements OnInit, AfterViewInit, OnDestroy {
         }
       }
     };
-
     //
     // Setup Listener for when the classList changes
     //
@@ -140,14 +147,21 @@ export class AgCard implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   //
-  // OnClick
+  // handleOnClick
   //
-  public handleOnClick(active: boolean) {
-
-    this.model.active = active;
+  public handleOnClick(checked: boolean) {
+    this.model.checked = checked;
 
     if (Library.isDefined(this.onClick)) {
       this.onClick.emit(this.model);
+    }
+  }
+  //
+  // handleOnActionClick
+  //
+  public handleOnActionClick(action: Action) {
+    if (Library.isDefined(this.onAction)) {
+      this.onAction.emit(action);
     }
   }
   //

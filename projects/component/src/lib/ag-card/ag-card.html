@@ -3,23 +3,41 @@
   hidden: hidden ,
   active: active,
 }">
-  <div class="ag-card-container">
+  <div class="ag-card-container" [ngClass]="{ 'single-column': !model.canCheck }">
     <div class="ag-card-container-context" [ngStyle]="style">
-      @if (!hasCustomTemplate())
-      {
-      <ng-content></ng-content>
+      @if (!hasCustomTemplate()) {
+      @if (model.image.hasImage()) {
+      <img class="ag-card-container-context-media" [attr.src]="model.image.href" [attr.alt]="model.image.label" />
       }
-      @else
-      {
+      @if (model.hasLabel()) {
+      <div class="ag-card-container-context-label">{{model.label}}</div>
+      }
+      @if (model.hasDescription()) {
+      <div class="ag-card-container-context-description">
+        <p>{{model.description}}</p>
+      </div>
+      }
+      }
+      @else if (hasCustomTemplate()) {
       <ng-container [ngTemplateOutlet]="customTemplate" [ngTemplateOutletContext]="{model: model}" />
       }
-    </div>
-    <div class="ag-card-container-side-bar">
-      <ag-checkbox [value]="model.active" [disabled]="model.disabled" (onClick)="handleOnClick($event)"></ag-checkbox>
-    </div>
-  </div>
 
+      @if (actions.length > 0)
+      {
+      <ul class="ag-card-container-context-actions">
+        @for (action of actions; track $index)
+        {
+        <li class="ag-card-container-context-action">
+          <ag-button class="bordered" (onClick)="handleOnActionClick(action)">{{action.label}}</ag-button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+    @if (model.canCheck) {
+    <div class="ag-card-container-side-bar">
+      <ag-checkbox [value]="model.checked" [disabled]="model.disabled" (onClick)="handleOnClick($event)"></ag-checkbox>
+    </div>
+    }
+  </div>
 </div>
-<ng-template #defaultTemplate let-model="model">
-  <ng-content></ng-content>
-</ng-template>

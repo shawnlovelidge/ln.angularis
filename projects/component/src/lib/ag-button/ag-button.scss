@@ -30,6 +30,7 @@ $disabled: var(--color-disabled);
     border: 1px solid transparent;
     user-select: none;
     min-width: 64dp;
+    cursor: pointer;
 
     &:hover {
       @include box-shadow();
@@ -98,6 +99,7 @@ $disabled: var(--color-disabled);
       max-height: $circle-size;
       padding: 0;
       text-align: center;
+      cursor: pointer;
 
       &.small {
         border-radius: 50%;
