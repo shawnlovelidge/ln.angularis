@@ -53,5 +53,10 @@ export class LnRadioButton {
   //
   // handleOnClick
   //
-  public handleOnClick(item: Action) {}
+  public handleOnClick(item: Action) {
+    //
+    // Console Debug Statement
+    //
+    console.log(`%c ${item.name}`, `color:rgb(218, 34, 246); font-size: 12px; font-weight: bold`);
+  }
 }

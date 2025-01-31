@@ -33,8 +33,10 @@ export { Group } from './lib/common/group';
 export { Guid } from './lib/common/guid';
 export { Icon } from './lib/common/icon';
 export { Image } from './lib/common/image';
+export { Info } from './lib/common/info';
 export { Interval } from './lib/common/interval';
 export { Item } from './lib/common/item';
+export { Menu } from './lib/common/menu';
 export { Name } from './lib/common/name';
 export { Phone } from './lib/common/phone';
 export { Point } from './lib/common/point';
@@ -46,7 +48,6 @@ export { Toolbar } from './lib/common/toolbar';
 export { Tooltip } from './lib/common/tooltip';
 export { User } from './lib/common/user';
 export { Version } from './lib/common/version';
-export { Info } from './lib/common/info';
 
 
 /**

@@ -47,7 +47,9 @@ export class AgButton implements OnInit, AfterViewInit, OnDestroy {
   //
   // Constructor
   //
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef) {
+
+  }
   //
   // ngOnInit
   //
@@ -90,7 +92,12 @@ export class AgButton implements OnInit, AfterViewInit, OnDestroy {
     //
     // Set the classes
     //
-    this.classes.set(parseHTMLElementClassList(this.element.nativeElement));
+    this.classes.set(
+      parseHTMLElementClassList(
+        this.element.nativeElement,
+        'ag-button'
+      )
+    );    
     //
     // Setup Listener for when the classList changes
     //

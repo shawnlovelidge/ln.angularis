@@ -92,7 +92,21 @@
         "name": "List",
         "routerLink": "/ln-list",
         "description": "List component is used to display a list of items."
-      }      
+      }, 
+      {
+        "id": 7,
+        "component": "&lt;ag-menu/&gt;",
+        "name": "Menu",
+        "routerLink": "/ln-menu",
+        "description": "Menu component is used to display a list of items in a menu layout."
+      },
+      {
+        "id": 8,
+        "component": "&lt;ag-dialog/&gt;",
+        "name": "Dialog",
+        "routerLink": "/ln-dialog",
+        "description": "Dialog component is used to display a dialog box with content."
+      }            
     ]
   }
 ]

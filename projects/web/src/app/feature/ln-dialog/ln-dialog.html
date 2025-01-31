@@ -1,0 +1,24 @@
+<ln-canvas>
+  <ag-dialog class="ag-dialog-elevated" 
+    [model]="model" 
+    [hidden]="hidden" 
+    [disabled]="disabled" 
+    [actions]="actions"
+    (onAction)="handleOnAction($event)">
+  </ag-dialog>
+  <br />
+  <br />
+</ln-canvas>
+<ng-template #customTemplate let-model="model">
+  @if(model) {
+  <div class="ln-dialog-template">
+    <h1>{{model.label}}</h1>
+    <br />
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </p>
+  </div>
+  }
+</ng-template>

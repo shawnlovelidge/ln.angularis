@@ -10,6 +10,8 @@ import { LnTabPanel } from './feature/ln-tab-panel/ln-tab-panel';
 import { LnToggle } from './feature/ln-toggle/ln-toggle';
 import { LnToolBar } from './feature/ln-toolbar/ln-toolbar';
 import { LnList } from './feature/ln-list/ln-list';
+import { LnMenu } from './feature/ln-menu/ln-menu';
+import { LnDialog } from './feature/ln-dialog/ln-dialog';
 
 
 export const routes: Routes = [
@@ -64,6 +66,14 @@ export const routes: Routes = [
   {
     path: 'ln-list',
     component: LnList,
+  },
+  {
+    path: 'ln-menu',
+    component: LnMenu,
+  },
+  {
+    path: 'ln-dialog',
+    component: LnDialog,
   },
 ];
 

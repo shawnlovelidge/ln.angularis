@@ -1,11 +1,32 @@
 <div class="ag-radio-button" [class.hidden]="hidden" [class.disabled]="disabled">
   <div class="ag-radio-button-label" [class.hidden]="label.length === 0">{{label}}</div>
+
+  @if (this.isSquareRadioButton()) {
   <div class="ag-radio-button-items">
     @for (item of model(); track item.id; let i = $index) {
-    <div class="ag-radio-button-item ">
-      <ag-button [attr.class]="classAttr(i, model().length, item)" (onClick)="handleOnClick($event, item)">
+    <div class="ag-radio-button-item">
+      <ag-button [attr.class]="classAttr(i, model().length, item)" 
+        (onClick)="handleOnClick($event, item)">
         {{item.name}}</ag-button>
     </div>
     }
   </div>
+  }
+  @else {
+  <form [formGroup]="formGroup">
+    <div class="ag-radio-button-items">
+      @for (item of model(); track item.id; let i = $index) {
+      <label class="ag-radio-button-item">
+        <input class="ag-radio-button-input" type="radio" 
+        [attr.checked]="item.name === formControl.value ? 'checked' : null"
+        [value]="item.name"
+        [formControl]="formControl"
+        (change)="handleOnClick($event, item)"
+        >
+        <span class="ag-radio-button-item-label">{{item.name}}</span>
+      </label>
+      }
+    </div>
+  </form>
+  }
 </div>

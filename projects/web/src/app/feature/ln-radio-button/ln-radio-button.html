@@ -8,11 +8,18 @@
     </thead>
     <tbody>
       <tr>
-        <td>(defaut)</td>
+        <td>(default)</td>
         <td>
           <ag-radio-button [model]="model" (onClick)="handleOnClick($event)"></ag-radio-button>
         </td>
+      </tr>       
+      <tr>
+        <td>class='ag-radio-button-square'</td>
+        <td>
+          <ag-radio-button class="ag-radio-button-square'" [model]="model" (onClick)="handleOnClick($event)"></ag-radio-button>
+        </td>
       </tr>
+     
     </tbody>
   </table>
 </ln-canvas>

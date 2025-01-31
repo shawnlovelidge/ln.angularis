@@ -11,7 +11,8 @@
         'small': small(),
         'readonly': items().length === 0
       }" (keydown)="onKeyDown($event)" [attr.aria-label]="ariaLabel || null"
-        [attr.aria-labelledby]="ariaLabelledBy || null" [attr.aria-multiselectable]="false" (click)="onOpen($event)">
+        [attr.aria-labelledby]="ariaLabelledBy || null" [attr.aria-multiselectable]="false" 
+        (click)="onOpen($event)">
         {{ displayItem?.[textField()]}}
         @if (this.open())
         {

@@ -1,15 +1,16 @@
 import { Library } from '../library';
 import { Base } from './base';
-
-/**
- * Class: Action
- */
+//
+// Action
+//
 export class Action extends Base {
   public onClick: Function = () => {};
   public routerLink: string[] = [];
   public style: Partial<CSSStyleDeclaration> = {};
   public checked: boolean = false;
-
+  //
+  // hasRouterLink()
+  //
   hasRouterLink() {
     if (Library.isDefined(this.routerLink)) {
       if (Library.isArray(this.routerLink)) {
@@ -21,25 +22,21 @@ export class Action extends Base {
 
     return false;
   }
-
-  /**
-   * hasOnClick()
-   * @returns {*}
-   */
+  //
+  // hasOnClick()
+  //
   hasOnClick() {
     return Library.isFunction(this.onClick);
   }
-  /**
-   * hasUrl()
-   * @returns {*}
-   */
+  //
+  // hasStyle()
+  //
   hasStyle() {
     return Library.isDefined(this.style);
   }
-  /**
-   * Constructor()
-   * @param options
-   */
+  //
+  // Constructor
+  //
   constructor(options?: Partial<Action>) {
     super(options);
     Object.assign(this, options);

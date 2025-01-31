@@ -27,6 +27,7 @@
     padding: 4px;
 
     li.ag-toolbar-item {
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -38,6 +39,7 @@
       color: var(--color-gray-700);
 
       &:hover {
+        @include box-shadow();
         border: 1px solid var(--color-gray-400); 
         color: var(--color-primary);
       }
