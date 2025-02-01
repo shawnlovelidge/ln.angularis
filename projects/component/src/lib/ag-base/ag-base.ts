@@ -195,11 +195,20 @@ export class AgBase implements OnInit, AfterViewInit, OnDestroy {
   // handleOnClick
   //
   public handleOnClick(
-    $event: MouseEvent | Event,
-    item?: any | undefined
+    $event: Event,
+    item?: any
   ) {
     $event.preventDefault();
     if (Library.isDefined(this.onClick)) {
+
+      //
+      // Console Debug Statement
+      //
+      console.log(
+        `%c handleOnClick: ${$event.target}\t item: ${JSON.stringify(item)}`,
+        `color:rgb(12, 242, 38); font-size: 12px; font-weight: bold`
+      );
+
       if (Library.isDefined(item)) this.onClick.emit(item);
       else this.onClick.emit($event);
     }

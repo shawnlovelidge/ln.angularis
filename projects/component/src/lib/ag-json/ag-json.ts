@@ -12,7 +12,7 @@ import { Library } from '@angularis/core';
   styleUrls: ['ag-json.scss'],
 })
 export class AgJson {
-  @Input() public readonly json: object = {};
+  @Input() public json: object = {};
   @Input() public readonly hidden: boolean = false;
   //
   // Public Variables

@@ -11,10 +11,10 @@
     </div>
     <div class="ln-canvas-content">
       <ag-tab-panel>
-        <ag-tab id="1" label="Demo" [active]="active">
+        <ag-tab [attr.id]=1 label="Demo" [active]="active">
           <ng-content></ng-content>
         </ag-tab>        
-        <ag-tab id="2" label="Code">
+        <ag-tab [attr.id]=2 label="Code">
           <ng-content select="[code]"></ng-content>
         </ag-tab>
       </ag-tab-panel>

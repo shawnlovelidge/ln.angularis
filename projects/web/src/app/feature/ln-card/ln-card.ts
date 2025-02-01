@@ -85,7 +85,7 @@ export class LnCard {
     //
     console.debug(
       `%c { action: ${action.label}   }`,
-      `color:rgb(9, 237, 89); font-size: 12px; font-weight: bold`
+      `color:rgb(243, 26, 196);  font-size: 12px; font-weight: bold`
     );
   }
 }

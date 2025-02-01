@@ -16,6 +16,8 @@ import {
 //
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
 //
 // Components
 //
@@ -39,6 +41,11 @@ export class AgCheckBox
   public readonly size = signal(24);
   public readonly color = signal('');
   //
+  // Font Awesome Icons
+  //
+  public faCheckSquare = faCheckSquare;
+  public faSquare = faSquare;
+  //
   // Computed Variables
   //
   public readonly labelStyle = linkedSignal(() => ({
@@ -58,6 +65,10 @@ export class AgCheckBox
     library: FaIconLibrary
   ) {
     super(element, viewContainerRef, library);
+    //
+    // Add Icons
+    //
+    library.addIcons(faCheckSquare, faSquare);
     //
     // Observe Mutation
     //
@@ -100,6 +111,8 @@ export class AgCheckBox
   // handleOnClick()
   //
   public override handleOnClick($event: MouseEvent) {
+    $event.preventDefault();
+    $event.stopPropagation();
     //
     // Toggle the value
     //

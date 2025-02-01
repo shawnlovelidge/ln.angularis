@@ -15,7 +15,7 @@ import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
   templateUrl: './ln-json.html',
 })
 export class LnJson {
-  public data = signal({ name: 'John', age: 30, city: 'New York' });
+  public json = signal({ name: 'John', age: 30, city: 'New York' });
   //
   // Constructor
   //

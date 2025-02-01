@@ -4,9 +4,9 @@
   }" (click)="handleOnClick($event)" [ngStyle]="computedStyle()">
   @if (value)
   {
-  <fa-icon [icon]="['fas','fa-check-square']"></fa-icon>
+  <fa-icon [icon]="faCheckSquare"></fa-icon>
   } @else {
-  <fa-icon [icon]="['fas','fa-square']"></fa-icon>
+  <fa-icon [icon]="faSquare"></fa-icon>
   }
   <span (click)="handleOnClick($event)" [ngStyle]="labelStyle()">
     <ng-content></ng-content>

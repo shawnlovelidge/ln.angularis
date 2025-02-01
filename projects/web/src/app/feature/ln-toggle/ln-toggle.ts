@@ -31,5 +31,12 @@ export class LnToggle {
   //
   public handleOnClick(value: boolean) {
     this.value = value;
+    //
+    // Console Debug Statement
+    //
+    console.log(
+      `%c value: ${value}`,
+      `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
+    );
   }
 }

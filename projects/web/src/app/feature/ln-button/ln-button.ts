@@ -47,9 +47,9 @@ export class LnButton {
     //
     // Console Debug Statement
     //
-    console.debug(
-      `%c ${innerText} button clicked`,
-      `color:rgb(210, 243, 26); font-size: 12px; font-weight: bold`
+    console.log(
+      `%c item.name: ${innerText}`,
+      `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
     );
   }
 }
