@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, Input, input, OnInit } from '@angular/core';
-
+import { Component, computed, Input, input, signal } from '@angular/core';
 //
 // Library
 //
@@ -12,22 +11,24 @@ import { Library } from '@angularis/core';
   templateUrl: 'ag-json.html',
   styleUrls: ['ag-json.scss'],
 })
-export class AgJson implements OnInit {
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
+export class AgJson {
+  @Input() public readonly json: object = {};
+  @Input() public readonly hidden: boolean = false;
   //
-  // Signals
+  // Public Variables
   //
-  public readonly data = input<object>();
-  public sorted = computed(() => {
-    const obj = this.data();
-    if (obj) {
-      return JSON.parse(Library.ObjectPropertySort(obj) as string);
-    }
-    return obj;
-  });
+  public readonly obj = signal({});
   //
-  // ngOnInit
+  // Constructor
   //
-  public ngOnInit() {}
+  constructor() {}
+  //
+  // ngOnInit()
+  //
+  public ngOnInit() {
+    //
+    // Sort Json Object Properties
+    //
+    this.obj.set(JSON.parse(Library.ObjectPropertySort(this.json) as string));
+  }
 }

@@ -1,17 +1,21 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
-  OnInit,
-  Input,
-  ElementRef,
-  ViewContainerRef,
   AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
   OnDestroy,
+  OnInit,
+  ViewContainerRef,
 } from '@angular/core';
 //
 // Font Awesome Library Container
 //
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Library
+//
+import { Base } from '@angularis/core';
 //
 // Components
 //
@@ -19,15 +23,12 @@ import { AgBase } from '../ag-base/ag-base';
 
 @Component({
   imports: [CommonModule],
-  selector: 'ag-toggle',
-  templateUrl: 'ag-toggle.html',
-  styleUrls: ['ag-toggle.scss'],
+  selector: 'ag-chip',
+  templateUrl: 'ag-chip.html',
+  styleUrls: ['ag-chip.scss'],
 })
-export class AgToggle
-  extends AgBase
-  implements OnInit, AfterViewInit, OnDestroy
-{
-  @Input() public value: boolean = false;
+export class TmChip extends AgBase implements OnInit, AfterViewInit, OnDestroy {
+  @Input() public model: Base = new Base();
   //
   // Constructor
   //
@@ -40,7 +41,7 @@ export class AgToggle
     //
     // Observe Mutation
     //
-    this.observeMutation('ag-toggle');
+    this.observeMutation('ag-chip');
   }
   //
   // ngOnInit()
@@ -68,18 +69,5 @@ export class AgToggle
     // Call Base OnDestroy
     //
     super.ngOnDestroy();
-  }
-  //
-  // handleOnClick()
-  //
-  public override handleOnClick($event: Event) {
-    //
-    // Toggle Value
-    //
-    this.value = !this.value;
-    //
-    // Call Base HandleOnClick
-    //
-    super.handleOnClick($event, this.value);
   }
 }

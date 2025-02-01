@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
-  computed,
   ElementRef,
   EventEmitter,
   Input,
@@ -29,9 +28,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 // Font Awesome Library Container
 //
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faXmark, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 //
 // Library
 //
@@ -39,12 +36,8 @@ import { Action, Card as Model, Library } from '@angularis/core';
 //
 // Components
 //
+import { AgBase } from '../ag-base/ag-base';
 import { AgButton } from '../ag-button/ag-button';
-
-//
-// Utility Functions
-//
-import { parseHTMLElementClassList } from '../util/functions';
 //
 // Components
 //
@@ -54,21 +47,12 @@ import { parseHTMLElementClassList } from '../util/functions';
   templateUrl: 'ag-dialog.html',
   styleUrls: ['ag-dialog.scss'],
 })
-export class AgDialog implements OnInit, AfterViewInit, OnDestroy {
-  @Input() public label: string = '';
+export class AgDialog
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @Input() public model: Model = new Model();
   @Input() public actions: Array<Action> = [];
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public style: Partial<CSSStyleDeclaration> = {};
-  @Input() public customTemplate!: TemplateRef<any>;
-  //
-  // Public Variables
-  //
-  public classes = signal<string>('');
-  public subscriptions: Subscription[] = [];
-  public open = signal(false);
-  public overlayRef: any;
   //
   // @Output
   //
@@ -76,47 +60,44 @@ export class AgDialog implements OnInit, AfterViewInit, OnDestroy {
   @Output() public onAction: EventEmitter<Action> =
     new EventEmitter();
   //
+  // Public Variables
+  //
+  public subscriptions: Subscription[] = [];
+  public open = signal(false);
+  public overlayRef: any;
+  //
+  // Private Variables
+  //
+
+  //
   // ViewChild()
   //
   @ViewChild('portalContainer') portalContainer!: ElementRef;
   @ViewChild('portalView') portalView!: TemplateRef<any>;
   //
-  // hasFunction(s)
-  //
-  public hasCustomTemplate = () =>
-    Library.isDefined(this.customTemplate);
-  //
-  // Private Variables
-  //
-  private observer!: MutationObserver;
-  //
   // Constructor
   //
   constructor(
-    private element: ElementRef,
-    private viewContainerRef: ViewContainerRef,
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,    
+    library: FaIconLibrary,
     private overlay: Overlay,
     private overlayOutsideClickDispatcher: OverlayOutsideClickDispatcher,
-    private library: FaIconLibrary
   ) {
+    super(element, viewContainerRef, library);
     //
-    // FaIconLibrary
+    // Observe Mutation
     //
-    this.library.addIcons(faXmark, faXmarkCircle);
-    //
-    // Set the classes
-    //
-    this.classes.set(
-      parseHTMLElementClassList(
-        this.element.nativeElement,
-        'ag-dialog'
-      )
-    );
+    this.observeMutation('ag-dialog');
   }
   //
-  // ngOnInit()
+  // ngOnInit
   //
-  public ngOnInit() {
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
     //
     // Set the default style
     //
@@ -134,57 +115,24 @@ export class AgDialog implements OnInit, AfterViewInit, OnDestroy {
   //
   // ngAfterViewInit
   //
-  public ngAfterViewInit() {
+  public override ngAfterViewInit() {
     //
-    // mutationCallback
+    // Call Base AfterViewInit
     //
-    //  @param mutationsList
-    //  @param observer
-    //  @param cb()
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
     //
-    //  Definition: This function is used to handle the mutation of the
-    //  classList on a target element
+    // Call Base OnDestroy
     //
-    const mutationCallback = (mutationsList: any, observer: any) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes') {
-          if (mutation.target) {
-            if (mutation.target.classList) {
-              let classNames: string[] = [];
-              mutation.target.classList.forEach(
-                (className: string) => {
-                  classNames.push(className);
-                }
-              );
-
-              if (Library.isArrayWithLength(classNames)) {
-                //
-                // Set the classes
-                //
-                this.classes.set(classNames.join(' '));
-              }
-            }
-          }
-        }
-      }
-    };
+    super.ngOnDestroy();
     //
-    // Setup Listener for when the classList changes
+    // onCloseContextMenu
     //
-    this.observer = new MutationObserver(mutationCallback);
-    //
-    // Get it the target element
-    //
-    this.observer.observe(this.element.nativeElement, {
-      attributes: true,
-    });
-    //
-    // Template
-    //
-    if (this.hasCustomTemplate()) {
-      this.viewContainerRef.clear();
-      this.viewContainerRef.createEmbeddedView(this.customTemplate);
-    }
+    this.detachOverlay();
   }
   //
   // onOpenDialog
@@ -229,11 +177,6 @@ export class AgDialog implements OnInit, AfterViewInit, OnDestroy {
     //
     // Attach overlay to CdkPOrtal
     //
-    /*
-      {
-        $implicit:  {},
-      }
-      */
     this.overlayRef.attach(
       new TemplatePortal(this.portalView, this.viewContainerRef)
     );
@@ -253,18 +196,6 @@ export class AgDialog implements OnInit, AfterViewInit, OnDestroy {
     //
     this.detachOverlay();
   }
-
-  //
-  // handleOnClick
-  //
-  public handleOnClick(event: Event, action: Action) {
-    event.preventDefault();
-
-    if (Library.isDefined(this.onClose)) {
-      this.onClose.emit(action);
-    }
-  }
-
   //
   // handleOnActionClick
   //
@@ -272,19 +203,6 @@ export class AgDialog implements OnInit, AfterViewInit, OnDestroy {
     if (Library.isDefined(this.onAction)) {
       this.onAction.emit(action);
     }
-  }
-  //
-  // ngOnDestroy
-  //
-  public ngOnDestroy() {
-    //
-    // onCloseContextMenu
-    //
-    this.detachOverlay();
-    //
-    // Remove Class Listener
-    //
-    if (this.observer) this.observer.disconnect();
   }
   //
   // detachOverlay()

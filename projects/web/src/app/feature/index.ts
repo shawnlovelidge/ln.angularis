@@ -7,3 +7,4 @@ export * from './ln-json/ln-json';
 export * from './ln-radio-button/ln-radio-button';
 export * from './ln-tab-panel/ln-tab-panel';
 export * from './ln-toolbar/ln-toolbar';
+export * from './ln-textarea/ln-textarea';

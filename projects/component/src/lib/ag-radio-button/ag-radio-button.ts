@@ -1,16 +1,15 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Output,
   OnInit,
   EventEmitter,
   ElementRef,
-  input,
   AfterViewInit,
   OnDestroy,
   signal,
   Input,
   computed,
+  ViewContainerRef,
 } from '@angular/core';
 //
 // Angular Forms
@@ -26,12 +25,13 @@ import {
 //
 import { Action, Library } from '@angularis/core';
 //
-// Utility Functions
+// Font Awesome Library Container
 //
-import { parseHTMLElementClassList } from '../util/functions';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 //
 // Components
 //
+import { AgBase } from '../ag-base/ag-base';
 import { AgButton } from '../ag-button/ag-button';
 
 @Component({
@@ -40,43 +40,44 @@ import { AgButton } from '../ag-button/ag-button';
   templateUrl: 'ag-radio-button.html',
   styleUrls: ['ag-radio-button.scss'],
 })
-export class AgRadioButton {
-  @Input() public label: string = '';
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public readonly: boolean = false;
-  //
-  // Signals
-  //
+export class AgRadioButton
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @Input() public model = signal(new Array<Action>());
+  //
+  // Private Variables
+  //
+  public formGroup: FormGroup = new FormGroup({});
+  public formControl: FormControl = new FormControl();
+  //
+  // Private Variables
+  //
 
   //
-  // @Output() onClick
+  // isFunction(s)
   //
-  @Output() public onClick: EventEmitter<Action> = new EventEmitter();
-  //
-  // setup a singnal for the classes
-  //
-  public classes = signal<string>('');
   public isSquareRadioButton = computed(() => {
     if (Library.isStringWithLength(this.classes()))
       return this.classes().includes('ag-radio-button-square');
 
     return false;
   });
-  public formGroup: FormGroup = new FormGroup({});
-  public formControl: FormControl = new FormControl();
-  //
-  // Private Variables
-  //
-  private observer!: MutationObserver;
+
   //
   // Constructor
   //
   constructor(
-    private element: ElementRef,
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary,
     private fb: FormBuilder
   ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-radio-button');
     //
     // Create the formGroup
     //
@@ -87,24 +88,17 @@ export class AgRadioButton {
   //
   // ngOnInit
   //
-  public ngOnInit() {
+  public override ngOnInit() {
     //
-    // Set the classes
+    // Call Base AfterViewInit
     //
-    this.classes.set(
-      parseHTMLElementClassList(
-        this.element.nativeElement,
-        'ag-radio-button'
-      )
-    );
+    super.ngOnInit();
     //
     // Set the formControl
     //
     if (!this.isSquareRadioButton()) {
       if (Library.isArrayWithLength(this.model())) {
-        const index = this.model().findIndex(
-          (item: Action) => item.active
-        );
+        const index = this.model().findIndex((item: Action) => item.active);
         if (index > -1) {
           //
           // Set the formControl
@@ -117,57 +111,25 @@ export class AgRadioButton {
   //
   // ngAfterViewInit
   //
-  public ngAfterViewInit() {
+  public override ngAfterViewInit() {
     //
-    // mutationCallback
+    // Call Base AfterViewInit
     //
-    //  @param mutationsList
-    //  @param observer
-    //  @param cb()
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
     //
-    //  Definition: This function is used to handle the mutation of the
-    //  classList on a target element
+    // Call Base OnDestroy
     //
-    const mutationCallback = (mutationsList: any, observer: any) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes') {
-          if (mutation.target) {
-            if (mutation.target.classList) {
-              let classNames: string[] = [];
-              mutation.target.classList.forEach(
-                (className: string) => {
-                  classNames.push(className);
-                }
-              );
-
-              if (Library.isArrayWithLength(classNames)) {
-                //
-                // Set the classes
-                //
-                this.classes.set(classNames.join(' '));
-              }
-            }
-          }
-        }
-      }
-    };
-
-    //
-    // Setup Listener for when the classList changes
-    //
-    this.observer = new MutationObserver(mutationCallback);
-    //
-    // Get it the target element
-    //
-    this.observer.observe(this.element.nativeElement, {
-      attributes: true,
-    });
+    super.ngOnDestroy();
   }
   //
   // handleOnClick()
   //
-  public handleOnClick($event: MouseEvent | Event, item: Action) {
-    $event.preventDefault();
+  public override handleOnClick($event: MouseEvent | Event, item: Action) {
     //
     // Set the correct active item
     //
@@ -182,17 +144,11 @@ export class AgRadioButton {
     //
     // Emit the onClick Event
     //
-    if (Library.isDefined(this.onClick)) {
-      this.onClick.emit(this.model().find((i: Action) => i.active));
-    }
+    super.handleOnClick(
+      $event,
+      this.model().find((i: Action) => i.active)
+    );
   }
-  //
-  // ngOnDestroy
-  //
-  public ngOnDestroy() {
-    if (this.observer) this.observer.disconnect();
-  }
-
   //
   // classAttr
   //

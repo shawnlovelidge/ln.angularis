@@ -12,6 +12,8 @@ import { LnToolBar } from './feature/ln-toolbar/ln-toolbar';
 import { LnList } from './feature/ln-list/ln-list';
 import { LnMenu } from './feature/ln-menu/ln-menu';
 import { LnDialog } from './feature/ln-dialog/ln-dialog';
+import { LnTextArea } from './feature/ln-textarea/ln-textarea';
+import { LnInput } from './feature/ln-input/ln-input';
 
 
 export const routes: Routes = [
@@ -74,6 +76,14 @@ export const routes: Routes = [
   {
     path: 'ln-dialog',
     component: LnDialog,
+  },
+  {
+    path: 'ln-textarea',
+    component: LnTextArea,
+  },
+  {
+    path: 'ln-input',
+    component: LnInput,
   },
 ];
 

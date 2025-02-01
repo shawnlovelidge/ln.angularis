@@ -1,31 +1,40 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  EventEmitter,
   Input,
-  Output,
   signal,
   effect,
   linkedSignal,
+  ElementRef,
+  ViewContainerRef,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
+//
+// Font Awesome Library Container
+//
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 //
-// Icons
+// Components
 //
-import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons';
+import { AgBase } from '../ag-base/ag-base';
 
 @Component({
-  selector: 'ag-checkbox',
   imports: [CommonModule, FontAwesomeModule],
-  templateUrl: './ag-checkbox.html',
-  styleUrls: ['./ag-checkbox.scss'],
+  selector: 'ag-checkbox',
+  templateUrl: 'ag-checkbox.html',
+  styleUrls: ['ag-checkbox.scss'],
 })
-export class AgCheckBox {
-  @Input() public label: string = '';
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public active: boolean = false;
+export class AgCheckBox
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @Input() public value: boolean = false;
+  //
+  // Public Variables
+  //
   public readonly name = signal('');
   public readonly size = signal(24);
   public readonly color = signal('');
@@ -36,36 +45,68 @@ export class AgCheckBox {
     color: `${this.color()}`,
     fontSize: `calc(${this.size()}px - 6px)`,
   }));
-  public readonly style = linkedSignal(() => ({
+  public readonly computedStyle = linkedSignal(() => ({
     color: `${this.color()}`,
     fontSize: `${this.size()}px`,
   }));
-
   //
-  // Icons
+  // Constructor
   //
-  faCheckSquare = faCheckSquare;
-  faSquare = faSquare;
-
-  //
-  // Output Variables
-  //
-  @Output() public onClick: EventEmitter<boolean> = new EventEmitter();
-  //
-  // constructor()
-  //
-  constructor() {
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-checkbox');
+    //
+    // Listen for changes
+    //
     effect(() => {
       this.name.set(this.value ? 'square-check' : 'square');
     });
   }
   //
+  // ngOnInit()
+  //
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
+  //
+  // ngAfterViewInit
+  //
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
+  }
+  //
   // handleOnClick()
   //
-  public handleOnClick($event: MouseEvent) {
-    $event.preventDefault();
-    $event.stopPropagation();
+  public override handleOnClick($event: MouseEvent) {
+    //
+    // Toggle the value
+    //
     this.value = !this.value;
-    this.onClick.emit(this.value);
+    //
+    // Call Base handleOnClick
+    //
+    super.handleOnClick($event, this.value);
   }
 }

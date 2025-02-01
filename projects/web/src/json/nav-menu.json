@@ -44,7 +44,21 @@
         "name": "Radio-Button",
         "routerLink": "/ln-radio-button",
         "description": "Radio Button component is used to select one option from a list."
-      }          
+      },
+      {
+        "id": 7,
+        "component": "&lt;ag-textarea/&gt;",
+        "name": "TextArea",
+        "routerLink": "/ln-textarea",
+        "description": "TextArea component is used to enter multiple lines of text."
+      },
+      {
+        "id": 8,
+        "component": "&lt;ag-input/&gt;",
+        "name": "Input",
+        "routerLink": "/ln-input",
+        "description": "Input component is used to enter a single line of text."
+      }                        
     ]
   },
   {

@@ -14,6 +14,7 @@ import { AgDialog } from './ag-dialog/ag-dialog';
 import { AgDropDown } from './ag-dropdown/ag-dropdown';
 import { AgHero } from './ag-hero/ag-hero';
 import { AgHyperLink } from './ag-hyperlink/ag-hyperlink';
+import { AgInput } from './ag-input/ag-input';
 import { AgJson } from './ag-json/ag-json';
 import { AgList } from './ag-list/ag-list';
 import { AgMenu } from './ag-menu/ag-menu';
@@ -23,13 +24,14 @@ import { AgSvg } from './ag-svg/ag-svg';
 import { AgTab } from './ag-tab/ag-tab';
 import { AgTabPanel } from './ag-tab-panel/ag-tab-panel';
 import { AgTable } from './ag-table/ag-table';
+import { AgTextArea } from './ag-textarea/ag-textarea';
 import { AgToggle } from './ag-toggle/ag-toggle';
 import { AgToolBar } from './ag-toolbar/ag-toolbar';
-
 //
 // Export all your components here
 //
 const components = [
+  AgInput,
   AgAccordion,
   AgBanner,
   AgButton,
@@ -48,6 +50,7 @@ const components = [
   AgTab,
   AgTabPanel,
   AgTable,
+  AgTextArea,
   AgToggle,
   AgToolBar,
 ];

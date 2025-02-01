@@ -2,19 +2,25 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
+  ElementRef,
   Input,
   OnDestroy,
   OnInit,
-  Output,
+  ViewContainerRef,
 } from '@angular/core';
 //
 // @naularius/core
 //
 import { Menu } from '@angularis/core';
 //
-// @Components
+// Font Awesome Library Container
 //
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Components
+//
+import { AgBase } from '../ag-base/ag-base';
+
 @Component({
   imports: [CommonModule],
   selector: 'ag-menu-option',
@@ -22,43 +28,49 @@ import { Menu } from '@angularis/core';
   styleUrls: ['ag-menu-option.scss'],
 })
 export class AgMenuOption
+  extends AgBase
   implements OnInit, AfterViewInit, OnDestroy
 {
   @Input() public model: Menu = new Menu();
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public active: boolean = false;
-  @Input() public style: Partial<CSSStyleDeclaration> = {};
-  //
-  // @Output
-  //
-  @Output() public onClick: EventEmitter<Menu> = new EventEmitter();
   //
   // Constructor
   //
-  constructor() {}
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-menu-option');
+  }
   //
-  // ngOnInit
+  // ngOnInit()
   //
-  public ngOnInit(): void {}
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
   //
   // ngAfterViewInit
   //
-  public ngAfterViewInit(): void {}
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
   //
   // ngOnDestroy
   //
-  public ngOnDestroy(): void {}
-
-  //
-  // handleOnClick
-  //
-  public handleOnClick(event: Event): void {
-    if (this.onClick) {
-      //
-      // propigate Menu
-      //
-      this.onClick.emit(this.model);
-    }
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
   }
 }

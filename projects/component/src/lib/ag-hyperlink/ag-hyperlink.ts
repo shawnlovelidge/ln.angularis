@@ -1,50 +1,82 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, computed, input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewContainerRef,
+  input,
+} from '@angular/core';
 //
 // Action
 //
-import { Action, Library } from '@angularis/core';
-
+import { Action } from '@angularis/core';
+//
+// Font Awesome Library Container
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Components
+//
+import { AgBase } from '../ag-base/ag-base';
+//
+// AgHyperLink
+//
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   selector: 'ag-hyperlink',
   templateUrl: 'ag-hyperlink.html',
   styleUrls: ['ag-hyperlink.scss'],
 })
-export class AgHyperLink implements OnInit {
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public style: object = {};
+export class AgHyperLink
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
+{
   //
   // Signals
   //
   public readonly model = input<Action>(new Action());
-  public readonly classes = computed(() => {
-    const list: string[] = Array.from(this.element.nativeElement.classList);
-    if (Library.isArrayWithLength(list)) {
-      return list;
-    }
-    return ['atag'];
-  });
   //
-  // onClick()
+  // Constructor
   //
-  @Output() public onClick: EventEmitter<Action> = new EventEmitter();
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-hyperlink');
+  }
   //
-  // constructor
+  // ngOnInit()
   //
-  constructor(private element: ElementRef) {}
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
   //
-  // ngOnInit
+  // ngAfterViewInit
   //
-  public ngOnInit() {}
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
   //
-  // handleClick
+  // ngOnDestroy
   //
-  public handleClick(event: Event) {
-    if (this.onClick) {
-      event.preventDefault();
-      this.onClick.emit(this.model());
-    }
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
   }
 }

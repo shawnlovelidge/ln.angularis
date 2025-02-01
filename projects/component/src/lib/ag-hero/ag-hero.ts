@@ -1,5 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, Input, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
+//
+// Font Awesome Library Container
+//
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Components
+//
+import { AgBase } from '../ag-base/ag-base';
 //
 // ag-hero
 //
@@ -9,9 +24,46 @@ import { Component, input, Input, OnInit } from '@angular/core';
   templateUrl: 'ag-hero.html',
   styleUrls: ['ag-hero.scss'],
 })
-export class AgHero {
-  @Input() public label: string = '';
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public style: object = {};
+export class AgHero extends AgBase implements OnInit, AfterViewInit, OnDestroy {
+  //
+  // Constructor
+  //
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-hero');
+  }
+  //
+  // ngOnInit()
+  //
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
+  //
+  // ngAfterViewInit
+  //
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
+  }
 }

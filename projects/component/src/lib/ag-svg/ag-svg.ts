@@ -1,59 +1,80 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Output,
-  EventEmitter,
-  ViewEncapsulation,
-  OnChanges,
-  ChangeDetectionStrategy,
-  SimpleChanges,
   input,
+  ElementRef,
+  ViewContainerRef,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
 } from '@angular/core';
 //
-// Lernender/Core
+// Font Awesome Library Container
 //
-import { Guid, Library } from '@angularis/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Components
+//
+import { AgBase } from '../ag-base/ag-base';
 //
 // ag-svg
 //
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   selector: 'ag-svg',
   templateUrl: 'ag-svg.html',
   styleUrls: ['ag-svg.scss'],
 })
-export class AgSvg implements OnChanges {
-  public hidden = input<boolean>(false);
-  public disabled = input<boolean>(false);
+export class AgSvg extends AgBase implements OnInit, AfterViewInit, OnDestroy {
   public readonly color = input<string>('');
   public readonly name = input<string>('Amplify');
   public readonly title = input<string>('');
   public readonly padLeft = input<boolean>(false);
   public readonly padRight = input<boolean>(false);
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
-
   //
   // Public Variables
   //
-  public id: string = Guid.create().toString();
 
   //
   // Constructor
   //
-  constructor() {}
-
-  //
-  // OnClick
-  //
-  public handleOnClick(event: MouseEvent) {
-    event.stopPropagation();
-    if (Library.isDefined(this.onClick)) {
-      this.onClick.emit(event);
-    }
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-svg');
   }
-
   //
-  // ngOnChange
+  // ngOnInit()
   //
-  public ngOnChanges(changes: SimpleChanges): void {}
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
+  //
+  // ngAfterViewInit
+  //
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
+  }
 }

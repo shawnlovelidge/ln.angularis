@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -6,16 +7,25 @@ import {
   Output,
   AfterContentInit,
   contentChildren,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+  ElementRef,
+  ViewContainerRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 //
 // Library
 //
 import { Library } from '@angularis/core';
 //
-// Import LnComponent
+// Font Awesome Library Container
+//
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Components
 //
 import { AgTab } from '../ag-tab/ag-tab';
+import { AgBase } from '../ag-base/ag-base';
 //
 // Component: AgTab()
 //
@@ -28,14 +38,11 @@ import { AgTab } from '../ag-tab/ag-tab';
 //
 // AgTabPanel
 //
-export class AgTabPanel implements AfterContentInit {
+export class AgTabPanel
+  extends AgBase
+  implements OnInit, AfterViewInit, AfterContentInit, OnDestroy
+{
   @Input() public title: string = '';
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public style = {
-    height: 'auto',
-    width: '100%',
-  };
   @Input() template: TemplateRef<any> | undefined;
   @Input() actionTemplate: TemplateRef<any> | undefined;
   @Output() public onTabChange: EventEmitter<any> = new EventEmitter();
@@ -43,11 +50,42 @@ export class AgTabPanel implements AfterContentInit {
   // Public Variables
   //
   public readonly tabs = contentChildren(AgTab);
-
+  //
+  // Constructor
+  //
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-tab-panel');
+  }
+  //
+  // ngOnInit()
+  //
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
+  //
+  // ngAfterViewInit
+  //
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
   //
   // ngAfterContentInit()
   //
-  ngAfterContentInit(): void {
+  public ngAfterContentInit(): void {
     //
     // Set the first tab that's labeled as active to active
     //
@@ -56,18 +94,30 @@ export class AgTabPanel implements AfterContentInit {
     });
   }
   //
-  // onTabClick
+  // ngOnDestroy
   //
-  public handleTab = (tab: AgTab) => {
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
+  }
+  //
+  // handleOnClick
+  //
+  public override handleOnClick($event: Event, tab: AgTab) {
     if (Library.isDefined(tab)) {
       this.tabs()?.forEach((t: AgTab) => {
         t.active = t.id == tab.id;
         t.hidden = !t.active;
       });
-      this.onTabChange.emit({
+      //
+      // Emit handleOnClick
+      //
+      super.handleOnClick($event, {
         id: tab.id,
         label: tab.label,
       });
     }
-  };
+  }
 }

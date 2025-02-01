@@ -36,7 +36,7 @@
     </div>
     @if (model.canCheck) {
     <div class="ag-card-container-side-bar">
-      <ag-checkbox [value]="model.checked" [disabled]="model.disabled" (onClick)="handleOnClick($event)"></ag-checkbox>
+      <ag-checkbox [value]="model.checked" [disabled]="model.disabled" (onClick)="handleOnClick($event, model.checked)"></ag-checkbox>
     </div>
     }
   </div>

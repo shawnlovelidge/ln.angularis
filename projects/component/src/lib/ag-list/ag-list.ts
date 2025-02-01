@@ -4,28 +4,24 @@ import {
   Component,
   computed,
   ElementRef,
-  EventEmitter,
   Input,
-  input,
   OnDestroy,
   OnInit,
-  Output,
   signal,
-  TemplateRef,
-  ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 //
 // Library
 //
-import { Action, Library } from '@angularis/core';
+import { Action } from '@angularis/core';
 //
-// Utility Functions
+// Font Awesome Library Container
 //
-import { parseHTMLElementClassList } from '../util/functions';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 //
 // Components
 //
+import { AgBase } from '../ag-base/ag-base';
 import { AgCheckBox } from '../ag-checkbox/ag-checkbox';
 
 @Component({
@@ -34,131 +30,85 @@ import { AgCheckBox } from '../ag-checkbox/ag-checkbox';
   templateUrl: 'ag-list.html',
   styleUrls: ['ag-list.scss'],
 })
-export class AgList implements OnInit, AfterViewInit, OnDestroy {
-  @Input() public label: string = '';
-  @Input() public hidden: boolean = false;
-  @Input() public disabled: boolean = false;
+export class AgList extends AgBase implements OnInit, AfterViewInit, OnDestroy {
   @Input() public multiselect: boolean = false;
-  @Input() public style: object = {};
   @Input() public items = signal<Action[]>([]);
-  @Input() public customTemplate!: TemplateRef<any>;
   //
-  // setup a singnal for the classes
-  //
-  public classes = signal<string>('');
-  //
-  // @computed
+  // @HasFunctions()
   //
   public readonly useCheckBoxList = computed(() =>
     this.classes().includes('ag-checkbox-list')
   );
   //
-  // @Output
-  //
-  @Output() public readonly onClick = new EventEmitter<Action[]>();
-  //
-  // Computed
-  //
-  public hasList = computed(() => this.items().length > 0);
-  public hasCustomTemplate = () => Library.isDefined(this.customTemplate);
-  //
-  // Private Variables
-  //
-  private observer!: MutationObserver;
-  //
   // Constructor
   //
   constructor(
-    private element: ElementRef,
-    private container: ViewContainerRef
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
   ) {
+    super(element, viewContainerRef, library);
     //
-    // Set the classes
+    // Observe Mutation
     //
-    this.classes.set(
-      parseHTMLElementClassList(this.element.nativeElement, 'ag-list-items')
-    );
+    this.observeMutation('ag-list-items');
   }
   //
-  // ngOnInit
+  // ngOnInit()
   //
-  public ngOnInit() {
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
     //
     // Set the default style
     //
-    this.style = { ...{ height: 'auto', overflowY: 'auto' }, ...this.style };
+    this.style = {
+      ...{ height: 'auto', overflowY: 'auto' },
+      ...this.style,
+    };
   }
   //
   // ngAfterViewInit
   //
-  public ngAfterViewInit() {
+  public override ngAfterViewInit() {
     //
-    // mutationCallback
+    // Call Base AfterViewInit
     //
-    //  @param mutationsList
-    //  @param observer
-    //  @param cb()
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
     //
-    //  Definition: This function is used to handle the mutation of the
-    //  classList on a target element
+    // Call Base OnDestroy
     //
-    const mutationCallback = (mutationsList: any, observer: any) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes') {
-          if (mutation.target) {
-            if (mutation.target.classList) {
-              let classNames: string[] = [];
-              mutation.target.classList.forEach((className: string) => {
-                classNames.push(className);
-              });
-
-              if (Library.isArrayWithLength(classNames)) {
-                //
-                // Set the classes
-                //
-                this.classes.set(classNames.join(' '));
-              }
-            }
-          }
-        }
-      }
-    };
-
-    //
-    // Setup Listener for when the classList changes
-    //
-    this.observer = new MutationObserver(mutationCallback);
-    //
-    // Get it the target element
-    //
-    this.observer.observe(this.element.nativeElement, { attributes: true });
-    //
-    // Template
-    //
-    if (this.hasCustomTemplate()) {
-      this.container.clear();
-      this.container.createEmbeddedView(this.customTemplate);
-    } 
+    super.ngOnDestroy();
   }
   //
   // handleOnClick
   //
-  public handleOnClick(item: Action) {
+  public override handleOnClick($event: Event, item: Action) {
+    //
+    // Handle the click event
+    //
     for (const i of this.items()) {
       if (this.multiselect)
         i.active = i.id === item.id ? !item.active : i.active;
       else i.active = item.id === i.id;
     }
 
+    //
+    // Emit the click event
+    //
     if (this.onClick)
       if (this.multiselect)
-        this.onClick.emit(this.items().filter(i => i.active));
-      else this.onClick.emit([item]);
-  }
-  //
-  // ngOnDestroy
-  //
-  public ngOnDestroy() {
-    if (this.observer) this.observer.disconnect();
+        super.handleOnClick(
+          $event,
+          this.items().filter(i => i.active)
+        );
+      else super.handleOnClick($event, [item]);
   }
 }

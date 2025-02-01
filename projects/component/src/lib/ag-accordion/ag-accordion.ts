@@ -1,24 +1,27 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
-  EventEmitter,
+  ElementRef,
   Input,
-  input,
+  OnDestroy,
   OnInit,
-  Output,
-  signal,
+  ViewContainerRef,
 } from '@angular/core';
 //
 // Library
 //
-import { Icon, Library } from '@angularis/core';
+import { Icon } from '@angularis/core';
 //
 // Font Awesome Library Container
 //
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+//
+// Components
+//
+import { AgBase } from '../ag-base/ag-base';
 
 @Component({
   selector: 'ag-accordion',
@@ -26,40 +29,54 @@ import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
   templateUrl: 'ag-accordion.html',
   styleUrls: ['ag-accordion.scss'],
 })
-export class AgAccordion implements OnInit {
-  @Input() public label: string = '';
+export class AgAccordion
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @Input() public open: boolean = false;
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public active: boolean = false;
-  @Input() public style: object = {};
-  //
-  // Events
-  //
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
   //
   // Public Variables
   //
   public icon!: Icon<IconProp>;
   //
-  // constructor()
+  // Constructor
   //
-  constructor(library: FaIconLibrary) {
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
     //
-    // FaIconLibrary
+    // Observe Mutation
     //
-    library.addIcons(faCaretUp, faCaretDown);
+    this.observeMutation('ag-accordion');
   }
   //
   // ngOnInit()
   //
-  public ngOnInit() {}
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
   //
-  // OnClick
+  // ngAfterViewInit
   //
-  public handleOnClick($event: Event) {
-    if (Library.isDefined(this.onClick)) {
-      this.onClick.emit($event);
-    }
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
   }
 }
