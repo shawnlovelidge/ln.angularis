@@ -28,7 +28,7 @@ jobs:
           node-version: '20'
           cache: 'yarn'
           always-auth: false
-          check-latest: false
+          check-latest: false        
 
       - name: Install dependencies
         run: yarn install
