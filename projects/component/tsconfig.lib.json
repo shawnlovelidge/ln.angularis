@@ -2,6 +2,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "paths": {
+      "@angularis/core": ["../../dist/core"],
+      "@angularis/directive": ["../../dist/directive/src"],
+      "@angularis/model": ["../../dist/model/src"],
+      "@angularis/pipe": ["../../dist/pipe/src"],
+      "@angularis/service": ["../../dist/service/src"],
+    },    
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,

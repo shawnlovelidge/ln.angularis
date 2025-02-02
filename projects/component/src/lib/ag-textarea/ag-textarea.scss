@@ -1,0 +1,67 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-textarea {
+  padding: 0;
+  margin: 0;
+  @include flexbox-column();
+  justify-items: flex-start;
+  align-items: center;
+
+  &.disabled {
+    @include disabled();
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .label {
+    @include label();
+    color: var(--color-gray-700);
+    text-align: left;
+    height: 22px;
+    line-height: 22px;
+    width: 100%;
+    padding: 0 4px;
+    font-weight: 700;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  textarea.ag-textarea-container {
+    cursor: default;
+    background-color: var(--color-gray-050);
+    border-radius: 4px;
+    border: none;
+    caret-color: var(--color-black);
+    color: var(--color-gray-600);
+    border: 1px solid var(--color-gray-700);
+    padding: 6px 10px;    
+    margin: 0;
+    outline: none;
+    overflow: hidden;
+    width: 100%;
+
+
+    &.disabled {
+      @include disabled();
+    }
+
+    &:hover {
+      @include box-shadow();
+    }
+  }
+
+  .ag-texarea-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
+    font-size: 11px;
+    color: var(--color-primary);
+    text-align: left;
+  }
+}

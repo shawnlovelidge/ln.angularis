@@ -1,0 +1,25 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>
+          <ag-radio-button [model]="model" (onClick)="handleOnClick($event)"></ag-radio-button>
+        </td>
+      </tr>       
+      <tr>
+        <td>class='ag-radio-button-square'</td>
+        <td>
+          <ag-radio-button class="ag-radio-button-square'" [model]="model" (onClick)="handleOnClick($event)"></ag-radio-button>
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+</ln-canvas>

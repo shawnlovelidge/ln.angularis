@@ -1,0 +1,25 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-hero
+{
+  width: 100%;
+
+  .ag-hero-label
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2pc;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .ag-hero-content
+  {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: auto;
+  }
+}

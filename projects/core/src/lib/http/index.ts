@@ -4,3 +4,6 @@ export * from './environment';
 export * from './error';
 export * from './response';
 export * from './token';
+export * from './authentication';
+export * from './hostname';
+export * from './token';

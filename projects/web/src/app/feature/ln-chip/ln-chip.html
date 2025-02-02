@@ -1,0 +1,58 @@
+<ln-canvas>
+  <div class="ln-chip">
+    <table class="table-standard">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Control</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>(default)</td>
+          <td>
+            <ag-chip  
+            [model]="readonly" 
+            [removeIcon]="faCircleXmark"
+            (onClick)="handleOnClick($event)"
+            (onRemove)="handleOnRemove($event)"></ag-chip>
+          </td>
+        </tr>        
+        <tr>
+          <td>class='ag-chip-basic'</td>
+          <td>
+            <ag-chip class="ag-chip-basic" 
+            [model]="basic" 
+            [removeIcon]="faCircleXmark"
+            (onClick)="handleOnClick($event)"
+            (onRemove)="handleOnRemove($event)"></ag-chip>
+          </td>
+        </tr>
+        <tr>
+          <td>class='ag-chip-highlight'</td>
+          <td>
+            <ag-chip 
+            class="ag-chip-highlight" 
+            [model]="highlight" 
+            [icon]="faUser" 
+            [removeIcon]="faCircleXmark"
+            (onClick)="handleOnClick($event)"
+            (onRemove)="handleOnRemove($event)"></ag-chip>
+          </td>
+        </tr>
+        <tr>
+          <td>class='ag-chip-input'</td>
+          <td>
+            <ag-chip 
+              class="ag-chip-input" 
+              [model]="input" 
+              [icon]="faCheck" 
+              [removeIcon]="faCircleXmark"
+              (onClick)="handleOnClick($event)" 
+              (onRemove)="handleOnRemove($event)"></ag-chip>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ln-canvas>

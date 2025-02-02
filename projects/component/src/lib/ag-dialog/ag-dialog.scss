@@ -1,0 +1,90 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-dialog {
+  @include border-radius(4px);
+  display: block;
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  color: var(--color-black);
+  transition: 0.3s;
+  height: auto;
+  cursor: pointer;
+
+  &.ag-dialog-elevated {
+    &:hover {
+      @include box-shadow();
+    }
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.disabled {
+    @include disabled();
+  }
+
+  .ag-dialog-container {
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    grid-template-rows: 1fr;
+    grid-gap: 4px;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+
+    &.single-column {
+      grid-template-columns: 1fr;
+    }
+
+    .ag-dialog-container-side-bar {
+    }
+
+    .ag-dialog-container-context {
+      align-self: center;
+      height: auto;
+
+      .ag-dialog-container-context-media {
+        height: auto;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+
+      .ag-dialog-container-context-label {
+        @include user-select();
+        font-family: 'Poppins', sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--color-gray-700);
+        margin: 10px 0;
+        width: 100%;
+      }
+
+      .ag-dialog-container-context-description {
+        @include user-select();
+        color: var(--color-black);
+        opacity: 0.7;
+        width: 100%;
+      }
+
+      ul.ag-dialog-container-context-actions {
+        @include flexbox-row();        
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 8px;
+        margin-top: 12px;
+
+        li.ag-dialog-container-context-action {
+          width: auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div [attr.class]="classes()" [class.hidden]="hidden" [class.disabled]="disabled">
+  <div class="label" [attr.for]="uid" [class.hidden]="!hasLabel()" [class.disabled]="disabled">{{label}}
+  </div>
+  <div class="ag-input-textbox-wrapper">
+    <input class="ag-input-textbox" [attr.type]="type" [(ngModel)]="value" [attr.placeholder]="placeholder"
+      [disabled]="disabled" />
+    <fa-icon class="ag-input-icon" [class.hidden]="!searchIcon" [class.disabled]="disabled" [icon]="['fas','search']"></fa-icon>
+  </div>
+</div>

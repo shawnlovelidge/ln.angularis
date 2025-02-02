@@ -1,14 +1,13 @@
 import { Library } from '../library';
 import { Action } from './action';
-import { Tooltip } from './tooltip';
 /**
  * Class: Icon
  */
-export class Icon extends Action {
+export class Icon<T> extends Action {
   public url: string = '';
   public exists: boolean = false;
   public tooltip: Object = {};
-  public component?: any = undefined;
+  public component!: T;
   /**
    * hasUrl()
    * @returns {*}
@@ -21,13 +20,13 @@ export class Icon extends Action {
    * @returns {*}
    */
   hasComponent() {
-    return Library.isObject(this.component);
+    return Library.isDefined(this.component);
   }
 
   /**
    * Constructor()
    */
-  constructor(options?: Partial<Icon>) {
+  constructor(options?: Partial<Icon<T>>) {
     super(options);
     Object.assign(this, options);
   }

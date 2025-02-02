@@ -1,0 +1,71 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+:host {
+  width: 100%;
+  text-align: left;
+}
+
+.ag-list {
+  height: auto;
+  width: 100%;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.disabled {
+    @include disabled();
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .ag-list-label {
+    height: 40px;
+    line-height: 38px;
+    margin: 0;
+    padding: 0 2px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-gray-800);
+    margin-bottom: 4px;
+  }
+
+  ul.ag-list-items {
+    @include flexbox-column();
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 0;
+    flex-wrap: nowrap;
+    background-color: var(--color-gray-050);
+    border: 1px solid var(--color-gray-300);
+
+    li.ag-list-item {
+      display: flex;
+      align-items: center;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid var(--color-gray-100);
+
+      .ag-list-item-template {
+        height: 40px;
+        padding: 4px 8px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          background-color: var(--color-gray-100);
+        }
+
+        &.active {
+          background-color: var(--color-primary);
+          color: var(--color-white);
+          border: 0.5px solid var(--color-gray-100);
+        }
+      }
+    }
+  }
+}

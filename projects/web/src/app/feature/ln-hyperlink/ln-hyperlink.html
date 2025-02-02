@@ -1,0 +1,36 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>class</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>
+          <ag-hyperlink [model]="simpleLink()" (onClick)="handleOnClick($event)">
+            @if (simpleLink().hasName()) {
+            {{ simpleLink().name }}
+            } @else {
+            label()
+            }
+          </ag-hyperlink>
+        </td>
+      </tr>
+      <tr>
+        <td>class='button'</td>
+        <td>
+          <ag-hyperlink class="button" [model]="buttonLink()" (onClick)="handleOnClick($event)">
+            @if (buttonLink().hasName()) {
+            {{ buttonLink().name }}
+            } @else {
+            label()
+            }
+          </ag-hyperlink>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ln-canvas>

@@ -1,0 +1,14 @@
+<div class="ag-checkbox" [ngClass]="{ 
+    'disabled': disabled, 
+    'hidden': hidden 
+  }" (click)="handleOnClick($event)" [ngStyle]="computedStyle()">
+  @if (value)
+  {
+  <fa-icon [icon]="faCheckSquare"></fa-icon>
+  } @else {
+  <fa-icon [icon]="faSquare"></fa-icon>
+  }
+  <span [ngStyle]="labelStyle()">
+    <ng-content></ng-content>
+  </span>
+</div>

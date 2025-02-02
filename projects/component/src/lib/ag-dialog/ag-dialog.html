@@ -1,0 +1,39 @@
+<div [attr.class]="classes()" [ngClass]="{
+  disabled: disabled,
+  hidden: hidden
+}">
+  <div class="ag-dialog-container">
+    <div class="ag-dialog-container-context" [ngStyle]="style">
+      @if (!hasCustomTemplate()) {
+        @if (model.image.hasImage()) {
+          <img class="ag-dialog-container-context-media" [attr.src]="model.image.href" [attr.alt]="model.image.label" />
+        }
+        @if (model.hasLabel()) {
+          <div class="ag-dialog-container-context-label">{{model.label}}</div>
+        }
+        @if (model.hasDescription()) {
+          <div class="ag-dialog-container-context-description">
+            <p>{{model.description}}</p>
+          </div>
+        }
+      }
+      @else if (hasCustomTemplate()) {
+      <ng-container [ngTemplateOutlet]="customTemplate" [ngTemplateOutletContext]="{model: model}" />
+      }
+      @if (actions.length > 0)
+      {
+      <ul class="ag-dialog-container-context-actions">
+        @for (action of actions; track $index)
+        {
+        <li class="ag-dialog-container-context-action">
+          <ag-button class="bordered" (onClick)="handleOnActionClick(action)">{{action.label}}</ag-button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+    <div class="ag-dialog-container-side-bar" (click)="onCloseDialog()">
+      <fa-icon [icon]="['fas','xmark-circle']"></fa-icon>
+    </div>
+  </div>
+</div>

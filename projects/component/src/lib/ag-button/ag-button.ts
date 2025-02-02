@@ -1,47 +1,71 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Output,
   OnInit,
-  EventEmitter,
   ElementRef,
-  input,
-  linkedSignal
+  AfterViewInit,
+  OnDestroy,
+  ViewContainerRef,
 } from '@angular/core';
-import { Library } from '@angularis/core';
+//
+// Font Awesome Library Container
+//
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+//
+// Components
+//
+import { AgBase } from '../ag-base/ag-base';
 
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   selector: 'ag-button',
   templateUrl: 'ag-button.html',
   styleUrls: ['ag-button.scss'],
 })
-export class AngButton implements OnInit {
-  public readonly disabled = input<boolean>(false);
-  public readonly hidden = input<boolean>(false);
-  public readonly style = input<object>({});
-  public readonly classes = linkedSignal(() => {
-    const list: string[] = Array.from(this.element.nativeElement.classList);
-    if (Library.isArrayWithLength(list)) {
-      return list;
-    }
-    return [];
-  });
-  @Output() public onClick: EventEmitter<any> = new EventEmitter();
+export class AgButton
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
+{
   //
   // Constructor
   //
-  constructor(private element: ElementRef) {}
+  constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary
+  ) {
+    super(element, viewContainerRef, library);
+    //
+    // Observe Mutation
+    //
+    this.observeMutation('ag-button');
+  }
   //
   // ngOnInit
   //
-  public ngOnInit() {}
+  public override ngOnInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngOnInit();
+  }
   //
-  // handleClick
+  // ngAfterViewInit
   //
-  public handleClick($event: MouseEvent) {
-    if (this.onClick) {
-      this.onClick.emit($event);
-    }
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
   }
 }

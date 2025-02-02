@@ -1,0 +1,44 @@
+<div class="ag-table-component" 
+[class.hidden]="hidden()" [class.disabled]="disabled()" [style]="style()">
+  <div class="ag-table-container">
+    <table [attr.id]="table?.uid" class="ag-table">
+      <thead [class.hidden]="hideHeader()">
+        <tr class="ag-table-header">
+          <!-- @for (let column of table?.columns;let j=index) {
+            <th (click)="handleHeader(column)" [style]="column.style"
+            [class.disabled]="disabled()" [class.sortable]="!column.sort.disabled" [class.active]="column.sort.active">
+              <span class="ag-table-header-label">
+              {{ column.label }}
+              </span>
+            </th>
+          } -->
+        </tr>
+      </thead>
+      <tbody class="ag-table-body no-data" *ngIf="!table?.hasData()">
+        <tr>
+          <td [attr.colspan]="table?.columns?.length">
+            {{ "No data available." }}
+          </td>
+        </tr>
+      </tbody>
+      <tbody class="ag-table-body no-data" *ngIf="table?.hasData()">
+      <tbody class="ag-table-body has-data">
+        <!-- @for (let row of table?.data;let i=index) {
+        <tr id="{{ row.uid }}" class="ag-table-row border-bottom" [ngClass]="{
+            'hidden': row.hidden, 
+            'has-content': row.hasContent(), 
+            'border-bottom': border 
+          }" (click)="handleRowSelected(row)" (dblclick)="handleDblClick(row)">
+
+          @for (let column of table?.columns;let j=index) {
+          <td class="ag-table-cell" [ngClass]="{ 
+                'hidden': column.hidden, 
+                'has-content': row.hasContent()
+              }" [style]="column.style" [innerHtml]="row.data[column.field.name]" />
+          }
+        </tr>
+        } -->
+      </tbody>
+    </table>
+  </div>
+</div>

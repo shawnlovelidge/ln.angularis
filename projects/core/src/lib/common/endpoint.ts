@@ -3,6 +3,7 @@ import { Library } from '../library';
  * Class: Endpoint
  */
 export class Endpoint {
+  public name: string = '';
   public secure: boolean = true;
   public requireToken: boolean = true;
   public url: string = '';

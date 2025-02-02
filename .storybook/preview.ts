@@ -1,15 +1,10 @@
 import type { Preview } from '@storybook/angular';
-import { setCompodocJson } from '@storybook/addon-docs/angular';
 import { themes } from '@storybook/theming';
-
-import docJson from './documentation.json';
-
-setCompodocJson(docJson);
 
 const preview: Preview = {
   parameters: {
     docs: {
-      theme: themes.dark,
+      theme: themes.light,
     },
     controls: {
       matchers: {
@@ -18,8 +13,6 @@ const preview: Preview = {
       },
     },
   },
-
-  tags: ['autodocs', 'autodocs', 'autodocs', 'autodocs'],
 };
 
 export default preview;

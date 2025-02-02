@@ -1,0 +1,37 @@
+<div class="ag-menu" [ngClass]="{
+  'hidden': hidden,
+  'disabled': disabled
+}">
+  @if (this.isKebabMenu())
+  {
+  <button class="ag-menu-item-icon" #portalContainer (click)="onOpenMenu($event)">
+    <fa-icon [icon]="['fas','ellipsis-vertical']"></fa-icon>
+  </button>
+  }
+  @else if (this.isHamburgerMenu())
+  {
+  <button class="ag-menu-item-icon" #portalContainer (click)="onOpenMenu($event)">
+    <fa-icon [icon]="['fas','bars']"></fa-icon>
+  </button>
+  }
+  @else if (this.isDefaultMenu())
+  {
+  <div class="ag-menu-label">
+    {{label}}
+  </div>
+  <button class="ag-menu-item-selection" #portalContainer (click)="onOpenMenu($event)">
+    <span>{{value().name}}</span>
+    <span class="ag-menu-item-selection-icon"><fa-icon [icon]="['fas','caret-down']"></fa-icon></span>
+  </button>
+  }
+</div>
+<ng-template #portalView let-menu="menu">
+  <ul class="ag-menu-items" [ngStyle]="style">
+    @for (menu of model; track $index)
+    {
+    <li class="ag-menu-item">
+      <ag-menu-option [model]="menu" (onClick)="onCloseMenu(menu)"></ag-menu-option>
+    </li>
+    }
+  </ul>
+</ng-template>

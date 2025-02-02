@@ -23,7 +23,7 @@ export { Card } from './lib/card/card';
  * Common
  */
 export { Action } from './lib/common/action';
-export { Base, IBase } from './lib/common/base';
+export { Base } from './lib/common/base';
 export { Category } from './lib/common/category';
 export { Clock } from './lib/common/clock';
 export { Element } from './lib/common/element';
@@ -33,12 +33,14 @@ export { Group } from './lib/common/group';
 export { Guid } from './lib/common/guid';
 export { Icon } from './lib/common/icon';
 export { Image } from './lib/common/image';
+export { Info } from './lib/common/info';
 export { Interval } from './lib/common/interval';
 export { Item } from './lib/common/item';
+export { Menu } from './lib/common/menu';
 export { Name } from './lib/common/name';
 export { Phone } from './lib/common/phone';
 export { Point } from './lib/common/point';
-export { Range, IRange } from './lib/common/range';
+export { Range } from './lib/common/range';
 export { Role } from './lib/common/role';
 export { Sort } from './lib/common/sort';
 export { Status } from './lib/common/status';
@@ -46,7 +48,8 @@ export { Toolbar } from './lib/common/toolbar';
 export { Tooltip } from './lib/common/tooltip';
 export { User } from './lib/common/user';
 export { Version } from './lib/common/version';
-export { Info } from './lib/common/info';
+
+
 /**
  * Authentication
  */
@@ -68,6 +71,8 @@ export { Environment } from './lib/http/environment';
 export { Error } from './lib/http/error';
 export { Response } from './lib/http/response';
 export { Token } from './lib/http/token';
+export { Authentication } from './lib/http/authentication';
+export { Hostname } from './lib/http/hostname';
 /**
  * Grid
  */

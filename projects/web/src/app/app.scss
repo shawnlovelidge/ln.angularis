@@ -1,0 +1,116 @@
+.app {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  .app-container {
+    display: grid;
+    grid-template-areas:
+    "head"
+    "content"
+    "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 50px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100vh;
+  }
+
+  .app-header {
+    grid-area: head;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 14px;
+    cursor: default;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    gap: 4px;
+    width: 100%;
+
+    h3.title {
+      margin-bottom: 16px;
+      padding: 0;
+      font-size: 18px;
+      justify-content: flex-start;
+      text-align: left;
+
+      small {
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+    .description {
+      height: 14px;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+      font-size: 12px;   
+      
+      &:hover {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  .app-content {
+    grid-area: content;
+    padding: 0px;
+    display: grid;
+    grid-template-areas:
+    "nav"
+    "content";
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: calc(100vh - 100px);   
+    overflow: auto; 
+    
+    .app-sidebar 
+    {
+      border-right: 1px solid var(--color-gray-300);
+      ul.app-sidebar-menu-items
+      {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        align-items: left;
+        padding: 10px;
+        margin: 0;
+        background-color: var(--color-gray-100);
+        color: var(--color-black);
+        height: calc(100vh - 100px);
+        gap: 4px;
+        
+
+        li.app-sidebar-menu-item {
+          padding: 4px;
+          cursor: pointer;
+          
+          a {
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--color-black);
+            padding: 0 10px;
+          }
+        }
+      }
+    }
+
+    .app-sidebar-content
+    {
+      padding: 10px;
+    }
+  }
+
+  .app-footer {
+    grid-area: footer;
+    width: 100%;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+}

@@ -1,0 +1,91 @@
+
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-hyperlink {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  width: auto;
+  cursor: default;
+
+  &.disabled {
+    @include disabled();
+  }
+
+  a.atag {
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.1s ease;
+    color: var(--color-primary);
+    font-weight: normal;
+
+    &:hover,
+    &:focus {
+      font-weight: 700;
+    }
+
+    &:visited {
+      color: var(--color-black);
+    }
+
+    &.active {
+     color: var(--color-black);
+    }
+    &.disabled {
+      @include disabled();
+    }
+  }
+
+  a.button {
+    @include user-select();
+    @include border-radius(20px);
+    background-color: var(--color-primary);
+    color: var(--color-white);    
+    height: 32px;
+    line-height: 16px;
+    overflow: hidden;
+    padding: 8px 20px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.1s ease;    
+
+    &:hover,
+    &:focus {
+      font-weight: 700;
+      @include box-shadow();
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:visited {
+      color: var(--color-black);
+    }
+
+    &.active {
+     color: var(--color-black);
+    }
+    &.disabled {
+      @include disabled();
+    }
+  }  
+
+  .icon {
+    position: relative;
+    color: var(--color-primary);
+    top: 3px;
+    width: auto;
+
+    &.disabled {
+      @include disabled();
+    }
+  }
+}

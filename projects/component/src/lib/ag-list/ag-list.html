@@ -1,0 +1,39 @@
+<div class="ag-list" [class.hidden]="hidden" [class.disabled]="disabled">
+  <div class="ag-list-label">
+    {{ label }}
+  </div>
+  <ul [attr.class]="classes()" [ngStyle]="style">
+    @for (item of items(); track item)
+    {
+    <li class="ag-list-item" (click)="!useCheckBoxList() && handleOnClick(item)">
+      @if (!hasCustomTemplate())
+      {
+      <ng-container [ngTemplateOutlet]="defaultTemplate"
+        [ngTemplateOutletContext]="{item: item, checkbox: useCheckBoxList()}" />
+      }
+      @else
+      {
+      <ng-container [ngTemplateOutlet]="customTemplate" [ngTemplateOutletContext]="{item: item}" />
+      }
+    </li>
+    }
+
+  </ul>
+</div>
+<ng-template #defaultTemplate let-item="item" let-checkbox="checkbox">
+  <div class="ag-list-item-template" [ngClass]="{ 
+    'active': !hasCustomTemplate() && !useCheckBoxList() && item.active, 
+    'disabled': item.disabled, 
+    'hidden': item.hidden 
+    }">
+    @if (checkbox)
+    {
+    <ag-checkbox [value]="item.active" [disabled]="item.disabled" (onClick)="handleOnClick(item)">
+      {{ item.name }}
+    </ag-checkbox>
+    } @else {
+    {{ item.name }}
+    }
+  </div>
+
+</ng-template>
