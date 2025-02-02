@@ -7,25 +7,26 @@ import { Item } from '@angularis/core';
 //
 // @angularis/component
 //
-import { AgMenu } from '@angularis/component';
+import { AgDropDown } from '@angularis/component';
 //
 // @Components
 //
 import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 
 @Component({
-  imports: [CommonModule, LnCanvas, AgMenu],
+  imports: [CommonModule, LnCanvas, AgDropDown],
   selector: 'AgMenu',
-  templateUrl: 'ln-menu.html',
-  styleUrls: ['ln-menu.scss'],
+  templateUrl: 'ln-dropdown.html',
+  styleUrls: ['ln-dropdown.scss'],
 })
-export class LnMenu {
+export class LnDropDown {
   public label: string = 'Area of Interest';
   public hidden: boolean = false;
   public disabled: boolean = false;
   public style: Partial<CSSStyleDeclaration> = {
-    height: '200px',
-    width: '200px',
+    width: '100%',
+    height: 'auto',
+    maxHeight: '180px',
     overflow: 'auto',
   };
   public model: Item[] = [
@@ -34,14 +35,6 @@ export class LnMenu {
     new Item({ id: 3, name: 'Running', active: false }),
     new Item({ id: 4, name: 'Dancing', active: false }),
     new Item({ id: 5, name: 'Bowling', active: false }),
-  ].sort((a, b) => a.name.localeCompare(b.name));
-  public hamburgerMenu: Item[] = [
-    new Item({ id: 1, name: 'File..', active: false }),
-    new Item({ id: 2, name: 'Settings', active: false }),
-  ].sort((a, b) => a.name.localeCompare(b.name));
-  public kababMenu: Item[] = [
-    new Item({ id: 1, name: 'Expand', active: false }),
-    new Item({ id: 2, name: 'Collapse', active: false }),
   ].sort((a, b) => a.name.localeCompare(b.name));
   //
   // Constructor

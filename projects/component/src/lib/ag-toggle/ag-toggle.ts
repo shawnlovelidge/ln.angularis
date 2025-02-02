@@ -80,6 +80,6 @@ export class AgToggle
     //
     // Call Base HandleOnClick
     //
-    super.handleOnClick($event, this.value);
+    super.handleOnClick(this.value);
   }
 }

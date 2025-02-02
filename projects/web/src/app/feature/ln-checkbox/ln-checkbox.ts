@@ -29,13 +29,16 @@ export class LnCheckBox {
   //
   // handleClick
   //
-  public handleClick = (value: boolean) => {
+  public handleOnClick = (value: boolean) => {
+    //
+    // Set Value
+    //
     this.value = value;
     //
     // Console Debug Statement
     //
     console.log(
-      `%c value: ${value}`,
+      `%c checkbox value: ${value}`,
       `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
     );
   };

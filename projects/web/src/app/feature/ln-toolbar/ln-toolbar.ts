@@ -59,6 +59,12 @@ export class LnToolBar {
   // handleOnClick
   //
   public handleOnClick(item: Icon<IconProp>) {
-    console.log(`${item.name} clicked`);
+    //
+    // Console Debug Statement
+    //
+    console.log(
+      `%c icon: ${item.name}`,
+      `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
+    );
   }
 }

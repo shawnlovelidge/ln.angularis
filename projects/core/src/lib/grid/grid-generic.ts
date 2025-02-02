@@ -9,7 +9,6 @@ export class GridGeneric extends Base {
   public canActivate: boolean;
   public canCheck: boolean;
   public canDelete: boolean;
-  public checked: boolean;
   public data: any;
   public deleted: boolean;
   public element: Object;
@@ -25,10 +24,6 @@ export class GridGeneric extends Base {
   public template: string;
   public checkbox: CheckBox;
   public _deleted: boolean;
-
-  public isChecked() {
-    return this.checkbox.checked;
-  }
 
   public isCheckboxHidden() {
     return this.checkbox.hidden;
@@ -73,7 +68,6 @@ export class GridGeneric extends Base {
     this.canActivate = Library.init(options, 'canActivate', false);
     this.canCheck = Library.init(options, 'canCheck', false);
     this.canDelete = Library.init(options, 'canDelete', false);
-    this.checked = Library.init(options, 'checked', false);
     this.data = Library.init(options, 'data', {});
     this.deleted = Library.init(options, 'deleted', false);
     this.expanded = Library.init(options, 'expanded', false);

@@ -50,7 +50,7 @@ export class AgHyperLink
     //
     // Observe Mutation
     //
-    this.observeMutation('ag-hyperlink');
+    this.observeMutation('atag');
   }
   //
   // ngOnInit()

@@ -1,47 +1,22 @@
-<div class=" ag-dropdown" tabindex="1" [ngClass]="{
-  'darkTheme': darkTheme(),
-  'hidden': hidden(),
-  'disabled': disabled()
+<div class="ag-dropdown" [ngClass]="{
+  'hidden': hidden,
+  'disabled': disabled
 }">
-  <label class=" ag-dropdown-label" [class.hidden]="label().length === 0">{{label()}}</label>
-  <div class=" ag-dropdown-container">
-    <div class="inner-container">
-      <button #portalContainer class="button" [ngClass]="{
-        'darkTheme' : darkTheme(),
-        'small': small(),
-        'readonly': items().length === 0
-      }" (keydown)="onKeyDown($event)" [attr.aria-label]="ariaLabel || null"
-        [attr.aria-labelledby]="ariaLabelledBy || null" [attr.aria-multiselectable]="false" 
-        (click)="onOpen($event)">
-        {{ displayItem?.[textField()]}}
-        @if (this.open())
-        {
-        <fa-icon [icon]="['fas','caret-up']"></fa-icon>
-        } @else {
-        <fa-icon [icon]="['fas','caret-down']"></fa-icon>
-        }
-
-        <!-- <ag-ico
-          [name]="icon.name"
-          (onClick)="onOpen($event)"
-        ></ag-icon> -->
-      </button>
-    </div>
+  <div class="ag-dropdown-label">
+    {{label}}
   </div>
+  <button class="ag-dropdown-button" #portalContainer (click)="onOpen($event)">
+    <span>{{value().name}}</span>
+    <span class="ag-dropdown-button-icon"><fa-icon [icon]="['fas','caret-down']"></fa-icon></span>
+  </button>
 </div>
-<ng-template #portalView let-data>
-  <ul class=" ag-dropdown-items" [ngClass]="{
-    'darkTheme' : darkTheme(),
-    'small': small()
-  }">
-    <li *ngFor="let item of items()" class=" ag-dropdown-item" [ngClass]="{
-          'darkTheme' : darkTheme(),
-          'small': small(),
-          'hidden': item?.hidden,
-          'disabled': item?.disabled,
-          'active': item?.active
-        }" (click)="onClose(item)" [title]="item[textField()]">
-      {{ item[textField()] }}
+<ng-template #portalView let-menu="item">
+  <ul class="ag-dropdown-items" [ngStyle]="style">
+    @for (item of model; track $index)
+    {
+    <li class="ag-dropdown-item">
+      <ag-menu-option [model]="item" (onClick)="onClose(item)"></ag-menu-option>
     </li>
+    }
   </ul>
 </ng-template>

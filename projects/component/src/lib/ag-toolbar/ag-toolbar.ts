@@ -48,10 +48,6 @@ export class AgToolBar
     library: FaIconLibrary
   ) {
     super(element, viewContainerRef, library);
-    //
-    // Observe Mutation
-    //
-    this.observeMutation('ag-toolbar');
   }
   //
   // ngOnInit()

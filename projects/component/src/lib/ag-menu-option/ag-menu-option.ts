@@ -11,7 +11,7 @@ import {
 //
 // @naularius/core
 //
-import { Menu } from '@angularis/core';
+import { Item } from '@angularis/core';
 //
 // Font Awesome Library Container
 //
@@ -31,7 +31,7 @@ export class AgMenuOption
   extends AgBase
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @Input() public model: Menu = new Menu();
+  @Input() public model: Item = new Item();
   //
   // Constructor
   //

@@ -57,6 +57,9 @@ export class LnRadioButton {
     //
     // Console Debug Statement
     //
-    console.log(`%c ${item.name}`, `color:rgb(218, 34, 246); font-size: 12px; font-weight: bold`);
+    console.log(
+      `%c id: ${item.id} name: ${item.name}`,
+      `color:rgb(218, 34, 246); font-size: 12px; font-weight: bold`
+    );
   }
 }

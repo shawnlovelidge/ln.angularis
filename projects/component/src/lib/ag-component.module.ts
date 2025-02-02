@@ -17,6 +17,7 @@ import { AgHyperLink } from './ag-hyperlink/ag-hyperlink';
 import { AgInput } from './ag-input/ag-input';
 import { AgJson } from './ag-json/ag-json';
 import { AgList } from './ag-list/ag-list';
+import { AgChip } from './ag-chip/ag-chip';
 import { AgMenu } from './ag-menu/ag-menu';
 import { AgMenuOption } from './ag-menu-option/ag-menu-option';
 import { AgRadioButton } from './ag-radio-button/ag-radio-button';
@@ -31,6 +32,7 @@ import { AgToolBar } from './ag-toolbar/ag-toolbar';
 // Export all your components here
 //
 const components = [
+  AgChip,
   AgInput,
   AgAccordion,
   AgBanner,

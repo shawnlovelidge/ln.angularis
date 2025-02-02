@@ -1,6 +1,7 @@
 export * from './lib/ag-accordion/ag-accordion';
 export * from './lib/ag-banner/ag-banner';
 export * from './lib/ag-button/ag-button';
+export * from './lib/ag-chip/ag-chip';
 export * from './lib/ag-card/ag-card';
 export * from './lib/ag-checkbox/ag-checkbox';
 export * from './lib/ag-dialog/ag-dialog';

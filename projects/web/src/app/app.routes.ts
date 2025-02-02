@@ -14,6 +14,8 @@ import { LnMenu } from './feature/ln-menu/ln-menu';
 import { LnDialog } from './feature/ln-dialog/ln-dialog';
 import { LnTextArea } from './feature/ln-textarea/ln-textarea';
 import { LnInput } from './feature/ln-input/ln-input';
+import { LnChip } from './feature/ln-chip/ln-chip';
+import { LnDropDown } from './feature/ln-dropdown/ln-dropdown';
 
 
 export const routes: Routes = [
@@ -84,6 +86,14 @@ export const routes: Routes = [
   {
     path: 'ln-input',
     component: LnInput,
+  },
+  {
+    path: 'ln-chip',
+    component: LnChip,
+  },
+  {
+    path: 'ln-dropdown',
+    component: LnDropDown,
   },
 ];
 

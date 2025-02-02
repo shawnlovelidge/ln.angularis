@@ -28,13 +28,22 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faCaretUp,
   faCaretDown,
+  faCheck,
+
   faXmark,
   faXmarkCircle,
   faSearch,
   faBars,
   faEllipsisV,
+  faCity
 } from '@fortawesome/free-solid-svg-icons';
-import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons';
+import { 
+  faCheckSquare, 
+  faSquare,
+  faCircleXmark,
+  faCircle,
+  faCircleCheck  
+} from '@fortawesome/free-regular-svg-icons';
 
 //
 // Utility Functions
@@ -57,6 +66,8 @@ export class AgBase implements OnInit, AfterViewInit, OnDestroy {
   // @Output() onClick
   //
   @Output() public onClick: EventEmitter<any> = new EventEmitter();
+  @Output() public onRemove: EventEmitter<any> = new EventEmitter();
+
   //
   // Public Variables
   //
@@ -101,6 +112,11 @@ export class AgBase implements OnInit, AfterViewInit, OnDestroy {
     // FaIconLibrary
     //
     library.addIcons(
+      faCity,
+      faCircle,
+      faCircleCheck,
+      faCircleXmark,
+      faCheck,
       faCaretUp,
       faCaretDown,
       faSquare,
@@ -194,23 +210,17 @@ export class AgBase implements OnInit, AfterViewInit, OnDestroy {
   //
   // handleOnClick
   //
-  public handleOnClick(
-    $event: Event,
-    item?: any
-  ) {
-    $event.preventDefault();
+  public handleOnClick(item?: any) {
     if (Library.isDefined(this.onClick)) {
-
-      //
-      // Console Debug Statement
-      //
-      console.log(
-        `%c handleOnClick: ${$event.target}\t item: ${JSON.stringify(item)}`,
-        `color:rgb(12, 242, 38); font-size: 12px; font-weight: bold`
-      );
-
       if (Library.isDefined(item)) this.onClick.emit(item);
-      else this.onClick.emit($event);
+    }
+  }
+  //
+  // handleOnRemove
+  //
+  public handleOnRemove(item?: any) {
+    if (Library.isDefined(this.onRemove)) {
+      this.onRemove.emit(item);
     }
   }
 }

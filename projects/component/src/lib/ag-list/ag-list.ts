@@ -90,7 +90,7 @@ export class AgList extends AgBase implements OnInit, AfterViewInit, OnDestroy {
   //
   // handleOnClick
   //
-  public override handleOnClick($event: Event, item: Action) {
+  public override handleOnClick(item: Action) {
     //
     // Handle the click event
     //
@@ -106,9 +106,8 @@ export class AgList extends AgBase implements OnInit, AfterViewInit, OnDestroy {
     if (this.onClick)
       if (this.multiselect)
         super.handleOnClick(
-          $event,
           this.items().filter(i => i.active)
         );
-      else super.handleOnClick($event, [item]);
+      else super.handleOnClick([item]);
   }
 }

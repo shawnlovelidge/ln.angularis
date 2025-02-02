@@ -18,7 +18,7 @@
         <div class="ag-banner-header-action">
           @for (action of actions; track $index)
           {
-          <ag-button (onClick)="handleOnClick($event, action)">{{action.label}}</ag-button>
+          <ag-button (onClick)="handleOnClick(action)">{{action.label}}</ag-button>
           }
         </div>
         }

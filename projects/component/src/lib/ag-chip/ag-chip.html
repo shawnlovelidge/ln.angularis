@@ -1,0 +1,12 @@
+<div [attr.id]="uid" [attr.class]="classes()" [class.hidden]="hidden" [class.disabled]="disabled"
+  [class.checked]="model.checked">
+  @if (hasIcon())
+  {
+  <fa-icon class="icon" [ngStyle]="style" [icon]="icon"></fa-icon>
+  }
+  <span class="text" (click)="handleOnToggle(model)">{{ model.name }}</span>
+  @if (hasRemoveIcon())
+  {
+  <fa-icon class="remove" [icon]="removeIcon" (click)="handleOnRemove(model)"></fa-icon>
+  }
+</div>

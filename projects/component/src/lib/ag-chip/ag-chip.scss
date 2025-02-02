@@ -1,0 +1,63 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-chip {
+  @include user-select();
+  @include flexbox-row();
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%; 
+  padding: 0.4rem .8rem;
+  border-radius: 9999px;
+  background-color: var(--color-gray-100);
+  border: .14em solid var(--color-gray-200);
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+
+  &:hover {
+    border: .14em solid var(--color-gray-200);
+  }
+
+  &.ag-chip-basic {
+
+    &:hover {
+      border: .14em solid var(--color-black);
+    }
+
+    &.checked {
+      border: .14em solid var(--color-black);
+    }    
+  }
+
+  &.ag-chip-highlight
+  {
+    &:hover {
+      border: .14em solid var(--color-black);
+    }
+
+    &.checked {
+      border: .14em solid var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+
+  &.ag-chip-input
+  {
+    &:hover {
+      border: .14em solid var(--color-black);
+    }
+
+    &.checked {
+      border: .14em solid var(--color-primary);
+      background-color: var(--color-primary);
+      color: var(--color-white);
+
+      .text {
+        &:hover {
+          color: var(--color-white);
+        }
+      }        
+    }     
+  }  
+}

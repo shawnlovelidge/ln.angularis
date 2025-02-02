@@ -10,7 +10,7 @@
     "content"
     "footer";
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr 50px;
+    grid-template-rows: 100px 1fr 50px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     height: 100vh;
@@ -19,19 +19,37 @@
   .app-header {
     grid-area: head;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 14px;
     cursor: default;
     background-color: var(--color-primary);
     color: var(--color-white);
+    gap: 4px;
+    width: 100%;
 
-    label {
+    h3.title {
+      margin-bottom: 16px;
+      padding: 0;
+      font-size: 18px;
+      justify-content: flex-start;
+      text-align: left;
+
+      small {
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+    .description {
+      height: 14px;
+      line-height: 1;
       margin: 0;
       padding: 0;
-      font-size: 1.5em;
-      font-weight: bold;
-      color: var(--color-black);
+      font-size: 12px;   
+      
+      &:hover {
+        color: var(--color-white);
+      }
     }
   }
 

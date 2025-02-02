@@ -59,10 +59,6 @@ export class AgTabPanel
     library: FaIconLibrary
   ) {
     super(element, viewContainerRef, library);
-    //
-    // Observe Mutation
-    //
-    this.observeMutation('ag-tab-panel');
   }
   //
   // ngOnInit()
@@ -105,7 +101,7 @@ export class AgTabPanel
   //
   // handleOnClick
   //
-  public override handleOnClick($event: Event, tab: AgTab) {
+  public override handleOnClick(tab: AgTab) {
     if (Library.isDefined(tab)) {
       this.tabs()?.forEach((t: AgTab) => {
         t.active = t.id == tab.id;
@@ -114,7 +110,7 @@ export class AgTabPanel
       //
       // Emit handleOnClick
       //
-      super.handleOnClick($event, {
+      super.handleOnClick({
         id: tab.id,
         label: tab.label,
       });

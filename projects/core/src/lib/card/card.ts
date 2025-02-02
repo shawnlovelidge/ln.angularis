@@ -7,7 +7,6 @@ export class Card extends Base {
   public canActivate: boolean = false;
   public canCheck: boolean = false;
   public canDelete: boolean = false;
-  public checked: boolean = false;
   public style: Partial<CSSStyleDeclaration> = {};
   public data: Object = {};
   public image: Image = new Image();

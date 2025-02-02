@@ -1,240 +1,141 @@
+import { CommonModule } from '@angular/common';
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
   OnDestroy,
   OnInit,
-  Output,
-  SimpleChanges,
-  TemplateRef,
-  ViewContainerRef,
-  input,
   signal,
-  viewChild
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActiveDescendantKeyManager } from '@angular/cdk/a11y';
+//
+// RxJs
+//
+import { Subscription } from 'rxjs';
+import {
+  ConnectedPosition,
+  Overlay,
+  OverlayConfig,
+  OverlayOutsideClickDispatcher,
+} from '@angular/cdk/overlay';
+import { TemplatePortal } from '@angular/cdk/portal';
 //
 // Font Awesome Library Container
 //
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
 //
-// @angular/cdk
+// Library
 //
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { TemplatePortal } from '@angular/cdk/portal';
-import { Subscription } from 'rxjs';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Library, Item } from '@angularis/core';
 //
-// @lernender/core
+// Components
 //
-import { Icon, Library } from '@angularis/core';
-
+import { AgMenuOption } from '../ag-menu-option/ag-menu-option';
+import { AgBase } from '../ag-base/ag-base';
+//
+// Components
+//
 @Component({
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, AgMenuOption],
   selector: 'ag-dropdown',
   templateUrl: 'ag-dropdown.html',
   styleUrls: ['ag-dropdown.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: AgDropDown,
-      multi: true,
-    },
-  ],
 })
 export class AgDropDown
-  implements
-    ControlValueAccessor,
-    OnInit,
-    AfterViewInit,
-    AfterContentInit,
-    OnDestroy
+  extends AgBase
+  implements OnInit, AfterViewInit, OnDestroy
 {
-  public readonly label = input<string>('');
-  public readonly small = input<boolean>(false);
-  public readonly textField = input<string>('name');
-  public readonly valueField = input<string>('id');
-  public readonly placeholder = input<string>('Select...');
-  public readonly darkTheme = input<boolean>(false);
-  public hidden = input(false);
-  public disabled = input(false);
-
-  @Input()
-  get value(): any | any[] {
-    return this._value;
-  }
-  set value(v: any | any[]) {
-    if (v !== this._value) {
-      this._value = v;
-      this.onChange(v);
-    }
-  }
-  public items = input<any[]>([]);
+  @Input() public model: Array<Item> = [];
   //
-  // Output
+  // Public Variables
   //
-  @Output() public onValueChange: EventEmitter<any> = new EventEmitter<any>();
+  public value = signal<Item>(new Item());
+  public subscriptions: Subscription[] = [];
+  public open = signal(false);
+  public overlayRef: any;
   //
   // ViewChild()
   //
-  readonly portalContainer = viewChild.required<ElementRef>('portalContainer');
-  readonly portalView = viewChild.required<TemplateRef<any>>('portalView');
-
+  @ViewChild('portalContainer') portalContainer!: ElementRef;
+  @ViewChild('portalView') portalView!: TemplateRef<any>;
   //
-  // Public variables
-  //
-  public open: any = signal<boolean>(false);
-  public overlayRef: any;
-  public subscriptions: any[] = [];
-  public overlaySubscription: Subscription | undefined = undefined;
-  public ariaLabel: string = '';
-  public ariaLabelledBy: string = '';
-  public icon!: Icon<IconProp>;
-  public displayItem!: any;
-  public selectedIndicatorIcon: Icon<IconProp> = new Icon<IconProp>();
-  //
-  // Private Variables
-  //
-  private keyManager!: ActiveDescendantKeyManager<any>;
-  private options: any[] = [];
-  private _value: any = null;
-  //
-  // constructor()
+  // Constructor
   //
   constructor(
+    element: ElementRef,
+    viewContainerRef: ViewContainerRef,
+    library: FaIconLibrary,
     private overlay: Overlay,
-    private viewContainerRef: ViewContainerRef,
-    library: FaIconLibrary
+    private overlayOutsideClickDispatcher: OverlayOutsideClickDispatcher
   ) {
-    this.subscriptions = [];
-    this.selectedIndicatorIcon = new Icon({
-      name: 'check',
-    });
-    this.displayItem = {};
+    super(element, viewContainerRef, library);
     //
-    // FaIconLibrary
+    // Observe Mutation
     //
-    library.addIcons(faCaretUp, faCaretDown);
+    this.observeMutation('ag-dropdown');
   }
   //
-  // ngOnDestroy()
+  // ngOnInit
   //
-  ngOnDestroy(): void {
+  public override ngOnInit() {
     //
-    // Unsubscribe from all subscriptions
+    // Call Base AfterViewInit
     //
-    if (Library.isArrayWithLength(this.subscriptions))
-      this.subscriptions.forEach(s => s?.unsubscribe());
+    super.ngOnInit();
+    //
+    // Set the default style
+    //
+    this.style = {
+      ...{
+        width: '100%',
+      },
+      ...this.style,
+    };
+  }
+  //
+  // ngAfterViewInit
+  //
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+  //
+  // ngOnDestroy
+  //
+  public override ngOnDestroy() {
+    //
+    // Call Base OnDestroy
+    //
+    super.ngOnDestroy();
     //
     // onCloseContextMenu
     //
     this.detachOverlay();
   }
   //
-  // writeValue()
-  //
-  writeValue(value: any): void {
-    if (Library.isDefined(value)) {
-      this._value = value;
-      this.onChange(this._value);
-    }
-  }
-  public onChange = (_: any) => {};
-  public onTouched = () => {};
-  public registerOnChange(fn: (_: any) => void): void {
-    this.onChange = fn;
-  }
-  public registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
-
-  //
-  // ngAfterViewInit
-  //
-  ngAfterViewInit(): void {}
-  //
-  // ngAfterContentInit()
-  //
-  ngAfterContentInit(): void {
-    this.keyManager = new ActiveDescendantKeyManager(this.options || [])
-      .withHorizontalOrientation('ltr')
-      .withVerticalOrientation()
-      .withWrap();
-  }
-  //
-  // ngOnInit()
-  //
-  ngOnInit(): void {
-    //
-    // Input Controls
-    //
-    this.icon = new Icon({
-      name: 'angle-down',
-      onClick: ($event: MouseEvent) => {
-        $event.preventDefault();
-        this.toggle();
-      },
-    });
-  }
-
-  //
-  // ngOnChanges()
-  //
-  public ngOnChanges(changes: SimpleChanges) {
-    if (changes['items']) {
-      if (changes['items'].currentValue) {
-        this.displayItem = { id: 0, name: this.placeholder() };
-
-        if (Library.isArray(changes['items'].currentValue)) {
-          this.items = changes['items'].currentValue;
-
-          if (this.items().length > 0) {
-            this.displayItem = this.items()[0];
-            if (Library.isDefined(this.value)) {
-              const index = this.items().findIndex(i => i.id === this.value);
-              if (index > -1) {
-                this.displayItem = this.items()[index];
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  //
   // onOpen
   //
   public onOpen = (event: MouseEvent) => {
-    //
-    // Detach Overlay
-    //
-    this.detachOverlay();
+    if (this.overlayRef && this.overlayRef.hasAttached()) {
+      this.overlayRef.detach();
+    }
     //
     // Create Overlay Config
     //
     const config = new OverlayConfig({
       positionStrategy: this.overlay
         .position()
-        .flexibleConnectedTo(this.portalContainer())
-        .setOrigin(this.portalContainer())
-        .withPositions([
-          {
-            originX: 'start',
-            originY: 'bottom',
-            overlayX: 'start',
-            overlayY: 'top',
-          },
-        ]),
-      width: `${this.portalContainer().nativeElement.getBoundingClientRect().width}px`,
-      hasBackdrop: true,
+        .flexibleConnectedTo(this.portalContainer)
+        .setOrigin(this.portalContainer)
+        .withPositions(this.getConnectedPositions()),
+      width: `${this.portalContainer.nativeElement.getBoundingClientRect().width}px`,
+      hasBackdrop: false,
       scrollStrategy: this.overlay.scrollStrategies.reposition(),
     });
 
@@ -242,33 +143,37 @@ export class AgDropDown
     // Define Overlay
     //
     this.overlayRef = this.overlay.create(config);
-    this.overlaySubscription = this.overlayRef
-      .backdropClick()
-      .subscribe(() => this.detachOverlay());
+    this.subscriptions.push(
+      this.overlayRef.backdropClick().subscribe(() => this.detachOverlay())
+    );
+
+    //
+    // Handle OnDocument Click
+    //
+    this.overlayOutsideClickDispatcher.add(this.overlayRef);
+    this.subscriptions.push(
+      this.overlayRef.outsidePointerEvents().subscribe(() => {
+        this.overlayRef.detach();
+      })
+    );
     //
     // Attach overlay to CdkPOrtal
     //
-    /*
-      {
-        $implicit:  {},
-      }
-    */
     this.overlayRef.attach(
-      new TemplatePortal(this.portalView(), this.viewContainerRef)
+      new TemplatePortal(this.portalView, this.viewContainerRef)
     );
   };
   //
-  // onClose()
+  // onCloseItems()
   //
-  public onClose(item: any = undefined) {
-    if (item) {
-      this.displayItem = item;
-      this.value = item[this.valueField()];
+  public onClose(menu: any = undefined) {
+    if (menu) {
+      this.value.set(menu);
       //
       // Toggle open/close
       //
-      if (Library.isDefined(this.onValueChange)) {
-        this.onValueChange.emit(item);
+      if (Library.isDefined(this.onClick)) {
+        this.onClick.emit(menu);
       }
     }
     //
@@ -276,91 +181,42 @@ export class AgDropDown
     //
     this.detachOverlay();
   }
-
   //
   // detachOverlay()
   //
   private detachOverlay() {
+    if (this.subscriptions) this.subscriptions.forEach(s => s.unsubscribe());
     if (this.overlayRef && this.overlayRef.hasAttached()) {
       this.overlayRef.detach();
     }
+  }
+  //
+  // getConnectedPosition()
+  //
+  // bottom-left
+  //
+  // originX: 'start', // left corner of the button
+  // originY: 'top', // top corner of the button
+  // overlayX: 'start', // left corner of the overlay to the origin
+  // overlayY: 'bottom', // top corner of the overlay to the origin
 
-    if (this.overlaySubscription) {
-      this.overlaySubscription.unsubscribe();
-      this.overlaySubscription = undefined;
-    }
-  }
+  // bottom-right
   //
-  // toggle()
+  // originX: 'end', // right corner of the button
+  // originY: 'top', // top corner of the button
+  // overlayX: 'end', // right corner of the overlay to the origin
+  // overlayY: 'bottom', // top corner of the overlay to the origin
   //
-  public toggle() {
-    this.open = !this.open;
-    this.icon.name = this.open ? 'angle-up' : 'angle-down';
-  }
+  private getConnectedPositions(): ConnectedPosition[] {
+    let positions: ConnectedPosition[] = [];
 
-  //
-  // close
-  //
-  public close() {
-    this.open = false;
-    this.icon.name = this.open ? 'angle-up' : 'angle-down';
-  }
-  //
-  // onKeyDown
-  //
-  public onKeyDown(event: KeyboardEvent): void {
-    if (this.open) {
-      this.onKeyboardDropDown(event);
-    } else {
-      this.onKeyboardHiddenDropDown(event);
-    }
-  }
+    positions.push({
+      originX: 'start', // left corner of the button
+      originY: 'bottom', // bottom corner of the button
+      overlayX: 'start', // left corner of the overlay to the origin
+      overlayY: 'top', // top corner of the overlay to the origin
+    });
 
-  //
-  // onKeyboardDropDown()
-  //
-  private onKeyboardDropDown(event: KeyboardEvent): void {
-    switch (event.key) {
-      case 'Enter':
-      case ' ':
-        if (this.keyManager.activeItem) {
-        }
-        break;
-      case 'Escape':
-        this.onClose();
-        break;
-      case 'ArrowUp':
-      case 'ArrowDown':
-      case 'ArrowRight':
-      case 'ArrowLeft':
-        this.keyManager.onKeydown(event);
-        this.keyManager.activeItem?.scrollIntoView();
-        event.preventDefault();
-        break;
-      case 'Tab':
-        this.keyManager.onKeydown(event);
-        this.keyManager.activeItem?.scrollIntoView();
-        break;
-      case 'PageUp':
-      case 'PageDown':
-        event.preventDefault();
-        break;
-      default:
-        event.stopPropagation();
-    }
-  }
-  //
-  // onKeyboardHiddenDropDown()
-  //
-  private onKeyboardHiddenDropDown(event: KeyboardEvent): void {
-    switch (event.key) {
-      case 'Enter':
-      case ' ':
-      case 'ArrowDown':
-      case 'ArrowUp':
-        break;
-      default:
-        event.stopPropagation();
-    }
+    return positions;
   }
 }

@@ -34,10 +34,6 @@ export class AgHero extends AgBase implements OnInit, AfterViewInit, OnDestroy {
     library: FaIconLibrary
   ) {
     super(element, viewContainerRef, library);
-    //
-    // Observe Mutation
-    //
-    this.observeMutation('ag-hero');
   }
   //
   // ngOnInit()

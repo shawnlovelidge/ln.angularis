@@ -32,7 +32,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 //
 // Library
 //
-import { Menu, Library } from '@angularis/core';
+import { Item, Library } from '@angularis/core';
 //
 // Components
 //
@@ -48,11 +48,11 @@ import { AgMenuOption } from '../ag-menu-option/ag-menu-option';
   styleUrls: ['ag-menu.scss'],
 })
 export class AgMenu extends AgBase implements OnInit, AfterViewInit, OnDestroy {
-  @Input() public model: Array<Menu> = [];
+  @Input() public model: Array<Item> = [];
   //
   // Public Variables
   //
-  public value = signal<Menu>(new Menu());
+  public value = signal<Item>(new Item());
   public subscriptions: Subscription[] = [];
   public open = signal(false);
   public overlayRef: any;

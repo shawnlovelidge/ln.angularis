@@ -41,14 +41,12 @@ export class LnButton {
   //
   // handleOnClick
   //
-  public handleOnClick($event: MouseEvent) {
-    const { target } = $event;
-    const { innerText } = target as HTMLElement;
+  public handleOnClick($event: Event) {
     //
     // Console Debug Statement
     //
     console.log(
-      `%c item.name: ${innerText}`,
+      `%c Button Clicked`,
       `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
     );
   }

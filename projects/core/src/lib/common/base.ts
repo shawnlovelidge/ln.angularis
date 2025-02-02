@@ -5,6 +5,7 @@ export interface IBase {
   uid: Guid;
   id: number;
   active: boolean;
+  checked: boolean;
   disabled: boolean;
   hidden: boolean;
   name: string;
@@ -32,6 +33,7 @@ export class Base implements IBase {
   public description: string = '';
   public label: string = '';
   public type?: string = undefined;
+  public checked: boolean = false;
   /**
    * hasUid()
    * @returns {*}
@@ -53,6 +55,14 @@ export class Base implements IBase {
    */
   isActive() {
     return Library.isTrue(this.active);
+  }
+
+  /**
+   * isChecked()
+   * @returns {*}
+   */
+  isChecked() {
+    return Library.isTrue(this.checked);
   }
 
   /**

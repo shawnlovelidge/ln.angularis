@@ -7,7 +7,6 @@ export class Action extends Base {
   public onClick: Function = () => {};
   public routerLink: string[] = [];
   public style: Partial<CSSStyleDeclaration> = {};
-  public checked: boolean = false;
   //
   // hasRouterLink()
   //

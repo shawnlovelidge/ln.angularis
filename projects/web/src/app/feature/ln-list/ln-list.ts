@@ -76,7 +76,7 @@ export class LnList {
     for (const item of items) {
       console.log(
         `%c { id: '${item.id}', name: '${item.name}', active: ${item.active} }`,
-        `color:rgb(34, 175, 246); font-size: 12px; font-weight: bold`
+        `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
       );
     }
     console.groupEnd();

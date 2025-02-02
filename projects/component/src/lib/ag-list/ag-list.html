@@ -5,7 +5,7 @@
   <ul [attr.class]="classes()" [ngStyle]="style">
     @for (item of items(); track item)
     {
-    <li class="ag-list-item" (click)="!useCheckBoxList() && handleOnClick($event, item)">
+    <li class="ag-list-item" (click)="!useCheckBoxList() && handleOnClick(item)">
       @if (!hasCustomTemplate())
       {
       <ng-container [ngTemplateOutlet]="defaultTemplate"
@@ -28,7 +28,7 @@
     }">
     @if (checkbox)
     {
-    <ag-checkbox [value]="item.active" [disabled]="item.disabled" (onClick)="handleOnClick($event,item)">
+    <ag-checkbox [value]="item.active" [disabled]="item.disabled" (onClick)="handleOnClick(item)">
       {{ item.name }}
     </ag-checkbox>
     } @else {

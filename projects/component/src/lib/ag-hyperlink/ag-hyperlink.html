@@ -2,7 +2,7 @@
     [ngStyle]="style">
     <a class="ag-hyperlink" [attr.class]="classes()" [class.style]="model().style" [class.active]="model().active"
         [class.disabled]="model().disabled" 
-        (click)="handleOnClick($event, model())">
+        (click)="handleOnClick(model())">
         <ng-content></ng-content>
     </a>
 </div>

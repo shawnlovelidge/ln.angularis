@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf dist",
+    "clean:web": "rm -rf dist/web",
     "build:core": "ng build @angularis/core",
     "build:model": "ng build @angularis/model",
     "build:pipe": "ng build @angularis/pipe",
@@ -13,7 +14,7 @@
     "build:directive": "ng build @angularis/directive",
     "build:component": "ng build @angularis/component",
     "build:web": "ng build web",
-    "start": "ng serve web",
+    "start": "npm run clean:web && npm run build:web && ng serve web",
     "build:storybook": "ng run @angularis/storybook:build-storybook",
     "build:prebuild": "sync-json -v --property version --source package.json --targets  ./projects/core/package.json ./projects/model/package.json ./projects/pipe/package.json ./projects/service/package.json ./projects/directive/package.json ./projects/component/package.json",
     "build": "npm run clean && npm run build:prebuild && npm run build:core && npm run build:model && npm run build:pipe && npm run build:service && npm run build:directive && npm run build:component",

@@ -129,7 +129,7 @@ export class AgRadioButton
   //
   // handleOnClick()
   //
-  public override handleOnClick($event: MouseEvent | Event, item: Action) {
+  public override handleOnClick(item: Action) {
     //
     // Set the correct active item
     //
@@ -145,7 +145,6 @@ export class AgRadioButton
     // Emit the onClick Event
     //
     super.handleOnClick(
-      $event,
       this.model().find((i: Action) => i.active)
     );
   }

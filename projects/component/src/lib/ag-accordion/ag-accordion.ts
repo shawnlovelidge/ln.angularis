@@ -37,7 +37,7 @@ export class AgAccordion
   //
   // Public Variables
   //
-  public icon!: Icon<IconProp>;
+
   //
   // Constructor
   //
@@ -47,10 +47,6 @@ export class AgAccordion
     library: FaIconLibrary
   ) {
     super(element, viewContainerRef, library);
-    //
-    // Observe Mutation
-    //
-    this.observeMutation('ag-accordion');
   }
   //
   // ngOnInit()

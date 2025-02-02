@@ -8,7 +8,7 @@
   } @else {
   <fa-icon [icon]="faSquare"></fa-icon>
   }
-  <span (click)="handleOnClick($event)" [ngStyle]="labelStyle()">
+  <span [ngStyle]="labelStyle()">
     <ng-content></ng-content>
   </span>
 </div>

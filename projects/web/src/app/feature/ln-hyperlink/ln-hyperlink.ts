@@ -19,8 +19,9 @@ import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
   templateUrl: './ln-hyperlink.html',
 })
 export class LnHyperLink {
-  public model = signal(new Action({ name: 'click here' }));
-  public label = signal('Click Me');
+  public simpleLink = signal(new Action({ id: 1, name: 'Simple Link' }));
+  public buttonLink = signal(new Action({ id: 2, name: 'Button Link' }));
+  public label = signal('Label');
   //
   // Constructor
   //

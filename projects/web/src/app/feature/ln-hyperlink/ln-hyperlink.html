@@ -10,9 +10,9 @@
       <tr>
         <td>(default)</td>
         <td>
-          <ag-hyperlink [model]="model()" (onClick)="handleOnClick($event)">
-            @if (model().hasName()) {
-            {{ model().name }}
+          <ag-hyperlink [model]="simpleLink()" (onClick)="handleOnClick($event)">
+            @if (simpleLink().hasName()) {
+            {{ simpleLink().name }}
             } @else {
             label()
             }
@@ -22,9 +22,9 @@
       <tr>
         <td>class='button'</td>
         <td>
-          <ag-hyperlink class="button" [model]="model()" (onClick)="handleOnClick($event)">
-            @if (model().hasName()) {
-            {{ model().name }}
+          <ag-hyperlink class="button" [model]="buttonLink()" (onClick)="handleOnClick($event)">
+            @if (buttonLink().hasName()) {
+            {{ buttonLink().name }}
             } @else {
             label()
             }

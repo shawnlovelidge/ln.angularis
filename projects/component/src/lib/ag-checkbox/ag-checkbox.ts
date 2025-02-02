@@ -110,7 +110,7 @@ export class AgCheckBox
   //
   // handleOnClick()
   //
-  public override handleOnClick($event: MouseEvent) {
+  public override handleOnClick($event: Event) {
     $event.preventDefault();
     $event.stopPropagation();
     //
@@ -120,6 +120,6 @@ export class AgCheckBox
     //
     // Call Base handleOnClick
     //
-    super.handleOnClick($event, this.value);
+    super.handleOnClick(this.value);
   }
 }

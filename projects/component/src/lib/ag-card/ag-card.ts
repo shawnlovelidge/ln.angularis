@@ -100,15 +100,15 @@ export class AgCard extends AgBase implements OnInit, AfterViewInit, OnDestroy {
   //
   // handleOnClick
   //
-  public override handleOnClick(event: Event, checked: boolean) {
+  public override handleOnClick(value: boolean) {
     //
     // Setup the model
     //
-    this.model.checked = checked;
+    this.model.checked = value;
     //
     // Call Base handleOnClick
     //
-    super.handleOnClick(event, checked);
+    super.handleOnClick(this.model);
   }
   //
   // handleOnActionClick
