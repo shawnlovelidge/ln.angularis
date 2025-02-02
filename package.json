@@ -104,6 +104,6 @@
     "vite": "^6.0.7",
     "vite-plugin-sass-glob-import": "^5.0.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^2.1.5"
+    "vitest": "^3.0.4"
   }
 }
