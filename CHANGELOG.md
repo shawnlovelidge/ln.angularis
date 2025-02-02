@@ -1,6 +1,12 @@
 # @angularis
 
-## 1.0.11
+## 1.0.12
+
+### Patch Changes
+
+- Updated, refactored existing components, and added more components"
+
+## 1.0.12
 
 ### Patch Changes
 
