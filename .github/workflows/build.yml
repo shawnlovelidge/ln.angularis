@@ -31,7 +31,7 @@ jobs:
           check-latest: false        
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --check-files
 
       - name: Build
         run: npm run build
