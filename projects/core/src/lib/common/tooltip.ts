@@ -5,7 +5,7 @@ import { Library } from '../library';
 export class Tooltip {
   public content: string;
   public template: string;
-  public style: Object = {};
+  public style: Partial<CSSStyleDeclaration> = {};
   public position: Object;
   /**
    * Constructor()

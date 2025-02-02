@@ -1,0 +1,26 @@
+<ln-canvas>
+  <ag-card class="ag-card-elevated" [model]="model" [hidden]="hidden" [disabled]="disabled" [actions]="actions"
+    (onClick)="handleOnClick($event)" (onAction)="handleOnAction($event)">
+  </ag-card>
+  <br />
+  <br />
+  <ag-card class="ag-card-elevated" [model]="basic" [customTemplate]="customTemplate" [hidden]="hidden"
+    [disabled]="disabled" [actions]="actions" (onClick)="handleOnClick($event)" (onAction)="handleOnAction($event)">
+  </ag-card>
+  <br />
+  <br />
+</ln-canvas>
+<ng-template #customTemplate let-model="model">
+  @if(model) {
+  <div class="ln-card-template">
+    <h1>{{model.label}}</h1>
+    <br />
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </p>
+
+  </div>
+  }
+</ng-template>

@@ -1,0 +1,48 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+:host {
+  width: 100%;
+}
+
+.ag-toolbar {
+  @include box-shadow();  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);    
+  font-size: 24px;
+
+  ul.ag-toolbar-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    width: 100%;
+    padding: 4px;
+
+    li.ag-toolbar-item {
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+      text-align: center;
+      padding: 2px;
+      border: 1px solid transparent; 
+      border-radius: 4px;
+      color: var(--color-gray-700);
+
+      &:hover {
+        @include box-shadow();
+        border: 1px solid var(--color-gray-400); 
+        color: var(--color-primary);
+      }
+    }
+  }
+}

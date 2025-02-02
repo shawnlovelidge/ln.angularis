@@ -1,0 +1,25 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>
+          <ag-dropdown 
+            [label]="label" 
+            [model]="model" 
+            [style]="style" 
+            [hidden]="hidden" 
+            [disabled]="disabled"
+            (onClick)="handleOnClick($event)">
+          </ag-dropdown>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ln-canvas>

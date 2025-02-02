@@ -1,0 +1,26 @@
+@use 'scss/mixins/standard' as *;
+
+.ag-json {
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: default;
+  margin: 0;
+  padding: 0;
+
+  pre {
+    background-color: transparent;
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    white-space: pre-wrap;
+    text-align: left;
+  }
+  &.disabled {
+    @include disabled();
+  }
+
+  &.hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,90 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 4px;
+  height: auto;
+
+  .ag-banner-header-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-items: flex-start;
+    width: 100%;
+    height: auto;
+    //border-bottom: 0.06em solid var(--color-gray-500);
+
+    .ag-banner-header {
+      width: 100%;
+      height: auto;
+
+      .ag-banner-header-label-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: flex-start;
+        gap: 8px;
+        width: 100%;
+        margin-bottom: 10px;
+
+        .ag-banner-header-icon {
+          color: var(--color-primary);
+          font-size: 1.23rem;
+        }
+
+        h2.ag-banner-header-label {
+          font-size: 1.5rem;
+          margin-block-start: 0px;
+          margin-block-end: 0px;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+          unicode-bidi: isolate;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+        }
+      }
+
+      .ag-banner-header-wapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-items: flex-start;
+        flex-wrap: nowrap;
+        gap: 8px;
+        //border: 1px solid blue;
+
+        .ag-banner-header-description {
+          cursor: default;
+          white-space: wrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          line-height: 1.25;
+          user-select: none;
+          height: auto;
+          padding: 4px;
+          width: 100%;
+        }
+
+        .ag-banner-header-action {
+          align-self: flex-start;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 4px;
+          padding: 4px;
+          width: 120px;
+          height: 100%;
+          //border: 1px solid red;
+        }
+      }
+    }
+  }
+
+  .ag-banner-content {
+    margin: 12px 0;
+  }
+}

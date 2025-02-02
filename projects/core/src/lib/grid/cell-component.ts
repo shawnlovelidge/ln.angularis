@@ -18,7 +18,7 @@ export class CellComponent extends Base {
   public placeholder: string;
   public rows: number;
   public cols: number;
-  public style: Object;
+  public style: Partial<CSSStyleDeclaration> = {};
   public tooltip: number;
   public value: string | number;
   public visibility: boolean;
@@ -41,14 +41,30 @@ export class CellComponent extends Base {
       'All'
     );
     this.cols = Library.init(options, 'cols', 10);
-    this.dataTextField = Library.init(options, 'dataTextField', 'name');
-    this.dataValueField = Library.init(options, 'dataValueField', 'id');
+    this.dataTextField = Library.init(
+      options,
+      'dataTextField',
+      'name'
+    );
+    this.dataValueField = Library.init(
+      options,
+      'dataValueField',
+      'id'
+    );
     this.default = Library.init(options, 'default');
     this.disabled = Library.init(options, 'disabled', false);
     this.hidden = Library.init(options, 'hidden', false);
     this.hover = Library.init(options, 'hover', false);
-    this.indeterminate = Library.init(options, 'indeterminate', false);
-    this.indicatorIcon = Library.init(options, 'indicatorIcon', 'checkmark');
+    this.indeterminate = Library.init(
+      options,
+      'indeterminate',
+      false
+    );
+    this.indicatorIcon = Library.init(
+      options,
+      'indicatorIcon',
+      'checkmark'
+    );
     this.items = Library.init(options, 'items', []);
     this.label = Library.init(options, 'label', '');
     this.maxLength = Library.init(options, 'maxLength', 255);

@@ -1,0 +1,23 @@
+<div class="ln-canvas">
+  <div class="ln-canvas-header">
+    <ag-banner [label]="route.name" [description]="route.description">
+    </ag-banner>
+  </div>
+  <div class="ln-canvas-content-wrapper">
+    <div class="ln-canvas-content-caption">
+      <h1>Component:</h1>
+      <br />
+      <pre [innerHTML]="route.component"></pre>
+    </div>
+    <div class="ln-canvas-content">
+      <ag-tab-panel>
+        <ag-tab [attr.id]=1 label="Demo" [active]="active">
+          <ng-content></ng-content>
+        </ag-tab>        
+        <!-- <ag-tab [attr.id]=2 label="Code">
+          <ng-content select="[code]"></ng-content>
+        </ag-tab> -->
+      </ag-tab-panel>
+    </div>
+  </div>
+</div>

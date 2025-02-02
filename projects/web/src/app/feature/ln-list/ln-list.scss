@@ -1,0 +1,42 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-list-item-template {
+  cursor: default;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  height: 100px;
+  width: 100%;
+  margin: 6px;
+
+  .ag-list-item-template-container {
+    border: 1px solid var(--color-gray-200);
+    border-radius: 4px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+
+    &:hover {
+      @include box-shadow();
+      border: 1px solid var(--color-gray-300);
+    }
+
+    &.active {
+      background-color: var(--color-gray-200);
+      border: 1px solid var(--color-gray-400);
+    }
+
+    .label {
+      margin-bottom: 10px;
+      user-select: none;
+      &:hover {
+        color: var(--color-black);
+      }
+    }
+
+    .description {
+      font-size: 0.8rem;
+      color: var(--color-gray);
+    }
+  }
+}

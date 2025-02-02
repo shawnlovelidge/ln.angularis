@@ -20,7 +20,6 @@ export * from './range';
 export * from './role';
 export * from './sort';
 export * from './status';
-export * from './style';
 export * from './toolbar';
 export * from './tooltip';
 export * from './url';

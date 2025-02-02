@@ -1,0 +1,8 @@
+<div class="ag-tab" [attr.id]="id" [ngStyle]="style"
+  [ngClass]="{ 
+    'disabled': disabled, 
+    'hidden': !active, 
+    'fadeIn': active
+  }">
+  <ng-content></ng-content>
+</div>

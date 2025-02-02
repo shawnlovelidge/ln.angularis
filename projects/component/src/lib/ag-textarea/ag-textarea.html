@@ -1,0 +1,23 @@
+<div class="ag-textarea"
+     [class.hidden]="hidden"
+     [class.disabled]="disabled">
+    <div class="label" 
+       [attr.for]="uid"
+       [class.hidden]="!hasLabel()"
+       [class.disabled]="disabled">{{label}}</div>
+    <textarea [attr.id]="uid"
+              class="ag-textarea-container"
+              [attr.rows]="rows"
+              [attr.cols]="cols"
+              [attr.placeholder]="placeholder"
+              [(ngModel)]="value"
+              [class.disabled]="disabled"
+              [attr.maxlength]="maxlength"
+              [attr.minlength]="minlength"
+    ></textarea>
+    <div class="ag-texarea-stats"
+         [class.hidden]="!stats"
+         [class.disabled]="disabled">
+        <span>{{value.length}} / {{maxlength}}</span>
+    </div>    
+</div>

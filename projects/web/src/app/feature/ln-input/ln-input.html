@@ -1,0 +1,28 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>
+          <ag-input 
+            [label]="label" 
+            [placeholder]="placeholder" 
+            [maxlength]="maxlength" 
+            [minlength]="minlength" 
+            [value]="value" 
+            [style]="style"
+            [hidden]="hidden" 
+            [disabled]="disabled"
+            (onValueChange)="handleValueChange($event)">
+          </ag-input>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ln-canvas>

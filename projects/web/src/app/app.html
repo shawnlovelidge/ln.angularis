@@ -1,0 +1,36 @@
+<main class="app">
+    <div class="app-container">
+        <div class="app-header">
+            <h3 class="title">Angularis&nbsp;Component Library <small><code><strong>&nbsp;&#64;angularis:^1.0.0</strong></code></small></h3>
+            <p class="description">This custom built component library is based on <code><strong>&#64;angular:^19.0.0</strong></code>;</p>
+            <p class="description">features like server-side rendering, higration, and signal() are the foundation for this library.</p>
+        </div>
+        <div class="app-content">
+            <div class="app-sidebar">
+                <ul class="app-sidebar-menu-items">
+                    @for (item of menu(); track item.name)
+                    {
+                        <li class="app-sidebar-menu-item">
+                            <strong>{{item.name}}</strong>
+                        </li>
+                        @for (route of item.menu; track route.name)
+                        {
+                        <li class="app-sidebar-menu-item">
+                            <a [routerLink]="route.routerLink" [queryParams]="{ route: route | json }">
+                                {{route.name}}
+                            </a>
+                        </li>
+                        }
+                        <br />
+                    }
+                </ul>
+            </div>
+            <div class="app-sidebar-content">
+                <router-outlet />
+            </div>
+        </div>
+        <div class="app-footer">
+            Lernender Corp, LLC
+        </div>
+    </div>
+</main>

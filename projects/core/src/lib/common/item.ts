@@ -1,17 +1,13 @@
-import { Base } from './base';
+import { Action } from './action';
 
-/**
- * Class: Item
- */
-export class Item extends Base {
-  /**
+export class Item extends Action {
+  /*
    * Constructor()
    */
   constructor(options?: Partial<Item>) {
     super(options);
   }
 }
-
 //
 // Export default class
 //

@@ -1,11 +1,13 @@
 :root {
-  --color-primary: #0d1427;
-  --color-primary-light: #353947;
-  --color-primary-accent: #00a6ff;
-  --color-primary-accent-hover: #1281c4;
+  --color-primary: #5559FA;
+  --color-prinmary-rgba:rgba(85, 89, 250, .15);
+  --color-primary-accent: #6D9EFC;
 
-  --color-secondary: #7987ad;
-  --color-secondary-accent: #38454f;
+  --color-secondary: #BC55FA;
+  --color-secondary-accent: #8856FA;
+
+  --color-ternary: #3C3FC3;
+  --color-ternary-accent: #2c2eab;
 
   --color-blue: #0d6aff;
   --color-black: #070d1a;
@@ -20,7 +22,8 @@
   --color-danger: #e15151;
   --color-read-only: #212a43;
 
-  --color-gray-100: #f8f9fa;
+  --color-gray-050: #fcfcfc;
+  --color-gray-100: #f8f9faf6;
   --color-gray-200: #e9ecef;
   --color-gray-300: #dee2e6;
   --color-gray-400: #ced4da;
@@ -56,8 +59,9 @@
   //
   // Font Awesome Free Fonts
   //
+  --fa-font-brands: 'Font Awesome Brands';
+  --fa-font-regular: 'Font Awesome 6 Free';
   --fa-font-solid: 'Font Awesome 6 Free';
-  --fa-font-brands: 'Font Awesome 6 Brands';
   //
   // Not Supported with free version
   //

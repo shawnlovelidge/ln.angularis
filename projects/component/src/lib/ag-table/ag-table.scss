@@ -1,0 +1,129 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ag-table-component {
+  border: 0;
+  margin: 0;
+  // border-top: 1px solid var(--color-gray-800);
+  // border-bottom: 1px solid var(--color-gray-800);
+  // margin-bottom: 10px;
+
+  &.disabled {
+      @include disabled();
+  }
+
+  &.hidden {
+      display: hidden;
+  }
+
+  .ag-table-container {
+      background-color: transparent;
+      border: 0;
+      margin: 0;
+
+      table.ag-table {
+          border-spacing: 0;
+          border-collapse: collapse;
+          display: block;
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          display: table;
+
+          thead {
+              padding-top: 10px;
+              color: var(--color-white);
+              // background-color: var(--color-primary-background-lighter);
+              // color: var(--color-gray-600);
+              font-size: 16px;
+
+              &.hidden {
+                  display: none;
+              }
+
+              tr.ag-table-header {
+                  th {
+                      white-space: nowrap;
+                      font-weight: 500;
+                      line-height: 14px;
+                      letter-spacing: 1px;
+                      padding: 4px 0 8px 8px;
+
+                      &:last-child {
+                          border-radius: 0 1px 1px 0;
+                      }
+                      &:first-child {
+                          border-radius: 1px 0 0 1px;
+                      }
+                      & span {
+                          display: inline-flex;
+                      }
+                      &.sortable {
+                          cursor: pointer;
+                      }
+                  }
+
+                  .ag-column-resize {
+                      cursor: col-resize;
+                      position: absolute;
+                      right: 0;
+                      top: 0;
+                      user-select: "none";
+                      width: 4px;
+                  }
+              }
+          }
+
+          tr.ag-table-row {
+              color: var(--color-white);
+              cursor: default;
+              margin: 0;
+
+              &.border-bottom {
+                @include box-shadow();
+              }
+
+              &.has-content {
+                  &:hover {
+                      cursor: pointer;
+                  }
+              }
+
+              &.hidden {
+                  display: none;
+              }
+
+              .ag-table-cell {
+                  padding: 8px 0 0 8px;
+                  vertical-align: baseline;
+                  word-wrap: break-word;
+              }
+          }
+
+          tbody.ag-table-body {
+              //background-color: var(--color-primary-background-lighter);
+              //padding: 4px 0 4px 0;
+              opacity: 0;
+
+              &.has-data {
+                  -webkit-transition: opacity 1s ease-in;
+                  -moz-transition: opacity 1s ease-in;
+                  -o-transition: opacity 1s ease-in;
+                  opacity: 1;
+              }
+
+              &.no-data {
+                  opacity: 1;
+                  text-align: center;
+              }
+
+              tr.ag-table-row {
+                  margin: 0;
+                  &.hidden {
+                      display: none;
+                  }
+              }
+          }
+      }
+  }
+}

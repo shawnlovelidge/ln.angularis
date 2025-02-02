@@ -1,15 +1,15 @@
 import { Library } from '../library';
 import { Base } from './base';
-
-/**
- * Class: Action
- */
+//
+// Action
+//
 export class Action extends Base {
-  public onClick: Function;
+  public onClick: Function = () => {};
   public routerLink: string[] = [];
-  public style: Object;
-  public checked: boolean;
-
+  public style: Partial<CSSStyleDeclaration> = {};
+  //
+  // hasRouterLink()
+  //
   hasRouterLink() {
     if (Library.isDefined(this.routerLink)) {
       if (Library.isArray(this.routerLink)) {
@@ -21,30 +21,23 @@ export class Action extends Base {
 
     return false;
   }
-
-  /**
-   * hasOnClick()
-   * @returns {*}
-   */
+  //
+  // hasOnClick()
+  //
   hasOnClick() {
     return Library.isFunction(this.onClick);
   }
-  /**
-   * hasUrl()
-   * @returns {*}
-   */
+  //
+  // hasStyle()
+  //
   hasStyle() {
     return Library.isDefined(this.style);
   }
-  /**
-   * Constructor()
-   * @param options
-   */
+  //
+  // Constructor
+  //
   constructor(options?: Partial<Action>) {
     super(options);
-    this.onClick = Library.init(options, 'onClick', () => {});
-    this.checked = Library.init(options, 'checked', false);
-    this.style = Library.init(options, 'style', {});
-    this.routerLink = Library.init(options, 'routerLink', []);
+    Object.assign(this, options);
   }
 }

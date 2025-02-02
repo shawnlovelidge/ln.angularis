@@ -22,7 +22,7 @@ export class GridSchema {
   public status: any;
   public toolbarHeight: number;
   public quickFilter: any;
-  public style: any;
+  public style: Partial<CSSStyleDeclaration> = {};
 
   isSingleSelection() {
     return this.rowSelection === GridSchemaSelection.Single;
@@ -45,7 +45,10 @@ export class GridSchema {
   }
 
   hasRowCheckSelection() {
-    return this.isMultiCheckBoxSelection() || this.isSingleCheckBoxSelection();
+    return (
+      this.isMultiCheckBoxSelection() ||
+      this.isSingleCheckBoxSelection()
+    );
   }
 
   constructor(options?: Partial<GridSchema>) {
@@ -63,10 +66,22 @@ export class GridSchema {
     }
 
     this.editable = Library.init(options, 'editable', false);
-    this.enableColResize = Library.init(options, 'enableColResize', false);
+    this.enableColResize = Library.init(
+      options,
+      'enableColResize',
+      false
+    );
     this.filtering = Library.init(options, 'filtering', true);
-    this.filterRowHeight = Library.init(options, 'filterRowHeight', 0);
-    this.floatingFilter = Library.init(options, 'floatingFilter', false);
+    this.filterRowHeight = Library.init(
+      options,
+      'filterRowHeight',
+      0
+    );
+    this.floatingFilter = Library.init(
+      options,
+      'floatingFilter',
+      false
+    );
     this.headerHeight = Library.init(options, 'headerHeight', 0);
     this.noRecordsFound = Library.init(options, 'noRecordsFound', '');
     this.rowHeight = Library.init(options, 'rowHeight', 0);

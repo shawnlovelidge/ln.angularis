@@ -1,0 +1,36 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>
+          <ag-menu [label]="label" [model]="model" [style]="style" [hidden]="hidden" [disabled]="disabled"
+            (onClick)="handleOnClick($event)">
+          </ag-menu>
+        </td>
+      </tr>
+      <tr>
+        <td>class='ag-hamburger-menu'</td>
+        <td>
+          <ag-menu class="ag-hamburger-menu" [label]="label" [model]="hamburgerMenu" [hidden]="hidden"
+            [disabled]="disabled" (onClick)="handleOnClick($event)">
+          </ag-menu>
+        </td>
+      </tr>
+      <tr>
+        <td>class='ag-kebab-menu'</td>
+        <td>
+          <ag-menu class="ag-kebab-menu" [label]="label" [model]="kababMenu" [hidden]="hidden"
+            [disabled]="disabled" (onClick)="handleOnClick($event)">
+          </ag-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ln-canvas>

@@ -1,0 +1,55 @@
+@use 'sass:string';
+@use 'scss/mixins/standard' as *;
+
+:host {
+  display: flex;
+  justify-content: flex-start;
+
+  &.center {
+    justify-content: center;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.flex-end {
+    justify-content: flex-end;
+  }
+}
+
+.ag-tab {
+  margin: 0;
+  padding: 0;
+  -webkit-transition: opacity 1s ease-out;
+  -moz-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+  width: 100%;
+
+  &:hover {
+    cursor: pointer;
+    //color: var(--color-primary);
+  }
+
+  &.fadeIn,
+  &.fade-in {
+    opacity: 1;
+  }
+
+  &.fadeOut,
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &.disabled {
+    @include disabled();
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .tm-tab-container {
+  }
+}

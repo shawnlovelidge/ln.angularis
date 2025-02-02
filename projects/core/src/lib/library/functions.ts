@@ -103,6 +103,23 @@ export function isEmptyObject(o: object | undefined | null) {
 }
 
 //
+// isEmptyObject
+//
+export function ObjectPropertySort(o: object, space: number = 2) {
+  const sort = (obj: object, space: number) => {
+    const keys = new Set();
+    JSON.stringify(obj, (key, value) => (keys.add(key), value));
+    return JSON.stringify(obj, Array.from(keys).sort() as string[], space);
+  };
+
+  if (isObject(o) && Object.getOwnPropertyNames(o).length > 0) {
+    if (o) return sort(o, space);
+  }
+
+  return o;
+}
+
+//
 // startsWith()
 //
 export function startsWith(text: string, sb: string) {
@@ -365,7 +382,7 @@ export function toBinary(n: number) {
   return (n >>> 0).toString(2);
 }
 
-export function parseObject(obj: any, path: string, delimiter: string = '.') {
+export function ObjectParse(obj: any, path: string, delimiter: string = '.') {
   if (isDefined(obj)) {
     let item = Object.assign({}, obj);
     let protoItem = Object.create(obj, {});
@@ -426,7 +443,8 @@ export default {
   isTrue,
   isUndefined,
   pad,
-  parseObject,
+  ObjectParse,
+  ObjectPropertySort,
   startsWith,
   toBinary,
   wordCount,

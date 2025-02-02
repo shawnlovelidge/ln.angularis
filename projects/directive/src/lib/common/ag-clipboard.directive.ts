@@ -3,10 +3,10 @@ import {
   Directive,
   EventEmitter,
   HostListener,
-  Input,
   OnDestroy,
   OnInit,
   Output,
+  input
 } from '@angular/core';
 
 import { AgClipboardService } from '@angularis/service';
@@ -17,13 +17,10 @@ import { AgClipboardService } from '@angularis/service';
   selector: '[Clipboard]',
 })
 export class AgClipboardDirective implements OnInit, OnDestroy {
-  @Input('Clipboard')
-  public targetElm: HTMLInputElement;
-  @Input()
-  public container: HTMLInputElement;
+  public readonly targetElm = input<HTMLInputElement>(undefined, { alias: "Clipboard" });
+  public readonly container = input<HTMLInputElement>();
 
-  @Input()
-  public cbContent: string;
+  public readonly cbContent = input<string>();
 
   @Output()
   public cbOnSuccess: EventEmitter<any> = new EventEmitter<any>();
@@ -36,23 +33,25 @@ export class AgClipboardDirective implements OnInit, OnDestroy {
   public ngOnInit() {}
 
   public ngOnDestroy() {
-    this.service.destroy(this.container);
+    this.service.destroy(this.container());
   }
 
   @HostListener('click', ['$event.target'])
   public onClick(event: Event) {
+    const targetElm = this.targetElm();
+    const cbContent = this.cbContent();
     if (!this.service.isSupported) {
       this.handleResult(false, undefined, event);
-    } else if (this.targetElm && this.service.isTargetValid(this.targetElm)) {
+    } else if (targetElm && this.service.isTargetValid(targetElm)) {
       this.handleResult(
-        this.service.copyFromInputElement(this.targetElm),
-        this.targetElm.value,
+        this.service.copyFromInputElement(targetElm),
+        targetElm.value,
         event
       );
-    } else if (this.cbContent) {
+    } else if (cbContent) {
       this.handleResult(
-        this.service.copyFromContent(this.cbContent, this.container),
-        this.cbContent,
+        this.service.copyFromContent(cbContent, this.container()),
+        cbContent,
         event
       );
     }
