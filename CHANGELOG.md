@@ -1,18 +1,24 @@
 # @angularis
 
-## 1.0.13
+## 1.0.14
+
+### Patch Changes
+
+- Added LICENSE file
+
+## 1.0.14
 
 ### Patch Changes
 
 - Added @angularis/component library.
 
-## 1.0.13
+## 1.0.14
 
 ### Patch Changes
 
 - Updated, refactored existing components, and added more components"
 
-## 1.0.13
+## 1.0.14
 
 ### Patch Changes
 
