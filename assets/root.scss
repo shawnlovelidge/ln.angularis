@@ -1,13 +1,13 @@
 :root {
-  --color-primary: #5559FA;
+  --color-primary: #0477BF;
   --color-prinmary-rgba:rgba(85, 89, 250, .15);
-  --color-primary-accent: #6D9EFC;
+  --color-primary-accent: #012840;
 
-  --color-secondary: #BC55FA;
-  --color-secondary-accent: #8856FA;
+  --color-secondary: #03658C;
+  --color-secondary-accent: #0396A6;
 
-  --color-ternary: #3C3FC3;
-  --color-ternary-accent: #2c2eab;
+  --color-ternary: #07F2DB;
+  --color-ternary-accent: #1dddca;
 
   --color-blue: #0d6aff;
   --color-black: #070d1a;
@@ -22,16 +22,38 @@
   --color-danger: #e15151;
   --color-read-only: #212a43;
 
-  --color-gray-050: #fcfcfc;
-  --color-gray-100: #f8f9faf6;
-  --color-gray-200: #e9ecef;
-  --color-gray-300: #dee2e6;
-  --color-gray-400: #ced4da;
-  --color-gray-500: #adb5bd;
-  --color-gray-600: #6c757d;
-  --color-gray-700: #495057;
-  --color-gray-800: #343a40;
-  --color-gray-900: #212529;
+  /*
+ -4.	#FFFFFF – Pure White (Lightest)
+ -3.	#FEFEFE – Near White
+ -2.	#FDFDFD – Ultra Light Gray
+ -1.	#FCFCFC – Almost Pure White
+	0.	#FBFBFB – Soft White (Darkest in this ultra-light range)
+	1.	#F9F9F9 – Ultra Light Gray (Almost White)
+	2.	#F0F0F0 – Very Light Gray (Good for backgrounds)
+	3.	#E0E0E0 – Light Gray (Soft contrast)
+	4.	#CCCCCC – Medium Light Gray (Subtle elements)
+	5.	#B3B3B3 – Neutral Gray (Placeholder text, disabled states)
+	6.	#999999 – Mid Gray (Secondary text, dividers)
+	7.	#7F7F7F – Dark Gray (Body text, labels)
+	8.	#666666 – Very Dark Gray (Headlines, strong contrast)
+	9.	#4C4C4C – Near Black (High-emphasis text)
+	10.	#333333 – Almost Black (Primary text, deep contrast)
+  */
+  --color-gray-050: #FFFFFF;
+  --color-gray-060: #FEFEFE;
+  --color-gray-070: #FDFDFD;
+  --color-gray-080: #FCFCFC;
+  --color-gray-090: #FBFBFB;
+  --color-gray-100: #F9F9F9;
+  --color-gray-200: #F0F0F0;
+  --color-gray-300: #E0E0E0;
+  --color-gray-400: #CCCCCC;
+  --color-gray-500: #B3B3B3;
+  --color-gray-600: #999999;
+  --color-gray-700: #7F7F7F;
+  --color-gray-800: #666666;
+  --color-gray-900: #4C4C4C;
+  --color-gray-1000: #333333;
 
   //
   // Theme Colors

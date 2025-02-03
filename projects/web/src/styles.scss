@@ -17,9 +17,30 @@ p {
   height: auto;
   padding: 0;
   width: 100%;
+}
 
-  &:hover {
-    color: var(--color-black);
+a {
+  color: var(--color-primary); // Default link color (accessible blue)
+  text-decoration: none; // Removes default underline
+  font-weight: 500; // Improves readability
+  transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: var(--color-secondary); // Darker shade for better contrast
+    text-decoration: none; 
+  }
+
+  &:active {
+    color: var(--color-secondary); // Even darker color when clicked
+  }
+
+  &:visited {
+    color: var(--color-secondary); // Different color for visited links
+  }
+
+  &:focus {
+    outline: none; // Ensures accessibility for keyboard navigation
   }
 }
 

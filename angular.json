@@ -318,7 +318,8 @@
               "projects/web/src/json",
               {
                 "glob": "**/*",
-                "input": "projects/web/public"
+                "input": "projects/web/public/assets",
+                "output": "/assets/"
               }
             ],
             "styles": [

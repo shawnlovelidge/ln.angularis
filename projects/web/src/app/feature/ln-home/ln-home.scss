@@ -1,0 +1,33 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.ln-home
+{
+  display: flex;
+  padding: 20px;
+  margin: 0;
+  overflow-y: auto;
+  height: calc(100vh - 130px); 
+
+  p {
+    font-size: 1rem; /* Default readable size */
+    line-height: 1.6; /* Improves readability */
+    letter-spacing: 0.4px; /* Slightly increases spacing between letters */
+    word-spacing: 1.5px; /* Creates comfortable gaps between words */
+    margin-bottom: 1.5rem; /* Adds spacing between paragraphs */
+    text-align: justify; /* Ensures even spacing for readability */
+    max-width: 800px; /* Prevents overly wide text blocks */ 
+
+    a {
+      color: var(--color-primary-accent); /* Makes links stand out */
+      text-decoration: none; /* Removes default underline */
+      font-weight: bold; /* Emphasizes links */
+      transition: color 0.3s; /* Smoothly changes link color */
+      padding: 0 4px;
+      &:hover {
+        color: var(--color-primary); /* Darkens link color on hover */
+      }
+    }
+  }
+
+}
