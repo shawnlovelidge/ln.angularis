@@ -18,6 +18,16 @@ import {
   faGithub,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import {
+  faAlignLeft,
+  faAlignCenter,
+  faAlignRight,
+  faBold,
+  faItalic,
+  faFolderOpen,
+  faPrint,
+} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 //
 // @Components
@@ -27,21 +37,57 @@ import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 @Component({
   imports: [CommonModule, FontAwesomeModule, LnCanvas, AgToolBar],
   selector: 'ln-toolbar',
-  templateUrl: './ln-toolbar.html',
-  styleUrls: ['./ln-toolbar.scss'],
+  templateUrl: 'ln-toolbar.html',
+  styleUrls: ['ln-toolbar.scss'],
 })
 export class LnToolBar {
   public icons = signal([
     new Icon<IconProp>({
+      id: 0,
+      name: 'folder-open',
+      component: ['fas', 'folder-open'],
+      //style: { color: 'purple' },
+    }),
+    new Icon<IconProp>({
       id: 1,
-      name: 'facebook',
-      component: ['fab', 'facebook'],
+      name: 'align-left',
+      component: ['fas', 'align-left'],
       //style: { color: 'blue', fontSize: '36px' },
     }),
     new Icon<IconProp>({
       id: 2,
-      name: 'twitter',
-      component: ['fab', 'twitter'],
+      name: 'align-center',
+      component: ['fas', 'align-center'],
+      //style: { color: 'purple' },
+    }),
+    new Icon<IconProp>({
+      id: 3,
+      name: 'align-right',
+      component: ['fas', 'align-right'],
+      //style: { color: 'purple' },
+    }),
+    new Icon<IconProp>({
+      id: 4,
+      name: 'bold',
+      component: ['fas', 'bold'],
+      //style: { color: 'purple' },
+    }),
+    new Icon<IconProp>({
+      id: 5,
+      name: 'italic',
+      component: ['fas', 'italic'],
+      //style: { color: 'purple' },
+    }),
+    new Icon<IconProp>({
+      id: 6,
+      name: 'print',
+      component: ['fas', 'print'],
+      //style: { color: 'purple' },
+    }),
+    new Icon<IconProp>({
+      id: 7,
+      name: 'envelope',
+      component: ['far', 'envelope'],
       //style: { color: 'purple' },
     }),
   ]);
@@ -49,7 +95,16 @@ export class LnToolBar {
   // Constructor
   //
   constructor(private library: FaIconLibrary) {
-    this.library.addIcons(faTwitter, faFacebook);
+    this.library.addIcons(
+      faAlignLeft,
+      faAlignCenter,
+      faAlignRight,
+      faBold,
+      faItalic,
+      faFolderOpen,
+      faEnvelope,
+      faPrint
+    );
   }
   //
   // ngOnInit
