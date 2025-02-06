@@ -26,7 +26,7 @@
         @for (action of actions; track $index)
         {
         <li class="ag-dialog-container-context-action">
-          <ag-button class="bordered" (onClick)="handleOnActionClick(action)">{{action.label}}</ag-button>
+          <ag-button (onClick)="handleOnActionClick(action)">{{action.label}}</ag-button>
         </li>
         }
       </ul>

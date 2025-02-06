@@ -2,14 +2,13 @@
 @use 'scss/mixins/standard.scss' as *;
 
 .ag-checkbox {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+  @include flexbox-row();
   padding: 0;
   margin: 0;
-  width: 100%;
-  gap: 14px;
+  width: fit-content;
+  color: var(--ag-checkbox-color, var(--color-primary));
+  gap: var(--gap);
+  font-size: 1.125rem;
 
   &.hidden {
     display: none;
@@ -20,7 +19,7 @@
   }
 
   &:hover {
-    color: var(--color-primary);
+    color: var(--ag-checkbox-hover-color, var(--color-primary));
   }
   
   span {

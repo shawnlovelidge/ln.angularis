@@ -3,7 +3,11 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": ["jasmine"]
+    "module": "CommonJS",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true 
   },
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "include": ["**/*.test.ts"]
 }

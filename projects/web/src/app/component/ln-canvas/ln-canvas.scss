@@ -9,7 +9,7 @@
   gap: 8px;
   height: 100%;
   width: 100%;
-  height: calc(100vh - 145px);
+  height: calc(100vh - 125px);
   overflow-y:auto;
 
   
@@ -20,7 +20,7 @@
   .ln-canvas-header
   {
     background-color: var(--color-gray-100);
-    border: 1px solid var(--color-gray-200);
+    border: 1px solid var(--color-gray-500);
     padding: 10px;
     width: 100%;
     margin-bottom: 10px;
@@ -28,8 +28,8 @@
 
   .ln-canvas-content-wrapper
   {
-    border: 1px solid var(--color-gray-200);
     background-color: var(--color-gray-100);
+    border: 1px solid var(--color-gray-400);
     display: flex;
     flex-direction: column;
     gap: 8px;

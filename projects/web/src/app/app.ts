@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AgEnvironmentService, AgJsonService } from '@angularis/service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -6,15 +6,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Import the AgComponentModule
 //
 import { AgComponentModule } from '@angularis/component';
+import { LnTheme } from './component/ln-theme/ln-theme';
+import { LnHeader } from './component/ln-header/ln-header';
 //
 // Json
 //
-import * as NavMenu from '@json/nav-men.json';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, FontAwesomeModule, AgComponentModule, RouterLink, RouterOutlet],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    LnHeader,
+    RouterLink,
+    RouterOutlet,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   providers: [AgEnvironmentService],
@@ -28,7 +35,8 @@ export class AppComponent implements OnInit {
   constructor(
     private environmentService: AgEnvironmentService,
     private jsonService: AgJsonService
-  ) {}
+  ) {
+  }
 
   //
   // ngOnInit

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  effect,
   ElementRef,
   Input,
   OnDestroy,
@@ -95,6 +96,15 @@ export class AgDropDown
       },
       ...this.style,
     };
+
+    let defaultItem = this.model.find((m: Item) => m.active);
+    if (defaultItem) {
+      this.value.set(defaultItem);
+    }
+
+    for(let i = 0; i < this.model.length; i++) {
+      console.log(`item: { id: ${this.model[i].id}, name: ${this.model[i].name}, active:  ${this.model[i].active}}`);
+    }   
   }
   //
   // ngAfterViewInit
@@ -166,8 +176,17 @@ export class AgDropDown
   //
   // onCloseItems()
   //
-  public onClose(menu: any = undefined) {
+  public onClose(menu: Item) {
     if (menu) {
+      //
+      // Set Active
+      //
+      this.model.forEach((m: Item) => {
+        m.active = m.id === menu.id;
+      });
+      //
+      // Set Value
+      //
       this.value.set(menu);
       //
       // Toggle open/close

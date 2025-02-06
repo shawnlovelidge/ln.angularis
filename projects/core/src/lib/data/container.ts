@@ -39,7 +39,7 @@ export class Container extends Base {
    * @param obj
    * @returns {any}
    */
-  isChecked(predicate: Function): boolean {
+  public override isChecked(predicate: Function): boolean {
     if (Library.isFunction(predicate)) {
       const o = this.dataSource.findItem(predicate);
       if (Library.isDefined(o)) {

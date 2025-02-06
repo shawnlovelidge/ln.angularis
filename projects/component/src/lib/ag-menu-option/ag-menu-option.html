@@ -1,6 +1,7 @@
 <div [attr.id]="model.uid" class="ag-menu-option" role="option" [ngClass]="{ 
-  'hidden': hidden || model.hidden, 
-  'disabled': disabled || model.disabled,
+  'hidden': model.hidden, 
+  'disabled': model.disabled,
+  'active': model.active,
   }" (click)="handleOnClick(model)">
   <span>{{model.name}}</span>
 </div>

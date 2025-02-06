@@ -61,7 +61,7 @@ export class Base implements IBase {
    * isChecked()
    * @returns {*}
    */
-  isChecked() {
+  isChecked(predicate: Function): boolean {
     return Library.isTrue(this.checked);
   }
 

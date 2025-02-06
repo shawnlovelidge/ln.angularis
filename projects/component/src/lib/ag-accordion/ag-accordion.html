@@ -10,10 +10,10 @@
       }
     </div>
   </header>
-  <section [ngClass]="{disabled: disabled}" [ngStyle]="{ 
+  <section class="ag-accordion-section" [ngClass]="{disabled: disabled}" [ngStyle]="{ 
       opacity: open ? 1 : 0, 
       visibility: open ? 'visible' : 'hidden',
-      padding: open ? '10px' : '0' , 
+      padding: open ? 'var(--padding)' : '0' , 
       height: open ? 'auto' : 0,
       transition: 'opacity 0.9s ease-in-out' 
     }">

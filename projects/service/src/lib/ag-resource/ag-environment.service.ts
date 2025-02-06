@@ -55,7 +55,7 @@ export class AgEnvironmentService implements OnDestroy {
       hostname = window.location.hostname.toLowerCase();
     }
     //
-    // Set Default Environment
+    // Reset Default Environment
     //
     this.environments.default = {};
     //

@@ -17,21 +17,25 @@
     cursor: pointer;
     text-decoration: none;
     transition: color 0.1s ease;
-    color: var(--color-primary);
+    color: var(--ag-hyperlink-color, var(--color-primary));
     font-weight: normal;
 
-    &:hover,
-    &:focus {
+    &:hover {
+      outline: none;
+    }
+
+    &:hover {
       font-weight: 700;
     }
 
     &:visited {
-      color: var(--color-black);
+      color: var(--ag-hyperlink-visited-color, var(--color-black));
     }
 
     &.active {
-     color: var(--color-black);
+      color: var(--ag-hyperlink-active-color, var(--color-black));
     }
+
     &.disabled {
       @include disabled();
     }
@@ -39,13 +43,13 @@
 
   a.button {
     @include user-select();
-    @include border-radius(20px);
-    background-color: var(--color-primary);
-    color: var(--color-white);    
-    height: 32px;
-    line-height: 16px;
+    @include border-radius(var(--radius));
+    background-color: var(--ag-hyperlink-button-background-color, var(--color-primary));
+    color: var(--ag-hyperlink-button-color, var(--color-white));    
+    height: 2rem;
+    line-height: 1.875rem;
     overflow: hidden;
-    padding: 8px 20px;
+    padding: 0.5rem 1rem;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -56,9 +60,7 @@
     text-decoration: none;
     transition: color 0.1s ease;    
 
-    &:hover,
-    &:focus {
-      font-weight: 700;
+    &:hover {
       @include box-shadow();
     }
 
@@ -67,11 +69,11 @@
     }
 
     &:visited {
-      color: var(--color-black);
+      color: var(--ag-hyperlink-button-visited-color, var(--color-white));
     }
 
     &.active {
-     color: var(--color-black);
+     color: var(--ag-hyperlink-button-active-color, var(--color-black));
     }
     &.disabled {
       @include disabled();
@@ -80,7 +82,7 @@
 
   .icon {
     position: relative;
-    color: var(--color-primary);
+    color: var(--ag-hyperlink-icon-color, var(--color-white));
     top: 3px;
     width: auto;
 

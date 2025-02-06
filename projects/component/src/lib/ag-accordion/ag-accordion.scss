@@ -3,10 +3,9 @@
 
 .ag-accordion {
   @include box-shadow();
-  border-radius: 1px;
+  border-radius: var(--radius);
   height: auto;
-  border: 1px solid var(--color-gray-400);
-
+  border: 1px solid var(--color-border);
 
   &.hidden {
     display: none;
@@ -19,23 +18,17 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: 0;
-    font-weight: 700;
-    font-size: 14px;
-    height: 50px;
     height: inherit;
-    line-height: 20px;
-    padding: 10px;
+    line-height: 2.5rem;
+    padding: 0 var(--padding);
     
 
     &.disabled {
-      background-color: var(--color-disabled);
-      color: var(--color-gray-500);
-      opacity: 0.75;
-      pointer-events: none;
+      @include disabled();
     }
 
     &.open {
-      border-bottom: 0.05em solid var(--color-gray-400);
+      border-bottom: 0.05em solid var(--color-border);
     }
 
     .ag-accordion-header-left {
@@ -48,19 +41,18 @@
     }
 
     .ag-accordion-header-right {
-      padding-left: 20px;
-      font-weight: bold;
-      font-size: 18px;
+      padding-left: 0 var(--padding);
+      font-size: var(--h3);
     }
 
     &.ag-accordion-header-icon-right {
-      color: var(--color-gray-900);
+      color: var(--color-black);
       position: absolute;
       right: 12px;
     }
 
     .ag-accordion-header-icon-left {
-      width: 40px;
+      width: 2.5rem;
       text-align: center;
 
       &:hover {
@@ -95,14 +87,11 @@
     height: auto;
     width: auto;
     margin: 0;
-    padding: 10px;
+    background-color: var(--color-white);
+    padding: var(--padding);
 
     &.disabled {
-      background-color: var(--color-disabled);
-      color: var(--color-gray-500);
-      border: 1px solid var(--color-gray-400);
-      opacity: 0.75;
-      pointer-events: none;
+      @include disabled();
     }
   }
 }
