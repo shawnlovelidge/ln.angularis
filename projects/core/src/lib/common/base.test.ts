@@ -26,5 +26,4 @@ describe('Base Class', () => {
     base.name = 'Bob';
     expect(base.name).toBe('Bob');
   });
-  
 });

@@ -1,13 +1,9 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.spec.json",  
   "compilerOptions": {
-    "outDir": "../../out-tsc/spec",
-    "module": "CommonJS",
-    "target": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "esModuleInterop": true 
   },
-  "include": ["**/*.test.ts"]
+  "include": [
+    "./src/lib/**/*.spec.ts",
+    "./src/lib/**/*.d.ts"
+  ]
 }

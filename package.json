@@ -25,16 +25,10 @@
     "changeset:version:major": "changeset version --major",
     "changeset:version:patch": "changeset version --patch",
     "storybook": "ng run @angularis/storybook:storybook",
-    "test:core": "jest --config ./projects/core/jest.lib.config.ts"
+    "test:core": "jest --config projects/core/jest.config.ts"
   },
   "private": true,
   "type": "module",
-  "jest": {
-    "extensionsToTreatAsEsm": [
-      ".ts",
-      ".tsx"
-    ]
-  },
   "dependencies": {
     "@angular/animations": "^19.1.0",
     "@angular/cdk": "^19.1.1",

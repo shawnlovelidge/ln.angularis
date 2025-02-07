@@ -25,10 +25,12 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
+            "main": ["setupJest.ts"],
             "tsConfig": "projects/core/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }
       }
@@ -55,7 +57,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "projects/model/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -85,7 +87,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "projects/directive/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -115,7 +117,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "projects/pipe/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -145,7 +147,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "projects/service/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -175,7 +177,7 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "projects/component/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"]
@@ -255,7 +257,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/storybook/tsconfig.spec.json",
@@ -372,7 +374,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
             "polyfills": [
               "zone.js",
