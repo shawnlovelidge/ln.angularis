@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.spec.json",  
   "compilerOptions": {
+    "esModuleInterop":true
   },
   "include": [
     "./src/lib/**/*.spec.ts",

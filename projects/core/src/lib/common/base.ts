@@ -2,38 +2,38 @@ import { Library } from '../library';
 import { Guid } from './guid';
 
 export interface IBase {
-  uid: Guid;
-  id: number;
+  uid: string;
   active: boolean;
   checked: boolean;
-  disabled: boolean;
-  hidden: boolean;
-  name: string;
   description: string;
-  type?: string;
-  label: string;
+  disabled: boolean;
+  hasDescription(): boolean;
   hasId(): boolean;
+  hasLabel(): boolean;
+  hasName(): boolean;
+  hidden: boolean;
+  id: number;
   isActive(): boolean;
   isVisible(): boolean;
-  hasDescription(): boolean;
-  hasName(): boolean;
-  hasLabel(): boolean;
+  label: string;
+  name: string;
+  type?: string;
 }
 
 /**
  * Class: Simple
  */
 export class Base implements IBase {
-  public uid: Guid;
-  public id: number = 0;
   public active: boolean = false;
+  public checked: boolean = false;
+  public description: string = '';
   public disabled: boolean = false;
   public hidden: boolean = false;
-  public name: string = '';
-  public description: string = '';
+  public id: number = 0;
   public label: string = '';
+  public name: string = '';
   public type?: string = undefined;
-  public checked: boolean = false;
+  public uid: string = '';
   /**
    * hasUid()
    * @returns {*}
@@ -61,7 +61,7 @@ export class Base implements IBase {
    * isChecked()
    * @returns {*}
    */
-  isChecked(predicate: Function): boolean {
+  isChecked(): boolean {
     return Library.isTrue(this.checked);
   }
 
@@ -109,7 +109,7 @@ export class Base implements IBase {
    */
   constructor(options?: Partial<Base>) {
     Object.assign(this, options);
-    this.uid = Guid.create();
+    this.uid = Guid.create().toString();
   }
 }
 

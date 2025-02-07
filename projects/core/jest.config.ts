@@ -1,11 +1,5 @@
 module.exports = {
   preset: 'ts-jest',
-  // transform: {
-  //   '^.+\\.tsx?$': [
-  //     'babel-jest',
-  //     { presets: ['@babel/preset-env', '@babel/preset-typescript'] },
-  //   ],
-  // },
   //testEnvironment: 'jsdom',
   transform: {
     '^.+\\.ts?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.lib.spec.json' }],
