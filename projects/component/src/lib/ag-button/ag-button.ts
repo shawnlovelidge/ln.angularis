@@ -6,6 +6,7 @@ import {
   AfterViewInit,
   OnDestroy,
   ViewContainerRef,
+  Input,
 } from '@angular/core';
 //
 // Font Awesome Library Container
@@ -16,6 +17,8 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 // Components
 //
 import { AgBase } from '../ag-base/ag-base';
+import { IconProp } from '@fortawesome/angular-fontawesome/types';
+import { Library } from '@angularis/core';
 
 @Component({
   imports: [CommonModule, FontAwesomeModule],
@@ -27,6 +30,11 @@ export class AgButton
   extends AgBase
   implements OnInit, AfterViewInit, OnDestroy
 {
+  @Input() public icon: IconProp = 'none';
+  //
+  // hasIcon(s)
+  //
+  public hasIcon = () => Library.isDefined(this.icon) && this.icon !== 'none';  
   //
   // Constructor
   //

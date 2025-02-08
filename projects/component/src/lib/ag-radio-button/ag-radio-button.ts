@@ -10,6 +10,7 @@ import {
   Input,
   computed,
   ViewContainerRef,
+  input,
 } from '@angular/core';
 //
 // Angular Forms
@@ -44,7 +45,10 @@ export class AgRadioButton
   extends AgBase
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @Input() public model = signal(new Array<Action>());
+  //
+  // Signal Required Input
+  //
+  @Input() model = signal<Action[]>([]);
   //
   // Private Variables
   //
@@ -53,16 +57,6 @@ export class AgRadioButton
   //
   // Private Variables
   //
-
-  //
-  // isFunction(s)
-  //
-  public isSquareRadioButton = computed(() => {
-    if (Library.isStringWithLength(this.classes()))
-      return this.classes().includes('ag-radio-button-square');
-
-    return false;
-  });
 
   //
   // Constructor
@@ -96,15 +90,13 @@ export class AgRadioButton
     //
     // Set the formControl
     //
-    if (!this.isSquareRadioButton()) {
-      if (Library.isArrayWithLength(this.model())) {
-        const index = this.model().findIndex((item: Action) => item.active);
-        if (index > -1) {
-          //
-          // Set the formControl
-          //
-          this.formControl.setValue(this.model()[index].name);
-        }
+    if (Library.isArrayWithLength(this.model())) {
+      const index = this.model().findIndex((item: Action) => item.active);
+      if (index > -1) {
+        //
+        // Set the formControl
+        //
+        this.formControl.setValue(this.model()[index].name);
       }
     }
   }

@@ -1,167 +1,34 @@
 @use 'scss/mixins/standard' as *;
 
-$circle-size: 40px;
-$circle-size-sm: 25px;
+$size: 2.5rem;
+$size-sm: 1.563rem;
+$circle-size: 2.5rem;
+$circle-size-sm: 1.563rem;
 
-$border-size: 2px;
+:host
+{
+  .ag-button {
 
-$size: 40px;
-$size-sm: 25px;
-
-$brand-color: var(--color-primary);
-$red: var(--color-red);
-$white: var(--color-white);
-$border-color: var(--color-gray-900);
-$disabled: var(--color-disabled);
-
-.ag-button {
-
-  button {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius:6px;
-    overflow: hidden;
-    padding: 8px 16px;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: auto;
-    outline: none;
-    border: 1px solid transparent;
-    user-select: none;
-    min-width: 64dp;
-    cursor: pointer;
-
-    &:hover {
-      @include box-shadow();
-    }
-        
-    &.hidden {
-      display: none;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &.disabled {
-      background-color: var(--color-disabled);
-      color: var(--color-gray-500);
-      border: $border-size solid var(--color-gray-400);
-      opacity: 0.75;
-      pointer-events: none;
-    }
-
-    &.bordered {
-      border: 1px solid var(--color-gray-400);
-      background-color: transparent;
-      color: var(--color-primary);
-      &:hover {
-        color: var(--color-black);
-        background-color: var(--color-prinmary-rgba);
-        box-shadow: none;
-      }
-    }
-
-    &.text {
-      border: 1px solid transparent;
-      background-color: transparent;
-      color: var(--color-primary);
-      &:hover {
-        border: 1px solid var(--color-gray-400);
-        color: var(--color-black);
-        box-shadow: none;
-      }
-    }
-
-    &.small {
-      height: 20px;
-      width: auto;
-      min-width: 40px;
-      line-height: 8px;
-      padding: 2px 8px;
-      font-size: 11px;
-      max-width: 100px;
-    }
-
-    &.secondary {
-      background-color: var(--color-secondary);
-      color: var(--color-white);
-    }
-
-    &.circle {
-      border-radius: 50%;
-      width: $circle-size;
-      height: $circle-size;
-      min-width: $circle-size;
-      min-height: $circle-size;
-      max-width: $circle-size;
-      max-height: $circle-size;
-      padding: 0;
-      text-align: center;
+    button {      
       cursor: pointer;
-
-      &.small {
-        border-radius: 50%;
-        width: $circle-size-sm;
-        height: $circle-size-sm;
-        min-width: $circle-size-sm;
-        min-height: $circle-size-sm;
-        max-width: $circle-size-sm;
-        max-height: $circle-size-sm;
-        padding: 0;
-      }
-
-      &.active {
-        border: $border-size solid var(--color-black);
-      }
-    }
-
-    &.radio-button {
-      border: 0;
-      border-radius: 0;
-      border-top: $border-size solid var(--color-gray-400);
-      border-bottom: $border-size solid var(--color-gray-400);
-
-      &.active {
-        background-color: var(--color-primary-accent);
-      }
+      background-color: var(--ag-button-background, var(--color-primary));
+      color: var(--ag-button-color, var(--color-text));
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: .5rem 1rem;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: auto;
+      outline: none;
+      border: 1px solid transparent;
+      user-select: none;
+      min-width: 3.75rem;
 
       &:hover {
-        background-color: var(--color-primary-accent);
+        @include box-shadow();
       }
-
-      &.icon {
-        display: inline-flex;
-        align-items: center;
-        font-size: 22px;
-        padding: 8px;
-        min-width: 40px;
-        vertical-align: middle;
-        color: var(--color-black);
-        background-color: var(--color-gray-100);
-
-        &.active {
-          background-color: var(--color-gray-200);
-        }
-
-        &:hover {
-          background-color: var(--color-gray-200);
-        }
-      }
-
-      &.secondary {
-        background-color: var(--color-secondary);
-
-        &.active {
-          background-color: var(--color-secondary-accent);
-        }
-
-        &:hover {
-          background-color: var(--color-secondary-accent);
-        }
-      }
-
+          
       &.hidden {
         display: none;
       }
@@ -171,40 +38,178 @@ $disabled: var(--color-disabled);
       }
 
       &.disabled {
-        background-color: var(--color-disabled);
-        color: var(--color-gray-500);
-        opacity: 0.75;
-        pointer-events: none;
+        @include disabled();
       }
 
-      &.left {
-        border-left: $border-size solid var(--color-gray-400);
-        border-right: 0px;
-        border-top-left-radius: $border-size;
-        border-bottom-left-radius: $border-size;
-        border-top-right-radius: 0px;
+      &.bordered {
+        border: 1px solid var(--ag-button-bordered-border, var(--color-border));
+        color: var(--ag-button-bordered-color, var(--color-primary));
+        background-color: transparent;
+        &:hover {
+          border: 1px solid var(--ag-button-bordered-hover-border, var(--color-primary));
+          @include box-shadow();
+        }
       }
 
-      &.right {
-        border-right: $border-size solid var(--color-gray-400);
-        border-left: 0px;
-        border-top-right-radius: $border-size;
-        border-bottom-right-radius: $border-size;
-        border-top-left-radius: 0px;
+      &.text {
+        border: 1px solid transparent;
+        background-color: transparent;
+        color: var(--ag-button-text-color, var(--color-primary));
+        &:hover {
+          border: 1px solid var(--ag-button-text-hover-border, var(--color-border));
+          color: var(--ag-button-text-hover-color, var(--color-black));
+          @include box-shadow();
+        }
+      }
+
+      &.small {
+        height: 1.25rem;
+        width: auto;
+        min-width: 2.5rem;
+        line-height: .5rem;
+        padding: 0.125rem .5rem;
+        font-size: 0.688rem;
+        max-width: 6.25rem;
+      }
+
+      &.secondary {
+        background-color: var(--ag-button-secondary, var(--color-secondary));
+        color: var(--ag-button-secondary-color, var(--color-text));
+      }
+
+      &.circle {
+        border-radius: 50%;
+        width: $circle-size;
+        height: $circle-size;
+        min-width: $circle-size;
+        min-height: $circle-size;
+        max-width: $circle-size;
+        max-height: $circle-size;
+        padding: 0;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          @include box-shadow();
+        }        
+
+        &.small {
+          border-radius: 50%;
+          width: $circle-size-sm;
+          height: $circle-size-sm;
+          min-width: $circle-size-sm;
+          min-height: $circle-size-sm;
+          max-width: $circle-size-sm;
+          max-height: $circle-size-sm;
+          padding: 0;
+        }
+
+        &.active {
+          border: 0.125rem solid var(--ag-button-circle-border, var(--color-primary));
+        }
       }
     }
+  }
+}
 
-    &.radio-button-icon {
-      background-color: transparent;
+:host(.invert)
+{
+  .ag-button {
 
-      &.active {
-        background-color: var(--color-primary-accent);
+    button {      
+      cursor: pointer;
+      background-color: var(--ag-button-background, var(--color-primary));
+      color: var(--ag-button-color, var(--color-text));
+      border-radius: var(--radius);
+      overflow: hidden;
+      padding: .5rem 1rem;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: auto;
+      outline: none;
+      border: 1px solid transparent;
+      user-select: none;
+      min-width: 3.75rem;
+
+      &:hover {
+        @include box-shadow();
+      }
+          
+      &.hidden {
+        display: none;
       }
 
-      &.left {
+      &:focus {
+        outline: none;
       }
 
-      &.right {
+      &.disabled {
+        @include disabled();
+      }
+
+      &.bordered {
+        border: 1px solid var(--ag-button-bordered-border, var(--color-border));
+        color: var(--ag-button-bordered-color, var(--color-primary));
+        background-color: transparent;
+        &:hover {
+          border: 1px solid var(--ag-button-bordered-hover-border, var(--color-primary));
+          box-shadow: none;
+        }
+      }
+
+      &.text {
+        border: 1px solid transparent;
+        background-color: transparent;
+        color: var(--color-primary);
+        &:hover {
+          border: 1px solid var(--color-border);
+          color: var(--color-black);
+          box-shadow: none;
+        }
+      }
+
+      &.small {
+        height: 1.25rem;
+        width: auto;
+        min-width: 2.5rem;
+        line-height: .5rem;
+        padding: 0.125rem .5rem;
+        font-size: 0.688rem;
+        max-width: 6.25rem;
+      }
+
+      &.secondary {
+        background-color: var(--ag-button-secondary, var(--color-secondary));
+        color: var(--ag-button-secondary-color, var(--color-text));
+      }
+
+      &.circle {
+        border-radius: 50%;
+        width: $circle-size;
+        height: $circle-size;
+        min-width: $circle-size;
+        min-height: $circle-size;
+        max-width: $circle-size;
+        max-height: $circle-size;
+        padding: 0;
+        text-align: center;
+        cursor: pointer;
+
+        &.small {
+          border-radius: 50%;
+          width: $circle-size-sm;
+          height: $circle-size-sm;
+          min-width: $circle-size-sm;
+          min-height: $circle-size-sm;
+          max-width: $circle-size-sm;
+          max-height: $circle-size-sm;
+          padding: 0;
+        }
+
+        &.active {
+          border: 0.125rem solid var(--ag-button-circle-border, var(--color-primary));
+        }
       }
     }
   }

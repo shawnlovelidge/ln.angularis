@@ -1,0 +1,38 @@
+
+
+.ln-header {
+  cursor: default;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: var(--padding);
+  display: grid;
+  grid-template-areas:
+  "companyInfo colorswitcher";
+  grid-template-columns: 1fr .5fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  width: 100%;
+
+  .ln-header-company {
+    grid-area: companyInfo;
+
+    a {
+      color: var(--color-white);
+      h3.title {
+        margin-bottom: var(--margin-bottom);
+        padding: 0;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      p {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  .ln-header-color-switcher {
+    grid-area: colorswitcher;
+  }
+} 

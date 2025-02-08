@@ -22,7 +22,7 @@ import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
 export class LnList {
   public hidden: boolean = false;
   public disabled: boolean = false;
-  public multiselect: boolean = false;
+  public multiselect: boolean = true;
   public style: Partial<CSSStyleDeclaration> = {
     fontSize: '12px',
     height: '300px',

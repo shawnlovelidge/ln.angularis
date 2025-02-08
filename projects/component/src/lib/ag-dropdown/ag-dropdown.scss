@@ -2,28 +2,8 @@
 @use 'scss/mixins/standard.scss' as *;
 
 
-$height: 36px;
-$line-height: 32px;
-$font-size: 14px;
-
-:host {
-  margin: 0;
-  padding: 0;
-  width: inherit;
-  height: auto;
-  outline: none;  
-}
-
-:host(.darkTheme) {
-  margin: 0;
-  padding: 0;
-  width: inherit;
-  height: auto;
-  outline: none;
-  position: relative;
-  background-color: var(--color-theme-dark);
-  color: var(--color-white);
-}
+$height: 2.125rem;
+$line-height: 2rem;
 
 ::ng-deep {
   .cdk-overlay-container {
@@ -31,90 +11,169 @@ $font-size: 14px;
   }
 }
 
-.ag-dropdown {
-  cursor: default;
-  transition: all 0.5s ease;
-  outline-color: transparent;
-  outline-width: 0px;
+:host {
+  margin: 0;
+  padding: 0;
+  width: inherit;
+  height: auto;
+  outline: none;  
 
-  &.hidden {
-    display: none;
-  }
-
-  &.disabled {
-    @include disabled();
-    pointer-events: none;
-    opacity: 0.4;
-  }
-
-  &:focus {
+  .ag-dropdown {
+    cursor: default;
+    transition: all 0.5s ease;
     outline-color: transparent;
-    outline-width: 0px;
-  }
-
-  .ag-dropdown-label {
-    @include label();
-    @include flexbox-row();
-    justify-content: flex-start;
-    text-align: left;
-
+    outline-width: 0;
+  
     &.hidden {
       display: none;
     }
-
+  
     &.disabled {
       @include disabled();
-      color: var(-color-disabled);
-      &.hover {
-        color: var(-color-disabled);
+    }
+  
+    &:focus {
+      outline-color: transparent;
+      outline-width: 0;
+    }
+  
+    .ag-dropdown-label {
+      @include label();
+      @include flexbox-row();
+      justify-content: flex-start;
+      text-align: left;
+      margin: var(--margin) 0;
+      padding: 0 var(--padding);
+  
+      &.hidden {
+        display: none;
+      }
+  
+      &.disabled {
+        @include disabled();
       }
     }
-  }
+  
+    button.ag-dropdown-button {
+      position: relative;
+      @include user-select();
+      @include box-shadow();
+      position: relative;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      height: 2.25rem;
+      line-height: 2rem;
+      margin: 0;
+      outline: none;
+      overflow: hidden;
+      padding: 0 1.5rem 0 .5rem;
+      text-align: left;
+      text-overflow: ellipsis;
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+      vertical-align: middle;
+      white-space: nowrap;
+      width: inherit;
+      background-color: transparent;    
+      color: var(--ag-dropdown-color, var(--color-text));
+      border: 1px solid var(--ag-dropdown-border, var(--color-border)); 
+      width: 100%;
+  
+      &.disabled {
+        @include disabled();
+      }
+  
+      .ag-dropdown-button-icon {
+        position: absolute;
+        top: 0;
+        right: 8px;
+      }
+    }
+  }  
+}
 
-
-  button.ag-dropdown-button {
-    position: relative;
-    @include user-select();
-    @include box-shadow();
-    position: relative;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    height: $height;
-    line-height: $line-height;
-    margin: 0;
-    outline: none;
-    overflow: hidden;
-    padding: 0 24px 0 8px;
-    text-align: left;
-    text-overflow: ellipsis;
-    transition:
-      color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out,
-      box-shadow 0.15s ease-in-out;
-    vertical-align: middle;
-    white-space: nowrap;
-    width: inherit;
-    background-color: transparent;
-    border: 1px solid var(--color-border);
-    width: 100%;
-
+:host(.invert)
+{
+  .ag-dropdown {
+    cursor: default;
+    transition: all 0.5s ease;
+    outline-color: transparent;
+    outline-width: 0;
+  
+    &.hidden {
+      display: none;
+    }
+  
     &.disabled {
       @include disabled();
-      pointer-events: none;
-      color: var(-color-disabled);
-      &.hover {
-        color: var(-color-disabled);
+    }
+  
+    &:focus {
+      outline-color: transparent;
+      outline-width: 0;
+    }
+  
+    .ag-dropdown-label {
+      @include label();
+      @include flexbox-row();
+      justify-content: flex-start;
+      text-align: left;
+      margin: var(--margin) 0;
+      padding: 0 var(--padding);
+  
+      &.hidden {
+        display: none;
+      }
+  
+      &.disabled {
+        @include disabled();
       }
     }
-
-    .ag-dropdown-button-icon {
-      position: absolute;
-      top: 0;
-      right: 8px;
+  
+    button.ag-dropdown-button {
+      position: relative;
+      @include user-select();
+      @include box-shadow();
+      position: relative;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+      height: 2.25rem;
+      line-height: 2rem;
+      margin: 0;
+      outline: none;
+      overflow: hidden;
+      padding: 0 1.5rem 0 .5rem;
+      text-align: left;
+      text-overflow: ellipsis;
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+      vertical-align: middle;
+      white-space: nowrap;
+      width: inherit;
+      background-color: transparent;    
+      color: var(--ag-dropdown-invert-color, var(--color-white));
+      border: 1px solid var(--ag-dropdown-invert-border, var(--color-border)); 
+      width: 100%;
+  
+      &.disabled {
+        @include disabled();
+      }
+  
+      .ag-dropdown-button-icon {
+        position: absolute;
+        top: 0;
+        right: 8px;
+      }
     }
-  }
+  }  
 }
 
 ul.ag-dropdown-items {
@@ -122,15 +181,15 @@ ul.ag-dropdown-items {
   -webkit-transition: 0.5s;
   border-radius: 0;
   margin: 0;
-  min-width: 100px;
+  min-width: 6.25rem;
   max-width: inherit;
   width: 100%;
   padding: 0;
   transition: 0.5s;
   overflow: hidden;
   overflow-y: auto;
-  background-color: var(--color-white);
-  color: var(--color-black);
+  //background-color: var(--color-white);
+  //color: var(--color-black);
 
   &.open {
     display: block;
@@ -138,36 +197,8 @@ ul.ag-dropdown-items {
 
   li.ag-dropdown-item {
     cursor: pointer;
-    display: block;
-    height: $height;
-    line-height: $line-height;
-    list-style-position: inside;
-    overflow: hidden;
-    table-layout: fixed;
-    text-align: left;
-    text-overflow: ellipsis;
-    transition: all 0.2s ease-in-out;
-    white-space: nowrap;
     padding: 0;
     width: 100%;
-    font-size: $font-size;
-
-    &.disabled {
-      pointer-events: none;
-      color: var(-color-disabled);
-      &.hover {
-        color: var(-color-disabled);
-      }
-    }
-
-    &:hover {
-      background-color: var(--color-theme-light-gray);
-      color: var(--color-black);
-    }
-
-    &.active {
-      border-left: 4px solid var(--color-primary-accent);
-    }
   }
 }
 

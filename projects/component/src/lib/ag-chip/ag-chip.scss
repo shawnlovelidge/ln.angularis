@@ -6,52 +6,51 @@
   @include flexbox-row();
   flex-wrap: nowrap;
   align-items: center;
-  gap: 8px;
+  gap: var(--gap);
   width: 100%; 
   padding: 0.4rem .8rem;
   border-radius: 9999px;
-  background-color: var(--color-gray-100);
-  border: .14em solid var(--color-gray-200);
+  background-color: transparent;
+  border: .14em solid var(--ag-chip-border, var(--color-border));
   transition: background-color 0.3s ease;
-  font-size: 12px;
 
   &:hover {
-    border: .14em solid var(--color-gray-200);
+    border: .14em solid var(--color-border);
   }
 
   &.ag-chip-basic {
 
     &:hover {
-      border: .14em solid var(--color-black);
+      border: .14em solid var(--ag-chip-basic-border, var(--color-black));
     }
 
     &.checked {
-      border: .14em solid var(--color-black);
+      border: .14em solid var(--ag-chip-basic-border, var(--color-black));
     }    
   }
 
   &.ag-chip-highlight
   {
     &:hover {
-      border: .14em solid var(--color-black);
+      border: .14em solid var(--ag-chip-highlight-border, var(--color-black));
     }
 
     &.checked {
-      border: .14em solid var(--color-primary);
-      color: var(--color-primary);
+      border: .14em solid var(--ag-chip-highlight-checked-border, var(--color-primary));
+      color: var(--ag-chip-highlight-checked-color, var(--color-primary));;
     }
   }
 
   &.ag-chip-input
   {
     &:hover {
-      border: .14em solid var(--color-black);
+      border: .14em solid var(--ag-chip-input-border, var(--color-black));
     }
 
     &.checked {
-      border: .14em solid var(--color-primary);
-      background-color: var(--color-primary);
-      color: var(--color-white);
+      border: .14em solid var(--ag-chip-input-checked-border, var(--color-primary));
+      background-color: var(--ag-chip-input-checked-background-color, var(--color-primary));
+      color: var(--ag-chip-input-checked-color, var(--color-white));
 
       .text {
         &:hover {

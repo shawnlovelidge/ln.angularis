@@ -1,0 +1,151 @@
+[
+  {
+    "id": 0,
+    "name": "Ocean Blue",
+    "default": true,
+    "property": {
+      "--color-theme-hex-01": "#6391BA",
+      "--color-theme-hex-02": "#647B90",
+      "--color-theme-hex-03": "#575F65",
+      "--color-theme-hex-04": "#2D343B",
+      "--color-theme-hex-05": "#1F2A33",
+      "--color-theme-hex-06": "#162633",
+
+      "--color-theme-rgba-01": "rgba(99,145,186, 1)",
+      "--color-theme-rgba-02": "rgba(100,123,144, 1)",
+      "--color-theme-rgba-03": "rgba(87,95,101, 1)",
+      "--color-theme-rgba-04": "rrgba(45,52,59, 1)",
+      "--color-theme-rgba-05": "rgba(31,42,51, 1)",
+      "--color-theme-rgba-06": "rgba(22,38,51, 1)",
+
+      "--color-theme-hsla-01": "hsla(208, 38, 55, 1)",
+      "--color-theme-hsla-02": "hsla(208, 18, 47, 1)",
+      "--color-theme-hsla-03": "hsla(205, 7, 36, 1)",
+      "--color-theme-hsla-04": "hsla(210, 13, 20, 1)",
+      "--color-theme-hsla-05": "hsla(207, 24, 16, 1)",
+      "--color-theme-hsla-06": "hsla(206, 39, 14, 1)",
+
+      "--color-background": "var(--color-theme-rgba-01)",
+      "--color-black": "var(--color-gray-1000)",
+      "--color-white": "var(--color-gray-050)",
+      "--color-border": "var(--color-gray-300)",
+      "--color-box-shadow": "var(--color-gray-300)",
+      "--color-text": "var(--color-gray-100)",
+      "--color-text-antithetical": "var(--color-gray-1000)",
+      "--color-disabled": "var(--color-gray-500)",
+
+      "--ag-button-background": "var(--color-primary)",
+      "--ag-button-color": "var(--color-text)",
+      "--ag-button-bordered-border": "var(--color-border)",
+      "--ag-button-bordered-color": "var(--color-primary)",      
+      "--ag-button-bordered-hover-border": "var(--color-primary)",
+      "--ag-button-text-color": "var(--color-primary)",
+      "--ag-button-text-hover-border": "var(--color-border)",      
+      "--ag-button-text-hover-color": "var(---color-black)",       
+      "--ag-button-secondary": "var(--color-secondary)", 
+      "--ag-button-secondary-color": "var(--color-white)", 
+      "--ag-button-circle-border": "var(--color-primary)",
+
+      "--ag-checkbox-color": "var(--color-black)",      
+      "--ag-checkbox-hover-color": "var(--color-primary)",
+      
+      "--ag-chip-border": "var(--color-border)",      
+      "--ag-chip-basic-border": "var(--color-primary)",
+      "--ag-chip-highlight-border": "var(--color-primary)",
+      "--ag-chip-highlight-checked-border": "var(--color-primary)",
+      "--ag-chip-highlight-checked-color": "var(--color-primary)",
+      "--ag-chip-input-border": "var(--color-primary)",
+      "--ag-chip-input-checked-border": "var(--color-primary)",
+      "--ag-chip-input-checked-color": "var(--color-white)",
+      "--ag-chip-input-checked-background-color": "var(--color-primary)",
+
+      "--ag-dropdown-color": "var(--color-black)",      
+      "--ag-dropdown-border": "var(--color-border)", 
+
+      "--ag-menu-option-hover-background-color": "var(--color-primary)",
+      "--ag-menu-option-active-border-color": "var(--color-primary)",
+
+      "--ag-hyperlink-color": "var(--color-primary)",
+      "--ag-hyperlink-visited-color": "var(--color-black)",      
+      "--ag-hyperlink-active-color": "var(--color-black)",
+
+      "--ag-hyperlink-button-color": "var(--color-white)",
+      "--ag-hyperlink-button-background-color": "var(--color-primary)",
+      "--ag-hyperlink-button-visited-color": "var(--color-white)",
+      "--ag-hyperlink-button-active-color": "var(--color-white)",
+      "--ag-hyperlink-icon-color": "var(--color-white)"
+
+
+
+    }
+  },
+  {
+    "id": 3,
+    "name": "Flavor",
+    "default": false,
+    "property": {
+      "--color-theme-hex-01": "#91A646",
+      "--color-theme-hex-02": "#F2B705",
+      "--color-theme-hex-03": "#D97904",
+      "--color-theme-hex-04": "#590202",
+      "--color-theme-hex-05": "#590202",
+      "--color-theme-hex-06": "#590202",
+
+      "--color-theme-rgba-01": "rgba(144,165,69, 1)",
+      "--color-theme-rgba-02": "rgba(242,182,4, 1)",
+      "--color-theme-rgba-03": "rgba(216,121,4, 1)",
+      "--color-theme-rgba-04": "rgba(89,1,1, 1)",
+      "--color-theme-rgba-05": "rgba(216,23,23, 1)",
+      "--color-theme-rgba-06": "rgba(216,23,23, 1)",
+
+      "--color-theme-hsla-01": "hsla(73, 40, 46, 1)",
+      "--color-theme-hsla-02": "hsla(45, 96, 48, 1)",
+      "--color-theme-hsla-03": "hsla(33, 96, 43, 1)",
+      "--color-theme-hsla-04": "hsla(0, 96, 17, 1)",
+      "--color-theme-hsla-05": "hsla(0, 80, 47, 1)",
+      "--color-theme-hsla-06": "hsla(0, 80, 47, 1)",
+
+      "--color-background": "var(--color-theme-rgba-01)",
+      "--color-black": "var(--color-gray-1000)",
+      "--color-white": "var(--color-gray-050)",
+      "--color-border": "var(--color-gray-300)",
+      "--color-box-shadow": "var(--color-gray-300)",
+      "--color-text": "var(--color-gray-100)",
+      "--color-text-antithetical": "var(--color-gray-1000)",
+      "--color-disabled": "var(--color-gray-500)",
+
+      "--ag-button-background": "var(--color-primary)",
+      "--ag-button-color": "var(--color-text)",
+      "--ag-button-bordered-border": "var(--color-border)",
+      "--ag-button-bordered-color": "var(--color-primary)",      
+      "--ag-button-bordered-hover-border": "var(--color-primary)",
+      "--ag-button-text-color": "var(--color-primary)",
+      "--ag-button-text-hover-border": "var(--color-border)",      
+      "--ag-button-text-hover-color": "var(---color-black)",       
+      "--ag-button-secondary": "var(--color-secondary)", 
+      "--ag-button-secondary-color": "var(--color-white)", 
+      "--ag-button-circle-border": "var(--color-primary)",
+      
+      "--ag-checkbox-color": "var(--color-black)",      
+      "--ag-checkbox-hover-color": "var(--color-primary)",
+
+      "--ag-chip-border": "var(--color-border)",      
+      "--ag-chip-basic-border": "var(--color-primary)",
+      "--ag-chip-highlight-border": "var(--color-primary)",
+      "--ag-chip-highlight-checked-border": "var(--color-primary)",
+      "--ag-chip-highlight-checked-color": "var(--color-primary)",
+      "--ag-chip-input-border": "var(--color-primary)",
+      "--ag-chip-input-checked-border": "var(--color-primary)",
+      "--ag-chip-input-checked-color": "var(--color-white)",
+      "--ag-chip-input-checked-background-color": "var(--color-primary)",
+      
+      "--ag-dropdown-color": "var(--color-black)",      
+      "--ag-dropdown-border": "var(--color-border)", 
+      "--ag-dropdown-invert-color": "var(--color-white)",      
+      "--ag-dropdown-invert-border": "var(--color-border)", 
+
+      "--ag-menu-option-hover-background-color": "var(--color-primary)",
+      "--ag-menu-option-active-border-color": "var(--color-primary)"    
+    }
+  }     
+]

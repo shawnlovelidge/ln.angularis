@@ -38,7 +38,7 @@ export class AgCheckBox
   // Public Variables
   //
   public readonly name = signal('');
-  public readonly size = signal(24);
+  public readonly size = signal(1.125);
   public readonly color = signal('');
   //
   // Font Awesome Icons
@@ -50,11 +50,11 @@ export class AgCheckBox
   //
   public readonly labelStyle = linkedSignal(() => ({
     color: `${this.color()}`,
-    fontSize: `calc(${this.size()}px - 6px)`,
+    fontSize: `calc(${this.size()}rem - 0.375rem)`,
   }));
   public readonly computedStyle = linkedSignal(() => ({
     color: `${this.color()}`,
-    fontSize: `${this.size()}px`,
+    fontSize: `${this.size()}rem`,
   }));
   //
   // Constructor

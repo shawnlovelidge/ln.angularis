@@ -6,12 +6,11 @@ import { Interval } from './interval';
  */
 export class Clock extends Base {
   public time: Date = new Date();
-  public interval: Interval;
+  public interval: Interval= new Interval();
 
   constructor(options?: Partial<Clock>) {
     super(options);
     Object.assign(this, options);
-    this.interval = new Interval(Library.init(options, 'interval'));
   }
 }
 

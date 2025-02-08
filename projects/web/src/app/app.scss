@@ -10,49 +10,19 @@
     "content"
     "footer";
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 1fr 50px;
+    grid-template-rows: auto 1fr 50px;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     height: 100vh;
   }
 
   .app-header {
-    //position: relative;
     grid-area: head;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 14px;
-    cursor: default;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    gap: 4px;
+    gap: var(--gap);
     width: 100%;
-     
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 100%;
-    //   background-image: url('/assets/images/background.png');
-    //   background-repeat: no-repeat; /* Prevents repeating */
-    //   background-size: cover; /* Stretches to cover the element */
-    //   background-position: center center; /* Centers the image */      
-    //   opacity: 0.5; /* Adjust opacity */
-    //   z-index: -1; /* Places it behind content */
-    // }
-    a {
-      color: var(--color-white);
-      h3.title {
-        margin-bottom: 4px;
-        padding: 0;
-        font-size: 16px;
-        justify-content: flex-start;
-        text-align: left;
-      }
-    }
   }
 
   .app-content {
@@ -66,7 +36,7 @@
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: calc(100vh - 130px);   
+    height: calc(100vh - 110px);   
     overflow: hidden; 
     
     .app-sidebar 
@@ -77,13 +47,14 @@
         display: flex;
         flex-direction: column;
         list-style-type: none;
-        align-items: left;
+        align-items: flex-start;
         padding: 10px;
         margin: 0;
         background-color: var(--color-gray-100);
         color: var(--color-black);
         height: calc(100vh - 100px);
         gap: 4px;
+        overflow-y: auto;
         
 
         li.app-sidebar-menu-item {

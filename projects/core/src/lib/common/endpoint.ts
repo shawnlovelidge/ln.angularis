@@ -10,21 +10,13 @@ export class Endpoint {
   public port: string = '';
   public suffix: string = '';
   public type: string = '';
-  private _headers: object[] = [];
-  /**
-   * Get the headers assigned for this endpoint
-   * @returns {Array}
-   */
-  headers() {
-    return [...this._headers];
-  }
-
+  public headers: object[] = [];
   /**
    * Check if any headers are on this endpoint
    * @returns {boolean}
    */
   hasHeaders() {
-    return Library.isArrayWithLength(this._headers);
+    return Library.isArrayWithLength(this.headers);
   }
 
   /**

@@ -49,7 +49,6 @@ export { Tooltip } from './lib/common/tooltip';
 export { User } from './lib/common/user';
 export { Version } from './lib/common/version';
 
-
 /**
  * Authentication
  */
