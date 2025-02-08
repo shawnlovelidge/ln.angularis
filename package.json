@@ -101,7 +101,7 @@
     "@storybook/test": "^8.5.0",
     "@storybook/test-runner": "^0.21.0",
     "@storybook/theming": "^8.5.0",
-    "@types/express": "^4.17.17",
+    "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "@types/sass": "^1.45.0",
     "angular-eslint": "^19.0.2",
