@@ -13,7 +13,7 @@ export class Email extends Base {
    * @returns {*}
    */
   public isValid() {
-    return this.hasAddress() && Validator.isEmail(this.address);
+    return this.hasAddress();
   }
   /**
    * hasAddress()

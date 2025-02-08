@@ -17,7 +17,7 @@ export class Element extends Action {
    * @returns {*}
    */
   hasTooltip() {
-    return Library.isStringWithLength(this.tooltip);
+    return Library.isDefined(this.tooltip);
   }
   /**
    * hasRef()
