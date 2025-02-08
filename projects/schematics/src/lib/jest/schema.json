@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "JustSchematicSchema",
+  "title": "Schematic Schema for Jest Unit test cases",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "File name",
+      "default": "./"
+    },    
+    "rootDirs": {
+      "type": "string[] | string",
+      "description": "Root directories of the testcases",
+      "default": "./"
+    },   
+    "sourcePath": {
+      "type": "string",
+      "description": "The source path of typescript files to generate test cases",
+      "default": "src"
+    },
+    "destinationPath": {
+      "type": "string",
+      "description": "The destination path of typescript files to generates test cases",
+      "default": "test"
+    },
+    "outDir": {
+      "type": "string",
+      "description": "directory for the generated test cases",
+      "default": "./test"
+    },    
+    "include": {
+      "type": "string",
+      "description": "Expression denoting the files to include",
+      "default": "**/*.ts"
+    }, 
+    "exclude": {
+      "type": "string[] | string",
+      "description": "Expression denoting the files to exclude",
+      "default": [".git"]
+    }       
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "outDir": "../../out-tsc/lib",
+    "rootDir": "./",
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+  },
+  "exclude": ["**/*.spec.ts"]  
+}

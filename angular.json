@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "main": ["setupJest.ts"],
+            "main": ["setup-jest.ts"],
             "tsConfig": "projects/core/tsconfig.spec.json",
             "polyfills": ["zone.js", "zone.js/testing"],
             "setupFilesAfterEnv": "./setup-jest.ts"
@@ -59,10 +59,12 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "main": ["setup-jest.ts"],
             "tsConfig": "projects/model/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
           }
-        }
+        }        
       }
     },
     "@angularis/directive": {
@@ -89,10 +91,12 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "main": ["setup-jest.ts"],
             "tsConfig": "projects/directive/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
           }
-        }
+        }        
       }
     },
     "@angularis/pipe": {
@@ -119,10 +123,12 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "main": ["setup-jest.ts"],
             "tsConfig": "projects/pipe/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
           }
-        }
+        }         
       }
     },
     "@angularis/service": {
@@ -149,10 +155,12 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "main": ["setup-jest.ts"],
             "tsConfig": "projects/service/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
           }
-        }
+        }          
       }
     },
     "@angularis/component": {
@@ -179,10 +187,12 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "main": ["setup-jest.ts"],
             "tsConfig": "projects/component/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
           }
-        }
+        }         
       }
     },
     "@angularis/storybook": {
@@ -395,7 +405,39 @@
           }
         }
       }
-    }
+    },
+    "@angularis/schemantics": {
+      "projectType": "library",
+      "root": "projects/schemantics",
+      "sourceRoot": "projects/schemantics",
+      "prefix": "sch",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/schematics/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/schematics/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/schematics/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-builders/jest:run",
+          "options": {
+            "main": ["setup-jest.ts"],
+            "tsConfig": "projects/schemantics/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "setupFilesAfterEnv": "./setup-jest.ts"
+          }
+        }         
+      }
+    }    
   },
   "cli": {
     "analytics": false
