@@ -9,6 +9,7 @@
 # Node
 /node_modules
 **/coverage/
+**/.spec.DS_Store
 npm-debug.log
 yarn-error.log
 
