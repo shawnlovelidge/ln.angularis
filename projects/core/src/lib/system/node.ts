@@ -83,7 +83,7 @@ export class Node extends Element {
       //
       // If we are at the node's parent then continue...
       //
-      if (root.uid === node.parentId || Library.isUndefined(this.parentId)) {
+      if (root.id === node.parentId || Library.isUndefined(this.parentId)) {
         //
         // If new Node doesn't exists in the collection of node nodes then...
         //
@@ -122,7 +122,7 @@ export class Node extends Element {
    */
   public add(node: Node, root: Node = this) {
     if (Library.isDefined(root)) {
-      if (root.uid === node.parentId) {
+      if (root.id === node.parentId) {
         return this._addChild(node, root);
       } else {
         if (root.children.length) {

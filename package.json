@@ -25,7 +25,7 @@
     "changeset:version:major": "changeset version --major",
     "changeset:version:patch": "changeset version --patch",
     "storybook": "ng run @angularis/storybook:storybook",
-    "test:core": "jest --config projects/core/jest.config.ts"
+    "test:core": "jest --passWithNoTests --config projects/core/jest.config.ts --coverage && open projects/core/coverage/index.html"
   },
   "private": true,
   "type": "module",
