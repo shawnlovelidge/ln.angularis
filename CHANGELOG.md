@@ -1,5 +1,11 @@
 # @angularis
 
+## 1.0.16
+
+### Patch Changes
+
+- Added Schemantics and Testing Framework for all packages
+
 ## 1.0.15
 
 ### Patch Changes
