@@ -23,6 +23,9 @@ npm link
 cd /Volumes/Development/ln.angularis/dist/component
 npm link
 
+cd /Volumes/Development/ln.angularis/dist/schematics
+npm link
+
 cd /Volumes/Development/ln.angularis
 
 clear

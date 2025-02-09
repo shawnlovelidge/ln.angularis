@@ -1,9 +1,0 @@
-{
-  "schematics": {
-    "jest": {
-      "description": "Schemantics for generating Jest test cases",
-      "factory": "./src/lib/jest/index#jestSchematic",
-      "schema": "./src/lib/jest/schema.json"
-    }
-  }
-}

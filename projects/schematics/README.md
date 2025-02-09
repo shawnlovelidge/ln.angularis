@@ -1,25 +1,28 @@
-# AngularSchemantics
+# Getting Started With Schematics
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
 
-## Code scaffolding
+### Testing
 
-Run `ng generate component component-name --project pipe` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project pipe`.
+To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
 
-> Note: Don't forget to add `--project pipe` or else it will be added to the default project in your `angular.json` file.
+Check the documentation with
 
-## Build
+```bash
+schematics --help
+```
 
-Run `ng build pipe` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Unit Testing
 
-## Publishing
+`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
 
-After building your library with `ng build pipe`, go to the dist folder `cd dist/pipe` and run `npm publish`.
+### Publishing
 
-## Running unit tests
+To publish, simply do:
 
-Run `ng test pipe` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm run build
+npm publish
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+That's it!

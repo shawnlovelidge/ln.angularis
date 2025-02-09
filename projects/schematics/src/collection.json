@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "jest": {
+      "description": "Schemantics for generating Jest test cases",
+      "factory": "./jest/index#jest",
+      "schema": "./jest/schema.json"
+    }
+  }
+}

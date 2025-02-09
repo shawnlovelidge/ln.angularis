@@ -7,28 +7,23 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "File name",
-      "default": "./"
+      "description": "File name"
     },    
     "rootDirs": {
       "type": "string[] | string",
-      "description": "Root directories of the testcases",
-      "default": "./"
+      "description": "Root directories of the testcases"
     },   
     "sourcePath": {
       "type": "string",
-      "description": "The source path of typescript files to generate test cases",
-      "default": "src"
+      "description": "The source path of typescript files to generate test cases"
     },
     "destinationPath": {
       "type": "string",
-      "description": "The destination path of typescript files to generates test cases",
-      "default": "test"
+      "description": "The destination path of typescript files to generates test cases"
     },
     "outDir": {
       "type": "string",
-      "description": "directory for the generated test cases",
-      "default": "./test"
+      "description": "directory for the generated test cases"
     },    
     "include": {
       "type": "string",
@@ -37,8 +32,7 @@
     }, 
     "exclude": {
       "type": "string[] | string",
-      "description": "Expression denoting the files to exclude",
-      "default": [".git"]
+      "description": "Expression denoting the files to exclude"
     }       
   }
 }

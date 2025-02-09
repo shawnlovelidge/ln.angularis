@@ -5,8 +5,9 @@ shopt -s expand_aliases
 
 source ~/.bash_alias
 
-cd /Volumes/Development/ln.lernender.com
+cd /Volumes/Development/ln.angularis
 
+npm unlink -g @angularis/schematics
 npm unlink -g @angularis/component
 npm unlink -g @angularis/directive
 npm unlink -g @angularis/service
