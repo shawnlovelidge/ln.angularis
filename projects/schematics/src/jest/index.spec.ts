@@ -8,7 +8,7 @@ describe('jestSchemantic', () => {
   it('works', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
     const tree = await runner.runSchematic('jestSchemantic', {}, Tree.empty());
-
+    debugger;
     expect(tree.files).toEqual([]);
   });
 });
