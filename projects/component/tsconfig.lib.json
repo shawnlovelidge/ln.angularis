@@ -13,7 +13,7 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": []
+    "types": ["jest", "node"]
   },
   "exclude": ["**/*.spec.ts"]
 }

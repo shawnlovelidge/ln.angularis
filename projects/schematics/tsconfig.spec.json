@@ -5,7 +5,7 @@
     "esModuleInterop":true
   },
   "include": [
-    "./src/lib/**/*.spec.ts",
-    "./src/lib/**/*.d.ts"
+    "./src/**/*.spec.ts",
+    "./src/**/*.d.ts"
   ]
 }

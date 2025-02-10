@@ -1,17 +1,17 @@
 {
   "name": "@angularis/schematics",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Angular Schemantics Library",
   "author": "Lovelidge, Shawn",
   "license": "MIT",
+  "keywords": [
+    "schematics"
+  ],
+  "schematics": "./src/collection.json",
   "peerDependencies": {
     "@angular-devkit/core": "^19.1.6",
     "@angular-devkit/schematics": "^19.1.6",
-    "@angular/common": "^19.1.0",
-    "@angular/core": "^19.1.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
+    "typescript": "~5.7.2"
   },
   "sideEffects": false
 }

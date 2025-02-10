@@ -415,7 +415,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/schematics/ng-package.json"
+            "project": "projects/schematics/ng-package.json"           
           },
           "configurations": {
             "production": {
