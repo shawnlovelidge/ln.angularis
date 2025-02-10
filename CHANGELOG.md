@@ -1,6 +1,12 @@
 # @angularis
 
-## 1.0.16
+## 1.0.17
+
+### Patch Changes
+
+- Updated Package.json Versions
+
+## 1.0.17
 
 ### Patch Changes
 
