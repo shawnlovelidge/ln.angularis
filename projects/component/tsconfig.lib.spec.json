@@ -1,0 +1,11 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.spec.json",  
+  "compilerOptions": {
+    "esModuleInterop":true
+  },
+  "include": [
+    "./src/lib/**/*.spec.ts",
+    "./src/lib/**/*.d.ts"
+  ]
+}

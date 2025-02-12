@@ -16,5 +16,6 @@ describe('ag-button', () => {
     fixture = TestBed.createComponent(AgButton);
     component = fixture.componentInstance;
     componentRef = fixture.componentRef;
+    fixture.detectChanges();
   })
 });
