@@ -27,7 +27,7 @@ jobs:
           node-version: '20'
           cache: 'yarn'
           always-auth: false
-          check-latest: false    
+          check-latest: false
 
       - name: Install dependencies
         run: yarn install
@@ -42,40 +42,40 @@ jobs:
         run: npm publish
         working-directory: ./dist/core
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/model
         run: npm publish
         working-directory: ./dist/model
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/pipe
         run: npm publish
         working-directory: ./dist/pipe
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/service
         run: npm publish
         working-directory: ./dist/service
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/directive
         run: npm publish
         working-directory: ./dist/directive
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @angularis/component
         run: npm publish
         working-directory: ./dist/component
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}          
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
