@@ -3649,10 +3649,15 @@
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-8.5.3.tgz#aeab31b179bd168a2f5f79be14a221e4fb72fd1e"
   integrity sha512-V9ZwL7SmXPtLB0uifr3c+HYm+nnEtGYrd5zw9zRF1NFm/3q71bo9++AqwTFW2hQjw711ZXosyw1A/UCt0MYA8g==
 
-"@storybook/preview-api@8.5.3", "@storybook/preview-api@^8.5.0":
+"@storybook/preview-api@8.5.3":
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-8.5.3.tgz#8040c9c999154fe8a267db34d4f9064cc13e6e13"
   integrity sha512-dUsuXW+KgDg4tWXOB6dk5j5gwwRUzbPvicHAY9mzbpSVScbWXuE5T/S/9hHlbtfkhFroWQgPx2eB8z3rai+7RQ==
+
+"@storybook/preview-api@^8.5.6":
+  version "8.5.6"
+  resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-8.5.6.tgz#3626bd2f59351c061d4968e81a177c75b8fe5dab"
+  integrity sha512-brT8jvw+QYoAyddOtPTqMc6tHDKye24oYkL5Bvp96nQi5AcNhkpL1eYfS7dtcQFV7j010Ox6RlzHPt+Ln8XB+Q==
 
 "@storybook/react-dom-shim@8.5.3":
   version "8.5.3"
