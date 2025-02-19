@@ -20,7 +20,6 @@
     "build:schematics:post-build": "cp -R projects/schematics/src/* dist/schematics/src/ && rm -rf dist/schematics/src/**/*.spec.ts && rm -rf dist/schematics/src/**/index.ts",
     "build": "npm run clean && npm run build:prebuild && npm run build:core && npm run build:model && npm run build:pipe && npm run build:service && npm run build:directive && npm run build:component && npm run build:schematics",
     "start": "npm run clean:web && npm run build:web && ng serve web",
-    "publish:prepare": "cp .npmrc ./dist/core && cp .npmrc ./dist/model && cp .npmrc ./dist/pipe && cp .npmrc ./dist/service && cp .npmrc ./dist/directive && cp .npmrc ./dist/component & cp .npmrc ./dist/schemantics",
     "changeset": "npx changeset add",
     "changeset:version": "npx changeset  version",
     "changeset:version:minor": "changeset version --minor",
