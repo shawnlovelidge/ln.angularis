@@ -20,11 +20,13 @@ import { LnTabPanel } from './feature/ln-tab-panel/ln-tab-panel';
 import { LnTextArea } from './feature/ln-textarea/ln-textarea';
 import { LnToggle } from './feature/ln-toggle/ln-toggle';
 import { LnToolBar } from './feature/ln-toolbar/ln-toolbar';
+import { LnNavMenu } from './feature/ln-nav-menu/ln-nav-menu';
+import { LnRouterLInkMenu } from './feature/ln-routerlink-menu/ln-routerlink-menu';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LnHome
+    component: LnHome,
   },
   {
     path: 'ln-banner',
@@ -101,6 +103,14 @@ export const routes: Routes = [
   {
     path: 'ln-dropdown',
     component: LnDropDown,
+  },
+  {
+    path: 'ln-nav-menu',
+    component: LnNavMenu,
+  },
+  {
+    path: 'ln-routerlink-menu',
+    component: LnRouterLInkMenu,
   },
 ];
 

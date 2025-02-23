@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
     "outDir": "./dist/spec",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "paths": {
+      "@model": ["./dist/model"],
+      "@model/core": ["./dist/core"],
+      "@json": ["./web/src/json"],
+    },    
   },
   "include": [
   ]

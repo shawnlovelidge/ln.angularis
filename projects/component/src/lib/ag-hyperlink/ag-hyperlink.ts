@@ -21,11 +21,12 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 // Components
 //
 import { AgBase } from '../ag-base/ag-base';
+import { RouterLink } from '@angular/router';
 //
 // AgHyperLink
 //
 @Component({
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, RouterLink],
   selector: 'ag-hyperlink',
   templateUrl: 'ag-hyperlink.html',
   styleUrls: ['ag-hyperlink.scss'],

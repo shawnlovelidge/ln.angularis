@@ -1,0 +1,13 @@
+<div class="ag-nav-menu" [ngStyle]="style">
+    <ul [attr.class]="itemsClassName()">
+        @for (model of model(); track $index) {
+        <li class="ag-nav-menu-item"
+            [class.hidden]="model.hidden">
+            <ag-nav-menu-item [model]="model" 
+                (onClick)="handleOnClick($event)">
+                {{model.name}}
+            </ag-nav-menu-item>
+        </li>
+        }
+    </ul>
+</div>

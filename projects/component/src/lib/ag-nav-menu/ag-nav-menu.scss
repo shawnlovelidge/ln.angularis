@@ -1,0 +1,83 @@
+@use 'scss/mixins/standard' as *;
+@use 'scss/mixins/flexbox' as *;
+
+:host
+{
+  width: 100%;
+
+  .ag-nav-menu
+  {
+    width: 100%;
+    
+    ul.ag-nav-menu-items
+    {
+      @include flexbox-row();
+      justify-content: flex-start;
+      gap: .25rem;
+
+      &.align-center
+      {
+        justify-content: center;
+      }
+
+      &.align-right
+      {
+        justify-content: flex-end;
+      }
+
+      li.ag-nav-menu-item
+      {
+        width: auto;
+        cursor:default;
+
+        &.hidden
+        {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+:host(.verticle)
+{
+  width: 100%;
+
+  .ag-nav-menu
+  {
+    width: auto;
+    height: auto;
+    
+    ul.ag-nav-menu-items
+    {
+      @include flexbox-column();
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      gap: .25rem;
+
+      &.align-center
+      {
+        align-items:center;
+      }
+
+      &.align-right
+      {
+        align-items: flex-end;
+      }
+            
+      li.ag-nav-menu-item
+      {
+        min-width: 100px;
+        height: auto;
+        width: auto;
+
+        cursor:default;
+
+        &.hidden
+        {
+          display: none;
+        }
+      }
+    }
+  }
+}

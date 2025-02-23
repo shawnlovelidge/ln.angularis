@@ -2,12 +2,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "paths": {
+    "paths": {      
       "@angularis/core": ["../../dist/core"],
-      "@angularis/directive": ["../../dist/directive/src"],
-      "@angularis/model": ["../../dist/model/src"],
-      "@angularis/pipe": ["../../dist/pipe/src"],
-      "@angularis/service": ["../../dist/service/src"],
+      "@angularis/directive": ["../../dist/directive"],
+      "@angularis/model": ["../../dist/model"],
+      "@angularis/pipe": ["../../dist/pipe"],
+      "@angularis/service": ["../../dist/service"],
     },    
     "outDir": "../../out-tsc/lib",
     "declaration": true,

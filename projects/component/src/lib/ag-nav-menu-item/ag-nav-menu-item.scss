@@ -1,0 +1,32 @@
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--ag-nav-menu-item-color);
+  //border: transparent 1px solid;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: .5em;
+  transition:
+    color 0.3s ease;
+  font: inherit;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  border-radius: 1em;
+  min-width: 3em;
+
+
+  &:hover {
+    font-weight: 600;
+    color: var(--ag-nav-menu-item-hover-background-color);
+    cursor: pointer;
+  }
+}
+
+.menu-item-icon {
+  margin-left: .25em;
+}

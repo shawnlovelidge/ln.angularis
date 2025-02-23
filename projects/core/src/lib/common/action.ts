@@ -7,6 +7,7 @@ export class Action extends Base {
   public onClick: Function = () => {};
   public routerLink: string[] = [];
   public style: Partial<CSSStyleDeclaration> = {};
+  public params: object = {};
   //
   // hasRouterLink()
   //
@@ -32,6 +33,12 @@ export class Action extends Base {
   //
   hasStyle() {
     return Library.isDefined(this.style);
+  }
+  //
+  // hasParams()
+  //
+  hasParams() {
+    return !Library.isEmptyObject(this.params);
   }
   //
   // Constructor
