@@ -1,8 +1,15 @@
 <div class="ag-hyperlink" [ngClass]="{ 'hidden': model().hidden || hidden, 'disabled':  model().disabled || disabled }"
     [ngStyle]="style">
+    @if (model().hasParams())
+    {
     <a class="ag-hyperlink" [attr.class]="classes()" [class.style]="model().style" [class.active]="model().active"
-        [class.disabled]="model().disabled" 
-        (click)="handleOnClick(model())">
+        [class.disabled]="model().disabled" [routerLink]="model().routerLink" [queryParams]="model().params">
         <ng-content></ng-content>
     </a>
+    } @else {
+    <a class="ag-hyperlink" [attr.class]="classes()" [class.style]="model().style" [class.active]="model().active"
+        [class.disabled]="model().disabled" [routerLink]="model().routerLink">
+        <ng-content></ng-content>
+    </a>
+    }
 </div>

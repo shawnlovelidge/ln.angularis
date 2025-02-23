@@ -35,11 +35,15 @@ export class LnCanvas implements OnInit {
   // ngOnInit
   //
   public ngOnInit() {
+    let queryParams = this.activatedRoute.snapshot.queryParams;
+    
     //
     // Get Route Record
     //
-    this.route = new RouteMenu(
-      JSON.parse(this.activatedRoute.snapshot.queryParams['route'])
-    );
+    if (queryParams['route']) {
+      this.route = new RouteMenu(
+        JSON.parse(this.activatedRoute.snapshot.queryParams['route'])
+      );
+    }
   }
 }

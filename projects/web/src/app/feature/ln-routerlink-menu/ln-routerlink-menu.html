@@ -1,0 +1,62 @@
+<ln-canvas>
+  <table class="table-standard">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>class='align-center'</td>
+        <td>
+          <ag-routerlink-menu class="align-center" 
+          [model]="model()" 
+          [hidden]="hidden"
+          (onClick)="handleOnClick($event)" [ngStyle]="style">
+          </ag-routerlink-menu>
+        </td>
+      </tr>        
+      <tr>
+        <td>class='align-left'</td>
+        <td>
+          <ag-routerlink-menu [model]="model()" [hidden]="hidden"
+            (onClick)="handleOnClick($event)" [ngStyle]="style">
+          </ag-routerlink-menu>
+        </td>
+      </tr>
+      <tr>
+        <td>class='align-right'</td>
+        <td>
+          <ag-routerlink-menu class="align-right" [model]="model()" [hidden]="hidden"
+            (onClick)="handleOnClick($event)" [ngStyle]="style">
+          </ag-routerlink-menu>
+        </td>
+      </tr>   
+      <tr [ngStyle]="{'height': 'auto'}">
+        <td>class='verticle align-center'</td>
+        <td>
+          <ag-routerlink-menu class="verticle align-center" [model]="model()" [hidden]="hidden"
+            (onClick)="handleOnClick($event)" [ngStyle]="style">
+          </ag-routerlink-menu>
+        </td>
+      </tr>               
+      <tr [ngStyle]="{'height': 'auto'}">
+        <td>class='verticle align-left'</td>
+        <td>
+          <ag-routerlink-menu class="verticle align-left" [model]="model()" [hidden]="hidden"
+            (onClick)="handleOnClick($event)" [ngStyle]="style">
+          </ag-routerlink-menu>
+        </td>
+      </tr>   
+      <tr [ngStyle]="{'height': 'auto'}">
+        <td>class='verticle align-right'</td>
+        <td>
+          <ag-routerlink-menu class="verticle align-right" [model]="model()" [hidden]="hidden"
+            (onClick)="handleOnClick($event)" [ngStyle]="style">
+          </ag-routerlink-menu>
+        </td>
+      </tr>          
+    </tbody>
+  </table>
+</ln-canvas>

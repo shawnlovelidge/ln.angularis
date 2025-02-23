@@ -65,6 +65,10 @@
       "--ag-menu-option-hover-background-color": "var(--color-primary)",
       "--ag-menu-option-active-border-color": "var(--color-primary)",
 
+      "--ag-nav-menu-item-color": "var(--color-black)",
+      "--ag-nav-menu-item-hover-background-color": "var(--color-primary)",
+      "--ag-nav-menu-item-active-border-color": "var(--color-primary)",
+
       "--ag-hyperlink-color": "var(--color-primary)",
       "--ag-hyperlink-visited-color": "var(--color-black)",      
       "--ag-hyperlink-active-color": "var(--color-black)",
@@ -74,8 +78,6 @@
       "--ag-hyperlink-button-visited-color": "var(--color-white)",
       "--ag-hyperlink-button-active-color": "var(--color-white)",
       "--ag-hyperlink-icon-color": "var(--color-white)"
-
-
 
     }
   },

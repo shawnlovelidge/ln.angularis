@@ -1,0 +1,9 @@
+<div class="ag-nav-hyperlink-menu">
+  <ul [attr.class]="itemsClassName()">
+    @for (item of model(); track $index) {
+      <li class="ag-nav-hyperlink-menu-item">
+        <ag-hyperlink [model]="item"> {{item.name}} </ag-hyperlink>
+      </li>
+    }
+  </ul>
+</div>

@@ -1,6 +1,26 @@
 [
   {
     "id": 1,
+    "name": "App",
+    "menu": [
+      {
+        "id": 1,
+        "component": "&lt;ag-nav-menu/&gt;",
+        "name": "NavMenu",
+        "routerLink": "/ln-nav-menu",
+        "description": "NavMenu component is used to display a navigation menu."
+      },
+      {
+        "id": 2,
+        "component": "&lt;ag-routerlink-menu/&gt;",
+        "name": "RouterLinkMenu",
+        "routerLink": "/ln-routerlink-menu",
+        "description": "NavHyperLinkMenu component is used to display a navigation menu."
+      }
+    ]
+  },
+  {
+    "id": 2,
     "name": "Basic",
     "menu": [
       {
@@ -16,7 +36,7 @@
         "name": "Checkbox",
         "routerLink": "/ln-checkbox",
         "description": "Checkbox component is used to select one or more options."
-      },      
+      },
       {
         "id": 3,
         "component": "&lt;ag-hyperlink/&gt;",
@@ -58,25 +78,25 @@
         "name": "Input",
         "routerLink": "/ln-input",
         "description": "Input component is used to enter a single line of text."
-      } ,
+      },
       {
         "id": 9,
         "component": "&lt;ag-chip/&gt;",
         "name": "Chip",
         "routerLink": "/ln-chip",
         "description": "Chip component is used to display a list of items in a chip layout."
-      },  
+      },
       {
         "id": 10,
         "component": "&lt;ag-dropdown/&gt;",
         "name": "Dropdown",
         "routerLink": "/ln-dropdown",
         "description": "Dropdown component is used to select one option from a list."
-      }                          
+      }
     ]
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Form",
     "menu": [
       {
@@ -85,7 +105,7 @@
         "name": "Hero",
         "routerLink": "/ln-hero",
         "description": "Hero component is used to display a hero image with a title and description."
-      },      
+      },
       {
         "id": 2,
         "component": "&lt;ag-card/&gt;",
@@ -120,7 +140,7 @@
         "name": "List",
         "routerLink": "/ln-list",
         "description": "List component is used to display a list of items."
-      }, 
+      },
       {
         "id": 7,
         "component": "&lt;ag-menu/&gt;",
@@ -134,7 +154,7 @@
         "name": "Dialog",
         "routerLink": "/ln-dialog",
         "description": "Dialog component is used to display a dialog box with content."
-      }            
+      }
     ]
   }
 ]
