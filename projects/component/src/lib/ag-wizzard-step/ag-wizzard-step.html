@@ -1,0 +1,22 @@
+<div class="ag-wizzard-step" [ngClass]="{
+  disabled: step().disabled,
+  hidden: step().hidden,
+  active: step().active,
+}">
+  @if (hasTemplate())
+  {
+  <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{step: step()}" />
+  }
+  @else if (hasComponent())
+  {
+  <ng-container #dynamicContainer></ng-container>
+  } @else {
+  <div class="ag-wizzard-step-title">
+    <p>Step {{ index }} of {{ maxIndex }}</p>
+    <h2>{{ step().title }}</h2>
+  </div>
+  <div class="ag-wizzard-step-content">
+    <pre>{{ step().model | json }}</pre>
+  </div>
+  }
+</div>

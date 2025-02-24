@@ -1,0 +1,76 @@
+@use 'scss/mixins/standard' as *;
+@use 'scss/mixins/flexbox' as *;
+@use "sass:color"; 
+
+.ag-wizzard {
+  @include box-shadow();
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius);
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width:auto;
+
+  &.hidden {
+    display: none;
+  }
+
+  &.disabled {
+    @include disabled();
+  }
+
+  .ag-wizzard-form
+  {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    //height: 100dvh;
+
+    .ag-wizzard-body {
+      flex-grow: 1;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;  
+      border: 1px solid var(--color-gray-200);
+
+      .ag-wizzard-body-step {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        opacity: 1;
+        -webkit-overflow-scrolling: touch;
+        transition: transform 0.3s, opacity 0.3s ease-in-out;
+      }
+
+      .ag-wizzard-body-next {
+        transform: translateX(40px);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s, opacity 0.3s ease-in-out, visibility 0s 0.3s;
+      }  
+
+      .ag-wizzard-body-prev {
+        transform: translateX(-40px);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s, opacity 0.3s ease-in-out, visibility 0s 0.3s;
+      }      
+    }
+  }
+
+  .ag-wizzard-navigation
+  {
+    @include flexbox-row();
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap);
+    padding: var(--padding);
+    width: 100%;
+    height: auto;
+    padding: var(--padding);
+  }
+}

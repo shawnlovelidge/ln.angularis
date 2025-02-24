@@ -22,6 +22,7 @@ import { LnToggle } from './feature/ln-toggle/ln-toggle';
 import { LnToolBar } from './feature/ln-toolbar/ln-toolbar';
 import { LnNavMenu } from './feature/ln-nav-menu/ln-nav-menu';
 import { LnRouterLInkMenu } from './feature/ln-routerlink-menu/ln-routerlink-menu';
+import { LnWizzard } from './feature/ln-wizzard/ln-wizzard';
 
 export const routes: Routes = [
   {
@@ -111,6 +112,10 @@ export const routes: Routes = [
   {
     path: 'ln-routerlink-menu',
     component: LnRouterLInkMenu,
+  },
+  {
+    path: 'ln-wizzard',
+    component: LnWizzard,
   },
 ];
 

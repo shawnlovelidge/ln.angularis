@@ -31,8 +31,8 @@ import { AgTable } from './ag-table/ag-table';
 import { AgTextArea } from './ag-textarea/ag-textarea';
 import { AgToggle } from './ag-toggle/ag-toggle';
 import { AgToolBar } from './ag-toolbar/ag-toolbar';
-import { AgWizard } from './ag-wizard/ag-wizard';
-import { AgWizardStep } from './ag-wizard-step/ag-wizard-step';
+import { AgWizzard } from './ag-wizzard/ag-wizzard';
+import { AgWizzardStep } from './ag-wizzard-step/ag-wizzard-step';
 
 //
 // Export all your components here
@@ -64,8 +64,8 @@ const components = [
   AgTextArea,
   AgToggle,
   AgToolBar,
-  AgWizard,
-  AgWizardStep,
+  AgWizzard,
+  AgWizzardStep,
 ];
 
 // Import all your components here
