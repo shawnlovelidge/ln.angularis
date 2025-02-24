@@ -4,14 +4,14 @@
 :host {
   width: 100%;
 
-  .ag-nav-hyperlink-menu {
+  .ag-nav-routerlink-menu {
     width: auto;
     height: auto;
 
-    ul.ag-nav-hyperlink-menu-items {
+    ul.ag-nav-routerlink-menu-items {
       @include flexbox-row();
       justify-content: flex-start;
-      gap: .25rem;
+      gap: 1.0rem;
 
       &.align-center
       {
@@ -23,7 +23,7 @@
         justify-content: flex-end;
       }
 
-      li.ag-nav-hyperlink-menu-item {
+      li.ag-nav-routerlink-menu-item {
         width: auto;
         cursor:default;
 
@@ -39,11 +39,11 @@
 :host(.verticle) {
   width: 100%;
 
-  .ag-nav-hyperlink-menu {
+  .ag-nav-routerlink-menu {
     width: auto;
     height: auto;
 
-    ul.ag-nav-hyperlink-menu-items {
+    ul.ag-nav-routerlink-menu-items {
       @include flexbox-column();
       flex-wrap: nowrap;
       align-items: flex-start;
@@ -58,7 +58,7 @@
       {
         align-items: flex-end;
       }
-      li.ag-nav-hyperlink-menu-item {
+      li.ag-nav-routerlink-menu-item {
         width: auto;
         cursor:default;
 

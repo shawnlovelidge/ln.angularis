@@ -37,7 +37,7 @@ export class Step<T> implements IStep<T> {
   public id: number = 0;
   public title: string = '';
   public model?: T | undefined = undefined;
-  public template?: TemplateRef<any>;
+  public template?: TemplateRef<any> | undefined = undefined;
   public component?: any | undefined = undefined;
   public disabled: boolean = false;
   public hidden: boolean = false;
@@ -61,5 +61,7 @@ export class Step<T> implements IStep<T> {
   //
   // Constructor.
   //
-  constructor() {}
+  constructor(options?: Partial<Step<T>>) {
+    Object.assign(this, options);
+  }
 }

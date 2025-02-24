@@ -10,6 +10,7 @@ import {
   ViewChild,
   ComponentRef,
   Injector,
+  Input,
 } from '@angular/core';
 //
 // Anglaris. Core library.
@@ -19,14 +20,22 @@ import { Guid } from '@angularis/core';
 // Models
 //
 import { Step } from '@angularis/model';
+//
+// Components
+//
+import { AgButton } from '../ag-button/ag-button';
+import { basicAnimation } from '../../model/animation/basic-animation';
 
 @Component({
-  selector: 'ag-wizard-step',
-  imports: [CommonModule],
-  templateUrl: 'ag-wizard-step.html',
-  styleUrls: ['ag-wizard-step.scss'],
+  selector: 'ag-wizzard-step',
+  imports: [CommonModule, AgButton],
+  templateUrl: 'ag-wizzard-step.html',
+  styleUrls: ['ag-wizzard-step.scss'],
+  animations: [basicAnimation],
 })
-export class AgWizardStep implements OnInit, OnDestroy, AfterViewInit {
+export class AgWizzardStep implements OnInit, OnDestroy, AfterViewInit {
+  @Input() public index: number = 0;
+  @Input() public maxIndex: number = 0;
   public step = input.required<Step<any>>();
   //
   // View child
@@ -84,7 +93,9 @@ export class AgWizardStep implements OnInit, OnDestroy, AfterViewInit {
     //
     if (this.hasTemplate()) {
       this.container.clear();
-      this.container.createEmbeddedView(this.template, { model: this.step().model });
+      this.container.createEmbeddedView(this.template, {
+        model: this.step().model,
+      });
     }
     //
     // Create component

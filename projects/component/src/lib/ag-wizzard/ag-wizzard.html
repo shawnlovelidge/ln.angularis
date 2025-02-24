@@ -1,0 +1,22 @@
+<div class="ag-wizzard">
+  <form class="ag-wizzard-form">
+    <div class="ag-wizzard-body">
+      @for(step of steps(); track step)
+      {
+      <ag-wizzard-step class="ag-wizzard-body-step" [ngClass]="{
+        'ag-wizzard-body-prev': this.hashIndex[step.id] < index,
+        'ag-wizzard-body-next': this.hashIndex[step.id] > index,
+        'ag-wizzard-body-current': index === this.hashIndex[step.id],
+      }" [step]="step" [index]="index + 1" [maxIndex]="this.steps().length" />
+      }
+    </div>
+  </form>
+  <div class="ag-wizzard-navigation">
+    <ag-button class="bordered" (onClick)="previousStep()" [class.disabled]="index === 0">
+      Previous
+    </ag-button>
+    <ag-button class="bordered" (onClick)="nextStep()" [class.disabled]="index === steps().length - 1">
+      Next
+    </ag-button>
+  </div>
+</div>

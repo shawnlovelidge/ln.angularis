@@ -20,18 +20,16 @@
     color: var(--ag-hyperlink-color, var(--color-primary));
     font-weight: normal;
 
-    &:hover {
-      outline: none;
-    }
-
-    &:hover {
-      font-weight: 700;
-    }
-
     &:visited {
       color: var(--ag-hyperlink-visited-color, var(--color-black));
     }
 
+    &:hover {
+      outline: none;
+      font-weight: 500;
+      //color: var(--ag-hyperlink-hover-color, var(--color-primary));
+    }
+        
     &.active {
       color: var(--ag-hyperlink-active-color, var(--color-black));
     }

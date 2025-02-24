@@ -38,7 +38,7 @@ export class AgRouterLinkMenu extends AgBase implements OnInit {
   // itemsClassName
   //
   public itemsClassName = computed(() => {
-    return `ag-nav-hyperlink-menu-items ${this.align()}`;
+    return `ag-nav-routerlink-menu-items ${this.align()}`;
   });
 
   //

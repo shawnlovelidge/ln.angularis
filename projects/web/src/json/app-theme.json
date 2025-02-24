@@ -71,6 +71,7 @@
 
       "--ag-hyperlink-color": "var(--color-primary)",
       "--ag-hyperlink-visited-color": "var(--color-black)",      
+      "--ag-hyperlink-hover-color": "var(--color-primary)",      
       "--ag-hyperlink-active-color": "var(--color-black)",
 
       "--ag-hyperlink-button-color": "var(--color-white)",

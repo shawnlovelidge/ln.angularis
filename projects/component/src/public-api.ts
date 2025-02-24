@@ -24,7 +24,7 @@ export * from './lib/ag-table/ag-table';
 export * from './lib/ag-textarea/ag-textarea';
 export * from './lib/ag-toggle/ag-toggle';
 export * from './lib/ag-toolbar/ag-toolbar';
-export * from './lib/ag-wizard-step/ag-wizard-step';
-export * from './lib/ag-wizard/ag-wizard';
+export * from './lib/ag-wizzard-step/ag-wizzard-step';
+export * from './lib/ag-wizzard/ag-wizzard';
 
 export * from './lib/ag-component.module';

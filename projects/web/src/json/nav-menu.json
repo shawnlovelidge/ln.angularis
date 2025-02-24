@@ -154,7 +154,14 @@
         "name": "Dialog",
         "routerLink": "/ln-dialog",
         "description": "Dialog component is used to display a dialog box with content."
-      }
+      },
+      {
+        "id": 9,
+        "component": "&lt;ag-wizzard/&gt;",
+        "name": "Wizzard",
+        "routerLink": "/ln-wizzard",
+        "description": "Wizzard component is used to display a dialog box with content."
+      }      
     ]
   }
 ]

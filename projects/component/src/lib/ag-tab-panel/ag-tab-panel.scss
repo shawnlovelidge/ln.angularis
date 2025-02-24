@@ -32,7 +32,7 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      gap: 4px;
+      gap: var(--gap);
 
       &::before {
         content: '';
@@ -57,21 +57,11 @@
         cursor: default;
         background-color: var(--color-gray-100);
         border: 1px solid transparent;
-        border-radius: 4px;
+        border-radius: var(--radius);
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         font-weight: normal;
         color: var(--color-text);
-
-        // &:hover {
-        //   cursor: pointer;
-        //   font-weight: 700;
-        //   border: 1px solid var(--color-gray-400);                  
-        //   color: var(--color-primary);          
-        //   transition-property: border, color, font-weight;
-        //   transition-duration: 0.4s;
-        //   transition-timing-function: ease-out;
-        // }
 
         &.active {
           border-bottom: 0;
@@ -100,7 +90,7 @@
     .ag-tab-panel-content {
       @include box-shadow();      
       border: 1px solid var(--color-gray-400);
-      padding: 10px;
+      padding: 1.25rem;
       width: inherit;
     }
   }

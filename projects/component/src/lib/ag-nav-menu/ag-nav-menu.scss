@@ -13,7 +13,7 @@
     {
       @include flexbox-row();
       justify-content: flex-start;
-      gap: .25rem;
+      gap: 1.0rem;
 
       &.align-center
       {

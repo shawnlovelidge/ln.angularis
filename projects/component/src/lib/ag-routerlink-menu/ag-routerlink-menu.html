@@ -1,7 +1,7 @@
-<div class="ag-nav-hyperlink-menu">
+<div class="ag-nav-routerlink-menu">
   <ul [attr.class]="itemsClassName()">
     @for (item of model(); track $index) {
-      <li class="ag-nav-hyperlink-menu-item">
+      <li class="ag-nav-routerlink-menu-item">
         <ag-hyperlink [model]="item"> {{item.name}} </ag-hyperlink>
       </li>
     }
