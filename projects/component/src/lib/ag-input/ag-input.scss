@@ -41,21 +41,20 @@
     position: relative;
 
     input[type='text'] {
-      @include box-shadow();
       border-radius: 4px;
       caret-color: var(--color-black);
       cursor: pointer;
       border: 0;
       border: 1px solid var(--color-gray-400);
-      background-color: var(--color-gray-100);
+      //background-color: var(--color-gray-100);
       color: var(--color-gray-700);
       display: block;
       height: 40px;
       letter-spacing: normal;
-      line-height: 38px;
+      line-height: 2.375rem;
       margin: 0;
       overflow: visible;
-      padding: 2.5px 26px 2.5px 10px;
+      padding: .1563rem 1.625rem .1563rem .625rem;
       text-align: left;
       text-indent: 0;
       text-shadow: none;
@@ -79,11 +78,11 @@
     .ag-input-icon {
       cursor: pointer;
       position: absolute;
-      right: 8px;
-      top: 20px;
+      right: .5rem;
+      top: 1.25rem;
       transform: translateY(-50%);
       color: var(--color-gray-700);
-      font-size: 16px;
+      font-size: 1rem;
 
       &.hidden {
         display: none;

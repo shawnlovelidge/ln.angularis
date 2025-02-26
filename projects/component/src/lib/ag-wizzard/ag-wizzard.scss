@@ -1,6 +1,6 @@
 @use 'scss/mixins/standard' as *;
 @use 'scss/mixins/flexbox' as *;
-@use "sass:color"; 
+@use 'sass:color';
 
 .ag-wizzard {
   @include box-shadow();
@@ -9,8 +9,6 @@
   border-radius: var(--radius);
   margin: 0;
   padding: 0;
-  height: auto;
-  width:auto;
 
   &.hidden {
     display: none;
@@ -20,50 +18,41 @@
     @include disabled();
   }
 
-  .ag-wizzard-form
-  {
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    //height: 100dvh;
+  .ag-wizzard-form {
+    height: 100%;
 
     .ag-wizzard-body {
-      flex-grow: 1;
-      position: relative;
-      z-index: 1;
-      overflow: hidden;  
+      display: grid;
+      //opacity: 1;
       border: 1px solid var(--color-gray-200);
+      height: 100%;
 
-      .ag-wizzard-body-step {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        opacity: 1;
-        -webkit-overflow-scrolling: touch;
-        transition: transform 0.3s, opacity 0.3s ease-in-out;
+      .ag-wizzard-body-current {
+        align-self: stretch;
+        animation: slide 12s ease-in-out infinite;
       }
 
       .ag-wizzard-body-next {
-        transform: translateX(40px);
-        opacity: 0;
+        //opacity: 0;
         visibility: hidden;
-        transition: transform 0.3s, opacity 0.3s ease-in-out, visibility 0s 0.3s;
-      }  
+      }
 
       .ag-wizzard-body-prev {
-        transform: translateX(-40px);
-        opacity: 0;
+        //opacity: 0;
         visibility: hidden;
-        transition: transform 0.3s, opacity 0.3s ease-in-out, visibility 0s 0.3s;
-      }      
+      }
+
+      @keyframes slide {
+        0% { transform: translateX(0%); }
+        25% { transform: translateX(-100%); }
+        50% { transform: translateX(-200%); }
+        75% { transform: translateX(-300%); }
+        100% { transform: translateX(0%); }
+    }      
     }
   }
 
-  .ag-wizzard-navigation
-  {
+  .ag-wizzard-navigation {
     @include flexbox-row();
     align-items: center;
     justify-content: space-between;

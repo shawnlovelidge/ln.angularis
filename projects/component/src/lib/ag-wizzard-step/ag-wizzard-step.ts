@@ -1,72 +1,32 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  input,
-  ViewContainerRef,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-  TemplateRef,
-  ViewChild,
-  ComponentRef,
-  Injector,
-  Input,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Library } from '@angularis/core';
 //
-// Anglaris. Core library.
-//
-import { Guid } from '@angularis/core';
-//
-// Models
+// Anglaris/Core library.
 //
 import { Step } from '@angularis/model';
-//
-// Components
-//
-import { AgButton } from '../ag-button/ag-button';
-import { basicAnimation } from '../../model/animation/basic-animation';
 
 @Component({
   selector: 'ag-wizzard-step',
-  imports: [CommonModule, AgButton],
+  imports: [CommonModule],
   templateUrl: 'ag-wizzard-step.html',
   styleUrls: ['ag-wizzard-step.scss'],
-  animations: [basicAnimation],
 })
-export class AgWizzardStep implements OnInit, OnDestroy, AfterViewInit {
+export class AgWizzardStep implements OnInit {
   @Input() public index: number = 0;
   @Input() public maxIndex: number = 0;
-  public step = input.required<Step<any>>();
+  @Input() public model: Step<any> = new Step<any>();
   //
-  // View child
+  // Public Variables
   //
-  @ViewChild('dynamicContainer', { read: ViewContainerRef, static: true })
-  container!: ViewContainerRef;
-  @ViewChild('dynamicTemplate', { static: true })
-  template!: TemplateRef<any>;
-  //
-  // Public Properties
-  //
-  public uid: string = Guid.create().toString();
   public style: Partial<CSSStyleDeclaration> = {};
-  //
-  // Is/Has Functions
-  //
-  public isDisabled = () => this.step().isDisabled();
-  public isHidden = () => this.step().isHidden();
-  public isActive = () => this.step().isActive();
-  public hasTitle = () => this.step().hasTitle();
-  public hasStyle = () => this.step().hasStyle();
-  public hasTemplate = () => this.step().hasTemplate();
-  public hasComponent = () => this.step().hasComponent();
-  //
-  // Private Properties
-  //
-  private componentRef?: ComponentRef<any>;
   //
   // Constructor.
   //
-  public constructor(private injector: Injector) {}
+  public constructor(
+    private element: ElementRef,
+    private renderer: Renderer2
+  ) {}
   //
   // On init
   //
@@ -77,74 +37,17 @@ export class AgWizzardStep implements OnInit, OnDestroy, AfterViewInit {
     this.style = {
       ...{
         height: 'auto',
-        minHeight: '100px',
-        minWidth: '100px',
         width: '100%',
       },
-      ...this.step().style,
+      ...this.model.style,
     };
   }
   //
-  // After view init
+  // SetClass
   //
-  public ngAfterViewInit() {
-    //
-    // Template
-    //
-    if (this.hasTemplate()) {
-      this.container.clear();
-      this.container.createEmbeddedView(this.template, {
-        model: this.step().model,
-      });
-    }
-    //
-    // Create component
-    //
-    else if (this.hasComponent()) {
-      this.createComponent();
-    }
-  }
-  //
-  // On destroy
-  //
-  public ngOnDestroy() {
-    if (this.componentRef) {
-      this.componentRef.destroy();
-      this.componentRef = undefined;
-    }
-
-    this.clearContainer();
-  }
-  //
-  // Clear template
-  //
-  public clearContainer() {
-    if (this.container) this.container.clear();
-  }
-  //
-  // Create component
-  //
-  private createComponent() {
-    if (this.container && this.hasComponent()) {
-      //
-      // Clear previous instances
-      //
-      this.container.clear();
-      //
-      // Create component dynamically
-      //
-      this.componentRef = this.container.createComponent(
-        this.step().component,
-        {
-          injector: this.injector,
-        }
-      );
-      //
-      // Set the model
-      //
-      if (this.step().hasModel()) {
-        this.componentRef.instance.model = this.step().model;
-      }
+  public setClass(className: string) {
+    if (Library.isStringWithLength(className)) {
+      this.renderer.setAttribute(this.element.nativeElement, 'class', className);
     }
   }
 }

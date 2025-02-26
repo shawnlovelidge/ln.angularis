@@ -4,10 +4,9 @@ import { Element } from '../common';
 /**
  * @name GridCell
  */
-export class GridCell extends Element {
+export class GridCell extends Element<string | number | boolean> {
   public align: string;
   public pattern: string;
-  public value: string | number | boolean;
 
   constructor(options?: Partial<GridCell>){
     super(options);

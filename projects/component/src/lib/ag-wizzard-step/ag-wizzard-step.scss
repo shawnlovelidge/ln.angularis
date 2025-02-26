@@ -3,44 +3,46 @@
 
 :host
 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  transition: transform 0.3s var(--ease-out), opacity 0.3s;
-  margin: 0;
-  padding: 0;
-  color: var(--color-gray-900, #000);  
-
   .ag-wizzard-step {
-    height: auto;
+    height: 100%;
     padding: 1rem;
+
+    &.hidden {
+      display: none;
+    }
 
     &.disabled {
       @include disabled();
+    }   
+    
+    .ag-wizzard-step-header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .375rem;
+      padding: var(--padding);
+      
+
+      .ag-wizzard-step-header-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding: 0;
+        margin: 0;
+      }
+
+      .ag-wizzard-step-header-description {
+        font-size: .625rem;
+        padding: 0;
+        margin: 0;
+      }
     }
 
-    .ag-wizzard-step-title {
-      @include flexbox-row();
-      align-items: center;
-      height: 3.25rem;
-      margin-bottom: calc(var(--margin) * 3);
-      padding: 0 var(--padding);
-
-      p {
-        margin: 0;
-        padding: 0;
-        font-size: 0.80rem;
-        color: var(--color-gray-700);
-      }
-    } 
-
-    .ag-wizzard-step-content
-    {
-      padding: 0 var(--padding);
+    .ag-wizzard-step-content {
+      margin-top: .5rem;
+      padding: var(--padding);
+      min-height: 12.5rem;
+      height: auto;
+      overflow-y: auto;
     }
   }
 }

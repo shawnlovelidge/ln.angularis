@@ -1,0 +1,51 @@
+@use 'scss/mixins/flexbox.scss' as *;
+@use 'scss/mixins/standard.scss' as *;
+
+.address-form {
+  .address-form-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+
+    .street-1-control {
+      grid-area: 1 / 1 / 2 / 5;
+    }
+    .street-2-control {
+      grid-area: 2 / 1 / 3 / 5;
+    }
+    .city-control {
+      grid-area: 3 / 1 / 4 / 4;
+    }
+    .zipcode-control {
+      grid-area: 3 / 4 / 4 / 5;
+    }
+    .state-control {
+      grid-area: 4 / 1 / 5 / 3;
+    }
+    .country-control {
+      grid-area: 4 / 3 / 5 / 5;
+    }
+  }
+}
+
+.personal-form {
+  .personal-form-group {
+    display: grid;
+    grid-template-columns: 1fr 120px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+
+    .first-control {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    .middle-control {
+      grid-area: 1 / 2 / 2 / 3;
+    }
+    .last-control {
+      grid-area: 1 / 3 / 2 / 4;
+    }
+  }
+}

@@ -13,9 +13,6 @@ export class Pane extends Action {
 
   public set open(val: boolean) {
     this._open = val;
-    this.style = this._open
-      ? { ...this.style, display: 'block' }
-      : { ...this.style, display: 'none' };
 
     if (this.cb) {
       this.cb(this);

@@ -49,11 +49,9 @@ export class LnCard {
   public actions = [
     new Action({
       label: 'Action 1',
-      onClick: this.handleOnClick,
     }),
     new Action({
       label: 'Action 2',
-      onClick: this.handleOnClick,
     }),
   ];
   //

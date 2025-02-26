@@ -180,10 +180,6 @@ export class GridColumn extends Action {
       Library.init(options, 'tooltipComponent', {})
     );
 
-    this.style = {
-      textAlign: `${this.align}`,
-    };
-
     //
     // SDL remove ancellary properties... (i.e. width, height, align, etc. to style)
     //
@@ -197,11 +193,6 @@ export class GridColumn extends Action {
       } else {
         this.flex = `0 0 ${this.width}`;
       }
-
-      this.style = Object.assign({}, this.style, {
-        flex: `${this.flex}`,
-        minWidth: `${this.minWidth}`,
-      });
     }
 
     //
@@ -211,10 +202,6 @@ export class GridColumn extends Action {
     const headerStyle = Library.init(header, 'style', {});
     this.header = new GridHeader({
       ...header,
-      style: {
-        ...this.style,
-        ...headerStyle,
-      },
     });
   }
 }

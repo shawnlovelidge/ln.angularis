@@ -1,36 +1,45 @@
 import { Library } from '../library';
-import { Action } from './action';
-import { Icon } from './icon';
+import { Base } from './base';
 import { Tooltip } from './tooltip';
-/**
- * Class: Element
- */
-export class Element extends Action {
-  public ref: string | undefined = undefined;
-  public html: string | undefined = undefined;
-  public placeholder: string | undefined = undefined;
+
+//
+// Element
+//
+export class Element<T> extends Base {
+  public placeholder: string = '';
   public tooltip: Tooltip = new Tooltip();
   public classList: string[] = [];
-
-  /**
-   * hasTooltip()
-   * @returns {*}
-   */
-  hasTooltip() {
-    return Library.isDefined(this.tooltip);
+  public value?: T | undefined = undefined;
+  //
+  // hasPlaceholder
+  //
+  public hasValue() {
+    return Library.isDefined(this.value);
   }
-  /**
-   * hasRef()
-   * @returns {*}
-   */
-  hasRef() {
-    return Library.isDefined(this.ref);
+  //
+  // hasPlaceholder
+  //
+  public hasPlaceholder() {
+    return this.placeholder;
   }
-
-  constructor(options?: Partial<Element>) {
+  //
+  // hasTooltip
+  //
+  public hasTooltip() {
+    return this.tooltip.hasContent();
+  }
+  //
+  // hasClassList
+  //
+  public hasClassList() {
+    return Library.isArrayWithLength(this.classList);
+  }
+  //
+  // Constructor
+  //
+  constructor(options?: Partial<Element<T>>) {
     super(options);
     Object.assign(this, options);
-    this.tooltip = new Tooltip(Library.init(options, 'tooltip', {}));
   }
 }
 

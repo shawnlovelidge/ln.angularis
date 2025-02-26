@@ -112,3 +112,5 @@ export class Base implements IBase {
     this.uid = Guid.create().toString();
   }
 }
+
+export default {Base}

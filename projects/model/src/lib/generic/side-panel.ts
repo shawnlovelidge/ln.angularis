@@ -67,27 +67,6 @@ export class SlidePanel implements ISlidePanel {
 
     const width = (bodyWidth as number) - lWidth - rWidth;
 
-    if (!Library.isDefined(o)) {
-      this.center.style = { ...this.center.style, width: `${width}px` };
-    } else {
-      switch (o?.type) {
-        case 'leftBar':
-        case 'leftPanel':
-          this.center.style = {
-            ...this.center.style,
-            marginLeft: o?.width.toString(),
-            width: `${width}px`,
-          };
-          break;
-        case 'rightBar':
-        case 'rightPanel':
-          this.center.style = {
-            ...this.center.style,
-            marginRight: o?.width.toString(),
-            width: `${width}px`,
-          };
-          break;
-      }
-    }
+    
   }
 }

@@ -3,19 +3,27 @@ import { Library } from '../library';
  * Class: Tooltip
  */
 export class Tooltip {
-  public content: string;
-  public template: string;
+  public content: string = '';
+  public template: string = '';
   public style: Partial<CSSStyleDeclaration> = {};
-  public position: Object;
+  //
+  // hasContent()
+  //
+  public hasContent() {
+    return Library.isStringWithLength(this.content);
+  }
+  //
+  // hasTemplate()
+  //
+  public hasTemplate() {
+    return Library.isStringWithLength(this.template);
+  }
   /**
    * Constructor()
    * @param options
    */
   constructor(options?: Partial<Tooltip>) {
-    this.content = Library.init(options, 'content', '');
-    this.template = Library.init(options, 'template');
-    this.style = Library.init(options, 'style', {});
-    this.position = Library.init(options, 'position', {});
+    Object.assign(this, options);
   }
 }
 

@@ -7,7 +7,7 @@ import { AgHyperLink } from '@angularis/component';
 //
 // @angularis/core
 //
-import { Action } from '@angularis/core';
+import { Route } from '@angularis/core';
 //
 // @Components
 //
@@ -19,8 +19,8 @@ import { LnCanvas } from '../../component/ln-canvas/ln-canvas';
   templateUrl: './ln-hyperlink.html',
 })
 export class LnHyperLink {
-  public simpleLink = signal(new Action({ id: 1, name: 'Simple Link' }));
-  public buttonLink = signal(new Action({ id: 2, name: 'Button Link' }));
+  public simpleLink = signal(new Route({ id: 1, name: 'Simple Link' }));
+  public buttonLink = signal(new Route({ id: 2, name: 'Button Link' }));
   public label = signal('Label');
   //
   // Constructor
@@ -33,7 +33,7 @@ export class LnHyperLink {
   //
   // handleOnClick
   //
-  public handleOnClick(item: Action) {
+  public handleOnClick(item: Route) {
     //
     // Console Debug Statement
     //

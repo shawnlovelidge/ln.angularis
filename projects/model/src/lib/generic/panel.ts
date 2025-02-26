@@ -19,15 +19,9 @@ export class Panel {
   public toggle() {
     if (this.bar.isOpen()) {
       this.bar.toggle();
-      if (this.bar.hasOnClick()) {
-        this.bar.onClick(this);
-      }
       this.panel.open = true;
     } else if (this.panel.isOpen()) {
       this.panel.toggle();
-      if (this.panel.hasOnClick()) {
-        this.panel.onClick(this);
-      }
       this.bar.open = true;
     }
   }
