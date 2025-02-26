@@ -11,11 +11,7 @@ import {
   Output,
   ViewContainerRef,
 } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 //
 // @angularis/core Library
 //
@@ -43,13 +39,10 @@ import { AgBase } from '../ag-base/ag-base';
     },
   ],
 })
-export class AgInput
-  extends AgBase
-  implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor
-{
+export class AgInput extends AgBase implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
   @Input() public type: string = 'text';
   @Input() public placeholder: string = '';
-  @Input() public searchIcon: boolean = true;
+  @Input() public searchIcon: boolean = false;
   @Input() public maxlength: number = 255;
   @Input() public minlength: number = 10;
   @Input() get value(): string {
@@ -95,11 +88,7 @@ export class AgInput
   //
   // Constructor
   //
-  constructor(
-    element: ElementRef,
-    viewContainerRef: ViewContainerRef,
-    library: FaIconLibrary
-  ) {
+  constructor(element: ElementRef, viewContainerRef: ViewContainerRef, library: FaIconLibrary) {
     super(element, viewContainerRef, library);
     //
     // Observe Mutation
@@ -132,5 +121,15 @@ export class AgInput
     // Call Base OnDestroy
     //
     super.ngOnDestroy();
+  }
+  //
+  // autoHightlight
+  //
+  public autoHightlight() {
+    const input = this.element.nativeElement.querySelector('input');
+    if (input) {
+      input.focus();
+      input.select();
+    }
   }
 }

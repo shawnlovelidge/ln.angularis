@@ -11,7 +11,7 @@ import {
 //
 // Action
 //
-import { Action } from '@angularis/core';
+import { Route } from '@angularis/core';
 //
 // Font Awesome Library Container
 //
@@ -31,22 +31,15 @@ import { RouterLink } from '@angular/router';
   templateUrl: 'ag-hyperlink.html',
   styleUrls: ['ag-hyperlink.scss'],
 })
-export class AgHyperLink
-  extends AgBase
-  implements OnInit, AfterViewInit, OnDestroy
-{
+export class AgHyperLink extends AgBase implements OnInit, AfterViewInit, OnDestroy {
   //
   // Signals
   //
-  public readonly model = input<Action>(new Action());
+  public readonly model = input<Route>(new Route());
   //
   // Constructor
   //
-  constructor(
-    element: ElementRef,
-    viewContainerRef: ViewContainerRef,
-    library: FaIconLibrary
-  ) {
+  constructor(element: ElementRef, viewContainerRef: ViewContainerRef, library: FaIconLibrary) {
     super(element, viewContainerRef, library);
     //
     // Observe Mutation

@@ -32,11 +32,9 @@ export class LnBanner {
   public actions = [
     new Action({
       label: 'Submit',
-      onClick: this.handleOnClick,
     }),
     new Action({
       label: 'Cancel',
-      onClick: this.handleOnClick,
     }),
   ];
   //

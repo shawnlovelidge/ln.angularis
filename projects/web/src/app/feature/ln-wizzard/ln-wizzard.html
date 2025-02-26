@@ -1,4 +1,72 @@
 <ln-canvas>
-  <ag-wizzard [steps]="steps">
+  <ag-wizzard>
+    <ag-wizzard-step [model]="addressForm">
+      <div class="address-form">
+        <div class="address-form-group">
+          <div class="street-1-control">
+            <ag-input [label]="addressForm.model.street1.label" [placeholder]="addressForm.model.street1.placeholder"
+              [value]="addressForm.model.street1.value" [style]="addressForm.model.street1.style"
+              [hidden]="addressForm.model.street1.hidden" [disabled]="addressForm.model.street1.disabled">
+            </ag-input>
+          </div>
+          <div class="street-2-control">
+            <ag-input [label]="addressForm.model.street2.label" [placeholder]="addressForm.model.street2.placeholder"
+              [value]="addressForm.model.street2.value" [style]="addressForm.model.street2.style"
+              [hidden]="addressForm.model.street1.hidden" [disabled]="addressForm.model.street2.disabled">
+            </ag-input>
+          </div>
+          <div class="city-control">
+            <ag-input [label]="addressForm.model.city.label" [placeholder]="addressForm.model.city.placeholder"
+              [value]="addressForm.model.city.value" [style]="addressForm.model.city.style"
+              [hidden]="addressForm.model.city.hidden" [disabled]="addressForm.model.city.disabled">
+            </ag-input>
+          </div>
+          <div class="state-control">
+            <ag-input [label]="addressForm.model.state.label" [placeholder]="addressForm.model.state.placeholder"
+              [value]="addressForm.model.state.value" [style]="addressForm.model.state.style"
+              [hidden]="addressForm.model.state.hidden" [disabled]="addressForm.model.state.disabled">
+            </ag-input>
+          </div>
+          <div class="zipcode-control">
+            <ag-input [label]="addressForm.model.zipcode.label" [placeholder]="addressForm.model.zipcode.placeholder"
+              [value]="addressForm.model.zipcode.value" [style]="addressForm.model.zipcode.style"
+              [hidden]="addressForm.model.zipcode.hidden" [disabled]="addressForm.model.zipcode.disabled">
+            </ag-input>
+          </div>
+          <div class="country-control">
+            <ag-input [label]="addressForm.model.country.label" [placeholder]="addressForm.model.country.placeholder"
+              [value]="addressForm.model.country.value" [style]="addressForm.model.country.style"
+              [hidden]="addressForm.model.country.hidden" [disabled]="addressForm.model.country.disabled">
+            </ag-input>
+          </div>
+        </div>
+      </div>
+
+    </ag-wizzard-step>
+    <ag-wizzard-step [model]="personalForm">
+      <div class="personal-form">
+        <div class="personal-form-group">
+
+          <div class="first-control">
+            <ag-input [label]="personalForm.model.first.label" [placeholder]="personalForm.model.first.placeholder"
+              [value]="personalForm.model.first.value" [style]="personalForm.model.first.style"
+              [hidden]="personalForm.model.first.hidden" [disabled]="personalForm.model.first.disabled">
+            </ag-input>
+          </div>
+          <div class="middle-control">
+            <ag-input [label]="personalForm.model.middle.label" [placeholder]="personalForm.model.middle.placeholder"
+              [value]="personalForm.model.middle.value" [style]="personalForm.model.middle.style"
+              [hidden]="personalForm.model.middle.hidden" [disabled]="personalForm.model.middle.disabled">
+            </ag-input>
+          </div>
+          <div class="last-control">
+            <ag-input [label]="personalForm.model.last.label" [placeholder]="personalForm.model.last.placeholder"
+              [value]="personalForm.model.last.value" [style]="personalForm.model.last.style"
+              [hidden]="personalForm.model.last.hidden" [disabled]="personalForm.model.last.disabled">
+            </ag-input>
+          </div>
+        </div>
+      </div>
+    </ag-wizzard-step>
   </ag-wizzard>
 </ln-canvas>

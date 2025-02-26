@@ -1,22 +1,17 @@
 <div class="ag-wizzard-step" [ngClass]="{
-  disabled: step().disabled,
-  hidden: step().hidden,
-  active: step().active,
+  disabled: this.model.disabled,
+  hidden: this.model.hidden,
+  active: this.model.active,
 }">
-  @if (hasTemplate())
-  {
-  <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{step: step()}" />
-  }
-  @else if (hasComponent())
-  {
-  <ng-container #dynamicContainer></ng-container>
-  } @else {
-  <div class="ag-wizzard-step-title">
-    <p>Step {{ index }} of {{ maxIndex }}</p>
-    <h2>{{ step().title }}</h2>
+  <div class="ag-wizzard-step-header">
+    <div class="ag-wizzard-step-header-title">
+      {{ this.model.label }}
+    </div>
+    <div class="ag-wizzard-step-header-description">
+      {{ this.model.description }}
+    </div>
   </div>
-  <div class="ag-wizzard-step-content">
-    <pre>{{ step().model | json }}</pre>
+  <div class="ag-wizzard-step-content" [ngStyle]="style">
+    <ng-content></ng-content>
   </div>
-  }
 </div>

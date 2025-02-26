@@ -1,10 +1,6 @@
-import { Library } from '../library';
-import { Action } from './action';
+import { Route } from './route';
 
-export class Menu extends Action {
-  /*
-   * Constructor()
-   */
+export class Menu extends Route {
   constructor(options?: Partial<Menu>) {
     super(options);    
   }

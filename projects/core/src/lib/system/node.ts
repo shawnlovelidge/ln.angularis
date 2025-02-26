@@ -17,7 +17,7 @@ export function Print(root: Node) {
  * @class Node
  * @description Defines a atag object.
  */
-export class Node extends Element {
+export class Node extends Element<string | number | boolean> {
   public expanded: boolean = false;
   public parentId: number | Guid;
   public children: Array<Node> = [];
@@ -149,9 +149,7 @@ export class Node extends Element {
       root.active = item.active;
       root.expanded = item.expanded;
       root.name = item.name;
-      root.onClick = item.onClick;
       root.parentId = item.parentId;
-      root.routerLink = item.routerLink;
       root.tooltip = item.tooltip;
     }
   }

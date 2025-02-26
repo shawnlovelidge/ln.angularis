@@ -3,19 +3,20 @@ import {
   Component,
   Output,
   EventEmitter,
-  input,
   OnInit,
   AfterViewInit,
   OnDestroy,
   Input,
-  signal,
-  ViewChild,
   ViewContainerRef,
+  ElementRef,
+  ContentChildren,
+  QueryList,
+  AfterContentInit,
 } from '@angular/core';
 //
 // Anglaris. Core library.
 //
-import { Library, Guid } from '@angularis/core';
+import { Library } from '@angularis/core';
 //
 // Components
 //
@@ -25,6 +26,9 @@ import { AgWizzardStep } from '../ag-wizzard-step/ag-wizzard-step';
 // Models
 //
 import { Step } from '@angularis/model';
+import { FormsModule } from '@angular/forms';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { AgBase } from '../ag-base/ag-base';
 
 //
 // Types
@@ -35,120 +39,130 @@ type HashIndex<T> = {
 
 @Component({
   selector: 'ag-wizzard',
-  imports: [CommonModule, AgWizzardStep, AgButton],
+  imports: [CommonModule, FormsModule, AgWizzardStep, AgButton],
   templateUrl: 'ag-wizzard.html',
   styleUrls: ['ag-wizzard.scss'],
 })
-export class AgWizzard implements OnInit, OnDestroy, AfterViewInit {
-  @Input() public steps = signal<Step<any>[]>([]);
-  @Input() public disabled: boolean = false;
-  @Input() public hidden: boolean = false;
-  @Input() public active: boolean = false;
-  @Input() public style: Partial<CSSStyleDeclaration> = {};
+export class AgWizzard extends AgBase implements OnInit, AfterViewInit, AfterContentInit, OnDestroy {
   //
   // Events.
   //
   @Output() onStep = new EventEmitter<Step<any>>();
   //
-  // View child
+  // Public Variables
   //
-
+  public hasChildren = () => this.contentChildren && this.contentChildren.length > 0;
+  public length = () => (this.contentChildren ? this.contentChildren.length : 0);
+  public index = -1;
   //
-  // Public Properties
+  // Private Variables
   //
-  public uid: string = Guid.create().toString();
-  public index: number = 0;
-  public hashIndex: HashIndex<number> = {};
+  @ContentChildren(AgWizzardStep, { descendants: false })
+  private contentChildren!: QueryList<AgWizzardStep>;
   //
-  // Is/Has Functions
+  // Constructor
   //
-  public isDisabled = () => this.disabled;
-  public isHidden = () => this.hidden;
-  public isActive = () => this.active;
-  public hasStyle = () => Library.isObject(this.style);
+  constructor(element: ElementRef, viewContainerRef: ViewContainerRef, library: FaIconLibrary) {
+    super(element, viewContainerRef, library);
+  }
   //
-  // Constructor.
+  // ngOnInit()
   //
-  public constructor() {}
-  //
-  // On init
-  //
-  public ngOnInit() {
-
-    for (let i = 0; i < this.steps().length; i++) {
-      this.hashIndex[this.steps()[i].id] = i;
-    }
-    //
-    // Getting the active index
-    //
-    this.index = 0;
-    //
-    // Set the active step.
-    //
-    this.setActiveStep(this.index);
+  public override ngOnInit() {
     //
     // Set the default style
     //
     this.style = {
       ...{
-        height: 'auto',
-        minHeight: '100px',
-        minWidth: '100px',
+        height: '340px',
         width: '100%',
       },
       ...this.style,
     };
   }
   //
-  // After view init
+  // ngAfterViewInit
   //
-  public ngAfterViewInit() {}
+  public override ngAfterViewInit() {
+    //
+    // Call Base AfterViewInit
+    //
+    super.ngAfterViewInit();
+  }
+
   //
-  // Next step
+  // ngAfterContentInit()
   //
-  public nextStep() {
-    if (this.index < this.steps().length - 1) {
+  public ngAfterContentInit(): void {
+    if (this.hasChildren()) {
+      //
+      // Build a Hash Map of step.id to index.
+      //
+      this.contentChildren.forEach((component: AgWizzardStep, index: number) => {
+        //
+        // set the index and maxIndex
+        //
+        component.index = index;
+        component.maxIndex = this.contentChildren.length;
+        //
+        // Capture the active step.
+        //
+        if (this.index < 0 && component.model.active) {
+          this.index = index;
+        }
+      });
+    }
+    //
+    // Set the active step.
+    //
+    if (this.index < 0) {
+      this.index = 0;
+    }
+    //
+    // Set the active step.
+    //
+    this.setActiveStep();
+  }
+  //
+  // next
+  //
+  public next() {
+    //
+    // If we are not at the end of the steps.
+    //
+    if (this.index < this.length() - 1) {
       this.index++;
       //
       // Set the active step.
       //
-      this.setActiveStep(this.index);
-      //
-      // Emit the current step.
-      //
-      this.onStep.emit(this.steps()[this.index]);
+      this.setActiveStep();
     }
   }
   //
   // Previous step.
   //
-  public previousStep() {
+  public previous() {
+    //
+    // If we are not at the beginning of the steps.
+    //
     if (this.index > 0) {
       this.index--;
       //
       // Set the active step.
       //
-      this.setActiveStep(this.index);
-      //
-      // Emit the current step.
-      //
-      this.onStep.emit(this.steps()[this.index]);
+      this.setActiveStep();
     }
   }
   //
   // Go to step.
   //
   public goToStep(index: number) {
-    if (index >= 0 && index < this.steps().length) {
+    if (index >= 0 && index < this.length()) {
       this.index = index;
       //
       // Set the active step.
       //
-      this.setActiveStep(this.index);
-      //
-      // Emit the current step.
-      //
-      this.onStep.emit(this.steps()[this.index]);
+      this.setActiveStep();
     }
   }
 
@@ -160,30 +174,49 @@ export class AgWizzard implements OnInit, OnDestroy, AfterViewInit {
       if (Library.isDefined(item)) this.onStep.emit(item);
     }
   }
-
-  //
-  // On destroy
-  //
-  public ngOnDestroy() {}
-
   //
   // setActiveStep
   //
-  private setActiveStep(index: number) {
-    if (index < 0 || index >= this.steps().length) return;
+  private setActiveStep(): void {
+    //
+    // if we have children step components
+    //
+    if (this.hasChildren()) {
+      //
+      // Validate the index.
+      //
+      if (this.index < 0 || this.index >= this.length()) return;
+      //
+      // Build a Hash Map of step.id to index.
+      //
+      this.contentChildren.forEach((component: AgWizzardStep, idx: number) => {
+        //
+        // Set the active step.
+        //
+        component.model.active = idx === this.index;
+        component.model.hidden = !component.model.active;
+        //
+        //  Set Class Names
+        //
+        component.setClass(this.ngGetClass(component.index));
+      });
+    }
+  }
 
-    const steps = this.steps();
-
-    for (let i = 0; i < steps.length; i++) {
-      steps[i].active = i === index;
-      steps[i].hidden = !steps[i].active;
-
-      console.log(
-        `%c index: ${index}\tsteps[i].id: ${steps[i].id}\tsteps[i].active: ${steps[i].active}\r`,
-        'color: magenta; font-size: 12px; font-weight: bold'
-      );
+  //
+  // ngGetClass
+  //
+  private ngGetClass(index: number): string {
+    if (index < this.index) {
+      return 'ag-wizzard-body-prev';
+    }
+    if (index > this.index) {
+      return 'ag-wizzard-body-next';
+    }
+    if (index === this.index) {
+      return 'ag-wizzard-body-current';
     }
 
-    this.steps.set([...steps]);
+    return '';
   }
 }

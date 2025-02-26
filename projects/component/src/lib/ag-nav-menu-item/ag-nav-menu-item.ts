@@ -12,10 +12,6 @@ import { RouterLink } from '@angular/router';
 // Font Awesome Library Container
 //
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-
-//
-// @angularis/core
-//
 //
 // @angularis/core
 //
