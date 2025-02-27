@@ -8,7 +8,7 @@
   width: fit-content;
   color: var(--ag-checkbox-color, var(--color-primary));
   gap: var(--gap);
-  font-size: 1.125rem;
+  font-size: var(--font-size);
 
   &.hidden {
     display: none;

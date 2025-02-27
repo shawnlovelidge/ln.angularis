@@ -2,7 +2,7 @@
     [ngStyle]="style">
     @if (model().hasParams())
     {
-    <a class="ag-hyperlink" [attr.class]="classes()" [class.active]="model().active"
+    <a class="ag-hyperlink-agtag" [attr.class]="classes()" [class.active]="model().active"
         [class.disabled]="model().disabled" [routerLink]="model().routerLink" [queryParams]="model().params">
         <ng-content></ng-content>
     </a>
