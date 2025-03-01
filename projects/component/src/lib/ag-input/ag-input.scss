@@ -82,7 +82,7 @@
       top: 1.25rem;
       transform: translateY(-50%);
       color: var(--color-gray-700);
-      font-size: 1rem;
+      font-size: var(--font-size);
 
       &.hidden {
         display: none;

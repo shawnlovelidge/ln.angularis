@@ -16,9 +16,9 @@
 
   .ag-menu-label
   {
-    font-size: 11px;
-    height: 12px;
-    line-height: 10px;
+    font-size: var(--font-size);
+    height: .75rem;
+    line-height: .625rem;
     margin: 0;
     padding: 0;
     color: var(--color-gray-600);

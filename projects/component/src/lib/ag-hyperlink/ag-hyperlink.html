@@ -1,14 +1,25 @@
-<div class="ag-hyperlink" [ngClass]="{ 'hidden': model().hidden || hidden, 'disabled':  model().disabled || disabled }"
-    [ngStyle]="style">
+<div class="ag-hyperlink" [ngClass]="{ 
+    'hidden': model().hidden || hidden, 
+    'disabled':  model().disabled || disabled 
+  }">
     @if (model().hasParams())
     {
-    <a class="ag-hyperlink" [attr.class]="classes()" [class.active]="model().active"
-        [class.disabled]="model().disabled" [routerLink]="model().routerLink" [queryParams]="model().params">
+    <a class="ag-hyperlink-agtag" 
+        [attr.class]="classes()"
+        [class.active]="model().active"
+        [class.disabled]="model().disabled" 
+        [routerLink]="model().routerLink" 
+        [queryParams]="model().params" 
+        [ngStyle]="model().style">
         <ng-content></ng-content>
     </a>
     } @else {
-    <a class="ag-hyperlink" [attr.class]="classes()" [class.active]="model().active"
-        [class.disabled]="model().disabled" [routerLink]="model().routerLink">
+    <a class="ag-hyperlink" 
+        [attr.class]="classes()" 
+        [class.active]="model().active" 
+        [class.disabled]="model().disabled"
+        [routerLink]="model().routerLink" 
+        [ngStyle]="model().style">
         <ng-content></ng-content>
     </a>
     }

@@ -61,7 +61,7 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         font-weight: normal;
-        color: var(--color-text);
+        color: var(--color-black);
 
         &.active {
           border-bottom: 0;
@@ -73,8 +73,6 @@
             cursor: default;
             text-decoration: none;
             font-weight: 700px;
-            
-
             &.active {
               text-decoration: none;
             }

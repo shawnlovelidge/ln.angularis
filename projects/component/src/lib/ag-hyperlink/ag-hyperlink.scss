@@ -19,6 +19,7 @@
     transition: color 0.1s ease;
     color: var(--ag-hyperlink-color, var(--color-primary));
     font-weight: normal;
+    font-size: var(--font-size);
 
     &:visited {
       color: var(--ag-hyperlink-visited-color, var(--color-black));
