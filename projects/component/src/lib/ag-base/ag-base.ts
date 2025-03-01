@@ -29,21 +29,14 @@ import {
   faCaretUp,
   faCaretDown,
   faCheck,
-
   faXmark,
   faXmarkCircle,
   faSearch,
   faBars,
   faEllipsisV,
-  faCity
+  faCity,
 } from '@fortawesome/free-solid-svg-icons';
-import { 
-  faCheckSquare, 
-  faSquare,
-  faCircleXmark,
-  faCircle,
-  faCircleCheck  
-} from '@fortawesome/free-regular-svg-icons';
+import { faCheckSquare, faSquare, faCircleXmark, faCircle, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 
 //
 // Utility Functions
@@ -82,8 +75,7 @@ export class AgBase implements OnInit, AfterViewInit, OnDestroy {
   public hasLabel = () => Library.isStringWithLength(this.label);
   public hasStyle = () => Library.isObject(this.style);
   public hasCustomTemplate = () => Library.isDefined(this.customTemplate);
-  public isMutationObservable = () =>
-    Library.isStringWithLength(this.mutationSelector);
+  public isMutationObservable = () => Library.isStringWithLength(this.mutationSelector);
   //
   // Private Variables
   //
@@ -170,16 +162,11 @@ export class AgBase implements OnInit, AfterViewInit, OnDestroy {
     //
     // If we defined a element selector then...
     //
-    if (this.isMutationObservable()) {
+    if (this.isMutationObservable() && typeof MutationObserver !== 'undefined') {
       //
       // Set the class selector
       //
-      this.classes.set(
-        parseHTMLElementClassList(
-          this.element.nativeElement,
-          this.mutationSelector
-        )
-      );
+      this.classes.set(parseHTMLElementClassList(this.element.nativeElement, this.mutationSelector));
       //
       // Setup Listener for when the classList changes
       //

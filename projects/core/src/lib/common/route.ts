@@ -4,6 +4,7 @@ import { Base } from './base';
 // Action
 //
 export class Route extends Base {
+  public style: Partial<CSSStyleDeclaration> = {};
   public routerLink: string[] = [];
   public params: object = {};
   //
