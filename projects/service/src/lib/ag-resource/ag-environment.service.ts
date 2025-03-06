@@ -1,9 +1,7 @@
-import { Injectable, Inject, OnDestroy } from '@angular/core';
+import { Injectable, Inject, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
 import { Environment, Library } from '@angularis/core';
-import {
-  IAgEnvironmentConfig,
-  HTTP_ENVIRONMENT_CONFIGURATION,
-} from './ag-environment.config';
+import { IAgEnvironmentConfig, HTTP_ENVIRONMENT_CONFIGURATION } from './ag-environment.config';
+import { isPlatformBrowser } from '@angular/common';
 //
 // Window Reference
 //
@@ -17,6 +15,11 @@ export class AgEnvironmentService implements OnDestroy {
   // Private Variables
   //
   private _default!: Environment;
+  //
+  // Public Variables
+  //
+  public hasBrowser: boolean = false;
+  public platformId = inject(PLATFORM_ID);
   //
   // default()
   //
@@ -41,6 +44,11 @@ export class AgEnvironmentService implements OnDestroy {
     private environments: IAgEnvironmentConfig
   ) {
     //
+    // Init Browser
+    //
+    this.hasBrowser = isPlatformBrowser(this.platformId);
+
+    //
     // Init hostname
     //
     let hostname: any = null;
@@ -48,6 +56,8 @@ export class AgEnvironmentService implements OnDestroy {
     // Extract Host Name
     //
     if (
+      this.hasBrowser &&
+      (typeof window !== 'undefined') &&
       Library.isDefined(window.location) &&
       Library.hasOwnProperty(window, 'location') &&
       Library.hasOwnProperty(window.location, 'hostname')

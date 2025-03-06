@@ -16,6 +16,11 @@ declare var window: Window;
 })
 export class AgAuthenticationService {
   //
+  // Public Variables
+  //
+  public hasBrowser: boolean = false;
+  public platformId = inject(PLATFORM_ID);
+  //
   // Callback Function
   //
   public startSigninMainWindow: (url: string) => void;
@@ -48,15 +53,25 @@ export class AgAuthenticationService {
   private _loggedIn: boolean;
   private _config: AuthenticationConfig;
   public originalRouteURL!: string;
-
+  //
+  // Constructor()
+  //
+  constructor(@Inject(AUTH_CONFIG) config: AuthenticationConfig) {
+    // this._cookie = new Cookie();
+    // this._cookieOption = new CookieOption();
+    // this._userRoles = '';
+    this._config = { ...DefaultAuthenticationConfig, ...config };
+    this._loggedIn = false;
+    //
+    // Init Browser
+    //
+    this.hasBrowser = isPlatformBrowser(this.platformId);
+  }
   //
   // user()
   //
   public hasToken(): boolean {
-    return (
-      !Library.isNullOrUndefined(this._token) &&
-      Library.isStringWithLength(this._token.token)
-    );
+    return !Library.isNullOrUndefined(this._token) && Library.isStringWithLength(this._token.token);
   }
 
   //
@@ -112,9 +127,7 @@ export class AgAuthenticationService {
   public isAuthenticated(): boolean {
     // restore the token from the session storage
     if (!this.hasToken()) {
-      let t = window.sessionStorage.getItem(
-        AgAuthenticationService.ID_TOKEN_HTTP_CLIENT
-      );
+      let t = window.sessionStorage.getItem(AgAuthenticationService.ID_TOKEN_HTTP_CLIENT);
       if (!Library.isNullOrUndefined(t)) {
         this.updateRenewedToken(t);
         if (this._loggedIn) {
@@ -181,9 +194,7 @@ export class AgAuthenticationService {
   private _silentLogin() {
     if (!(window.location.href.indexOf('state') > -1)) {
       window.sessionStorage.clear();
-      window.localStorage.removeItem(
-        TmAuthenticationService.REFRESH_TOKEN_INVOKED
-      );
+      window.localStorage.removeItem(TmAuthenticationService.REFRESH_TOKEN_INVOKED);
       window.sessionStorage.setItem('originalUrl', window.location.href);
       window.sessionStorage.setItem('baseUrl', this._config.baseUrl);
       //
@@ -198,8 +209,7 @@ export class AgAuthenticationService {
         this.startSigninMainWindow(window.location.href);
       }
     } else {
-      let urlFragment =
-        this.originalRouteURL + decodeURIComponent(window.location.hash);
+      let urlFragment = this.originalRouteURL + decodeURIComponent(window.location.hash);
       //
       // Signin process has returned we need to then finished
       // the signin process to receive a user.
@@ -238,8 +248,7 @@ export class AgAuthenticationService {
                 // if (Library.isFunction(this.initializeUser)) {
                 //   this._user = this.initializeUser(this._user);
                 // }
-                this.originalRouteURL =
-                  window.sessionStorage.getItem('originalUrl');
+                this.originalRouteURL = window.sessionStorage.getItem('originalUrl');
 
                 if (Library.isFunction(this.isUserAuthorized)) {
                   if (this.isUserAuthorized()) {
@@ -250,16 +259,11 @@ export class AgAuthenticationService {
                     }
                     window.sessionStorage.setItem(
                       TmAuthenticationService.ID_TOKEN_HTTP_CLIENT,
-                      this._getQueryStringValue(
-                        urlFragment,
-                        TmAuthenticationService.ID_TOKEN_HTTP_CLIENT
-                      )
+                      this._getQueryStringValue(urlFragment, TmAuthenticationService.ID_TOKEN_HTTP_CLIENT)
                     );
 
                     this._token = new Token({
-                      token: window.sessionStorage.getItem(
-                        TmAuthenticationService.ID_TOKEN_HTTP_CLIENT
-                      ),
+                      token: window.sessionStorage.getItem(TmAuthenticationService.ID_TOKEN_HTTP_CLIENT),
                     });
 
                     if (Library.isFunction(this.redirectAfterAuthentication)) {
@@ -281,9 +285,7 @@ export class AgAuthenticationService {
     if (!this.hasProfile() || !this._token.hasToken()) {
       return true;
     } else {
-      let expiryDate = new Date(
-        new Date(0).setUTCSeconds(this._user.profile.exp)
-      );
+      let expiryDate = new Date(new Date(0).setUTCSeconds(this._user.profile.exp));
       let currentDate = new Date();
       return !(expiryDate > currentDate);
     }
@@ -292,22 +294,9 @@ export class AgAuthenticationService {
   private _getQueryStringValue(url: string, key: string) {
     return decodeURIComponent(
       url.replace(
-        new RegExp(
-          '^(?:.*[&\\?]' +
-            encodeURIComponent(key).replace(/[\.\+\*]/g, '\\$&') +
-            '(?:\\=([^&]*))?)?.*$',
-          'i'
-        ),
+        new RegExp('^(?:.*[&\\?]' + encodeURIComponent(key).replace(/[\.\+\*]/g, '\\$&') + '(?:\\=([^&]*))?)?.*$', 'i'),
         '$1'
       )
     );
-  }
-
-  constructor(@Inject(AUTH_CONFIG) config: AuthenticationConfig) {
-    // this._cookie = new Cookie();
-    // this._cookieOption = new CookieOption();
-    // this._userRoles = '';
-    this._config = { ...DefaultAuthenticationConfig, ...config };
-    this._loggedIn = false;
   }
 }
