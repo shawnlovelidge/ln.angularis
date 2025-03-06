@@ -34,12 +34,5 @@ export class LnHyperLink {
   // handleOnClick
   //
   public handleOnClick(item: Route) {
-    //
-    // Console Debug Statement
-    //
-    console.log(
-      `%c item.id: ${item.id} item.name: ${item.name}`,
-      `color:rgb(242, 12, 204); font-size: 12px; font-weight: bold`
-    );
   }
 }
