@@ -43,11 +43,20 @@ export class AgEnvironmentService implements OnDestroy {
     @Inject(HTTP_ENVIRONMENT_CONFIGURATION)
     private environments: IAgEnvironmentConfig
   ) {
+    ///
+    // resolveDefault
+    //
+    this.resolveDefault();
+  }
+  //
+  // resolveDefault()
+  //
+  public resolveDefault() {
+    debugger;
     //
     // Init Browser
     //
     this.hasBrowser = isPlatformBrowser(this.platformId);
-
     //
     // Init hostname
     //
@@ -57,7 +66,7 @@ export class AgEnvironmentService implements OnDestroy {
     //
     if (
       this.hasBrowser &&
-      (typeof window !== 'undefined') &&
+      typeof window !== 'undefined' &&
       Library.isDefined(window.location) &&
       Library.hasOwnProperty(window, 'location') &&
       Library.hasOwnProperty(window.location, 'hostname')
