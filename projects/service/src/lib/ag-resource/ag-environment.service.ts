@@ -18,6 +18,7 @@ export class AgEnvironmentService implements OnDestroy {
   //
   // Public Variables
   //
+  public environments: IAgEnvironmentConfig;
   public hasBrowser: boolean = false;
   public platformId = inject(PLATFORM_ID);
   //
@@ -41,8 +42,12 @@ export class AgEnvironmentService implements OnDestroy {
   //
   constructor(
     @Inject(HTTP_ENVIRONMENT_CONFIGURATION)
-    private environments: IAgEnvironmentConfig
+    environments: IAgEnvironmentConfig
   ) {
+    //
+    // Set Environments
+    //
+    this.environments = environments;
     ///
     // resolveDefault
     //
@@ -52,7 +57,6 @@ export class AgEnvironmentService implements OnDestroy {
   // resolveDefault()
   //
   public resolveDefault() {
-    debugger;
     //
     // Init Browser
     //
