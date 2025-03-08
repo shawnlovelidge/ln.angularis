@@ -93,7 +93,6 @@ export { GridSort } from './lib/grid/grid-sort';
 export { GridSummary } from './lib/grid/grid-summary';
 export { TooltipComponent } from './lib/grid/tooltip-component';
 export { default as GridFilterFunction } from './lib/grid/grid-filter-function';
-export { ContextMenu } from './lib/grid/context-menu';
 /**
  * Table
  */
