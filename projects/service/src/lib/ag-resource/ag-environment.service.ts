@@ -7,9 +7,7 @@ import { isPlatformBrowser } from '@angular/common';
 //
 declare var window: any;
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AgEnvironmentService implements OnDestroy {
   //
   // Private Variables
@@ -49,14 +47,14 @@ export class AgEnvironmentService implements OnDestroy {
     //
     this.environments = environments;
     ///
-    // resolveDefault
+    // setDefault
     //
-    this.resolveDefault();
+    this.setDefault();
   }
   //
-  // resolveDefault()
+  // setDefault()
   //
-  public resolveDefault() {
+  public setDefault() {
     //
     // Init Browser
     //
@@ -90,7 +88,10 @@ export class AgEnvironmentService implements OnDestroy {
       // Set Environment to the default environment
       //
       for (const [key, value] of Object.entries(this.environments)) {
-        if (value['name'] === hostname) {
+        const obj = value['hostname'];
+        const { url } = obj;
+
+        if (url && url === hostname) {
           index = Number(key);
         }
 
