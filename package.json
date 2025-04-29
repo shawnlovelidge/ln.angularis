@@ -39,7 +39,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@angular-devkit/core": "^19.1.6",
+    "@angular-devkit/core": "^19.1.7",
     "@angular-devkit/schematics": "^19.1.6",
     "@angular-devkit/schematics-cli": "^19.1.6",
     "@angular/animations": "^19.1.0",
