@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "SchematicsHydrateClass",
+  "title": "Hydrate Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "default": "",
+      "visible": false
+    },    
+    "path": {
+      "type": "string",
+      "format": "path",
+      "default": "src/model",
+      "description": "The source path where the class files should be evaluated, relative to the workspace root. If not specified, the 'src' directory will be assumed.",
+      "x-prompt": "What is the path to the source files?"
+    },
+    "target": {
+      "type": "string",
+      "format": "path",
+      "default": "src/model",
+      "description": "The target path where the test files should be created, relative to the workspace root. If not specified, the 'src' directory will be assumed.",
+      "x-prompt": "What is the target path for the unit test files?"
+    },
+    "overwrite": {
+      "type": "boolean",
+      "default": true,
+      "description": "When true, overwrites files with the same name.",
+      "x-prompt": "Would you like to overwrite unit test files?"
+    },
+    "dryRun": {
+      "type": "boolean",
+      "default": false,
+      "description": "When true, no files will be created or modified.",
+      "x-prompt": "Would you like to run the schematic without creating or modifying unit test files?"
+    }               
+  },
+  "required": ["path", "target"]
+}
