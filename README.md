@@ -1,7 +1,7 @@
 # @angularis suite of libraries
 ## Overview
 
-The `@angularis` Angular library is a comprehensive suite of modules designed to enhance and streamline Angular development. The library consists of the following packages:
+The `@angularis` Angular library v20 is a comprehensive suite of modules designed to enhance and streamline Angular development. The library consists of the following packages:
 
 - `@angularis/core`: Core functionalities and utilities.
 - `@angularis/pipe`: Custom pipes for data transformation.
