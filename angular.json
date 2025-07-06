@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/core/ng-package.json"
           },
@@ -29,7 +29,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/core/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }
@@ -42,7 +42,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/model/ng-package.json"
           },
@@ -61,7 +61,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/model/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }        
@@ -74,7 +74,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/directive/ng-package.json"
           },
@@ -93,7 +93,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/directive/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }        
@@ -106,7 +106,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/pipe/ng-package.json"
           },
@@ -125,7 +125,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/pipe/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }         
@@ -138,7 +138,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/service/ng-package.json"
           },
@@ -157,7 +157,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/service/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }          
@@ -170,7 +170,7 @@
       "prefix": "ang",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/component/ng-package.json"
           },
@@ -189,7 +189,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/component/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }         
@@ -207,12 +207,12 @@
       "prefix": "sb",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/storybook",
             "index": "projects/storybook/src/index.html",
             "browser": "projects/storybook/src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [],
             "tsConfig": "projects/storybook/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -269,7 +269,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "tsConfig": "projects/storybook/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -311,7 +311,7 @@
       "prefix": "sch",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/schematics/ng-package.json"           
           },
@@ -330,7 +330,7 @@
           "options": {
             "main": ["setup-jest.ts"],
             "tsConfig": "projects/schematics/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [],
             "setupFilesAfterEnv": "./setup-jest.ts"
           }
         }         
@@ -348,13 +348,12 @@
       "prefix": "ag",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/web",
             "index": "projects/web/src/index.html",
             "browser": "projects/web/src/main.ts",
             "polyfills": [
-              "zone.js"
             ],
             "tsConfig": "projects/web/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -419,8 +418,6 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "polyfills": [
-              "zone.js",
-              "zone.js/testing"
             ],
             "tsConfig": "projects/web/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",

@@ -19,7 +19,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
   styleUrls: ['ln-home.scss'],
 })
 export class LnHome implements OnInit {
-  public label = 'Angularis Component Library for Angular 19';
+  public label = 'Angularis Component Library for Angular 20';
   public open = [true, false];
   public gitHubIcon: IconProp = ['fab', 'github'];
   //

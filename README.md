@@ -10,7 +10,7 @@ The `@angularis` Angular library is a comprehensive suite of modules designed to
 - `@angularis/service`: Services for business logic and data management.
 - `@angularis/component`: Standalone components for building UI elements.
 
-All libraries are fully compatible with Angular 19. The `@angularis/component` package provides standalone components by default, making it easier to integrate and use them in your Angular applications.
+All libraries are fully compatible with Angular 20. The `@angularis/component` package provides standalone components by default, making it easier to integrate and use them in your Angular applications.
 
 ## Build
 To build the entire `@angularis` suite, you can use npm scripts defined in the `package.json` file. Here is an example of how you can set up the build process:

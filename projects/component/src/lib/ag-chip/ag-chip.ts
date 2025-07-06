@@ -24,7 +24,6 @@ import { Base, Library } from '@angularis/core';
 // Components
 //
 import { AgBase } from '../ag-base/ag-base';
-import { IconProp } from '@fortawesome/angular-fontawesome/types';
 
 @Component({
   imports: [CommonModule, FontAwesomeModule],
@@ -34,8 +33,8 @@ import { IconProp } from '@fortawesome/angular-fontawesome/types';
 })
 export class AgChip extends AgBase implements OnInit, AfterViewInit, OnDestroy {
   @Input() public model: Base = new Base();
-  @Input() public icon: IconProp = 'none';
-  @Input() public removeIcon: IconProp = 'none';
+  @Input() public icon: any = 'none';
+  @Input() public removeIcon: any = 'none';
   //
   // hasIcon(s)
   //

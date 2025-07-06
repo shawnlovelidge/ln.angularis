@@ -36,8 +36,8 @@ export class AgClipboardDirective implements OnInit, OnDestroy {
     this.service.destroy(this.container());
   }
 
-  @HostListener('click', ['$event.target'])
-  public onClick(event: Event) {
+  @HostListener('click', ['$event'])
+  public onClick(event: Event | null) {
     const targetElm = this.targetElm();
     const cbContent = this.cbContent();
     if (!this.service.isSupported) {

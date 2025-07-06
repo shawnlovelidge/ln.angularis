@@ -17,7 +17,6 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 // Components
 //
 import { AgBase } from '../ag-base/ag-base';
-import { IconProp } from '@fortawesome/angular-fontawesome/types';
 import { Library } from '@angularis/core';
 
 @Component({
@@ -30,7 +29,7 @@ export class AgButton
   extends AgBase
   implements OnInit, AfterViewInit, OnDestroy
 {
-  @Input() public icon: IconProp = 'none';
+  @Input() public icon: any = 'none';
   //
   // hasIcon(s)
   //
