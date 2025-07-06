@@ -4,6 +4,7 @@ import { Base } from './base';
 //
 export class Action extends Base {
   public style: Partial<CSSStyleDeclaration> = {};
+  public onClick: Function = () => {};
   //
   // Constructor
   //
