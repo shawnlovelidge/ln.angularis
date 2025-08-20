@@ -9,8 +9,8 @@
   ],
   "schematics": "./src/collection.json",
   "peerDependencies": {
-    "@angular-devkit/core": "^19.1.6",
-    "@angular-devkit/schematics": "^19.1.6",
+    "@angular-devkit/core": "^20.2.0",
+    "@angular-devkit/schematics": "^20.2.0",
     "typescript": "~5.7.2"
   },
   "sideEffects": false
