@@ -1,16 +1,16 @@
 {
   "name": "@angularis/component",
-  "version": "1.0.28",
+  "version": "1.0.29",
   "description": "Angular Component Library",
   "author": "Lovelidge, Shawn",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^19.1.0",
-    "@angular/core": "^19.1.0",
-    "@fortawesome/angular-fontawesome": "^1.0.0",
-    "@fortawesome/free-brands-svg-icons": "^6.7.2",
-    "@fortawesome/free-regular-svg-icons": "^6.7.2",
-    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@angular/common": "^20.2.0",
+    "@angular/core": "^20.2.0",
+    "@fortawesome/angular-fontawesome": "^3.0.0",
+    "@fortawesome/free-brands-svg-icons": "^7.0.0",
+    "@fortawesome/free-regular-svg-icons": "^7.0.0",
+    "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "zone.js": "~0.15.0"
   },
   "dependencies": {
