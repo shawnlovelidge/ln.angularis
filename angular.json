@@ -392,8 +392,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "optimization": false,
               "extractLicenses": false,
+              "namedChunks": true,
+              "optimization": false,
               "sourceMap": true
             }
           },
@@ -434,9 +435,6 @@
           }
         }
       }
-    }       
-  },
-  "cli": {
-    "analytics": false
+    }
   }
 }

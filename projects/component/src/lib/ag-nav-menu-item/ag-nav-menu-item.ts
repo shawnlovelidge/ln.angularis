@@ -21,10 +21,6 @@ import { Menu } from '@angularis/core';
 //
 import { AgBase } from '../ag-base/ag-base';
 //
-// Animations
-//
-import { basicAnimation } from '../../model/animation/basic-animation';
-//
 // Component
 //
 @Component({
@@ -32,7 +28,6 @@ import { basicAnimation } from '../../model/animation/basic-animation';
   selector: 'ag-nav-menu-item',
   templateUrl: 'ag-nav-menu-item.html',
   styleUrls: ['ag-nav-menu-item.scss'],
-  animations: [basicAnimation],
 })
 export class AgNavMenuItem extends AgBase implements OnInit, OnDestroy {
   public readonly model = input<Menu>(new Menu({}));
